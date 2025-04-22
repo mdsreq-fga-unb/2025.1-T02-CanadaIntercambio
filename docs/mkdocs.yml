@@ -1,0 +1,41 @@
+site_name: CanadaWay - Documentação do Projeto
+
+# Configurações de navegação
+nav:
+  - Início: index.md
+  - Visão do Produto e Projeto: produto-visao.md
+  - Solução Proposta: proposta-solucao.md
+  - Engenharia de Software: engenharia-software.md
+  - Cronograma e Entregas: cronograma.md
+  - Equipe e Comunicação: equipe-comunicacao.md
+  - Lições Aprendidas: licoes-aprendidas.md
+  - Referências: referencias.md
+
+theme:
+  # Trata-se de um tema personalizado, que foi desenvolvido a partir do tema Material
+  name: material
+
+  # Configurações de features - elementos que podem ser adicionados a documentação
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+    - content.code.copy
+
+  # Configurações de idioma
+  language: pt-BR
+
+  # Configurações de cores e fontes
+  palette:
+    primary: 'red'
+    accent: 'indigo'
+
+# Configurações de texto no rodapé
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/
+
+repo_url: https://github.com/seu-usuario/seu-repositorio
+repo_name: GitHub
+edit_uri: ""
