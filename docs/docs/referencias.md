@@ -9,8 +9,6 @@
 - Site oficial da empresa estudada:  
   [https://canadaintercambio.com/](https://canadaintercambio.com/)
 
-- ChatGPT.
-
 - SCHWABER, Ken; SUTHERLAND, Jeff. *Guia do Scrum: O guia definitivo do Scrum: as regras do jogo*. [S.l.]: Scrum.org, 2020.  
   Disponível em: [https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Portuguese-European.pdf](https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Portuguese-European.pdf).  
   Acesso em: 21 abr. 2025.
