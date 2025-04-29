@@ -13,17 +13,19 @@ Com atendimento personalizado e consultores experientes, a empresa se destaca po
 
 ## 1.2 Identificação da Oportunidade ou Problema
 
-Nos últimos anos, o aumento da procura por programas de intercâmbio, especialmente no Canadá, tem trazido novos desafios para a **Canada Intercâmbio**. A diversidade de perfis, dúvidas frequentes e a complexidade das informações envolvidas tornam o processo de apoio ao intercambista cada vez mais exigente. Alguns dos problemas identificados incluem:
+Nos últimos anos, o aumento da procura por programas de intercâmbio, especialmente no Canadá, tem trazido novos desafios para a Canada Intercâmbio. A diversidade de perfis, dúvidas frequentes e a complexidade das informações envolvidas tornam o processo de apoio ao intercambista cada vez mais exigente. Alguns dos problemas identificados incluem:
 
-- Dificuldade de encontrar informações claras
-- Insegurança e ansiedade dos estudantes e seus responsáveis
-- Sobrecarga dos consultores devido a questões repetitivas
+-Dificuldade de encontrar informações claras
 
-Esses obstáculos impactam diretamente a qualidade da experiência do cliente e aumentam a carga sobre os consultores, que precisam lidar repetidamente com questões básicas e operacionais.
+-Insegurança e ansiedade dos estudantes e seus responsáveis
+
+-Sobrecarga dos consultores devido a questões repetitivas
+
+Esses fatores revelam uma falha no sistema de apoio ao intercambista, que não consegue oferecer uma experiência fluida, acessível e personalizada. Como consequência, o usuário tem sua jornada comprometida e os consultores enfrentam um uso ineficiente do tempo, presos a atendimentos operacionais e pouco estratégicos, como mostrado no diagrama abaixo:
 
 > **Diagrama de Causa e Efeito**: A seguir, o diagrama de causa e efeito ilustra os principais elementos que contribuem para o problema.
 
-*Inserir diagrama visual de causa e efeito aqui, caso necessário.*
+![Diagrama Causa e Efeito](images/diagrama.jpeg)
 
 ## 1.3 Desafios do Projeto
 

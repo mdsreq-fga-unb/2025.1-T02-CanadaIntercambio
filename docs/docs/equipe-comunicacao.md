@@ -7,8 +7,8 @@
 | Gerente de Projeto    | Coordena o projeto, garante a comunicação entre cliente e equipe, controla prazos e entregas. | Marina Galdi       | Ana Elisa         |
 | Desenvolvedor Frontend| Responsável pela interface do usuário, design e implementação das funcionalidades no cliente. | Felipe Veríssimo   | Marina Galdi      |
 | Desenvolvedor Backend | Implementa a lógica de negócios, integração com banco de dados e APIs.                        | Luiz Henrique      | Ana Elisa         |
-| Analista de QA        | Garante a qualidade do produto, executando testes de funcionalidade, performance e usabilidade. | Dannyeclisson     | Luiz Henrique     |
-| Analista de Requisitos| Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos. | Renan            | Felipe Veríssimo  |
+| Analista de QA        | Garante a qualidade do produto, executando testes de funcionalidade, performance e usabilidade. | Dannyeclisson    | Luiz Henrique     |
+| Analista de Requisitos| Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos. | Todos            | Todos             |
 
 ---
 
