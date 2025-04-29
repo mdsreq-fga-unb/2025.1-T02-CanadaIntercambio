@@ -15,11 +15,11 @@ Com atendimento personalizado e consultores experientes, a empresa se destaca po
 
 Nos últimos anos, o aumento da procura por programas de intercâmbio, especialmente no Canadá, tem trazido novos desafios para a Canada Intercâmbio. A diversidade de perfis, dúvidas frequentes e a complexidade das informações envolvidas tornam o processo de apoio ao intercambista cada vez mais exigente. Alguns dos problemas identificados incluem:
 
--Dificuldade de encontrar informações claras
+- Dificuldade de encontrar informações claras;
 
--Insegurança e ansiedade dos estudantes e seus responsáveis
+- Insegurança e ansiedade dos estudantes e seus responsáveis;
 
--Sobrecarga dos consultores devido a questões repetitivas
+- Sobrecarga dos consultores devido a questões repetitivas.
 
 Esses fatores revelam uma falha no sistema de apoio ao intercambista, que não consegue oferecer uma experiência fluida, acessível e personalizada. Como consequência, o usuário tem sua jornada comprometida e os consultores enfrentam um uso ineficiente do tempo, presos a atendimentos operacionais e pouco estratégicos, como mostrado no diagrama abaixo:
 

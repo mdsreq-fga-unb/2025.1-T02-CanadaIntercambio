@@ -4,13 +4,17 @@
 
 **Abordagem de Desenvolvimento de Software:**
 	A abordagem adotada será ágil, pois se alinha com a necessidade de entregas rápidas, adaptação contínua e forte envolvimento do cliente ao longo do projeto. Essa abordagem prioriza a entrega de valor de forma iterativa, com foco em prototipação, validação constante e evolução contínua do produto, permitindo flexibilidade diante de mudanças nos requisitos.
+
 **Ciclo de Vida:**
 	O ciclo de vida escolhido é iterativo e incremental, o que significa que o sistema será desenvolvido em pequenas partes funcionais, entregues progressivamente. A cada iteração, o produto é incrementado com novas funcionalidades que são testadas, avaliadas e ajustadas com base no feedback dos usuários e do cliente. Isso favorece o aprendizado contínuo e a construção de uma solução mais aderente às reais necessidades dos usuários.
+
 **Processo de Engenharia de Software:**
 	O processo utilizado será o RAD (Rapid Application Development). Essa escolha se justifica pela necessidade de desenvolver protótipos funcionais de maneira rápida e obter validações frequentes com o cliente. O RAD permite:
 
 -Desenvolver de forma iterativa, com foco em ciclos curtos e entregas incrementais;
+
 -Reduzir o tempo entre planejamento e codificação, permitindo que os aprendizados orientem a evolução do produto;
+
 -Incorporar o feedback constante do cliente, gerando ajustes em tempo real e melhorias centradas na experiência do usuário.
 
 As primeiras fases do projeto serão voltadas para o entendimento do problema e construção rápida de protótipos navegáveis. A partir disso, o sistema será desenvolvido em ciclos, com entregas parciais funcionais, validações frequentes e integração progressiva das funcionalidades planejadas.
