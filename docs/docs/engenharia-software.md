@@ -2,20 +2,19 @@
 
 ## 3.1 Estratégia Priorizada
 
-**Abordagem de Desenvolvimento de Software**:  
-A abordagem escolhida para o desenvolvimento do produto será híbrida, considerando as características do projeto, como o tempo limitado (3 meses), a baixa disponibilidade da equipe multifuncional e o envolvimento ativo do cliente. Essa abordagem permitirá combinar práticas tradicionais de planejamento com a flexibilidade e adaptação das metodologias ágeis, promovendo entregas frequentes e alinhamento constante com o cliente.
+**Abordagem de Desenvolvimento de Software:**
+	A abordagem adotada será ágil, pois se alinha com a necessidade de entregas rápidas, adaptação contínua e forte envolvimento do cliente ao longo do projeto. Essa abordagem prioriza a entrega de valor de forma iterativa, com foco em prototipação, validação constante e evolução contínua do produto, permitindo flexibilidade diante de mudanças nos requisitos.
+**Ciclo de Vida:**
+	O ciclo de vida escolhido é iterativo e incremental, o que significa que o sistema será desenvolvido em pequenas partes funcionais, entregues progressivamente. A cada iteração, o produto é incrementado com novas funcionalidades que são testadas, avaliadas e ajustadas com base no feedback dos usuários e do cliente. Isso favorece o aprendizado contínuo e a construção de uma solução mais aderente às reais necessidades dos usuários.
+**Processo de Engenharia de Software:**
+	O processo utilizado será o RAD (Rapid Application Development). Essa escolha se justifica pela necessidade de desenvolver protótipos funcionais de maneira rápida e obter validações frequentes com o cliente. O RAD permite:
 
-**Ciclo de vida**:  
-Será adotado um ciclo de vida adaptativo, alinhado à abordagem híbrida. Isso significa que o desenvolvimento será guiado por iterações curtas e incrementais, com revisões frequentes de escopo conforme o conhecimento sobre os requisitos evolui — especialmente em áreas ainda indefinidas, como a seção voltada para os intercambistas. O ciclo adaptativo permite ajustes contínuos, favorecendo a entrega de valor mesmo em contextos de incerteza.
+-Desenvolver de forma iterativa, com foco em ciclos curtos e entregas incrementais;
+-Reduzir o tempo entre planejamento e codificação, permitindo que os aprendizados orientem a evolução do produto;
+-Incorporar o feedback constante do cliente, gerando ajustes em tempo real e melhorias centradas na experiência do usuário.
 
-**Processo de Engenharia de Software**:  
-O processo de desenvolvimento adotado será uma fusão entre as metodologias RAD (Rapid Application Development), Scrum e XP (Extreme Programming), compondo um modelo **RAD-ScrumXP**. Esse processo visa:
+As primeiras fases do projeto serão voltadas para o entendimento do problema e construção rápida de protótipos navegáveis. A partir disso, o sistema será desenvolvido em ciclos, com entregas parciais funcionais, validações frequentes e integração progressiva das funcionalidades planejadas.
 
-- Acelerar as entregas com protótipos e feedbacks rápidos (RAD);
-- Garantir organização e acompanhamento com sprints semanais (Scrum);
-- Aplicar boas práticas de programação e testes constantes (XP).
-
-As primeiras fases do projeto serão focadas na documentação e planejamento, com a codificação iniciando em paralelo ou logo após essas entregas iniciais.
 
 ## 3.2 Quadro Comparativo
 
