@@ -3,12 +3,16 @@ site_name: CanadaWay - Documentação do Projeto
 # Configurações de navegação
 nav:
   - Início: index.md
-  - Visão do Produto e Projeto: produto-visao.md
-  - Solução Proposta: proposta-solucao.md
-  - Engenharia de Software: engenharia-software.md
+  - Visão do Produto: produto-visao.md
+  - Solução: proposta-solucao.md
+  - Eng. de Software: engenharia-software.md
+  - Eng. de Requisitos: engenharia-requisitos.md  
   - Cronograma e Entregas: cronograma.md
   - Equipe e Comunicação: equipe-comunicacao.md
-  - Lições Aprendidas: licoes-aprendidas.md
+  - Requisitos: requisitos-software.md 
+  - DoR e DoD: dor-dod.md 
+  - Backlog: backlog.md 
+  - Lições: licoes-aprendidas.md
   - Apresentação: apresentacao.md
   - Referências: referencias.md
 
@@ -18,7 +22,6 @@ theme:
 
   # Configurações de features - elementos que podem ser adicionados a documentação
   features:
-    - navigation.tabs
     - navigation.sections
     - search.highlight
     - content.code.copy
@@ -40,3 +43,6 @@ extra:
 repo_url: https://github.com/seu-usuario/seu-repositorio
 repo_name: GitHub
 edit_uri: ""
+
+extra_css:
+  - extra.css
