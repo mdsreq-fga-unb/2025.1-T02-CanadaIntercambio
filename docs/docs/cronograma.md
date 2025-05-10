@@ -9,15 +9,15 @@ A partir da estratégia de desenvolvimento de software estabelecida, tem-se a se
 | Requisitos        | 2        | 28/04 – 03/05/2025 | Priorização e escrita dos requisitos + montagem do backlog                                             | ✅ Validação do escopo e backlog          |
 | Requisitos/Design | 1        | 05/05 – 10/05/2025 | Refinamento de requisitos com base no protótipo + protótipo inicial + configuração inicial do ambiente | —                                        |
 | Design            | 2        | 12/05 – 17/05/2025 | Testes com stakeholders + ajustes no protótipo + definição de padrões visuais e técnicos               | ✅ Protótipo validado                     |
-| Construção        | 1        | 19/05 – 24/05/2025 | Desenvolvimento da visualização de programas de intercâmbio                                            | —                                        |
-| Construção        | 2        | 26/05 – 31/05/2025 | Implementação dos filtros inteligentes                                                                 | ✅ Validação com cliente (.apk funcional) |
-| Construção        | 3        | 02/06 – 07/06/2025 | Desenvolvimento do simulador de custo                                                                  | —                                        |
-| Construção        | 4        | 09/06 – 14/06/2025 | Criação do teste de perfil gamificado (parte 1 – lógica e layout)                                      | ✅ Validação com cliente (.apk funcional) |
-| Construção        | 5        | 16/06 – 21/06/2025 | Conclusão do teste de perfil + início dos quizzes interativos                                          | —                                        |
-| Construção        | 6        | 23/06 – 28/06/2025 | Continuação dos quizzes + contagem regressiva para início do intercâmbio                               | ✅ Validação com cliente (.apk funcional) |
-| Construção        | 7        | 30/06 – 05/07/2025 | Área do Aluno com visualização de cronograma + dicas do local + cadastro de contato de emergência      | —                                        |
-| Construção        | 8        | 07/07 – 12/07/2025 | Cadastro e visualização de documentos                                                                  | ✅ Entrega final com .apk completo        |
-| Reserva Técnica   | —        | 14/07 – 19/07/2025 | Correções finais, estabilização e fechamento técnico, se necessário                                    | — *(uso opcional)*                       |
+| Construção        | 1        | 21/05 – 27/05/2025 | Desenvolvimento da visualização de programas de intercâmbio                                            | —                                        |
+| Construção        | 2        | 28/05 – 03/06/2025 | Implementação dos filtros inteligentes                                                                 | ✅ Validação com cliente (.apk funcional) |
+| Construção        | 3        | 04/06 – 10/06/2025 | Desenvolvimento do simulador de custo                                                                  | —                                        |
+| Construção        | 4        | 11/06 – 17/06/2025 | Criação do teste de perfil gamificado (parte 1 – lógica e layout)                                      | ✅ Validação com cliente (.apk funcional) |
+| Construção        | 5        | 18/06 – 24/06/2025 | Conclusão do teste de perfil + início dos quizzes interativos                                          | —                                        |
+| Construção        | 6        | 25/06 – 01/07/2025 | Continuação dos quizzes + contagem regressiva para início do intercâmbio                               | ✅ Validação com cliente (.apk funcional) |
+| Construção        | 7        | 02/07 – 08/07/2025 | Área do Aluno com visualização de cronograma + dicas do local + cadastro de contato de emergência      | —                                        |
+| Construção        | 8        | 09/07 – 14/07/2025 | Cadastro e visualização de documentos                                                                  | ✅ Entrega final com .apk completo        |
+
 
 ---
 
