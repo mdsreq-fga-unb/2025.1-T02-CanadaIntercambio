@@ -2,7 +2,7 @@
 
 ## 2.1 Objetivos do Produto
 
-O aplicativo busca ampliar a eficiência do atendimento da Canada Intercâmbio ao oferecer uma jornada mais autônoma e personalizada para o usuário, desde a descoberta até o acompanhamento do intercâmbio. Ele atuará como um canal de apoio inteligente, permitindo que o futuro intercambista explore possibilidades com base em seu perfil e necessidades, otimizando o processo antes mesmo do primeiro contato com a equipe.
+O aplicativo transforma a maneira como a Canada Intercâmbio se relaciona com seus usuários, promovendo um atendimento mais eficiente por meio de uma jornada autônoma e personalizada, desde a descoberta até o acompanhamento do intercâmbio. Ele atuará como um canal de apoio inteligente, permitindo que o futuro intercambista explore possibilidades com base em seu perfil e necessidades, otimizando o processo antes mesmo do primeiro contato com a equipe.
 
 Com uma interface clara e recursos dinâmicos, o app incorpora elementos de gamificação para tornar a navegação mais envolvente e intuitiva, incentivando o usuário a progredir em sua jornada por meio de interações leves e motivadoras. Isso contribui para reduzir a sobrecarga de atendimentos iniciais repetitivos e garante que os dados coletados sejam úteis para um suporte mais estratégico e direcionado. A área dedicada aos intercambistas fortalece o vínculo com os estudantes durante sua experiência no exterior, oferecendo centralização de informações, acompanhamento prático e suporte contínuo.
 
