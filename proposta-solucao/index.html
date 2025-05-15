@@ -1,0 +1,888 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../produto-visao/">
+      
+      
+        <link rel="next" href="../engenharia-software/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Solução - CanadaWay - Documentação do Projeto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-solucao-proposta" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-header__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CanadaWay - Documentação do Projeto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Solução
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/seu-usuario/seu-repositorio" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-nav__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CanadaWay - Documentação do Projeto
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/seu-usuario/seu-repositorio" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../produto-visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Solução
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solução
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-objetivos-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Objetivos do Produto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-caracteristicas-da-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Características da Solução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-tecnologias-a-serem-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Tecnologias a Serem Utilizadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-pesquisa-de-mercado-e-analise-competitiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Pesquisa de Mercado e Análise Competitiva
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-analise-de-viabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Análise de Viabilidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-impacto-da-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Impacto da Solução
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cronograma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cronograma e Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipe-comunicacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equipe e Comunicação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dor-dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backlog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../licoes-aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lições
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-objetivos-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Objetivos do Produto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-caracteristicas-da-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Características da Solução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-tecnologias-a-serem-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Tecnologias a Serem Utilizadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-pesquisa-de-mercado-e-analise-competitiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Pesquisa de Mercado e Análise Competitiva
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-analise-de-viabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Análise de Viabilidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-impacto-da-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Impacto da Solução
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-solucao-proposta">2. SOLUÇÃO PROPOSTA</h1>
+<h2 id="21-objetivos-do-produto">2.1 Objetivos do Produto</h2>
+<p>O aplicativo transforma a maneira como a Canada Intercâmbio se relaciona com seus usuários, promovendo um atendimento mais eficiente por meio de uma jornada autônoma e personalizada, desde a descoberta até o acompanhamento do intercâmbio. Ele atuará como um canal de apoio inteligente, permitindo que o futuro intercambista explore possibilidades com base em seu perfil e necessidades, otimizando o processo antes mesmo do primeiro contato com a equipe.</p>
+<p>Com uma interface clara e recursos dinâmicos, o app incorpora elementos de gamificação para tornar a navegação mais envolvente e intuitiva, incentivando o usuário a progredir em sua jornada por meio de interações leves e motivadoras. Isso contribui para reduzir a sobrecarga de atendimentos iniciais repetitivos e garante que os dados coletados sejam úteis para um suporte mais estratégico e direcionado. A área dedicada aos intercambistas fortalece o vínculo com os estudantes durante sua experiência no exterior, oferecendo centralização de informações, acompanhamento prático e suporte contínuo.</p>
+<h2 id="22-caracteristicas-da-solucao">2.2 Características da Solução</h2>
+<p>A solução proposta contempla um conjunto de funcionalidades voltadas à personalização da experiência do usuário, à centralização de informações relevantes e ao suporte contínuo. Abaixo, estão descritas as principais características do aplicativo e como cada uma atende às necessidades dos diferentes perfis de clientes da Canada Intercambio:</p>
+<p><strong>Catálogo interativo de programas de intercâmbio</strong>: Interface com navegação simples e organizada, facilitando a localização dos programas disponíveis de forma segmentada (por faixa etária, tipo de curso, duração, cidade, etc.), com detalhes sobre instituições, pré-requisitos, processos burocráticos e opções de acomodação. Essa organização facilita a pesquisa autônoma, agiliza o processo de escolha e reduz dúvidas comuns na fase inicial.</p>
+<p><strong>Filtros inteligentes personalizados</strong>: Permitem que o usuário selecione critérios como idade, orçamento, objetivos (estudo, trabalho ou ambos), interesse por imigração, entre outros. Com base nessas informações, o app sugere programas adequados ao perfil do usuário, otimizando o tempo de pesquisa e garantindo maior assertividade nas escolhas.</p>
+<p><strong>Simulador de orçamento dinâmico</strong>: Ferramenta que calcula o custo estimado do programa conforme variáveis como tipo de curso, duração, moradia, alimentação e transporte. Essencial para auxiliar na viabilidade financeira, especialmente para perfis que tomam decisões baseadas em custo-benefício ou planejamento familiar.</p>
+<p><strong>Área exclusiva do aluno (pós-matrícula)</strong>: Espaço dedicado aos intercambistas que já fecharam o programa, com acesso a cronogramas, documentos importantes, lembretes de prazos, contatos de emergência, dicas culturais e checklists personalizados. Essa funcionalidade garante suporte contínuo, reforça o vínculo com a empresa e promove segurança e autonomia durante toda a experiência. </p>
+<p><strong>Chatbot com base em dúvidas frequentes</strong>: Assistente virtual que responde a qualquer hora, sem necessidade de intervenção humana para esclarecer as principais dúvidas sobre vistos, tipos de curso, planejamento financeiro, entre outros. Essa funcionalidade diminui a sobrecarga de atendimentos repetitivos e proporciona respostas imediatas, melhorando a experiência do usuário desde o primeiro acesso. </p>
+<p><strong>Coleta estratégica de dados do usuário</strong>: Ao utilizar os filtros e interagir com o app, os dados preenchidos pelo cliente são organizados e enviados diretamente à equipe de atendimento, permitindo que os consultores iniciem o contato com conhecimento prévio do perfil do usuário. Isso viabiliza um atendimento mais personalizado, direto ao ponto e com maior chance de conversão.</p>
+<p><strong>Explicações visuais e simplificadas sobre a burocracia</strong>: Guias passo a passo, vídeos curtos e ilustrações explicativas para tornar mais compreensível o processo de solicitação de visto, matrícula, exigências de entrada no país, entre outros pontos burocráticos. Isso reduz a ansiedade e aumenta a confiança do cliente ao longo da jornada.</p>
+<p><strong>Recursos interativos e testes de conhecimento</strong>: Inclusão de quizzes, simulados de proficiência em inglês, testes de perfil de intercâmbio e desafios interativos para tornar a experiência mais envolvente. Esses recursos permitem que o usuário avalie seu nível linguístico, identifique qual programa combina mais com seu perfil e se mantenha motivado ao longo da jornada de planejamento.</p>
+<h2 id="23-tecnologias-a-serem-utilizadas">2.3 Tecnologias a Serem Utilizadas</h2>
+<p>As tecnologias específicas a serem utilizadas na construção da solução foram definidas inicialmente como ReactNative, para o Front-end, Node.js e express, para back-end e para o banco de dados PostgreSQL.</p>
+<h2 id="24-pesquisa-de-mercado-e-analise-competitiva">2.4 Pesquisa de Mercado e Análise Competitiva</h2>
+<p>Embora existam diversas empresas que atuam no mercado de intercâmbio e ofereçam plataformas digitais para divulgação de programas, muitas soluções ainda apresentam limitações em aspectos como personalização, centralização de informações e suporte ao aluno. O projeto da Canada Intercambio surge justamente para preencher essas lacunas, oferecendo uma experiência mais completa, interativa e orientada ao perfil de cada usuário. A seguir, é apresentada uma comparação entre algumas soluções já existentes e o aplicativo proposto:</p>
+<table>
+<thead>
+<tr>
+<th>Empresa/Plataforma</th>
+<th>Descoberta de Programas</th>
+<th>Personal-ização com Filtros</th>
+<th>Chatbot para Dúvidas</th>
+<th>Simulador de Orçamento</th>
+<th>Área Exclusiva para Alunos</th>
+<th>Coleta de Dados para Atendimento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STB</td>
+<td>Sim</td>
+<td>Não</td>
+<td>Não</td>
+<td>Parcial (em pacotes)</td>
+<td>Não</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>CI Intercâmbio</td>
+<td>Sim</td>
+<td>Parcial</td>
+<td>Não</td>
+<td>Sim</td>
+<td>Não</td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>EF (Education First)</td>
+<td>Sim</td>
+<td>Não</td>
+<td>Não</td>
+<td>Sim</td>
+<td>Parcial (com login)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>MyStudy App</td>
+<td>Não</td>
+<td>Não</td>
+<td>Não</td>
+<td>Não</td>
+<td>Sim</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><strong>CanadaWay (Proposta)</strong></td>
+<td><strong>Sim (com experiência guiada)</strong></td>
+<td><strong>Sim (baseado em perfil)</strong></td>
+<td><strong>Sim</strong></td>
+<td><strong>Sim</strong></td>
+<td><strong>Sim (cronogramas, documentos, dicas, suporte contínuo)</strong></td>
+<td><strong>Sim (dados úteis para os consultores)</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="25-analise-de-viabilidade">2.5 Análise de Viabilidade</h2>
+<p><strong>Técnica</strong>: viável com tecnologias acessíveis e escaláveis;<br />
+<strong>Prazo</strong>: desenvolvimento em fases, com período de 3–4 meses;<br />
+<strong>Financeira</strong>: sem investimentos, apenas para fins educativos.<br />
+<strong>Mercado</strong>: alta demanda por intercâmbios, especialmente para o Canadá, com pouca oferta de soluções digitais completas no Brasil.</p>
+<h2 id="26-impacto-da-solucao">2.6 Impacto da Solução</h2>
+<p>A implementação do aplicativo trará benefícios significativos tanto para os usuários quanto para a equipe da Canada Intercambio. Ao oferecer uma jornada mais personalizada, interativa e centralizada, a solução facilitará a tomada de decisão do cliente, tornando o processo de planejamento do intercâmbio mais claro e acessível. Recursos como filtros inteligentes, simulador de orçamento, área exclusiva para alunos e chatbot reduzem dúvidas recorrentes, qualificam melhor os leads e aumentam a confiança do usuário já nas etapas iniciais.<br />
+Do ponto de vista do negócio, o impacto será direto na otimização do atendimento, com redução de tarefas repetitivas e melhora na organização das informações recebidas. Isso permite que os consultores se concentrem em atendimentos mais estratégicos e personalizados, aumentando a eficiência operacional e a taxa de conversão. Além disso, a solução fortalece o relacionamento com os alunos durante toda a jornada do intercâmbio, promovendo uma experiência mais completa e gerando valor de longo prazo para a marca.</p>
+<table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Funcionalidades Relevantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jovens (13–18) + Pais</td>
+<td>Simulador com homestay, explicações visuais, área do aluno, conteúdo para pais</td>
+</tr>
+<tr>
+<td>Universitários / Recém-formados</td>
+<td>Filtros (área, Co-op, imigração), simulador detalhado, chatbot, depoimentos</td>
+</tr>
+<tr>
+<td>Adultos (25–45)</td>
+<td>Comparador de cursos, simulador semanal/mensal, agendamento ágil</td>
+</tr>
+<tr>
+<td>Famílias</td>
+<td>Simulador para dependentes, guias de visto, planejamento familiar, consultoria humanizada</td>
+</tr>
+<tr>
+<td>Matriculados</td>
+<td>Área exclusiva, cronogramas, lembretes, dicas práticas, suporte contínuo</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
