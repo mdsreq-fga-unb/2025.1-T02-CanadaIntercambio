@@ -4,12 +4,12 @@ site_name: CanadaWay - Documentação do Projeto
 nav:
   - Início: index.md
   - Visão do Produto: produto-visao.md
-  - Solução: proposta-solucao.md
+  - Solução Proposta: proposta-solucao.md
   - Eng. de Software: engenharia-software.md
   - Eng. de Requisitos: engenharia-requisitos.md  
   - Cronograma e Entregas: cronograma.md
   - Equipe e Comunicação: equipe-comunicacao.md
-  - Requisitos: requisitos-software.md 
+  - Requisitos de Software: requisitos-software.md 
   - DoR e DoD: dor-dod.md 
   - Backlog: backlog.md 
   - Lições: licoes-aprendidas.md

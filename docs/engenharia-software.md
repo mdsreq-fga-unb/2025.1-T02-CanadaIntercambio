@@ -1,49 +1,77 @@
-# 3. ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE
+# ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE
 
-## 3.1 Estratégia Priorizada
+## Estratégia Priorizada
 
-**Abordagem de Desenvolvimento de Software:**
-	A abordagem adotada será ágil, pois se alinha com a necessidade de entregas rápidas, adaptação contínua e forte envolvimento do cliente ao longo do projeto. Essa abordagem prioriza a entrega de valor de forma iterativa, com foco em prototipação, validação constante e evolução contínua do produto, permitindo flexibilidade diante de mudanças nos requisitos.
+### Abordagem de Desenvolvimento de Software:
+A abordagem adotada será **ágil**, pois se alinha com a necessidade de:
 
-**Ciclo de Vida:**
-	O ciclo de vida escolhido é iterativo e incremental, o que significa que o sistema será desenvolvido em pequenas partes funcionais, entregues progressivamente. A cada iteração, o produto é incrementado com novas funcionalidades que são testadas, avaliadas e ajustadas com base no feedback dos usuários e do cliente. Isso favorece o aprendizado contínuo e a construção de uma solução mais aderente às reais necessidades dos usuários.
+- Entregas rápidas
+- Adaptação contínua
+- Forte envolvimento do cliente
 
-**Processo de Engenharia de Software:**
-	O processo utilizado será o RAD (Rapid Application Development). Essa escolha se justifica pela necessidade de desenvolver protótipos funcionais de maneira rápida e obter validações frequentes com o cliente. O RAD permite:
-
--Desenvolver de forma iterativa, com foco em ciclos curtos e entregas incrementais;
-
--Reduzir o tempo entre planejamento e codificação, permitindo que os aprendizados orientem a evolução do produto;
-
--Incorporar o feedback constante do cliente, gerando ajustes em tempo real e melhorias centradas na experiência do usuário.
-
-As primeiras fases do projeto serão voltadas para o entendimento do problema e construção rápida de protótipos navegáveis. A partir disso, o sistema será desenvolvido em ciclos, com entregas parciais funcionais, validações frequentes e integração progressiva das funcionalidades planejadas.
+Essa estratégia prioriza a **entrega de valor de forma iterativa**, com foco em **prototipação, validação constante e evolução contínua**, permitindo flexibilidade diante de mudanças nos requisitos.
 
 
-## 3.2 Quadro Comparativo
+### Ciclo de Vida:
+O ciclo de vida escolhido é **iterativo e incremental**, ou seja:
 
-| Critério                    | Híbrido RAD + ScrumXP                                            | Híbrido RAD + OpenUP                                               |
-|----------------------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| **Abordagem**              | Iterativa, incremental e adaptativa com foco em entregas rápidas | Iterativa, com foco em engenharia disciplinada e documentação essencial |
-| **Custo de mudança**       | Baixo – mudanças são absorvidas facilmente durante as sprints     | Moderado – mudanças são permitidas, mas exigem controle e documentação |
-| **Adaptação a Mudanças**   | Alta – preparado para responder rapidamente a mudanças            | Média – adapta-se com base em planejamento contínuo e revisões estruturadas |
-| **Envolvimento do Cliente**| Alto – participação constante em ciclos curtos e revisões frequentes | Alto – envolvimento em marcos importantes e validações ao longo do processo |
-| **Entrega de Valor**       | Contínua – entregas rápidas e iterativas em cada sprint           | Incremental – entregas por fase, com foco na robustez e consistência |
-| **Riscos**                 | Baixos – problemas identificados e resolvidos em ciclos curtos    | Controlados – abordagem orientada a riscos e com práticas definidas |
-| **Aderência ao projeto**   | Alta – ideal para requisitos incertos e equipe com baixa disponibilidade | Alta – estrutura adaptável com ênfase em boas práticas e documentação |
+- O sistema será desenvolvido em **pequenas partes funcionais**
+- Cada iteração entrega novas funcionalidades
+- Cada entrega é **testada, avaliada e ajustada** com base no feedback real dos usuários e clientes
 
-## 3.3 Justificativa
+Isso favorece o aprendizado contínuo e resulta em um produto mais aderente às necessidades do público.
 
-Diante das características específicas do produto **CanadaWay**, o processo híbrido **RAD + ScrumXP** foi escolhido como o mais apropriado para o desenvolvimento do aplicativo.
 
-O projeto apresenta alta necessidade de adaptação contínua, especialmente em componentes como o **catálogo interativo de programas**, o **chatbot de dúvidas frequentes** e a **área exclusiva do aluno**, onde os requisitos podem evoluir de acordo com a interação do cliente e validações durante o desenvolvimento. A **coleta estratégica de dados** e o **simulador de orçamento** também demandam prototipação rápida para ajustes de usabilidade.
+### Processo Utilizado: RAD (Rapid Application Development):
+A escolha pelo **RAD** se justifica pela necessidade de **desenvolvimento rápido de protótipos funcionais** e validações frequentes com o cliente.
 
-Com um prazo de 3 a 4 meses e uma equipe de disponibilidade limitada, é crucial focar em entregas rápidas e iterativas que possam ser validadas com o cliente frequentemente, sem exigir backlog completamente definido desde o início. O modelo híbrido se encaixa perfeitamente nesse cenário, pois:
+**Vantagens do RAD:**
 
-- Acelera a entrega de protótipos funcionais, permitindo *early feedback*;
-- Minimiza riscos através de testes e validações constantes;
-- Incorpora mudanças de forma natural, mantendo o projeto alinhado ao objetivo de proporcionar uma experiência personalizada e interativa ao usuário final;
-- Facilita a priorização baseada no impacto de negócio e viabilidade técnica a curto prazo;
-- Aproveita a participação ativa do cliente, essencial para ajustar aspectos de personalização e usabilidade em tempo real.
+- Desenvolve de forma iterativa, com **ciclos curtos e entregas incrementais**
+- **Reduz o tempo** entre planejamento e codificação
+- **Incorpora feedback constante**, com ajustes em tempo real
+- **Foco na experiência do usuário** desde o início
 
-Portanto, o uso do processo **RAD + ScrumXP** maximiza as chances de sucesso do projeto, viabilizando a entrega de um aplicativo robusto, bem alinhado às expectativas do mercado e adaptável às necessidades específicas dos usuários da Canada Intercambio.
+As fases iniciais do projeto são dedicadas à compreensão do problema e à **construção rápida de protótipos navegáveis**. Em seguida, as funcionalidades são implementadas em ciclos com entregas parciais funcionais e validações contínuas.
+
+
+## Quadro Comparativo
+
+| Critério                   | RAD (Isolado)                           | Híbrido RAD + OpenUP                           |
+|---------------------------|------------------------------------------|-------------------------------------------------|
+| **Abordagem**             | Iterativa com foco em protótipos rápidos | Iterativa com engenharia disciplinada           |
+| **Custo de mudança**      | Baixo – adaptações rápidas               | Moderado – mudanças controladas e documentadas  |
+| **Adaptação a mudanças**  | Alta – mudanças são esperadas            | Média – baseadas em planejamento contínuo       |
+| **Envolvimento do cliente** | Alto – validação frequente de protótipos | Alto – participação em marcos importantes       |
+| **Entrega de valor**      | Muito rápida – ciclos curtos             | Incremental – com foco em robustez              |
+| **Riscos**                | Mitigados com protótipos                 | Controlados com práticas e revisões definidas   |
+| **Aderência ao projeto**  | Alta – ideal para escopo incerto         | Alta – estruturada, com boas práticas           |
+
+## Justificativa
+
+A escolha pelo processo **interativo e incremental com base exclusivamente no RAD** se deve às características específicas do **CanadaWay**:
+
+- Funcionalidades como **catálogo interativo**, **chatbot**, e **área do aluno** evoluem rapidamente com base em feedback
+- Componentes como o **simulador de orçamento** e a **coleta de dados** exigem **protótipos funcionais rápidos**
+- O prazo do projeto é curto (3–4 meses), com equipe de disponibilidade limitada
+
+### O RAD é adequado porque:
+
+- Foca na **prototipação rápida e entregas curtas**
+- **Reduz o custo de mudanças** com ciclos ágeis
+- Estimula **envolvimento constante do cliente**
+- Suporta uma evolução **centrada no usuário**
+- Permite **validações contínuas** e visibilidade do progresso
+
+> Com o RAD, conseguimos transformar feedbacks em melhorias reais rapidamente, validando decisões e entregando valor em cada iteração, sem comprometer o ritmo do projeto.
+
+---
+
+### Conclusão
+
+O uso do **RAD como processo exclusivo** fortalece a agilidade e capacidade de resposta do projeto *CanadaWay*, sendo a abordagem ideal para:
+
+- Equipes com tempo e recursos limitados
+- Projetos com escopo mutável
+- Produtos que exigem envolvimento contínuo dos usuários
+- Validações rápidas e entregas evolutivas

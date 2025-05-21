@@ -1,5 +1,5 @@
-# 7. Requisitos de Software
+# Requisitos de Software
 
-## 7.1 Lista de Requisitos Funcionais ##
+## Lista de Requisitos Funcionais 
 
-## 7.2 Lista de Requisitos Não-Funcionais ##
+## Lista de Requisitos Não-Funcionais 

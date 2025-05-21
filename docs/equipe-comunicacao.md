@@ -1,6 +1,6 @@
-# 5. Interação entre Equipe e Cliente
+# Interação entre Equipe e Cliente
 
-## 5.1 Composição da Equipe
+## Composição da Equipe
 
 | Papel                 | Descrição                                                                                      | Responsável       | Participantes     |
 |-----------------------|-----------------------------------------------------------------------------------------------|--------------------|-------------------|
@@ -12,7 +12,7 @@
 
 ---
 
-## 5.2 Comunicação
+## Comunicação
 
 ### Ferramentas de Comunicação
 
@@ -34,7 +34,7 @@
 
 ---
 
-## 5.3 Processo de Validação
+## Processo de Validação
 
 O processo de validação será estruturado em três etapas principais:
 

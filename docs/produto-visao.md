@@ -1,8 +1,8 @@
 # Cenário Atual do Cliente e do Negócio
 
-## 1.1 Introdução ao Negócio e Contexto
+## Introdução ao Negócio e Contexto
 
-A **Canada Intercâmbio** é uma empresa do setor de educação internacional especializada em programas de intercâmbio no Canadá. A empresa oferece suporte completo para estudantes e profissionais que desejam estudar fora, incluindo:
+A **Canada Intercambio** é uma empresa do setor de educação internacional especializada em programas de intercâmbio no Canadá. A empresa oferece suporte completo para estudantes e profissionais que desejam estudar fora, incluindo:
 
 - **Escolha de cursos**
 - **Visto**
@@ -11,7 +11,7 @@ A **Canada Intercâmbio** é uma empresa do setor de educação internacional es
 
 Com atendimento personalizado e consultores experientes, a empresa se destaca por conectar pessoas a oportunidades educacionais no exterior.
 
-## 1.2 Identificação da Oportunidade ou Problema
+## Identificação da Oportunidade ou Problema
 
 Nos últimos anos, o aumento da procura por programas de intercâmbio, especialmente no Canadá, tem trazido novos desafios para a Canada Intercâmbio. A diversidade de perfis, dúvidas frequentes e a complexidade das informações envolvidas tornam o processo de apoio ao intercambista cada vez mais exigente. Alguns dos problemas identificados incluem:
 
@@ -27,7 +27,7 @@ Esses fatores revelam uma falha no sistema de apoio ao intercambista, que não c
 
 ![Diagrama Causa e Efeito](images/diagrama.jpeg)
 
-## 1.3 Desafios do Projeto
+## Desafios do Projeto
 
 Os principais desafios enfrentados pela empresa são:
 
@@ -38,7 +38,7 @@ Os principais desafios enfrentados pela empresa são:
 - **Monitoramento dos intercambistas** e suporte em todos os casos.
 - Evitar **atendimentos redundantes** e sem continuidade, apenas para tirar dúvidas.
 
-## 1.4 Segmentação de Clientes
+## Segmentação de Clientes
 
 A segmentação dos clientes e seus respectivos programas de interesse pode ser feita da seguinte forma:
 

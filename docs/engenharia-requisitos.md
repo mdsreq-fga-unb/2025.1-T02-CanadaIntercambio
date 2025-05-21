@@ -1,6 +1,6 @@
-# 4. ENGENHARIA DE SOFTWARE
+# ENGENHARIA DE SOFTWARE
 
-## 4.1 Atividades e Técnicas de ER
+## Atividades e Técnicas de ER
 
 **Elicitação e descoberta:**
 
@@ -12,7 +12,7 @@
 
 **Organização e atualização de requisitos:**
 
-## 4.2 Engenharia de Requisitos e o <Nome do Processo de ESW>
+## Engenharia de Requisitos e o "Nome do Processo de ESW"
 
 Aqui, as atividades da ER, suas práticas e técnicas devem ser mapeadas, a partir das fases (etapas) do processo estabelecido pela equipe, para a condução do projeto. Essas informações devem ser apresentadas em uma tabela conforme indicado, a seguir (exemplo). (Tirar essa descrição da att)
 
