@@ -1,4 +1,4 @@
-# ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE
+# Estratégia de Engenharia de Software
 
 ## Estratégia Priorizada
 

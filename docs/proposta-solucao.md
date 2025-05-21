@@ -1,4 +1,4 @@
-# SOLUÇÃO PROPOSTA
+# Solução Proposta
 
 ## Objetivos do Produto
 

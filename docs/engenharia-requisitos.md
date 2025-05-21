@@ -1,4 +1,4 @@
-# ENGENHARIA DE SOFTWARE
+# Engenharia de Requisitos
 
 ## Atividades e Técnicas de ER
 
