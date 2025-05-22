@@ -2,7 +2,7 @@
 
 ## Composição da Equipe
 
-| Papel                 | Descrição                                                                                      | Responsável       | Participantes     |
+| **Papel**                 | **Descrição**                                                                                      | **Responsável**       | **Participantes**     |
 |-----------------------|-----------------------------------------------------------------------------------------------|--------------------|-------------------|
 | Gerente de Projeto    | Coordena o projeto, garante a comunicação entre cliente e equipe, controla prazos e entregas. | Marina Galdi       | Ana Elisa         |
 | Desenvolvedor Frontend| Responsável pela interface do usuário, design e implementação das funcionalidades no cliente. | Felipe Veríssimo   | Marina Galdi      |
@@ -31,8 +31,6 @@
 
 - **Revisão da Sprint**: Cliente acompanha o progresso via Miro, revisa tarefas e ajusta prioridades.
 - **Acesso ao Figma**: Participa das reuniões de revisão e valida funcionalidades diretamente na ferramenta, contribuindo com novas demandas.
-
----
 
 ## Processo de Validação
 

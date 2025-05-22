@@ -2,7 +2,7 @@
 
 ## Objetivos do Produto
 
-O **CanadaWay** transforma a forma como a *Canada Intercâmbio* se conecta com seus usuários, promovendo uma jornada mais autônoma, personalizada e envolvente desde a descoberta até o acompanhamento do intercâmbio.
+O *CanadaWay* transforma a forma como a **Canada Intercambio** se conecta com seus usuários, promovendo uma jornada mais autônoma, personalizada e envolvente desde a descoberta até o acompanhamento do intercâmbio.
 
 Com uma interface clara e recursos dinâmicos, o app facilita a escolha do programa ideal, reduz a sobrecarga de atendimentos repetitivos e fortalece o relacionamento com o estudante durante toda sua experiência no exterior. A navegação é intuitiva, com elementos de gamificação e suporte contínuo para garantir mais segurança, praticidade e engajamento.
 
@@ -46,13 +46,13 @@ As tecnologias escolhidas garantem performance e escalabilidade:
 ## Pesquisa de Mercado e Análise Competitiva
 
 Analisamos as principais plataformas de intercâmbio para entender o que já existe — e o que falta. Veja como o CanadaWay se diferencia:
-
-| Plataforma         | Descoberta | Filtros | Chatbot | Simulador | Área do Aluno | Coleta de Dados |
+*
+| **Plataforma**         | **Descoberta** | **Filtros** | **Chatbot** | **Simulador** | **Área do Aluno** | **Coleta de Dados** |
 |--------------------|------------|---------|---------|-----------|----------------|------------------|
-| **STB**            | Sim        | Não     | Não     | Parcial   | Não            | Não              |
-| **CI Intercâmbio** | Sim        | Parcial | Não     | Sim       | Não            | Parcial          |
-| **EF**             | Sim        | Não     | Não     | Sim       | Parcial        | Não              |
-| **MyStudy App**    | Não        | Não     | Não     | Não       | Sim            | Não              |
+| STB            | Sim        | Não     | Não     | Parcial   | Não            | Não              |
+| CI Intercâmbio | Sim        | Parcial | Não     | Sim       | Não            | Parcial          |
+| EF             | Sim        | Não     | Não     | Sim       | Parcial        | Não              |
+| MyStudy App    | Não        | Não     | Não     | Não       | Sim            | Não              |
 | **CanadaWay**      | **Guiada** | **Sim**   |  **Sim**  |  **Sim**    |  **Completa**     |  **Sim**            |
 
 
@@ -76,7 +76,7 @@ A solução entrega benefícios reais para usuários e empresa:
 
 ### Funcionalidades por Perfil
 
-| Público                 | Recursos Relevantes                                                                 |
+| **Público**                 | **Recursos Relevantes**                                                                 |
 |-------------------------|--------------------------------------------------------------------------------------|
 | Jovens (13–18) + Pais   | Simulador com homestay, guias visuais, área do aluno, conteúdo voltado para pais   |
 | Universitários          | Filtros por carreira e imigração, chatbot, depoimentos, simulador detalhado        |

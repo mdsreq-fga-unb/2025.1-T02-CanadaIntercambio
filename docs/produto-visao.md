@@ -46,43 +46,43 @@ A segmentação dos clientes e seus respectivos programas de interesse pode ser 
 
 - **Principais características**: Fortes laços com os pais ou responsáveis, interesse em vivência cultural e fluência em inglês ou francês.
 - **Necessidades**:
-  -- Explicações claras e visuais sobre a rotina escolar
-  -- Comparativos entre escolas e regiões
-  -- Simuladores de custo
-  -- Conteúdo voltado aos pais (segurança e suporte local)
-  -- Área do aluno com dicas de adaptação, cronogramas e contatos de emergência.
+  - Explicações claras e visuais sobre a rotina escolar
+  - Comparativos entre escolas e regiões
+  - Simuladores de custo
+  - Conteúdo voltado aos pais (segurança e suporte local)
+  - Área do aluno com dicas de adaptação, cronogramas e contatos de emergência.
 
 ### Universitários e Recém-Formados (Estudos e Trabalho)
 
 - **Principais características**: Buscam aliar aprendizado acadêmico ao crescimento profissional.
 - **Necessidades**:
-  -- Filtros por área de estudo, duração e possibilidade de trabalho (Co-op)
-  -- Simuladores de orçamento detalhados
-  -- Explicações sobre o Co-op, PGWP e vistos
-  -- Seção de depoimentos de ex-alunos
-  -- Chatbot com FAQs sobre carreira.
+  - Filtros por área de estudo, duração e possibilidade de trabalho (Co-op)
+  - Simuladores de orçamento detalhados
+  - Explicações sobre o Co-op, PGWP e vistos
+  - Seção de depoimentos de ex-alunos
+  - Chatbot com FAQs sobre carreira.
 
 ### Adultos entre 25 e 45 anos (Cursos de Idioma ou Qualificação Profissional)
 
 - **Principais características**: Profissionais com rotinas intensas, com foco no crescimento ou recolocação no mercado de trabalho.
 - **Necessidades**:
-  -- Comparador de cursos por carga horária e foco
-  -- Simuladores de custo por semana ou mês
-  -- Informações práticas sobre moradia e transporte
-  -- Agendamento ágil com consultores.
+  - Comparador de cursos por carga horária e foco
+  - Simuladores de custo por semana ou mês
+  - Informações práticas sobre moradia e transporte
+  - Agendamento ágil com consultores.
 
 ### Famílias Planejando Mudar-se para o Canadá
 
 - **Principais características**: Planejamento a médio e longo prazo, preocupação com a educação dos filhos e estabilidade familiar.
 - **Necessidades**:
-  -- Simuladores para famílias com múltiplos dependentes
-  -- Conteúdo explicativo sobre o processo de mudança
-  -- Consultoria humanizada com foco em acolhimento e segurança familiar.
+  - Simuladores para famílias com múltiplos dependentes
+  - Conteúdo explicativo sobre o processo de mudança
+  - Consultoria humanizada com foco em acolhimento e segurança familiar.
 
 ### Intercambistas Já Matriculados
 
 - **Principais características**: Intercambistas que precisam de suporte contínuo durante a estadia.
 - **Necessidades**:
-  -- Área exclusiva com checklists de chegada e retorno
-  -- Centralização de dados do programa
-  -- Funcionalidades para feedback e avaliações da experiência.
+  - Área exclusiva com checklists de chegada e retorno
+  - Centralização de dados do programa
+  - Funcionalidades para feedback e avaliações da experiência.

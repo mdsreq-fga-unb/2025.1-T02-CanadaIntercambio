@@ -1,8 +1,8 @@
-# CanadaWay - Aplicativo da Canada Intercambio
+# *CanadaWay* - Aplicativo da Canada Intercambio
 
-## Bem-vindo à documentação oficial do **CanadaWay**!
+## Bem-vindo à documentação oficial do *CanadaWay*!
 
-A **CanadaWay** é uma plataforma de apoio a intercambistas, desenvolvida para fornecer uma solução educacional eficiente e personalizada aos usuários da **Canada Intercâmbio**. Nosso objetivo é facilitar a experiência dos intercambistas, oferecendo suporte automatizado e personalizado para os diversos perfis de clientes que buscam realizar intercâmbio no Canadá.
+A *CanadaWay* é uma plataforma de apoio a intercambistas, desenvolvida para fornecer uma solução educacional eficiente e personalizada aos usuários da **Canada Intercâmbio**. Nosso objetivo é facilitar a experiência dos intercambistas, oferecendo suporte automatizado e personalizado para os diversos perfis de clientes que buscam realizar intercâmbio no Canadá.
 
 A seguir, você encontrará todos os detalhes sobre a **visão, desenvolvimento e planejamento técnico** do sistema, abordando os desafios enfrentados, as soluções propostas e as funcionalidades do sistema.
 
@@ -12,15 +12,15 @@ A seguir, você encontrará todos os detalhes sobre a **visão, desenvolvimento 
 
 ### **Visão Geral do Projeto**
 
-Conheça a missão do CanadaWay e o impacto que ele busca gerar na experiência daqueles que sonham em realizar um intercâmbio. A plataforma foi pensada para facilitar o processo de escolha e acompanhamento de programas de intercâmbio, oferecendo uma jornada mais tranquila e informada aos usuários.
+Conheça a missão do *CanadaWay* e o impacto que ele busca gerar na experiência daqueles que sonham em realizar um intercâmbio. A plataforma foi pensada para facilitar o processo de escolha e acompanhamento de programas de intercâmbio, oferecendo uma jornada mais tranquila e informada aos usuários.
 
 ### **Desenvolvimento e Planejamento**
 
-Aqui, você encontrará todos os detalhes sobre o desenvolvimento técnico do CanadaWay, incluindo a arquitetura do sistema, estratégias de engenharia de software e as ferramentas utilizadas para a implementação.
+Aqui, você encontrará todos os detalhes sobre o desenvolvimento técnico do *CanadaWay*, incluindo a arquitetura do sistema, estratégias de engenharia de software e as ferramentas utilizadas para a implementação.
 
 ### **Desafios e Oportunidades**
 
-Entenda os desafios enfrentados pela empresa, como a organização de informações complexas para diferentes perfis de clientes, e as soluções inovadoras que o CanadaWay oferece para superá-los.
+Entenda os desafios enfrentados pela empresa, como a organização de informações complexas para diferentes perfis de clientes, e as soluções inovadoras que o *CanadaWay* oferece para superá-los.
 
 ### **Cronograma e Entregas**
 
@@ -36,15 +36,15 @@ Veja como identificamos as necessidades reais dos usuários e da empresa, transf
 
 ### **Estratégias Escolhidas para Fazer o Projeto**
 
-Conheça as abordagens adotadas para garantir eficiência e foco no desenvolvimento, desde metodologias ágeis até decisões técnicas que orientaram o caminho do CanadaWay.
+Conheça as abordagens adotadas para garantir eficiência e foco no desenvolvimento, desde metodologias ágeis até decisões técnicas que orientaram o caminho do *CanadaWay*.
 
 ### **Como Configurar o Ambiente para Rodar o Projeto**
 
-Aprenda passo a passo como preparar sua máquina para contribuir com o CanadaWay, com instruções claras sobre instalações, dependências e ferramentas necessárias.
+Aprenda passo a passo como preparar sua máquina para contribuir com o *CanadaWay*, com instruções claras sobre instalações, dependências e ferramentas necessárias.
 
 ### **Lições Aprendidas**
 
-Acesse um resumo das lições aprendidas durante o desenvolvimento do CanadaWay, desde a definição dos requisitos até a implementação das funcionalidades.
+Acesse um resumo das lições aprendidas durante o desenvolvimento do *CanadaWay*, desde a definição dos requisitos até a implementação das funcionalidades.
 
 ---
 
@@ -52,7 +52,7 @@ Acesse um resumo das lições aprendidas durante o desenvolvimento do CanadaWay,
 
 Use o menu lateral para acessar diretamente as seções e tópicos da documentação. Aqui estão alguns dos principais links:
 
-- [CanadaWay - Plataforma Inteligente de Apoio a Intercambistas](#canadaway---plataforma-inteligente-de-apoio-a-intercambistas)
+- [*CanadaWay* - Plataforma Inteligente de Apoio a Intercambistas](#canadaway---plataforma-inteligente-de-apoio-a-intercambistas)
   - [Bem-vindo à documentação oficial do **CanadaWay**!](#bem-vindo-à-documentação-oficial-do-canadaway)
   - [O Que Você Vai Encontrar Aqui](#o-que-você-vai-encontrar-aqui)
     - [**Visão Geral do Projeto**](#-visão-geral-do-projeto)
@@ -66,7 +66,7 @@ Use o menu lateral para acessar diretamente as seções e tópicos da documenta�
     - [**Lições Aprendidas**](#-lições-aprendidas)
   - [Navegação Rápida](#navegação-rápida)
   - [O Que é a Canada Intercâmbio?](#o-que-é-a-canada-intercâmbio)
-  - [Como Funciona o CanadaWay?](#como-funciona-o-canadaway)
+  - [Como Funciona o *CanadaWay*?](#como-funciona-o-canadaway)
   - [Contato](#contato)
   - [Navegue pela Documentação](#navegue-pela-documentação)
 
@@ -76,9 +76,9 @@ Use o menu lateral para acessar diretamente as seções e tópicos da documenta�
 
 A **Canada Intercambio** é uma empresa do setor de educação internacional especializada em programas de intercâmbio no Canadá. A missão da empresa é proporcionar a estudantes e profissionais de diversas áreas a oportunidade de ampliar seus horizontes e conquistar um futuro mais promissor por meio de uma vivência internacional.
 
-O **CanadaWay** foi desenvolvido para transformar a experiência de intercâmbio, com foco em um atendimento personalizado e em tecnologias que simplifiquem o processo de escolha, planejamento e acompanhamento do intercâmbio.
+O *CanadaWay* foi desenvolvido para transformar a experiência de intercâmbio, com foco em um atendimento personalizado e em tecnologias que simplifiquem o processo de escolha, planejamento e acompanhamento do intercâmbio.
 
-## Como Funciona o CanadaWay?
+## Como Funciona o *CanadaWay*?
 
 O sistema foi projetado para oferecer uma experiência dinâmica e automatizada para diferentes perfis de clientes, incluindo:
 
@@ -104,4 +104,4 @@ Para mais informações ou dúvidas visite a [página oficial da Canada Intercâ
 
 ## Navegue pela Documentação
 
-Use o menu lateral para navegar entre as seções da documentação e conhecer os detalhes do desenvolvimento, funcionalidades e impacto do CanadaWay.
+Use o menu lateral para navegar entre as seções da documentação e conhecer os detalhes do desenvolvimento, funcionalidades e impacto do *CanadaWay*.

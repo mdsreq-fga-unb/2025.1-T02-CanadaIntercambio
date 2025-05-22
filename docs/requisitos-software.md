@@ -2,7 +2,7 @@
 
 ## Lista de Requisitos Funcionais 
 
-O sistema da Canada Intercâmbio foi projetado para atender três perfis de usuários: **potenciais intercambistas**, **intercambistas contratados** e a **própria empresa**.
+O sistema da Canada Intercambio foi projetado para atender três perfis de usuários: **potenciais intercambistas**, **intercambistas contratados** e a **própria empresa**.
 
 - **Potenciais intercambistas** têm acesso a criação e edição de conta, testes de perfil, quizzes, visualização dinâmica de programas, simulador de custos, chatbot e promoções filtráveis.
 - **Intercambistas contratados** podem visualizar contratos, cronogramas, contagem regressiva, contatos de emergência e dicas sobre o destino.
@@ -12,7 +12,7 @@ Essas funcionalidades apoiam a **captação de clientes**, reduzem atendimentos 
 
 ## Tabela de Requisitos Funcionais
 
-| Código  | Requisito                                                                  | Objetivo | Referente a              |
+| **Código**  | **Requisito**                                                                  | **Objetivo** | **Referente a**              |
 |---------|-----------------------------------------------------------------------------|----------|---------------------------|
 | RF01    | Criar conta na plataforma                                                   | 1        | Potencial Intercambista   |
 | RF02    | Fazer login na plataforma                                                   | 1        | Potencial Intercambista   |
@@ -59,7 +59,7 @@ Os requisitos não funcionais do sistema Canada Intercambio garantem qualidade, 
 
 O desempenho é otimizado, com respostas em até 3 segundos nas funcionalidades principais e 2 segundos no chatbot. A disponibilidade é de 99% do tempo. O sistema é escalável, compatível com Android e iOS lançados nos últimos 3 anos e preparado para futuras integrações com sistemas internos. Um painel administrativo permite atualização de conteúdos sem necessidade técnica.
 
-| Código  | Descrição                                                                                                                                                                                                 |
+| **Código**  | **Descrição**                                                                                                                                                                                                 |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | RNF01   | **Usabilidade (Usability):** O sistema deve ser acessível e fácil de usar por diferentes perfis de usuários. A interface deve ser responsiva (adaptada a celular e tablet) e o tempo de aprendizado para uso básico deve ser inferior a 10 minutos, promovendo uma navegação intuitiva e eficiente. |
 | RNF02   | **Confiabilidade (Reliability):** Os dados de emergência e pessoais devem ser protegidos com criptografia. O sistema deve seguir a LGPD, garantindo consentimento do usuário e possibilidade de exclusão de dados, promovendo segurança e conformidade legal. |
@@ -68,9 +68,9 @@ O desempenho é otimizado, com respostas em até 3 segundos nas funcionalidades 
 
 
 
-| Tipo           | Requisito                                                                                     |
+| **Tipo**           | **Requisito**                                                                                     |
 |----------------|-----------------------------------------------------------------------------------------------|
-| **Do Produto** | O sistema deve ser acessível e fácil de usar por diferentes perfis de usuários.              |
+| Do Produto | O sistema deve ser acessível e fácil de usar por diferentes perfis de usuários.              |
 |                | O tempo de aprendizado para uso básico deve ser inferior a 10 minutos.                       |
 |                | Interface responsiva (adaptada a celular e tablet).                                          |
 |                | Tempo de resposta inferior a 3 segundos para simulações e acessos.                           |
@@ -79,6 +79,6 @@ O desempenho é otimizado, com respostas em até 3 segundos nas funcionalidades 
 |                | Os dados de emergência e pessoais devem ser protegidos com criptografia.                     |
 |                | O sistema deve ser escalável para suportar aumento no número de usuários.                    |
 |                | Possibilidade de inserção de conteúdos (cronogramas, dicas, documentos) via painel admin.    |
-| **Externo**    | O app deve seguir a LGPD, com consentimento e opção de exclusão de dados.                    |
-| **Organizacional** | Compatibilidade com Android e iOS lançados nos últimos 3 anos.                         |
+| Externo    | O app deve seguir a LGPD, com consentimento e opção de exclusão de dados.                    |
+| Organizacional | Compatibilidade com Android e iOS lançados nos últimos 3 anos.                         |
 |                | Integração futura com CRM ou sistemas internos da empresa.                                   |

@@ -11,7 +11,7 @@ Esses objetivos servem como base para a estruturação e priorização dos itens
 
 ## Backlog Geral
 
-| Código | Requisito                                                        | Grupo Funcional                          | Objetivo | Priorização |
+| **Código** | **Requisito**                                                        | **Grupo Funcional**                          | **Objetivo** | **Priorização** |
 |--------|------------------------------------------------------------------|------------------------------------------|----------|-------------|
 | RF01   | Criar conta na plataforma                                        | Acesso e Gerenciamento de Conta          | 1        | Must Have   |
 | RF02   | Fazer login na plataforma                                        | Acesso e Gerenciamento de Conta          | 1        | Must Have   |
@@ -54,37 +54,38 @@ Esses objetivos servem como base para a estruturação e priorização dos itens
 ## Priorização do Backlog Geral
 
 A priorização foi feita com base na técnica MoSCoW, conforme descrito abaixo:
+
 - **Must Have (Essenciais):** Funcionalidades sem as quais o MVP não é viável. Devem ser entregues obrigatoriamente na primeira versão.
--**Should Have (Importantes):** São importantes, mas podem ser entregues após o MVP sem comprometer sua funcionalidade.
--**Could Have (Desejáveis):** Funcionalidades de valor, mas que não impactam diretamente os objetivos iniciais.
--**Won’t Have (Por enquanto):** Não serão consideradas neste ciclo de desenvolvimento.
+- **Should Have (Importantes):** São importantes, mas podem ser entregues após o MVP sem comprometer sua funcionalidade.
+- **Could Have (Desejáveis):** Funcionalidades de valor, mas que não impactam diretamente os objetivos iniciais.
+- **Won’t Have (Por enquanto):** Não serão consideradas neste ciclo de desenvolvimento.
 
 ## MVP
 
-O MVP (Minimum Viable Product) do aplicativo CanadaWay foi planejado para validar as principais hipóteses de valor do produto, especialmente no que diz respeito à autonomia do usuário na jornada de descoberta de programas de intercâmbio, à redução da sobrecarga nos atendimentos iniciais e ao fortalecimento do relacionamento com o intercambista. As funcionalidades listadas abaixo representam o conjunto mínimo necessário para que o produto possa ser utilizado, testado por usuários reais e gerar feedback relevante para iterações futuras.
+O MVP (Minimum Viable Product) do aplicativo *CanadaWay* foi planejado para validar as principais hipóteses de valor do produto, especialmente no que diz respeito à autonomia do usuário na jornada de descoberta de programas de intercâmbio, à redução da sobrecarga nos atendimentos iniciais e ao fortalecimento do relacionamento com o intercambista. As funcionalidades listadas abaixo representam o conjunto mínimo necessário para que o produto possa ser utilizado, testado por usuários reais e gerar feedback relevante para iterações futuras.
 
 ### Funcionalidades incluídas no MVP:
--**Tela de abertura com seleção do tipo de usuário:** Apresenta as opções para os diferentes perfis (potencial intercambista, intercambista ativo e administrador), permitindo a personalização da experiência desde o primeiro contato.
+- **Tela de abertura com seleção do tipo de usuário:** Apresenta as opções para os diferentes perfis (potencial intercambista, intercambista ativo e administrador), permitindo a personalização da experiência desde o primeiro contato.
 
--**Cadastro e login de usuários:** Funcionalidades básicas de criação de conta e autenticação, essenciais para acessar conteúdos personalizados e registrar interações com o sistema.
+- **Cadastro e login de usuários:** Funcionalidades básicas de criação de conta e autenticação, essenciais para acessar conteúdos personalizados e registrar interações com o sistema.
 
--**Perfil e edição de perfil:** Permite que o usuário atualize suas informações pessoais e preferências, o que é fundamental para personalização das recomendações e da jornada.
+- **Perfil e edição de perfil:** Permite que o usuário atualize suas informações pessoais e preferências, o que é fundamental para personalização das recomendações e da jornada.
 
--**Catálogo de programas de intercâmbio:** Tela principal com uma listagem organizada de programas, segmentada por filtros como tipo de curso, cidade, duração e faixa etária. Proporciona uma navegação intuitiva e objetiva para usuários em fase de pesquisa.
+- **Catálogo de programas de intercâmbio:** Tela principal com uma listagem organizada de programas, segmentada por filtros como tipo de curso, cidade, duração e faixa etária. Proporciona uma navegação intuitiva e objetiva para usuários em fase de pesquisa.
 
--**Simulador de Orçamento:** Gera uma estimativa de custo personalizada com base nas respostas do usuário a um quiz específico, oferecendo maior clareza sobre os investimentos necessários para o intercâmbio.
+- **Simulador de Orçamento:** Gera uma estimativa de custo personalizada com base nas respostas do usuário a um quiz específico, oferecendo maior clareza sobre os investimentos necessários para o intercâmbio.
 
--**Página individual de cada programa:** Apresenta detalhes completos sobre os cursos oferecidos, instituições parceiras, requisitos de inscrição, processo burocrático e opções de acomodação.
+- **Página individual de cada programa:** Apresenta detalhes completos sobre os cursos oferecidos, instituições parceiras, requisitos de inscrição, processo burocrático e opções de acomodação.
 
--**Teste de perfil gamificado:** Recurso interativo que ajuda o usuário a descobrir qual tipo de intercâmbio mais combina com seus objetivos e características, promovendo engajamento desde o início da jornada.
+- **Teste de perfil gamificado:** Recurso interativo que ajuda o usuário a descobrir qual tipo de intercâmbio mais combina com seus objetivos e características, promovendo engajamento desde o início da jornada.
 
--**Quiz específico do programa da Canada Intercambio:** Avaliação simples que aprofunda o entendimento do usuário sobre os programas oferecidos, funcionando também como elemento de captação de interesse.
+- **Quiz específico do programa da Canada Intercambio:** Avaliação simples que aprofunda o entendimento do usuário sobre os programas oferecidos, funcionando também como elemento de captação de interesse.
 
--**Homepage do intercambista:** Interface personalizada para usuários que já fecharam o programa, com acesso rápido às funcionalidades exclusivas do pós-matrícula.
+- **Homepage do intercambista:** Interface personalizada para usuários que já fecharam o programa, com acesso rápido às funcionalidades exclusivas do pós-matrícula.
 
--**Contagem regressiva para início do intercâmbio:** Elemento visual que reforça o envolvimento emocional com a experiência futura e ajuda no controle de prazos.
+- **Contagem regressiva para início do intercâmbio:** Elemento visual que reforça o envolvimento emocional com a experiência futura e ajuda no controle de prazos.
 
--**Login e painel administrativo básico:** Acesso reservado à equipe da empresa, permitindo visualizar dados de usuários, resultados dos quizzes e preparar um atendimento mais direcionado.
+- **Login e painel administrativo básico:** Acesso reservado à equipe da empresa, permitindo visualizar dados de usuários, resultados dos quizzes e preparar um atendimento mais direcionado.
 
-Este conjunto de funcionalidades forma o núcleo do CanadaWay, possibilitando que o aplicativo seja testado por usuários reais, gerando dados valiosos sobre comportamento, engajamento e eficiência na comunicação.
+Este conjunto de funcionalidades forma o núcleo do *CanadaWay*, possibilitando que o aplicativo seja testado por usuários reais, gerando dados valiosos sobre comportamento, engajamento e eficiência na comunicação.
 

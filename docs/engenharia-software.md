@@ -37,7 +37,7 @@ As fases iniciais do projeto são dedicadas à compreensão do problema e à **c
 
 ## Quadro Comparativo
 
-| Critério                   | RAD (Isolado)                           | Híbrido RAD + OpenUP                           |
+| **Critério**                   | **RAD (Isolado)**                           | **Híbrido RAD + OpenUP**                           |
 |---------------------------|------------------------------------------|-------------------------------------------------|
 | **Abordagem**             | Iterativa com foco em protótipos rápidos | Iterativa com engenharia disciplinada           |
 | **Custo de mudança**      | Baixo – adaptações rápidas               | Moderado – mudanças controladas e documentadas  |
@@ -49,7 +49,7 @@ As fases iniciais do projeto são dedicadas à compreensão do problema e à **c
 
 ## Justificativa
 
-A escolha pelo processo **interativo e incremental com base exclusivamente no RAD** se deve às características específicas do **CanadaWay**:
+A escolha pelo processo **interativo e incremental com base exclusivamente no RAD** se deve às características específicas do *CanadaWay*:
 
 - Funcionalidades como **catálogo interativo**, **chatbot**, e **área do aluno** evoluem rapidamente com base em feedback
 - Componentes como o **simulador de orçamento** e a **coleta de dados** exigem **protótipos funcionais rápidos**
