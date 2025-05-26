@@ -47,13 +47,14 @@ As tecnologias escolhidas garantem performance e escalabilidade:
 
 Analisamos as principais plataformas de intercâmbio para entender o que já existe — e o que falta. Veja como o CanadaWay se diferencia:
 *
-| **Plataforma**         | **Descoberta** | **Filtros** | **Chatbot** | **Simulador** | **Área do Aluno** | **Coleta de Dados** |
-|--------------------|------------|---------|---------|-----------|----------------|------------------|
-| STB            | Sim        | Não     | Não     | Parcial   | Não            | Não              |
-| CI Intercâmbio | Sim        | Parcial | Não     | Sim       | Não            | Parcial          |
-| EF             | Sim        | Não     | Não     | Sim       | Parcial        | Não              |
-| MyStudy App    | Não        | Não     | Não     | Não       | Sim            | Não              |
-| **CanadaWay**      | **Guiada** | **Sim**   |  **Sim**  |  **Sim**    |  **Completa**     |  **Sim**            |
+| **Plataforma**     | **Descoberta** | **Filtros** | **Chatbot** | **Simulador** | **Área do Aluno** | **Coleta de Dados** |
+|--------------------|----------------|-------------|-------------|---------------|--------------------|----------------------|
+| STB                | Sim            | Não         | Não         | Parcial       | Não                | Não                  |
+| CI Intercâmbio     | Sim            | Parcial     | Não         | Sim           | Não                | Parcial              |
+| EF                 | Sim            | Não         | Não         | Sim           | Parcial            | Não                  |
+| MyStudy App        | Não            | Não         | Não         | Não           | Sim                | Não                  |
+| **CanadaWay**      | **Guiada**     | **Sim**     | **Sim**     | **Sim**       | **Completa**       | **Sim**              |
+
 
 
 ## Análise de Viabilidade
