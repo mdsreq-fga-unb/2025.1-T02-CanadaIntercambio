@@ -11,7 +11,10 @@ nav:
   - Equipe e Comunicação: equipe-comunicacao.md
   - Requisitos de Software: requisitos-software.md 
   - DoR e DoD: dor-dod.md 
-  - Backlog: backlog.md 
+  - Backlog: backlog.md
+  - MVP : mvp.md
+  - Configuração de Ambiente: configuracao-ambiente.md
+  - Resolução de Issues: resolucao-issues.md
   - Lições: licoes-aprendidas.md
   - Apresentação: apresentacao.md
   - Referências: referencias.md
