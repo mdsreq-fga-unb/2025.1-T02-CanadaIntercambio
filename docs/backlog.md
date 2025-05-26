@@ -121,17 +121,17 @@ A priorização foi feita com base na técnica MoSCoW, conforme descrito abaixo:
 
 Para definir essa classificação, aplicamos uma metodologia baseada em três perguntas-chave (perguntas-passe), com o objetivo de pontuar cada história de usuário de 0 a 3:
 
-    1. A funcionalidade é essencial para captar clientes nos dois primeiros meses?
-    2. Ela é necessária para que o usuário conclua um ciclo básico na plataforma (descoberta → teste → contato)?
-    3. Se não for feita agora, causará perda de valor ou impacto alto no MVP?
+**1.** A funcionalidade é essencial para captar clientes nos dois primeiros meses?
+**2.** Ela é necessária para que o usuário conclua um ciclo básico na plataforma (descoberta → teste → contato)?
+**3.** Se não for feita agora, causará perda de valor ou impacto alto no MVP?
 
 Cada resposta afirmativa somou 1 ponto. As histórias com 3 pontos foram classificadas como **Must**, com 2 pontos como **Should**, com 1 ponto como **Could**, e com 0 ponto como **Won’t**.
 
 Também levamos em consideração as diretrizes estratégicas da empresa:
 
-A prioridade principal é **captar clientes**.
-A área do intercambista não será foco do MVP.
-A área da empresa precisa garantir autonomia para cadastrar e editar seus próprios programas.
+- A prioridade principal é **captar clientes**.
+- A área do intercambista não será foco do MVP.
+- A área da empresa precisa garantir autonomia para cadastrar e editar seus próprios programas.
 
 ### Tabela de User Stories
 

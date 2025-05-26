@@ -46,7 +46,7 @@ As tecnologias escolhidas garantem performance e escalabilidade:
 ## Pesquisa de Mercado e Análise Competitiva
 
 Analisamos as principais plataformas de intercâmbio para entender o que já existe — e o que falta. Veja como o CanadaWay se diferencia:
-*
+
 | **Plataforma**     | **Descoberta** | **Filtros** | **Chatbot** | **Simulador** | **Área do Aluno** | **Coleta de Dados** |
 |--------------------|----------------|-------------|-------------|---------------|--------------------|----------------------|
 | STB                | Sim            | Não         | Não         | Parcial       | Não                | Não                  |

@@ -20,7 +20,7 @@ Após essa etapa, o sistema é construído com base nas funcionalidades já vali
 
 ## Quadro Comparativo
 
-| Critério                  | Interativo e Incremental RAD (isolado)                          | Híbrido RAD + OpenUP                                               |
+| **Critério**                  | **Interativo e Incremental RAD (isolado)**                          | **Híbrido RAD + OpenUP**                                               |
 |---------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
 | **Abordagem**             | Iterativa com forte foco em prototipagem e entregas rápidas     | Iterativa, com foco em engenharia disciplinada e documentação essencial |
 | **Custo de mudança**      | Baixo – mudanças são facilmente incorporadas em ciclos rápidos  | Moderado – mudanças são permitidas, mas exigem controle e documentação |
@@ -32,13 +32,13 @@ Após essa etapa, o sistema é construído com base nas funcionalidades já vali
 
 ## Justificativa
 
-Diante das características específicas do produto **CanadaWay**, o processo iterativo e incremental baseado exclusivamente no **RAD (Rapid Application Development)** foi selecionado como o mais apropriado para o desenvolvimento do aplicativo.
+Diante das características específicas do produto *CanadaWay*, o processo iterativo e incremental baseado exclusivamente no **RAD (Rapid Application Development)** foi selecionado como o mais apropriado para o desenvolvimento do aplicativo.
 
 De acordo com os fundamentos apresentados em aula, o RAD é considerado uma abordagem **ágil**, **centrada no usuário** e no **design do produto**, fortemente baseada em **feedback constante**. Seu diferencial está na ênfase na **prototipação rápida** e em **workshops intensivos**, com **ciclos curtos de desenvolvimento** que favorecem **entregas incrementais** e **validações contínuas**.
 
 Além disso, o RAD **assume os requisitos como variáveis**, o que o torna especialmente adequado a projetos em ambientes dinâmicos e sujeitos a evolução constante.
 
-O projeto **CanadaWay** demanda esse tipo de flexibilidade, sobretudo em funcionalidades como:
+O projeto *CanadaWay* demanda esse tipo de flexibilidade, sobretudo em funcionalidades como:
 
 - Catálogo interativo de programas  
 - Área exclusiva do aluno  
@@ -59,4 +59,4 @@ Essas funcionalidades exigem **validação prática** e **ajustes iterativos** a
 
 ### Conclusão
 
-Portanto, a adoção do **RAD** fortalece a **capacidade de resposta e agilidade** do projeto **CanadaWay**, promovendo um desenvolvimento **centrado no usuário**, com **validação rápida de decisões** e entrega de um produto **funcional e evolutivo**, mesmo diante de **limitações de tempo e recursos**.
+Portanto, a adoção do **RAD** fortalece a **capacidade de resposta e agilidade** do projeto *CanadaWay*, promovendo um desenvolvimento **centrado no usuário**, com **validação rápida de decisões** e entrega de um produto **funcional e evolutivo**, mesmo diante de **limitações de tempo e recursos**.
