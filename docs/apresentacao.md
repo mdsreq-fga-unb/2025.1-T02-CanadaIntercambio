@@ -10,7 +10,7 @@ Abaixo está o vídeo de apresentação da Unidade 1:
 # Apresentação - Unidade 2
 Abaixo está o vídeo de apresentação da Unidade 2: 
 
-<iframe width="100%" height="400" src="https://youtu.be/NSmCDcKdwEE?si=8nomCcJKy8qoB7nD" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube.com/watch?v=NSmCDcKdwEE" frameborder="0" allowfullscreen></iframe>
 
 > *Nota: Caso o vídeo não carregue, você pode assistir diretamente pelo [YouTube](https://youtu.be/NSmCDcKdwEE?si=8nomCcJKy8qoB7nD). 
 
