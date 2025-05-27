@@ -10,7 +10,7 @@ A seleção das funcionalidades seguiu a técnica MoSCoW, priorizando aquelas es
 
 - **Teste de perfil gamificado:** Ferramenta interativa que ajuda o usuário a identificar qual programa de intercâmbio mais combina com seu perfil e objetivos.
 
-- **Visualização dinâmica dos programas de intercâmbio:** Tela principal com filtros (tipo de curso, cidade, idioma, faixa etária), facilitando a navegação e pesquisa dos programas.
+- **Visualização dos programas de intercâmbio:** Página inicial que apresenta os programas fornecidos pela empresa, permitindo ao usuário conhecer as opções disponíveis de forma simples e direta.
 
 - **Visualização do programa mais adequado ao perfil:** A partir do teste de perfil, o usuário recebe sugestões de programas alinhados às suas preferências.
 
