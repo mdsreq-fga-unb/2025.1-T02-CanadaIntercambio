@@ -2,7 +2,7 @@
 
 ## Atividades e Técnicas de ER
 
-A Engenharia de Requisitos (ER) desempenha um papel crucial no desenvolvimento de software, garantindo que o produto final esteja alinhado com as necessidades dos usuários e da organização. Ela serve como a base fundamental para todo o processo de desenvolvimento. De acordo com MARSICANO (2025), a ER compreende seis atividades principais: Elicitação e Descoberta, Análise e Consenso, Declaração, Representação, Verificação e Validação, e Organização e Atualização.
+A Engenharia de Requisitos (ER) desempenha um papel crucial no desenvolvimento de software, garantindo que o produto final esteja alinhado com as necessidades dos usuários e da organização. Ela serve como a base fundamental para todo o processo de desenvolvimento. De acordo com MARSICANO (2025), a ER compreende seis atividades principais: **Elicitação e Descoberta, Análise e Consenso, Declaração, Representação, Verificação e Validação, e Organização e Atualização**.
 
 No contexto do Rapid Application Development (RAD), que é iterativo e incremental, o foco está na prototipagem rápida e no feedback contínuo do cliente. Diferentemente dos modelos tradicionais, no RAD, as atividades de ER são integradas e revisitadas em todas as suas fases, adaptando-se à natureza dinâmica do processo.
 
@@ -12,7 +12,7 @@ Nesta fase, o objetivo principal é estabelecer o escopo do projeto, compreender
 
 #### Elicitação e Descoberta
 
-- **Entrevistas com Stakeholders**: Realizar entrevistas com proprietários, usuários, gestores e outros envolvidos para entender as necessidades, expectativas e desafios relacionados ao aplicativo CanadaWay.
+- **Entrevistas com Stakeholders**: Realizar entrevistas com proprietários, usuários, gestores e outros envolvidos para entender as necessidades, expectativas e desafios relacionados ao aplicativo *CanadaWay*.
 - **Brainstorming**: Realizar sessões de brainstorming para gerar uma ampla gama de requisitos e soluções criativas.
 - **Análise de Documentos Existentes**: Revisar documentos como materiais de marketing, informações sobre programas e feedbacks de clientes anteriores.
 - **Análise da Concorrência (Benchmarking)**: Estudar plataformas de outras empresas para identificar boas práticas e diferenciais.
@@ -91,37 +91,9 @@ Fase final, focada na entrega e aceitação do sistema.
 
 - **Feedback Pós-Implantação**: Coletar retorno dos usuários e planejar melhorias.
 
+---
 
 ## Engenharia de Requisitos e o RAD
 
-| **Fases do processo** | **Atividades ER**            | **Prática**                      | **Técnica**                         | **Resultado esperado**                              |
-|-----------------------|------------------------------|----------------------------------|-------------------------------------|-----------------------------------------------------|
-| Requisitos            | Elicitação e descoberta       | Discussões em grupo             | Brainstorming                       | Lista de Requisitos RFs e RNFs                      |
-|                       |                               |                                  |                                     | Proposta de solução                                 |
-|                       |                               | Análise de mercado              | Análise de Concorrentes             | Tabela comparativa de concorrentes                  |
-|                       |                               | Análise de documentos existentes| Análise do documento de identidade visual | Entendimento da identidade visual         |
-|                       |                               | Entrevistas                     | Entrevistas com Stakeholders        | Lista de Personas                                   |
-|                       |                               |                                  |                                     | Descrição do público-alvo                           |
-| Requisitos            | Análise e consenso            | Análise de Objetivo de Domínio  | Entrevistas com Stakeholders        | Lista de Requisitos RFs refinada                    |
-|                       |                               | Discussões em grupo             | Identificação de restrições e riscos| Pontos de alerta no projeto                         |
-|                       | Declaração                    | Listagem de requisitos          | Especificação de requisitos         | Especificação de Requisitos RFs e RNFs              |
-|                       |                               |                                  | User story                          | User story                                          |
-|                       |                               |                                  | User story map                      |                                                     |
-| Requisitos            | Verificação e validação       | Feedback                        | Feedback do cliente                 | Lista de Requisitos e story map validada            |
-|                       |                               |                                  | Feedback da equipe                  |                                                     |
-|                       | Organização e atualização     | Priorização                     | MoSCoW                              | Backlog priorizado                                  |
-| User Design           | Elicitação e descoberta       | Feedback                        | Feedback do cliente sobre o protótipo | Checklist de alterações no protótipo            |
-| User Design           | Declaração                    | Detalhamento de requisitos      | Especificação de requisitos         | Documento de requisitos especificado                |
-|                       |                               | Listagem de requisitos          | User story                          |                                                     |
-|                       |                               |                                  | User story map                      |                                                     |
-| User Design           | Representação                 | Demonstração                    | Prototipagem                        | Protótipo de alta fidelidade                        |
-| User Design           | Verificação e validação       | Feedback                        | Feedback do cliente                 | Checklist de ajustes                                |
-|                       |                               |                                  | Testes de usabilidade               | Checklist de ajustes                                |
-| User Design           | Análise e consenso            | Alinhamento                     | Resolução de conflitos              | Alinhamento entre a equipe e os clientes            |
-|                       |                               |                                  | Discussões de feedback do cliente   | Alinhamento interno                                 |
-| Construção            | Verificação e validação       | Testes                          | Testes de integração                | Relatórios de testes                                |
-|                       |                               |                                  | Testes de sistema                   |                                                     |
-|                       |                               |                                  | Revisões de código                  |                                                     |
-| Construção            | Organização e atualização     | Feedback                        | Discussão com desenvolvedores       | Backlog atualizado                                  |
-| Implantação           | Verificação e validação       | Testes                          | Teste de aceitação                  | Checklist de ajustes                                |
-| Implantação           | Organização e atualização     | Feedback                        | Feedback do cliente                 | Refinamento de backlog pós MVP                      |
+![Tabela Engenharia de Requisitos e RAD](images/tabelaER-RAD.png)
+![Tabela Engenharia de Requisitos e RAD](images/tabelaER-RAD2.png)

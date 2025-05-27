@@ -6,15 +6,14 @@ O *CanadaWay* transforma a forma como a **Canada Intercambio** se conecta com se
 
 Com uma interface clara e recursos dinâmicos, o app facilita a escolha do programa ideal, reduz a sobrecarga de atendimentos repetitivos e fortalece o relacionamento com o estudante durante toda sua experiência no exterior. A navegação é intuitiva, com elementos de gamificação e suporte contínuo para garantir mais segurança, praticidade e engajamento.
 
+---
+
 ## Características da Solução
 
 A seguir, você conhece os principais recursos do aplicativo e como cada um resolve necessidades reais dos diferentes perfis de clientes:
 
 - **Catálogo interativo de programas**  
   Pesquisa segmentada por faixa etária, curso, duração, cidade etc. Inclui detalhes sobre instituições, pré-requisitos, burocracias e hospedagem.
-
-- **Filtros inteligentes personalizados**  
-  O usuário define idade, orçamento, objetivos (estudo, trabalho, imigração...), e recebe sugestões alinhadas ao seu perfil.
 
 - **Simulador de orçamento dinâmico**  
   Estima custos com base em curso, duração, moradia, alimentação e transporte. Ideal para planejamento financeiro.
@@ -34,6 +33,8 @@ A seguir, você conhece os principais recursos do aplicativo e como cada um reso
 - **Recursos interativos e quizzes**  
   Testes de proficiência, quizzes culturais e desafios ajudam o usuário a se conhecer melhor e escolher com confiança.
 
+---
+
 ## Tecnologias a Serem Utilizadas
 
 As tecnologias escolhidas garantem performance e escalabilidade:
@@ -42,10 +43,11 @@ As tecnologias escolhidas garantem performance e escalabilidade:
 - **Back-end**: Node.js + Express  
 - **Banco de dados**: PostgreSQL
 
+---
 
 ## Pesquisa de Mercado e Análise Competitiva
 
-Analisamos as principais plataformas de intercâmbio para entender o que já existe — e o que falta. Veja como o CanadaWay se diferencia:
+Analisamos as principais plataformas de intercâmbio para entender o que já existe — e o que falta. Veja como o *CanadaWay* se diferencia:
 
 | **Plataforma**     | **Descoberta** | **Filtros** | **Chatbot** | **Simulador** | **Área do Aluno** | **Coleta de Dados** |
 |--------------------|----------------|-------------|-------------|---------------|--------------------|----------------------|
@@ -55,7 +57,7 @@ Analisamos as principais plataformas de intercâmbio para entender o que já exi
 | MyStudy App        | Não            | Não         | Não         | Não           | Sim                | Não                  |
 | **CanadaWay**      | **Guiada**     | **Sim**     | **Sim**     | **Sim**       | **Completa**       | **Sim**              |
 
-
+---
 
 ## Análise de Viabilidade
 
@@ -63,6 +65,8 @@ Analisamos as principais plataformas de intercâmbio para entender o que já exi
 - **Prazo**: Desenvolvimento previsto em 3–4 meses, em fases  
 - **Financeira**: Projeto acadêmico, sem custo  
 - **Mercado**: Alta demanda por intercâmbio no Canadá; poucas soluções digitais completas no Brasil
+
+---
 
 ## Impacto da Solução
 

@@ -11,9 +11,11 @@ A **Canada Intercambio** é uma empresa do setor de educação internacional esp
 
 Com atendimento personalizado e consultores experientes, a empresa se destaca por conectar pessoas a oportunidades educacionais no exterior.
 
+---
+
 ## Identificação da Oportunidade ou Problema
 
-Nos últimos anos, o aumento da procura por programas de intercâmbio, especialmente no Canadá, tem trazido novos desafios para a Canada Intercâmbio. A diversidade de perfis, dúvidas frequentes e a complexidade das informações envolvidas tornam o processo de apoio ao intercambista cada vez mais exigente. Alguns dos problemas identificados incluem:
+Nos últimos anos, o aumento da procura por programas de intercâmbio, especialmente no Canadá, tem trazido novos desafios para a Canada Intercambio. A diversidade de perfis, dúvidas frequentes e a complexidade das informações envolvidas tornam o processo de apoio ao intercambista cada vez mais exigente. Alguns dos problemas identificados incluem:
 
 - Dificuldade de encontrar informações claras;
 
@@ -27,6 +29,8 @@ Esses fatores revelam uma falha no sistema de apoio ao intercambista, que não c
 
 ![Diagrama Causa e Efeito](images/diagrama.jpeg)
 
+---
+
 ## Desafios do Projeto
 
 Os principais desafios enfrentados pela empresa são:
@@ -38,6 +42,8 @@ Os principais desafios enfrentados pela empresa são:
 - **Monitoramento dos intercambistas** e suporte em todos os casos.
 - Evitar **atendimentos redundantes** e sem continuidade, apenas para tirar dúvidas.
 
+---
+
 ## Segmentação de Clientes
 
 A segmentação dos clientes e seus respectivos programas de interesse pode ser feita da seguinte forma:
@@ -45,36 +51,36 @@ A segmentação dos clientes e seus respectivos programas de interesse pode ser 
 ### Jovens entre 13 e 18 anos (Intercâmbio Escolar)
 
 - **Principais características**: Fortes laços com os pais ou responsáveis, interesse em vivência cultural e fluência em inglês ou francês.
-- **Necessidades**:
-  - Explicações claras e visuais sobre a rotina escolar
-  - Comparativos entre escolas e regiões
-  - Simuladores de custo
-  - Conteúdo voltado aos pais (segurança e suporte local)
-  - Área do aluno com dicas de adaptação, cronogramas e contatos de emergência.
+- **Necessidades:**
+    - Explicações claras e visuais sobre a rotina escolar
+    - Comparativos entre escolas e regiões
+    - Simuladores de custo
+    - Conteúdo voltado aos pais (segurança e suporte local)
+    - Área do aluno com dicas de adaptação, cronogramas e contatos de emergência.
 
 ### Universitários e Recém-Formados (Estudos e Trabalho)
 
 - **Principais características**: Buscam aliar aprendizado acadêmico ao crescimento profissional.
-- **Necessidades**:
-  - Filtros por área de estudo, duração e possibilidade de trabalho (Co-op)
-  - Simuladores de orçamento detalhados
-  - Explicações sobre o Co-op, PGWP e vistos
-  - Seção de depoimentos de ex-alunos
-  - Chatbot com FAQs sobre carreira.
+- **Necessidades:**
+    - Filtros por área de estudo, duração e possibilidade de trabalho (Co-op)
+    - Simuladores de orçamento detalhados
+    - Explicações sobre o Co-op, PGWP e vistos
+    - Seção de depoimentos de ex-alunos
+    - Chatbot com FAQs sobre carreira.
 
 ### Adultos entre 25 e 45 anos (Cursos de Idioma ou Qualificação Profissional)
 
 - **Principais características**: Profissionais com rotinas intensas, com foco no crescimento ou recolocação no mercado de trabalho.
-- **Necessidades**:
-  - Comparador de cursos por carga horária e foco
-  - Simuladores de custo por semana ou mês
-  - Informações práticas sobre moradia e transporte
-  - Agendamento ágil com consultores.
+- **Necessidades:**
+    - Comparador de cursos por carga horária e foco
+    - Simuladores de custo por semana ou mês
+    - Informações práticas sobre moradia e transporte
+    - Agendamento ágil com consultores.
 
 ### Famílias Planejando Mudar-se para o Canadá
 
 - **Principais características**: Planejamento a médio e longo prazo, preocupação com a educação dos filhos e estabilidade familiar.
-- **Necessidades**:
+- **Necessidades:**
   - Simuladores para famílias com múltiplos dependentes
   - Conteúdo explicativo sobre o processo de mudança
   - Consultoria humanizada com foco em acolhimento e segurança familiar.
@@ -82,7 +88,7 @@ A segmentação dos clientes e seus respectivos programas de interesse pode ser 
 ### Intercambistas Já Matriculados
 
 - **Principais características**: Intercambistas que precisam de suporte contínuo durante a estadia.
-- **Necessidades**:
+- **Necessidades:**
   - Área exclusiva com checklists de chegada e retorno
   - Centralização de dados do programa
   - Funcionalidades para feedback e avaliações da experiência.

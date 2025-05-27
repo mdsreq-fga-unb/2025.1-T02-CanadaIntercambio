@@ -1,4 +1,4 @@
-# 6. Referências Bibliográficas
+# Referências Bibliográficas
 
 - Template disponibilizado pelo professor. Disponível em:  
   [https://aprender3.unb.br/pluginfile.php/3102470/mod_folder/content/0/TEMPLATE%20-%20REQ%20-%202024.2%20-%20Visao%20do%20Produto%20e%20Projeto.pdf](https://aprender3.unb.br/pluginfile.php/3102470/mod_folder/content/0/TEMPLATE%20-%20REQ%20-%202024.2%20-%20Visao%20do%20Produto%20e%20Projeto.pdf)

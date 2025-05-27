@@ -6,6 +6,8 @@
 - Docker e Docker Compose
 - Expo CLI
 
+---
+
 ## Passos para rodar localmente
 
 ### 1. Clone o repositório
@@ -38,6 +40,8 @@ npm start
 
 ### 5. Veja o texto vindo da API
 Na tela inicial do app, aparecerá o texto vindo do backend ("Texto de exemplo vindo da API!").
+
+---
 
 ## Observações
 - Certifique-se de que o backend está rodando via Docker antes de abrir o app.

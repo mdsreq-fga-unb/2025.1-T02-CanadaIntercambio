@@ -4,7 +4,7 @@ O MVP (Minimum Viable Product) do *CanadaWay* foi planejado para validar as prin
 
 A seleção das funcionalidades seguiu a técnica MoSCoW, priorizando aquelas essenciais para viabilizar o uso real do produto e gerar feedback valioso para iterações futuras. O escopo do MVP inclui:
 
-- **Onboarding genérico:** Introdução inicial para orientar o usuário na plataforma, sem segmentação de perfil, preparando-o para explorar as funcionalidades disponíveis.
+- **Onboarding:** Introdução inicial para orientar o usuário na plataforma, preparando-o para explorar as funcionalidades disponíveis.
 
 - **Cadastro e login de usuários:** Funcionalidades básicas para criação e autenticação de conta, garantindo acesso seguro e personalizado.
 

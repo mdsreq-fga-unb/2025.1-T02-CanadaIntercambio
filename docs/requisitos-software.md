@@ -10,6 +10,8 @@ O sistema da Canada Intercambio foi projetado para atender três perfis de usuá
 
 Essas funcionalidades apoiam a **captação de clientes**, reduzem atendimentos repetitivos e oferecem suporte contínuo aos usuários ao longo do processo de intercâmbio.
 
+---
+
 ## Tabela de Requisitos Funcionais
 
 | Código  | Requisito                                                                 | Objetivo                  | Referente a               |
@@ -52,12 +54,16 @@ Essas funcionalidades apoiam a **captação de clientes**, reduzem atendimentos 
 | RF36    | Cadastrar intercambista                                                   | 3                         | Empresa                   |
 | RF37    | Excluir conta do intercambista                                            | 3                         | Empresa                   |
 
+---
 
 ## Lista de Requisitos Não-Funcionais 
 
 Os requisitos não funcionais do sistema Canada Intercambio garantem qualidade, segurança e eficiência na experiência do usuário. O sistema é intuitivo e acessível em diferentes dispositivos (smartphones, tablets e PCs), com tempo de aprendizado inferior a 10 minutos. Dados sensíveis são protegidos por criptografia e o sistema segue a LGPD.
 
 O desempenho é otimizado, com respostas em até 3 segundos nas funcionalidades principais e 2 segundos no chatbot. A disponibilidade é de 99% do tempo. O sistema é escalável, compatível com Android e iOS lançados nos últimos 3 anos e preparado para futuras integrações com sistemas internos. Um painel administrativo permite atualização de conteúdos sem necessidade técnica.
+
+- **Classificação URPS+**
+
 
 | **Código**  | **Descrição**                                                                                                                                                                                                 |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -66,7 +72,7 @@ O desempenho é otimizado, com respostas em até 3 segundos nas funcionalidades 
 | RNF03   | **Desempenho (Performance):** O sistema deve apresentar tempo de resposta inferior a 3 segundos para simulações e acessos às funcionalidades principais. O chatbot deve responder em até 2 segundos, mesmo em horários de pico. |
 | RNF04   | **Suportabilidade (Supportability):** O sistema deve ser escalável para suportar o aumento no número de usuários. Deve ser compatível com dispositivos Android e iOS lançados nos últimos 3 anos, garantindo estabilidade e cobertura ampla entre diferentes plataformas. |
 
-
+- **Classificação Sommervile**
 
 | **Tipo**           | **Requisito**                                                                                     |
 |----------------|-----------------------------------------------------------------------------------------------|

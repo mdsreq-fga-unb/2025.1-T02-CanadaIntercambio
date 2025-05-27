@@ -13,10 +13,12 @@ O ciclo de vida adotado será **iterativo e incremental**, o que significa que o
 Esse modelo favorece o **aprendizado contínuo da equipe** e contribui para a construção de uma solução mais alinhada às reais necessidades dos usuários, mesmo com a entrega final ocorrendo ao término do desenvolvimento.
 
 
-### Processo Utilizado: RAD (Rapid Application Development):
+### Processo Utilizado - RAD (Rapid Application Development):
 O processo adotado será o **RAD (Rapid Application Development)**, escolhido pela sua capacidade de **acelerar o desenvolvimento** por meio da criação rápida de **protótipos** e da **validação contínua** com o cliente nas fases iniciais do projeto.
 
 Após essa etapa, o sistema é construído com base nas funcionalidades já validadas, o que garante maior alinhamento com as necessidades dos usuários e **reduz o retrabalho na entrega final**.
+
+---
 
 ## Quadro Comparativo
 
@@ -29,6 +31,8 @@ Após essa etapa, o sistema é construído com base nas funcionalidades já vali
 | **Entrega de Valor**      | Muito rápida – protótipos funcionais entregues em curtos períodos| Incremental – entregas por fase, com foco na robustez e consistência |
 | **Riscos**                | Razoavelmente controlados – foco na prototipagem ajuda a mitigar falhas | Controlados – abordagem orientada a riscos e com práticas definidas |
 | **Aderência ao projeto**  | Alta – flexível e ideal para escopo incerto e validação rápida   | Alta – estrutura adaptável com ênfase em boas práticas e documentação |
+
+---
 
 ## Justificativa
 

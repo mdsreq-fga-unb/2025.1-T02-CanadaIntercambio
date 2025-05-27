@@ -2,7 +2,7 @@
 
 ## Bem-vindo à documentação oficial do *CanadaWay*!
 
-A *CanadaWay* é uma plataforma de apoio a intercambistas, desenvolvida para fornecer uma solução educacional eficiente e personalizada aos usuários da **Canada Intercâmbio**. Nosso objetivo é facilitar a experiência dos intercambistas, oferecendo suporte automatizado e personalizado para os diversos perfis de clientes que buscam realizar intercâmbio no Canadá.
+A *CanadaWay* é uma plataforma de apoio a intercambistas, desenvolvida para fornecer uma solução educacional eficiente e personalizada aos usuários da **Canada Intercambio**. Nosso objetivo é facilitar a experiência dos intercambistas, oferecendo suporte automatizado e personalizado para os diversos perfis de clientes que buscam realizar intercâmbio no Canadá.
 
 A seguir, você encontrará todos os detalhes sobre a **visão, desenvolvimento e planejamento técnico** do sistema, abordando os desafios enfrentados, as soluções propostas e as funcionalidades do sistema.
 
@@ -53,7 +53,7 @@ Acesse um resumo das lições aprendidas durante o desenvolvimento do *CanadaWay
 Use o menu lateral para acessar diretamente as seções e tópicos da documentação. Aqui estão alguns dos principais links:
 
 - [*CanadaWay* - Plataforma Inteligente de Apoio a Intercambistas](#canadaway---plataforma-inteligente-de-apoio-a-intercambistas)
-  - [Bem-vindo à documentação oficial do **CanadaWay**!](#bem-vindo-à-documentação-oficial-do-canadaway)
+  - [Bem-vindo à documentação oficial do *CanadaWay*!](#bem-vindo-à-documentação-oficial-do-canadaway)
   - [O Que Você Vai Encontrar Aqui](#o-que-você-vai-encontrar-aqui)
     - [**Visão Geral do Projeto**](#-visão-geral-do-projeto)
     - [**Desenvolvimento e Planejamento**](#-desenvolvimento-e-planejamento)
@@ -65,7 +65,7 @@ Use o menu lateral para acessar diretamente as seções e tópicos da documenta�
     - [**Como Configurar o Ambiente para Rodar o Projeto**](#configurando-o-ambiente)
     - [**Lições Aprendidas**](#-lições-aprendidas)
   - [Navegação Rápida](#navegação-rápida)
-  - [O Que é a Canada Intercâmbio?](#o-que-é-a-canada-intercâmbio)
+  - [O Que é a Canada Intercambio?](#o-que-é-a-canada-intercambio)
   - [Como Funciona o *CanadaWay*?](#como-funciona-o-canadaway)
   - [Contato](#contato)
   - [Navegue pela Documentação](#navegue-pela-documentação)
@@ -77,6 +77,8 @@ Use o menu lateral para acessar diretamente as seções e tópicos da documenta�
 A **Canada Intercambio** é uma empresa do setor de educação internacional especializada em programas de intercâmbio no Canadá. A missão da empresa é proporcionar a estudantes e profissionais de diversas áreas a oportunidade de ampliar seus horizontes e conquistar um futuro mais promissor por meio de uma vivência internacional.
 
 O *CanadaWay* foi desenvolvido para transformar a experiência de intercâmbio, com foco em um atendimento personalizado e em tecnologias que simplifiquem o processo de escolha, planejamento e acompanhamento do intercâmbio.
+
+---
 
 ## Como Funciona o *CanadaWay*?
 
@@ -96,9 +98,11 @@ Cada grupo tem suas necessidades específicas atendidas pela plataforma, que ofe
 - Suporte automatizado via chatbot
 - Área do aluno com informações práticas e essenciais
 
+--- 
+
 ## Contato
 
-Para mais informações ou dúvidas visite a [página oficial da Canada Intercâmbio](https://www.canadaintercambio.com).
+Para mais informações ou dúvidas visite a [página oficial da Canada Intercambio](https://www.canadaintercambio.com).
 
 ---
 

@@ -10,6 +10,8 @@ Além disso, a equipe foi capacitada para lidar com o cliente de forma profissio
 
 Outro ponto importante foi o desenvolvimento da nossa visão crítica para problematizar situações, filtrar ideias e entender melhor os perfis da equipe. Isso se refletiu diretamente na divisão de tarefas, definição de escopo e planejamento geral do projeto.
 
+---
+
 ## Unidade 2
 Nesta unidade, aprofundamos os aprendizados sobre o processo de Engenharia de Requisitos, com foco nos aspectos humanos, na definição do backlog, no conceito de MVP e nos critérios de DoR e DoD. Esses conteúdos contribuíram para organizar melhor nosso processo, estabelecer critérios claros de início e conclusão das tarefas e garantir maior alinhamento com o cliente.
 

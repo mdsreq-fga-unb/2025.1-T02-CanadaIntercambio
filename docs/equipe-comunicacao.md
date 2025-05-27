@@ -32,6 +32,8 @@
 - **Revisão da Sprint**: Cliente acompanha o progresso via Miro, revisa tarefas e ajusta prioridades.
 - **Acesso ao Figma**: Participa das reuniões de revisão e valida funcionalidades diretamente na ferramenta, contribuindo com novas demandas.
 
+---
+
 ## Processo de Validação
 
 O processo de validação será estruturado em três etapas principais:
