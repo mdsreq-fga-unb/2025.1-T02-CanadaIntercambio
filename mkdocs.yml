@@ -43,9 +43,8 @@ extra:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/
 
-repo_url: https://github.com/seu-usuario/seu-repositorio
-repo_name: GitHub
-edit_uri: ""
+repo_url: https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/
+repo_name: CanadaWay - Documentação do Projeto
 
 extra_css:
   - extra.css
