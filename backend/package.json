@@ -6,17 +6,26 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "ts-node index.ts",
-    "dev": "ts-node --watch index.ts"
+    "dev": "ts-node --watch index.ts",
+    "db:migrate": "npx prisma migrate dev",
+    "db:generate": "npx prisma generate",
+    "db:push": "npx prisma db push",
+    "db:seed": "ts-node prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "description": "",
   "dependencies": {
+    "@prisma/client": "^6.10.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "pg": "^8.16.0"
+    "pg": "^8.16.0",
+    "prisma": "^6.10.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
