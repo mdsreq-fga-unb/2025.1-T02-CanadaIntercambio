@@ -94,7 +94,7 @@ Também levamos em consideração as diretrizes estratégicas da empresa:
 ### Tabela
 
 | Código | User Story | Pontuação MoSCoW | Classificação MoSCoW | Pontuação Técnica | Classificação |
-|--------|------------|-----------|--------|-----------------------|-------------------|---------------|
+|--------|------------|-------------------|-----------------------|-------------------|---------------|
 | US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos para criar uma conta na plataforma. | 3A | Must Have | 1B | AB - 1 |
 | US02 | Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado | 3A | Must Have | 1B | AB - 1 |
 | US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. | 2A | Should Have | 1B | AB - 1 |
