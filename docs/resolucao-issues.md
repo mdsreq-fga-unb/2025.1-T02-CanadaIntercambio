@@ -99,6 +99,8 @@
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/7)
 
+---
+
 ## Entrega 2 (parte 1)
 
 ### Issue8:
@@ -116,6 +118,8 @@
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/8)
 
+---
+
 ### Issue9:
 
 ![Solicitação do Professor](images/IS09.png)
@@ -127,6 +131,8 @@
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/9)
+
+---
 
 ### Issue10:
 
@@ -157,6 +163,8 @@
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/10)
 
+---
+
 ### Issue11:
 
 ![Solicitação do Professor](images/IS11.png)
@@ -178,6 +186,8 @@
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/11)
 
+---
+
 ### Issue12:
 
 ![Solicitação do Professor](images/IS12.png)
@@ -190,6 +200,10 @@
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/12)
+
+---
+
+## Entrega 2 (parte 2)
 
 ### Issue13:
 
@@ -204,6 +218,8 @@
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/13)
 
+---
+
 ### Issue14:
 
 ![Solicitação do Professor](images/IS14.png)
@@ -215,6 +231,8 @@
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/14)
 
+---
+
 ### Issue15:
 
 ![Solicitação do Professor](images/IS15.png)
@@ -225,6 +243,8 @@
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/15)
+
+---
 
 ### Issue16:
 
