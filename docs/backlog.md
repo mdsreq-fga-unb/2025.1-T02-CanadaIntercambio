@@ -62,17 +62,17 @@ A priorização de valor de negócio foi feita com base na técnica MoSCoW, conf
 
 Para definir essa classificação, aplicamos uma metodologia baseada em três perguntas-chave (perguntas-passe), com o objetivo de pontuar cada história de usuário de 0 a 3:
 
-    1.  A funcionalidade é essencial para captar clientes nos dois primeiros meses?
-    2.  Ela é necessária para que o usuário conclua um ciclo básico na plataforma (descoberta → teste → contato)?
-    3.  Se não for feita agora, causará perda de valor ou impacto alto no MVP?
+**1.**  A funcionalidade é essencial para captar clientes nos dois primeiros meses?
+**2.**  Ela é necessária para que o usuário conclua um ciclo básico na plataforma (descoberta → teste → contato)?
+**3.**  Se não for feita agora, causará perda de valor ou impacto alto no MVP?
 
 Cada resposta afirmativa somou 1 ponto. As histórias com 3 pontos foram classificadas como **Must**, com 2 pontos como **Should**, com 1 ponto como **Could**, e com 0 ponto como **Won’t**.
 
 Para a priorização técnica, aplicamos uma metodologia baseada em três perguntas-chave (perguntas-passe), com o objetivo de pontuar cada história de usuário de 1 a 4, considerando os principais obstáculos que podem dificultar sua implementação. Quanto maior a pontuação total, maior o esforço necessário.
 
-    1.  A tarefa envolve lógica difícil, uso de tecnologias novas ou integrações técnicas complexas?
-    2.  A tarefa vai demandar muitos dias úteis  para ser concluída?
-    3.  Essa tarefa depende de APIs de terceiros, serviços externos ou parceiros fora do nosso controle?
+**1.**  A tarefa envolve lógica difícil, uso de tecnologias novas ou integrações técnicas complexas?
+**2.**  A tarefa vai demandar muitos dias úteis  para ser concluída?
+**3.**  Essa tarefa depende de APIs de terceiros, serviços externos ou parceiros fora do nosso controle?
 
 Feitas as duas priorizações, classificamos cada uma em A (alto, >=2) ou B (baixo, <2), e dividimos em quadrantes:
 
@@ -83,7 +83,7 @@ Feitas as duas priorizações, classificamos cada uma em A (alto, >=2) ou B (bai
 
 O diagrama de quadrantes fica da seguinte forma:
 
-![Diagrama de Quadrantes](docs/images/diagrama-M-T.png)
+![Diagrama de Quadrantes](images/diagrama-M-T.png)
 
 Também levamos em consideração as diretrizes estratégicas da empresa:
 
@@ -95,35 +95,35 @@ Também levamos em consideração as diretrizes estratégicas da empresa:
 
 | Código | User Story | Pontuação | MoSCoW | Classificação MoSCoW | Pontuação Técnica | Classificação |
 |--------|------------|-----------|--------|-----------------------|-------------------|---------------|
-| US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos para criar uma conta na plataforma. | 3A | Must Have | 1B | AB - 1 |
-| US02 | Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado | 3A | Must Have | 1B | AB - 1 |
-| US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. | 2A | Should Have | 1B | AB - 1 |
-| US04 | Como usuário, quero excluir minha conta da plataforma para encerrar meu vínculo com o sistema. | 1B | Could Have | 1B | BB - 3 |
-| US05 | Como potencial intercambista, quero responder um teste para descobrir qual programa combina mais com meu perfil. | 3A | Must Have | 3A | AA - 2 |
-| US06 | Como potencial intercambista, quero navegar por programas. | 3A | Must Have | 2A | AA - 2 |
-| US07 | Como potencial intercambista, quero responder um quiz sobre os programas da Canada Intercambio para verificar meu entendimento sobre as opções. | 3A | Should Have | 2A | AA - 2 |
-| US08 | Como potencial intercambista, quero responder um quiz de nivelamento de inglês para saber meu nível de domínio da língua. | 1B | Could Have | 2B | BB - 3 |
-| US09 | Como potencial intercambista, quero responder um quiz sobre cultura e geografia do Canadá para me preparar melhor para o intercâmbio. | 1B | Could Have | 2A | BA - 4 |
-| US10 | Como potencial intercambista, quero visualizar sugestões de programas com base nas respostas dos quizzes para facilitar minha decisão. | 3A | Must Have | 3A | AA - 2 |
-| US11 | Como potencial intercambista, quero simular o custo estimado dos programas de intercâmbio para planejar meus gastos. | 1A | Should Have | 3B | BA - 4 |
-| US12 | Como potencial intercambista, quero visualizar respostas para dúvidas frequentes para esclarecer minhas principais questões. | 3A | Must Have | 2A | AA - 2 |
-| US13 | Como potencial intercambista, quero acessar uma área com promoções ativas para aproveitar oportunidades de desconto. | 1B | Should Have | 1B | BB - 3 |
-| US14 | Como potencial intercambista, quero visualizar informações detalhadas de cada programa para comparar e escolher o melhor para mim. | 3A | Must Have | 2A | AA - 2 |
-| US15 | Como potencial intercambista, quero solicitar contato com um especialista da Canada Intercambio para esclarecer dúvidas sobre os programas. | 3A | Must Have | 1B | AB - 1 |
-| US16 | Como intercambista já matriculado, quero editar meu perfil para atualizar informações como contato de emergência | 1B | Could Have | 1B | BB - 3 |
-| US17 | Como intercambista, quero acessar meu contrato digital assinado para consultar detalhes do meu programa. | 1B | Could Have | 1B | BB - 3 |
-| US18 | Como intercambista, quero visualizar as atividades no cronograma do meu programa de intercâmbio para acompanhar minha jornada | 1B | Could Have | 1A | BB - 3 |
-| US19 | Como empresa, quero criar uma conta preenchendo meus dados básicos para utilizar a plataforma de intercâmbio. | 3A | Must Have | 1B | AB - 1 |
-| US20 | Como empresa, quero alterar o tipo de conta de um potencial intercambista para intercambista após o fechamento de contrato para refletir o status atual. | 1B | Could Have | 1B | BB - 3 |
-| US21 | Como empresa, quero consultar as informações e o perfil de um potencial intercambista para realizar um atendimento mais assertivo. | 1B | Should Have | 1B | BB - 3 |
-| US22 | Como empresa, quero consultar as respostas e recomendações do quiz do programa para entender o perfil do intercambista. | 1B | Should Have | 1B | BB - 3 |
-| US23 | Como empresa, quero consultar o nível de inglês do aluno baseado no quiz para indicar os programas adequados. | 1B | Should Have | 1B | BB - 3 |
-| US24 | Como empresa, quero ver o desempenho do aluno no quiz cultural para avaliar seu conhecimento sobre o Canadá. | 1B | Should Have | 1B | BB - 3 |
-| US25 | Como empresa, quero cadastrar o contrato do intercambista na plataforma para formalizar a contratação. | 1B | Could Have | 1B | BB - 3 |
-| US26 | Como empresa, quero inserir as atividades no cronograma dos programas para organizar a agenda dos intercambistas. | 1B | Could Have | 1B | BB - 3 |
-| US27 | Como empresa, quero editar as atividades no cronograma para manter o planejamento atualizado. | 1B | Could Have | 1B | BB - 3 |
-| US28 | Como empresa, quero adicionar promoções para atrair mais potenciais intercambistas. | 1B | Should Have | 1B | BB - 3 |
-| US29 | Como empresa, quero atualizar informações de programas existentes para garantir que os dados estejam corretos e atualizados. | 3A | Must Have | 2A | AA - 2 |
-| US30 | Como empresa, quero cadastrar novos programas de intercâmbio para expandir a oferta da plataforma. | 3A | Must Have | 2A | AA - 2 |
-| US31 | Como empresa, quero inserir os dados de novos intercambistas contratados para começar o acompanhamento do programa. | 1B | Could Have | 1B | BB - 3 |
-| US32 | Como empresa, quero excluir a conta de um intercambista após a conclusão do programa para manter o sistema limpo e organizado. | 1B | Could Have | 1B | BB - 3 |
+| US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos para criar uma conta na plataforma. | 3A | Must Have | 1B | AB - 1 ||
+| US02 | Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado | 3A | Must Have | 1B | AB - 1 ||
+| US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. | 2A | Should Have | 1B | AB - 1 ||
+| US04 | Como usuário, quero excluir minha conta da plataforma para encerrar meu vínculo com o sistema. | 1B | Could Have | 1B | BB - 3 ||
+| US05 | Como potencial intercambista, quero responder um teste para descobrir qual programa combina mais com meu perfil. | 3A | Must Have | 3A | AA - 2 ||
+| US06 | Como potencial intercambista, quero navegar por programas. | 3A | Must Have | 2A | AA - 2 ||
+| US07 | Como potencial intercambista, quero responder um quiz sobre os programas da Canada Intercambio para verificar meu entendimento sobre as opções. | 3A | Should Have | 2A | AA - 2 ||
+| US08 | Como potencial intercambista, quero responder um quiz de nivelamento de inglês para saber meu nível de domínio da língua. | 1B | Could Have | 2B | BB - 3 ||
+| US09 | Como potencial intercambista, quero responder um quiz sobre cultura e geografia do Canadá para me preparar melhor para o intercâmbio. | 1B | Could Have | 2A | BA - 4 ||
+| US10 | Como potencial intercambista, quero visualizar sugestões de programas com base nas respostas dos quizzes para facilitar minha decisão. | 3A | Must Have | 3A | AA - 2 ||
+| US11 | Como potencial intercambista, quero simular o custo estimado dos programas de intercâmbio para planejar meus gastos. | 1A | Should Have | 3B | BA - 4 ||
+| US12 | Como potencial intercambista, quero visualizar respostas para dúvidas frequentes para esclarecer minhas principais questões. | 3A | Must Have | 2A | AA - 2 ||
+| US13 | Como potencial intercambista, quero acessar uma área com promoções ativas para aproveitar oportunidades de desconto. | 1B | Should Have | 1B | BB - 3 ||
+| US14 | Como potencial intercambista, quero visualizar informações detalhadas de cada programa para comparar e escolher o melhor para mim. | 3A | Must Have | 2A | AA - 2 ||
+| US15 | Como potencial intercambista, quero solicitar contato com um especialista da Canada Intercambio para esclarecer dúvidas sobre os programas. | 3A | Must Have | 1B | AB - 1 ||
+| US16 | Como intercambista já matriculado, quero editar meu perfil para atualizar informações como contato de emergência || 1B | Could Have | 1B | BB - 3 |
+| US17 | Como intercambista, quero acessar meu contrato digital assinado para consultar detalhes do meu programa. | 1B | Could Have | 1B | BB - 3 ||
+| US18 | Como intercambista, quero visualizar as atividades no cronograma do meu programa de intercâmbio para acompanhar minha jornada | 1B | Could Have | 1A | BB - 3 ||
+| US19 | Como empresa, quero criar uma conta preenchendo meus dados básicos para utilizar a plataforma de intercâmbio. | 3A | Must Have | 1B | AB - 1 ||
+| US20 | Como empresa, quero alterar o tipo de conta de um potencial intercambista para intercambista após o fechamento de contrato para refletir o status atual. | 1B | Could Have | 1B | BB - 3 ||
+| US21 | Como empresa, quero consultar as informações e o perfil de um potencial intercambista para realizar um atendimento mais assertivo. | 1B | Should Have | 1B | BB - 3 ||
+| US22 | Como empresa, quero consultar as respostas e recomendações do quiz do programa para entender o perfil do intercambista. | 1B | Should Have | 1B | BB - 3 ||
+| US23 | Como empresa, quero consultar o nível de inglês do aluno baseado no quiz para indicar os programas adequados. | 1B | Should Have | 1B | BB - 3 ||
+| US24 | Como empresa, quero ver o desempenho do aluno no quiz cultural para avaliar seu conhecimento sobre o Canadá. | 1B | Should Have | 1B | BB - 3 ||
+| US25 | Como empresa, quero cadastrar o contrato do intercambista na plataforma para formalizar a contratação. | 1B | Could Have | 1B | BB - 3 ||
+| US26 | Como empresa, quero inserir as atividades no cronograma dos programas para organizar a agenda dos intercambistas. | 1B | Could Have | 1B | BB - 3 ||
+| US27 | Como empresa, quero editar as atividades no cronograma para manter o planejamento atualizado. | 1B | Could Have | 1B | BB - 3 ||
+| US28 | Como empresa, quero adicionar promoções para atrair mais potenciais intercambistas. | 1B | Should Have | 1B | BB - 3 ||
+| US29 | Como empresa, quero atualizar informações de programas existentes para garantir que os dados estejam corretos e atualizados. | 3A | Must Have | 2A | AA - 2 ||
+| US30 | Como empresa, quero cadastrar novos programas de intercâmbio para expandir a oferta da plataforma. | 3A | Must Have | 2A | AA - 2 ||
+| US31 | Como empresa, quero inserir os dados de novos intercambistas contratados para começar o acompanhamento do programa. | 1B | Could Have | 1B | BB - 3 ||
+| US32 | Como empresa, quero excluir a conta de um intercambista após a conclusão do programa para manter o sistema limpo e organizado. | 1B | Could Have | 1B | BB - 3 ||
