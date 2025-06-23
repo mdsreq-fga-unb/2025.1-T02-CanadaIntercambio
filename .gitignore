@@ -636,3 +636,15 @@ gradle-app.setting
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,reactnative,python,jetbrains
+
+# Canada Intercâmbio - Project specific
+# Database backups
+backups/
+*.sql
+*.dump
+
+# Prisma migrations (if needed to be ignored)
+# backend/prisma/migrations/
+
+# Development logs
+*.log

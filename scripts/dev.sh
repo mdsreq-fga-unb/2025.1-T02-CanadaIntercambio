@@ -66,6 +66,8 @@ show_help() {
     echo -e "${YELLOW}🗄️  Comandos Banco de Dados:${NC}"
     echo "  db:setup        - Configuração inicial do banco"
     echo "  db:migrate      - Executar migrations"
+    echo "  db:push         - Push schema para banco"
+    echo "  db:list         - Listar migrations disponíveis"
     echo "  db:reset        - Reset completo do banco"
     echo "  db:seed         - Executar seed"
     echo "  db:studio       - Abrir Prisma Studio"
@@ -90,13 +92,18 @@ show_help() {
     echo -e "${YELLOW}⚡ Comandos Rápidos (Quick):${NC}"
     echo "  g, gen          - Gerar Prisma Client"
     echo "  m, mig          - Migration rápida"
+    echo "  l, list         - Listar migrations"
     echo "  p, push         - Push schema para DB"
     echo "  s, studio       - Abrir Prisma Studio"
     echo "  fresh, f        - Fresh start completo"
+    echo "  watch, w        - Modo watch com hot reload"
     echo "  sh, shell       - Shell do container"
     echo ""
     echo -e "${YELLOW}🛠️  Comandos Utilitários:${NC}"
     echo "  clean           - Limpar cache e arquivos temporários"
+    echo "  clean:images    - Limpar todas as imagens Docker"
+    echo "  clean:volumes   - Limpar todos os volumes Docker"
+    echo "  clean:all       - Limpeza completa (containers, imagens e volumes)"
     echo "  health          - Verificar saúde do sistema"
     echo "  pgadmin         - Informações do pgAdmin"
     echo "  help            - Mostrar esta ajuda"
@@ -104,9 +111,14 @@ show_help() {
     echo -e "${YELLOW}Exemplos:${NC}"
     echo "  ./scripts/dev.sh setup"
     echo "  ./scripts/dev.sh up"
+    echo "  ./scripts/dev.sh w          # Hot reload mode"
     echo "  ./scripts/dev.sh db:migrate"
+    echo "  ./scripts/dev.sh db:push"
+    echo "  ./scripts/dev.sh db:list"
     echo "  ./scripts/dev.sh g"
+    echo "  ./scripts/dev.sh l"
     echo "  ./scripts/dev.sh fresh"
+    echo "  ./scripts/dev.sh clean:all"
     echo ""
 }
 
@@ -137,11 +149,22 @@ check_dependencies() {
 check_containers() {
     cd "$PROJECT_DIR"
     
-    if ! docker compose ps --format json | jq -e '.[] | select(.State == "running")' &> /dev/null; then
-        log "WARNING" "Containers não estão rodando. Iniciando..."
-        docker compose up -d
-        wait_for_services
+    # Verificar se os containers estão realmente rodando
+    local containers_status
+    if containers_status=$(docker compose ps --format json 2>/dev/null); then
+        if [ -n "$containers_status" ] && [ "$containers_status" != "null" ]; then
+            # Verificar se pelo menos um container está rodando
+            if echo "$containers_status" | jq -e '.[] | select(.State == "running")' &> /dev/null; then
+                log "INFO" "Containers estão rodando"
+                return 0
+            fi
+        fi
     fi
+    
+    # Se chegou aqui, containers não estão rodando
+    log "WARNING" "Containers não estão rodando. Iniciando..."
+    docker compose up -d
+    wait_for_services
 }
 
 # Função para aguardar serviços ficarem prontos
@@ -217,9 +240,14 @@ cmd_up() {
     echo -e "      • Password: 123456"
     echo ""
     echo -e "${YELLOW}📱 Próximos passos:${NC}"
+    echo -e "   • 🔥 Hot Reload: ${CYAN}./scripts/dev.sh w${NC} (recomendado!)"
     echo -e "   • Frontend: ${CYAN}./scripts/dev.sh frontend:dev${NC}"
-    echo -e "   • Prisma Studio: ${CYAN}./scripts/dev.sh db:studio${NC}"
+    echo -e "   • Prisma Studio: ${CYAN}./scripts/dev.sh s${NC}"
     echo -e "   • Dev Mode: ${CYAN}./scripts/dev.sh dev${NC}"
+    echo ""
+    echo -e "${GREEN}🔥 HOT RELOAD CONFIGURADO!${NC}"
+    echo -e "   • Edite ${CYAN}schema.prisma${NC} → mudanças refletem automaticamente"
+    echo -e "   • Edite arquivos ${CYAN}.ts/.js${NC} → servidor reinicia automaticamente"
     echo ""
 }
 
@@ -303,6 +331,13 @@ cmd_db_reset() {
     else
         log "INFO" "Operação cancelada"
     fi
+}
+
+cmd_db_push() {
+    log "INFO" "Push do schema para banco..."
+    check_containers
+    run_in_container "$BACKEND_SERVICE" npx prisma db push
+    log "SUCCESS" "Schema enviado para banco!"
 }
 
 cmd_db_seed() {
@@ -406,6 +441,66 @@ cmd_db_info() {
     echo ""
 }
 
+cmd_db_list() {
+    log "INFO" "Listando migrations..."
+    check_containers
+    
+    echo ""
+    echo -e "${CYAN}╔═══════════════════════════════════════════════════════════╗${NC}"
+    echo -e "${CYAN}║                  📁 MIGRATIONS DO PROJETO 📁              ║${NC}"
+    echo -e "${CYAN}╚═══════════════════════════════════════════════════════════╝${NC}"
+    echo ""
+    
+    # Verificar se existe pasta de migrations
+    if ! run_in_container "$BACKEND_SERVICE" test -d prisma/migrations; then
+        echo -e "${RED}❌ Pasta de migrations não encontrada${NC}"
+        echo -e "${YELLOW}💡 Execute: ${CYAN}./scripts/dev.sh db:migrate${NC} para criar o primeiro migration"
+        return 0
+    fi
+    
+    # Listar migrations
+    local migrations_output
+    migrations_output=$(run_in_container "$BACKEND_SERVICE" find prisma/migrations -type d -name "*_*" | sort)
+    
+    if [ -z "$migrations_output" ]; then
+        echo -e "${RED}❌ Nenhum migration encontrado${NC}"
+        echo -e "${YELLOW}💡 Execute: ${CYAN}./scripts/dev.sh db:migrate nome_do_migration${NC}"
+        return 0
+    fi
+    
+    # Processar e exibir migrations
+    local counter=1
+    while IFS= read -r migration_path; do
+        if [ -n "$migration_path" ]; then
+            local migration_name=$(basename "$migration_path")
+            local timestamp=$(echo "$migration_name" | cut -d'_' -f1)
+            local name_part=$(echo "$migration_name" | cut -d'_' -f2- | tr '_' ' ')
+            
+            # Status do SQL
+            local sql_status="❌"
+            if run_in_container "$BACKEND_SERVICE" test -f "$migration_path/migration.sql"; then
+                sql_status="✅"
+            fi
+            
+            echo -e "${YELLOW}${counter}.${NC} ${BLUE}${name_part}${NC}"
+            echo -e "    ${GREEN}📅${NC} ${timestamp} ${GREEN}📄${NC} ${sql_status}"
+            
+            counter=$((counter + 1))
+        fi
+    done <<< "$migrations_output"
+    
+    # Exibir total e comandos úteis
+    local total=$((counter - 1))
+    echo ""
+    echo -e "${GREEN}📊 Total: ${total} migrations${NC}"
+    echo ""
+    echo -e "${YELLOW}💡 Comandos:${NC}"
+    echo -e "   • Novo migration: ${CYAN}./scripts/dev.sh db:migrate nome${NC}"
+    echo -e "   • Reset migrations: ${CYAN}./scripts/dev.sh db:reset${NC}"
+    echo -e "   • Status detalhado: ${CYAN}./scripts/dev.sh shell backend${NC} → ${CYAN}npx prisma migrate status${NC}"
+    echo ""
+}
+
 # Comandos de Desenvolvimento
 cmd_setup() {
     log "INFO" "🚀 Configuração inicial completa..."
@@ -451,6 +546,7 @@ cmd_setup() {
     echo -e "• ${CYAN}./scripts/dev.sh help${NC} - Ver todos os comandos"
     echo -e "• ${CYAN}./scripts/dev.sh g${NC} - Gerar Prisma Client"
     echo -e "• ${CYAN}./scripts/dev.sh m${NC} - Migration rápida"
+    echo -e "• ${CYAN}./scripts/dev.sh l${NC} - Listar migrations"
     echo -e "• ${CYAN}./scripts/dev.sh fresh${NC} - Fresh start"
     echo -e "• ${CYAN}./scripts/dev.sh db:info${NC} - Infos do banco"
     echo ""
@@ -576,6 +672,115 @@ cmd_clean() {
     log "SUCCESS" "Limpeza completa!"
 }
 
+cmd_clean_images() {
+    log "WARNING" "⚠️  Isso irá remover TODAS as imagens Docker!"
+    read -p "Tem certeza que deseja continuar? (y/N): " -n 1 -r
+    echo
+    
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        log "INFO" "Removendo todas as imagens Docker..."
+        
+        # Parar containers primeiro
+        cd "$PROJECT_DIR"
+        docker compose down 2>/dev/null || true
+        
+        # Remover todas as imagens
+        if docker images -q | wc -l | grep -q "0"; then
+            log "INFO" "Nenhuma imagem encontrada"
+        else
+            docker rmi $(docker images -q) -f 2>/dev/null || true
+            log "SUCCESS" "Todas as imagens Docker removidas!"
+        fi
+    else
+        log "INFO" "Operação cancelada"
+    fi
+}
+
+cmd_clean_volumes() {
+    log "WARNING" "⚠️  Isso irá remover TODOS os volumes Docker!"
+    read -p "Tem certeza que deseja continuar? (y/N): " -n 1 -r
+    echo
+    
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        log "INFO" "Removendo todos os volumes Docker..."
+        
+        # Parar containers primeiro
+        cd "$PROJECT_DIR"
+        docker compose down -v 2>/dev/null || true
+        
+        # Remover volumes órfãos
+        docker volume prune -f
+        
+        # Remover todos os volumes
+        if docker volume ls -q | wc -l | grep -q "0"; then
+            log "INFO" "Nenhum volume encontrado"
+        else
+            docker volume rm $(docker volume ls -q) 2>/dev/null || true
+            log "SUCCESS" "Todos os volumes Docker removidos!"
+        fi
+    else
+        log "INFO" "Operação cancelada"
+    fi
+}
+
+cmd_clean_all() {
+    log "WARNING" "⚠️  LIMPEZA TOTAL: Containers, Imagens e Volumes!"
+    echo -e "${RED}ATENÇÃO: Isso irá remover:${NC}"
+    echo -e "• ${YELLOW}Todos os containers${NC}"
+    echo -e "• ${YELLOW}Todas as imagens Docker${NC}"
+    echo -e "• ${YELLOW}Todos os volumes Docker${NC}"
+    echo -e "• ${YELLOW}Redes órfãs${NC}"
+    echo -e "• ${YELLOW}Cache de build${NC}"
+    echo ""
+    read -p "Tem certeza que deseja continuar? (y/N): " -n 1 -r
+    echo
+    
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        log "INFO" "Iniciando limpeza completa..."
+        
+        cd "$PROJECT_DIR"
+        
+        # 1. Parar e remover containers
+        log "INFO" "1/5 - Parando e removendo containers..."
+        docker compose down -v --remove-orphans 2>/dev/null || true
+        docker container prune -f
+        
+        # 2. Remover imagens
+        log "INFO" "2/5 - Removendo imagens..."
+        if ! docker images -q | wc -l | grep -q "0"; then
+            docker rmi $(docker images -q) -f 2>/dev/null || true
+        fi
+        
+        # 3. Remover volumes
+        log "INFO" "3/5 - Removendo volumes..."
+        docker volume prune -f
+        if ! docker volume ls -q | wc -l | grep -q "0"; then
+            docker volume rm $(docker volume ls -q) 2>/dev/null || true
+        fi
+        
+        # 4. Remover redes
+        log "INFO" "4/5 - Removendo redes..."
+        docker network prune -f
+        
+        # 5. Limpeza geral do sistema
+        log "INFO" "5/5 - Limpeza final do sistema..."
+        docker system prune -a -f --volumes
+        
+        log "SUCCESS" "🧹 Limpeza completa do Docker finalizada!"
+        echo ""
+        echo -e "${GREEN}✅ Containers removidos${NC}"
+        echo -e "${GREEN}✅ Imagens removidas${NC}"
+        echo -e "${GREEN}✅ Volumes removidos${NC}"
+        echo -e "${GREEN}✅ Redes limpas${NC}"
+        echo -e "${GREEN}✅ Cache limpo${NC}"
+        echo ""
+        echo -e "${YELLOW}💡 Para reiniciar o projeto: ${CYAN}./scripts/dev.sh setup${NC}"
+        
+    else
+        log "INFO" "Operação cancelada"
+    fi
+}
+
 cmd_shell() {
     local service="${1:-$BACKEND_SERVICE}"
     log "INFO" "Acessando shell do container: $service"
@@ -586,28 +791,161 @@ cmd_shell() {
 cmd_health() {
     log "INFO" "Verificando saúde do sistema..."
     
-    # Check containers
     cd "$PROJECT_DIR"
     
-    if docker compose ps --format json | jq -e '.[] | select(.State == "running")' &> /dev/null; then
-        log "SUCCESS" "✅ Containers estão rodando"
-    else
-        log "ERROR" "❌ Containers não estão rodando"
+    echo ""
+    echo -e "${CYAN}╔═══════════════════════════════════════════════════════════╗${NC}"
+    echo -e "${CYAN}║                 🏥 DIAGNÓSTICO DO SISTEMA 🏥               ║${NC}"
+    echo -e "${CYAN}╚═══════════════════════════════════════════════════════════╝${NC}"
+    echo ""
+    
+    # Check if docker compose file exists
+    if [ ! -f "docker-compose.yml" ]; then
+        log "ERROR" "❌ Arquivo docker-compose.yml não encontrado"
+        return 1
     fi
+    
+    # Check containers status
+    log "INFO" "1. Verificando status dos containers..."
+    local containers_running=false
+    local postgres_running=false
+    local backend_running=false
+    
+    # Get containers status
+    local containers_status
+    if containers_status=$(docker compose ps --format json 2>/dev/null); then
+        if [ -n "$containers_status" ] && [ "$containers_status" != "null" ]; then
+            # Check each service
+            if echo "$containers_status" | jq -e '.[] | select(.Service == "postgres" and .State == "running")' &> /dev/null; then
+                postgres_running=true
+            fi
+            
+            if echo "$containers_status" | jq -e '.[] | select(.Service == "backend" and .State == "running")' &> /dev/null; then
+                backend_running=true
+            fi
+            
+            # Check if any container is running
+            if echo "$containers_status" | jq -e '.[] | select(.State == "running")' &> /dev/null; then
+                containers_running=true
+            fi
+        fi
+    fi
+    
+    # Display containers status
+    if [ "$containers_running" = true ]; then
+        log "SUCCESS" "✅ Alguns containers estão rodando"
+        
+        if [ "$postgres_running" = true ]; then
+            log "SUCCESS" "  ✅ PostgreSQL: Rodando"
+        else
+            log "ERROR" "  ❌ PostgreSQL: Parado"
+        fi
+        
+        if [ "$backend_running" = true ]; then
+            log "SUCCESS" "  ✅ Backend: Rodando"
+        else
+            log "ERROR" "  ❌ Backend: Parado"
+        fi
+    else
+        log "ERROR" "❌ Nenhum container está rodando"
+        echo ""
+        echo -e "${YELLOW}💡 Para iniciar os serviços: ${CYAN}./scripts/dev.sh up${NC}"
+        echo -e "${YELLOW}💡 Para setup inicial: ${CYAN}./scripts/dev.sh setup${NC}"
+        echo ""
+        return 1
+    fi
+    
+    echo ""
+    log "INFO" "2. Verificando conectividade do banco de dados..."
     
     # Check database connection
-    if docker compose exec postgres pg_isready -q; then
-        log "SUCCESS" "✅ Banco de dados está acessível"
+    if [ "$postgres_running" = true ]; then
+        if docker compose exec postgres pg_isready -q 2>/dev/null; then
+            log "SUCCESS" "✅ Banco de dados está acessível"
+        else
+            log "ERROR" "❌ Banco de dados não está acessível"
+        fi
     else
-        log "ERROR" "❌ Banco de dados não está acessível"
+        log "ERROR" "❌ Container PostgreSQL não está rodando"
     fi
     
+    echo ""
+    log "INFO" "3. Verificando backend API..."
+    
     # Check backend health
-    if curl -s http://localhost:3000/health &> /dev/null; then
-        log "SUCCESS" "✅ Backend está respondendo"
+    if [ "$backend_running" = true ]; then
+        local backend_status
+        if backend_status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/health 2>/dev/null); then
+            if [ "$backend_status" = "200" ]; then
+                log "SUCCESS" "✅ Backend está respondendo (HTTP $backend_status)"
+            else
+                log "WARNING" "⚠️  Backend respondeu com HTTP $backend_status"
+            fi
+        else
+            log "WARNING" "⚠️  Backend não está respondendo"
+        fi
     else
-        log "WARNING" "⚠️  Backend não está respondendo"
+        log "ERROR" "❌ Container Backend não está rodando"
     fi
+    
+    echo ""
+    log "INFO" "4. Verificando portas..."
+    
+    # Check ports
+    local ports_info=""
+    if command -v netstat &> /dev/null; then
+        if netstat -ln 2>/dev/null | grep -q ":3000 "; then
+            ports_info+="✅ Porta 3000 (Backend) em uso\n"
+        else
+            ports_info+="❌ Porta 3000 (Backend) livre\n"
+        fi
+        
+        if netstat -ln 2>/dev/null | grep -q ":5432 "; then
+            ports_info+="✅ Porta 5432 (PostgreSQL) em uso\n"
+        else
+            ports_info+="❌ Porta 5432 (PostgreSQL) livre\n"
+        fi
+        
+        if netstat -ln 2>/dev/null | grep -q ":8080 "; then
+            ports_info+="✅ Porta 8080 (pgAdmin) em uso\n"
+        else
+            ports_info+="❌ Porta 8080 (pgAdmin) livre\n"
+        fi
+    else
+        ports_info="⚠️  netstat não disponível - não é possível verificar portas"
+    fi
+    
+    echo -e "$ports_info"
+    
+    echo ""
+    log "INFO" "5. Resumo do diagnóstico:"
+    
+    if [ "$containers_running" = true ] && [ "$postgres_running" = true ] && [ "$backend_running" = true ]; then
+        echo -e "${GREEN}🎉 Sistema está funcionando corretamente!${NC}"
+        echo ""
+        echo -e "${YELLOW}🔗 Links úteis:${NC}"
+        echo -e "   • Backend: ${CYAN}http://localhost:3000${NC}"
+        echo -e "   • Backend Health: ${CYAN}http://localhost:3000/health${NC}"
+        echo -e "   • pgAdmin: ${CYAN}http://localhost:8080${NC}"
+        echo -e "   • Prisma Studio: ${CYAN}./scripts/dev.sh db:studio${NC}"
+    else
+        echo -e "${RED}❌ Sistema não está funcionando corretamente${NC}"
+        echo ""
+        echo -e "${YELLOW}🔧 Ações recomendadas:${NC}"
+        if [ "$containers_running" = false ]; then
+            echo -e "   1. ${CYAN}./scripts/dev.sh up${NC} - Iniciar containers"
+        fi
+        if [ "$postgres_running" = false ]; then
+            echo -e "   2. ${CYAN}./scripts/dev.sh logs postgres${NC} - Ver logs do PostgreSQL"
+        fi
+        if [ "$backend_running" = false ]; then
+            echo -e "   3. ${CYAN}./scripts/dev.sh logs backend${NC} - Ver logs do Backend"
+        fi
+        echo -e "   • ${CYAN}./scripts/dev.sh status${NC} - Ver status detalhado"
+        echo -e "   • ${CYAN}./scripts/dev.sh setup${NC} - Setup completo"
+    fi
+    
+    echo ""
 }
 
 cmd_pgadmin() {
@@ -651,6 +989,11 @@ cmd_quick_studio() {
     run_in_container "$BACKEND_SERVICE" npx prisma studio
 }
 
+cmd_quick_list() {
+    log "INFO" "📋 Listando migrations..."
+    cmd_db_list
+}
+
 cmd_quick_fresh() {
     log "INFO" "🆕 Fresh start (down + up + migrate)..."
     
@@ -672,6 +1015,38 @@ cmd_quick_shell() {
     run_in_container "$service" bash
 }
 
+cmd_quick_watch() {
+    log "INFO" "🔥 Iniciando modo watch com hot reload..."
+    log "INFO" "Arquivos serão sincronizados automaticamente!"
+    echo ""
+    echo -e "${GREEN}╔═══════════════════════════════════════════════════════════╗${NC}"
+    echo -e "${GREEN}║                🔥 HOT RELOAD ATIVO 🔥                     ║${NC}"
+    echo -e "${GREEN}╚═══════════════════════════════════════════════════════════╝${NC}"
+    echo ""
+    echo -e "${YELLOW}📁 Arquivos monitorados:${NC}"
+    echo -e "   • ${CYAN}schema.prisma${NC} - Mudanças refletem automaticamente"
+    echo -e "   • ${CYAN}*.ts, *.js${NC} - Hot reload no backend"
+    echo -e "   • ${CYAN}Todos os arquivos${NC} - Sincronização instantânea"
+    echo ""
+    echo -e "${YELLOW}💡 Testando:${NC}"
+    echo -e "   1. Edite ${CYAN}backend/prisma/schema.prisma${NC}"
+    echo -e "   2. Execute: ${CYAN}./scripts/dev.sh m${NC} (em outro terminal)"
+    echo -e "   3. Veja a magic acontecer! ✨"
+    echo ""
+    echo -e "${YELLOW}🔧 URLs:${NC}"
+    echo -e "   • Backend: ${CYAN}http://localhost:3000${NC}"
+    echo -e "   • Prisma Studio: ${CYAN}./scripts/dev.sh s${NC}"
+    echo ""
+    echo -e "${RED}⏹️  Pressione Ctrl+C para parar${NC}"
+    echo ""
+    
+    check_containers
+    
+    # Follow logs para ver o hot reload em ação
+    cd "$PROJECT_DIR"
+    docker compose logs -f backend
+}
+
 # Main - processar argumentos
 main() {
     case "${1:-help}" in
@@ -685,12 +1060,14 @@ main() {
         
         # Database commands
         "db:setup") cmd_db_setup ;;
-        "db:migrate") cmd_db_migrate "$2" ;;
+        "db:migrate") cmd_db_migrate "${2:-}" ;;
+        "db:push") cmd_db_push ;;
+        "db:list") cmd_db_list ;;
         "db:reset") cmd_db_reset ;;
         "db:seed") cmd_db_seed ;;
         "db:studio") cmd_db_studio ;;
         "db:backup") cmd_db_backup ;;
-        "db:restore") cmd_db_restore "$2" ;;
+        "db:restore") cmd_db_restore "${2:-}" ;;
         "db:info") cmd_db_info ;;
         
         # Development commands
@@ -709,14 +1086,19 @@ main() {
         
         # Quick commands (atalhos rápidos)
         "g"|"gen"|"generate") cmd_quick_generate ;;
-        "m"|"mig"|"migrate") cmd_quick_migrate "$2" ;;
+        "m"|"mig"|"migrate") cmd_quick_migrate "${2:-}" ;;
+        "l"|"list") cmd_quick_list ;;
         "p"|"push") cmd_quick_push ;;
         "s"|"studio") cmd_quick_studio ;;
         "f"|"fresh") cmd_quick_fresh ;;
-        "sh"|"shell") cmd_quick_shell "$2" ;;
+        "w"|"watch") cmd_quick_watch ;;
+        "sh"|"shell") cmd_quick_shell "${2:-}" ;;
         
         # Utility commands
         "clean") cmd_clean ;;
+        "clean:images") cmd_clean_images ;;
+        "clean:volumes") cmd_clean_volumes ;;
+        "clean:all") cmd_clean_all ;;
         "health") cmd_health ;;
         "pgadmin") cmd_pgadmin ;;
         
