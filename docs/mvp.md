@@ -7,6 +7,7 @@ Para a priorização do backlog do projeto CanadaWay, foram utilizadas duas téc
 O escopo do MVP inclui:
 
 | Código US | User Story |
+|-----------|------------|
 | US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos (nome, sobrenome, email, telefone com DDD, cidade, qual a unidade mais próxima do usuário, senha, confirmar senha) para criar uma conta na plataforma. |
 | US02 | Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado. |
 | US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. |

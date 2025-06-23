@@ -95,7 +95,7 @@ Também levamos em consideração as diretrizes estratégicas da empresa:
 
 | Código | User Story | Pontuação MoSCoW | Classificação MoSCoW | Pontuação Técnica | Classificação |
 |--------|------------|-----------|--------|-----------------------|-------------------|---------------|
-| US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos para criar uma conta na plataforma. | 3A | Must Have | 1B | AB - 1 |  |
+| US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos para criar uma conta na plataforma. | 3A | Must Have | 1B | AB - 1 |
 | US02 | Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado | 3A | Must Have | 1B | AB - 1 |
 | US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. | 2A | Should Have | 1B | AB - 1 |
 | US04 | Como usuário, quero excluir minha conta da plataforma para encerrar meu vínculo com o sistema. | 1B | Could Have | 1B | BB - 3 |
@@ -110,9 +110,9 @@ Também levamos em consideração as diretrizes estratégicas da empresa:
 | US13 | Como potencial intercambista, quero acessar uma área com promoções ativas para aproveitar oportunidades de desconto. | 1B | Should Have | 1B | BB - 3 |
 | US14 | Como potencial intercambista, quero visualizar informações detalhadas de cada programa para comparar e escolher o melhor para mim. | 3A | Must Have | 2A | AA - 2 |
 | US15 | Como potencial intercambista, quero solicitar contato com um especialista da Canada Intercambio para esclarecer dúvidas sobre os programas. | 3A | Must Have | 1B | AB - 1 |
-| US16 | Como intercambista já matriculado, quero editar meu perfil para atualizar informações como contato de emergência || 1B | Could Have | 1B | BB - 3 |
+| US16 | Como intercambista já matriculado, quero editar meu perfil para atualizar informações como contato de emergência | 1B | Could Have | 1B | BB - 3 |
 | US17 | Como intercambista, quero acessar meu contrato digital assinado para consultar detalhes do meu programa. | 1B | Could Have | 1B | BB - 3 |
-| US18 | Como intercambista, quero visualizar as atividades no cronograma do meu programa de intercâmbio para acompanhar minha jornada | 1B | Could Have | 1A | BB - 3 ||
+| US18 | Como intercambista, quero visualizar as atividades no cronograma do meu programa de intercâmbio para acompanhar minha jornada | 1B | Could Have | 1A | BB - 3 |
 | US19 | Como empresa, quero criar uma conta preenchendo meus dados básicos para utilizar a plataforma de intercâmbio. | 3A | Must Have | 1B | AB - 1 |
 | US20 | Como empresa, quero alterar o tipo de conta de um potencial intercambista para intercambista após o fechamento de contrato para refletir o status atual. | 1B | Could Have | 1B | BB - 3 |
 | US21 | Como empresa, quero consultar as informações e o perfil de um potencial intercambista para realizar um atendimento mais assertivo. | 1B | Should Have | 1B | BB - 3 |
