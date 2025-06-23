@@ -6,14 +6,14 @@
 
 A abordagem adotada será **ágil**, pois está alinhada à necessidade de **flexibilidade**, **adaptação contínua** e **forte envolvimento do cliente** ao longo do projeto. Baseado no modelo **RAD**, o desenvolvimento ocorre de forma iterativa, com foco em **prototipação**, **validação constante** e **evolução progressiva** do produto. Embora a entrega formal do sistema ocorra ao final, as decisões e ajustes foram orientados por ciclos de **feedback com os usuários** nas fases iniciais, o que garante **alinhamento com os requisitos** e **reduz riscos de retrabalho**.
 
-
 ### Ciclo de Vida:
+
 O ciclo de vida adotado será **iterativo e incremental**, o que significa que o sistema será desenvolvido em partes funcionais que evoluem progressivamente ao longo do projeto. A cada iteração, o produto é incrementado com novas funcionalidades, que são testadas e ajustadas internamente, com base no feedback obtido durante a fase de prototipação com os usuários.
 
 Esse modelo favorece o **aprendizado contínuo da equipe** e contribui para a construção de uma solução mais alinhada às reais necessidades dos usuários, mesmo com a entrega final ocorrendo ao término do desenvolvimento.
 
-
 ### Processo Utilizado - RAD (Rapid Application Development):
+
 O processo adotado será o **RAD (Rapid Application Development)**, escolhido pela sua capacidade de **acelerar o desenvolvimento** por meio da criação rápida de **protótipos** e da **validação contínua** com o cliente nas fases iniciais do projeto.
 
 Após essa etapa, o sistema é construído com base nas funcionalidades já validadas, o que garante maior alinhamento com as necessidades dos usuários e **reduz o retrabalho na entrega final**.

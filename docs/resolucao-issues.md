@@ -99,3 +99,140 @@
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/7)
 
+## Entrega 2 (parte 1)
+
+### Issue8:
+
+![Solicitação do Professor](images/IS08.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao08.png)
+
+![Solução Implementada](images/Resolucao08-1.png)
+
+![Solução Implementada](images/Resolucao08-2.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/8)
+
+### Issue9:
+
+![Solicitação do Professor](images/IS09.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao09.png)
+
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/9)
+
+### Issue10:
+
+![Solicitação do Professor](images/IS10.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao10.png)
+
+![Solução Implementada](images/Resolucao10-2.png)
+
+![Solução Implementada](images/Resolucao10-3.png)
+
+![Solução Implementada](images/Resolucao10-4.png)
+
+![Solução Implementada](images/Resolucao10-5.png)
+
+![Solução Implementada](images/Resolucao10-6.png)
+
+![Solução Implementada](images/Resolucao10-7.png)
+
+![Solução Implementada](images/Resolucao10-8.png)
+
+![Solução Implementada](images/Resolucao10-9.png)
+
+![Solução Implementada](images/Resolucao10-10.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/10)
+
+### Issue11:
+
+![Solicitação do Professor](images/IS11.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao11.png)
+
+![Solução Implementada](images/Resolucao11-2.png)
+
+![Solução Implementada](images/Resolucao11-3.png)
+
+![Solução Implementada](images/Resolucao11-4.png)
+
+![Solução Implementada](images/Resolucao11-5.png)
+
+![Solução Implementada](images/Resolucao11-6.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/11)
+
+### Issue12:
+
+![Solicitação do Professor](images/IS12.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao12.png)
+
+![Solução Implementada](images/Resolucao12-2.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/12)
+
+### Issue13:
+
+![Solicitação do Professor](images/IS13.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao13.png)
+
+![Solução Implementada](images/Resolucao13-2.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/13)
+
+### Issue14:
+
+![Solicitação do Professor](images/IS14.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao14.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/14)
+
+### Issue15:
+
+![Solicitação do Professor](images/IS15.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao15.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/15)
+
+### Issue16:
+
+![Solicitação do Professor](images/IS16.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao16.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/16)

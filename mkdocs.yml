@@ -13,6 +13,8 @@ nav:
   - DoR e DoD: dor-dod.md 
   - Backlog: backlog.md
   - MVP : mvp.md
+  - Casos de Uso : Casos-de-uso.md
+  - Evidências de Execução : evidencias.md
   - Configuração de Ambiente: configuracao-ambiente.md
   - Lições: licoes-aprendidas.md
   - Resolução de Issues: resolucao-issues.md
