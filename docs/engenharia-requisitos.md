@@ -12,84 +12,134 @@ Nesta fase, o objetivo principal é estabelecer o escopo do projeto, compreender
 
 #### Elicitação e Descoberta
 
-- **Entrevistas com Stakeholders**: Realizar entrevistas com proprietários, usuários, gestores e outros envolvidos para entender as necessidades, expectativas e desafios relacionados ao aplicativo *CanadaWay*.
-- **Brainstorming**: Realizar sessões de brainstorming para gerar uma ampla gama de requisitos e soluções criativas.
-- **Análise de Documentos Existentes**: Revisar documentos como materiais de marketing, informações sobre programas e feedbacks de clientes anteriores.
-- **Análise da Concorrência (Benchmarking)**: Estudar plataformas de outras empresas para identificar boas práticas e diferenciais.
-- **Identificação de Stakeholders**: Mapear stakeholders do projeto e suas expectativas.
+- **Entrevistas com Stakeholders**: Realizar entrevistas com proprietários, usuários, gestores e outros envolvidos para entender as necessidades, expectativas e desafios relacionados ao aplicativo *CanadaWay*. Por exemplo, entender as dificuldades dos
+usuários em encontrar informações sobre programas específicos.
+- **Brainstorming**: Realizar sessões de brainstorming para gerar uma ampla gama de requisitos e soluções criativas. Isso pode incluir ideias para gamificação, design da
+interface, e funcionalidades específicas para diferentes perfis de clientes.
+- **Análise de Documentos Existentes**: Revisar documentos como materiais de marketing, informações sobre programas e feedbacks de clientes anteriores, para identificar requisitos e informações relevantes.
+- **Análise da Concorrência (Benchmarking)**: Analisar as plataformas de outras
+empresas de intercâmbio para identificar boas práticas, funcionalidades inovadoras e
+áreas onde o *CanadaWay* pode se destacar.
+- **Identificação de Stakeholders**: Listar os stakeholders do projeto e suas respectivas
+expectativas e necessidades. Isso ajuda a garantir que todos os envolvidos sejam
+considerados no processo de desenvolvimento.
 
 #### Análise e Consenso
 
-- **Entrevista com Stakeholders**: Discussões em grupo para analisar os requisitos, resolver conflitos e esclarecer ambiguidades.
-- **Identificação de Restrições e Riscos**: Avaliar limitações de tempo, orçamento, recursos e riscos técnicos ou de usabilidade.
+- **Entrevista com Stakeholders**: A análise de objetivo de domínio envolve entender as
+metas principais e o que se espera alcançar com o projeto. Realizam-se discussões em
+grupo com os stakeholders para analisar os requisitos, resolver conflitos, esclarecer
+ambiguidades e garantir que todos os envolvidos tenham um entendimento comum
+dos objetivos e escopo do projeto.
+- **Identificação de Restrições e Riscos**: Identificar restrições de tempo, orçamento e
+recursos, bem como potenciais riscos que podem afetar o projeto. Isso pode incluir a
+análise de riscos técnicos e de usabilidade.
 
 #### Declaração
 
-- **Documentação Inicial dos Requisitos**: Registrar os requisitos iniciais de forma simples e clara.
-- **Mapeamento de Histórias de Usuário (User Story Map)**: Utilizar o formato "Como [tipo de usuário], quero [ação], para [benefício]" no estilo ágil.
+- **Documentação Inicial dos Requisitos**: Registrar os requisitos iniciais de forma clara
+e acessível, utilizando listas, atas de reunião, ou documentos simples. O objetivo é
+capturar as ideias e necessidades de alto nível sem formalismos excessivos
+- **Mapeamento de Histórias de Usuário (User Story Map)**: No desenvolvimento
+ágil, como o RAD (Rapid Application Development) adotado para o projeto
+CanadaWay, as histórias de usuário são uma forma concisa de expressar os requisitos
+do ponto de vista do usuário final. Elas seguem um formato simples: Como [tipo_de_usuário], quero [ação], para [benefício].
 
 #### Organização e Atualização
 
-- **Priorização MoSCoW**: Classificar os requisitos como Must, Should, Could ou Won’t, conforme sua importância.
+- **Priorização MoSCoW**:  Utilizar a técnica MoSCoW (Must have, Should have, Could
+have, Won't have) para priorizar os requisitos coletados, garantindo que as
+funcionalidades essenciais sejam desenvolvidas primeiro. Por exemplo, definir quais
+funcionalidades são "Must have" para o MVP.
 
 #### Verificação e Validação
 
-- **Revisão Inicial dos Requisitos**: Reuniões com stakeholders para validar os requisitos levantados.
-- **Feedback do Cliente e da Equipe**: Obter retorno através de reuniões, questionários ou discussões.
-- **Critério de Prontidão (DoR)**: Garantir que os requisitos estejam claros, priorizados, com critérios de aceitação e estimativas.
+- **Revisão Inicial dos Requisitos**: Realizar uma revisão inicial dos requisitos
+documentados com os stakeholders para garantir que eles reflitam suas necessidades e
+expectativas. Isso pode envolver a realização de workshops de revisão.
+- **Feedback do Cliente e da Equipe**: OColetar feedback inicial sobre os requisitos para
+identificar possíveis lacunas, erros ou ambiguidades. O feedback pode ser obtido
+através de questionários, reuniões quinzenais ou discussões informais.
+- **Critério de Prontidão (DoR)**: Cada requisito deve ser claro,
+conciso e bem definido, idealmente no formato de "História de Usuário". Devem
+existir critérios de aceitação claros e documentados para cada requisito, e a equipe e
+os stakeholders devem ter um entendimento comum validado, seja por meio de
+discussões, revisões conjuntas ou outros métodos. Além disso, cada requisito precisa
+ter sua prioridade definida (MoSCoW), dependências identificadas, recursos
+planejados e uma estimativa inicial de esforço, garantindo que esteja verdadeiramente
+"pronto" para ser trabalhado pela equipe.
 
 ### Fase de Prototipagem (User Design)
 
-O foco principal nesta fase é desenvolver protótipos rapidamente e iterar com base no feedback contínuo do cliente.
+O foco principal nesta fase é desenvolver O foco principal nesta fase é desenvolver protótipos funcionais rapidamente e iterar com base
+no feedback contínuo do cliente. O objetivo é criar representações tangíveis do sistema que permitam a validação dos requisitos e a coleta de insights valiosos para o refinamento do projeto.
 
 #### Elicitação e Descoberta
 
-- **Demonstração e Feedback Iterativo de Protótipos**: Apresentar protótipos aos stakeholders para coletar feedback e ajustar requisitos.
+- **Demonstração e Feedback Iterativo de Protótipos**: Apresentar protótipos iniciais
+aos stakeholders para coletar feedback, identificar necessidades, requisitos
+emergentes e realizar ajustes baseados na interação direta dos usuários em sessões
+estruturadas.
 
 #### Análise e Consenso
 
-- **Discussões do Feedback do Cliente**: Identificar melhorias e ajustes necessários.
-- **Resolução de Conflitos e Esclarecimento de Ambiguidade**: Alinhar entendimento entre todos os envolvidos.
+- **Discussões do Feedback do Cliente**: Analisar o feedback coletado e promover
+discussões para identificar os principais pontos de melhoria e os ajustes necessários.
+- **Resolução de Conflitos e Esclarecimento de Ambiguidade**: Abordar quaisquer
+conflitos ou ambiguidades nos requisitos levantados durante a fase de prototipagem
+para garantir um entendimento comum entre todos os stakeholders.
 
 #### Declaração
 
-- **Documentação Detalhada dos Requisitos**: Utilizar User Stories com critérios de aceitação claros.
-- **User Story Mapping**: Visualizar o fluxo do usuário e planejar o desenvolvimento.
+- **Documentação Detalhada dos Requisitos**: Registrar os requisitos emergentes de
+forma clara e específica, utilizando User Stories e critérios de aceitação para garantir
+que todos os detalhes sejam capturados.
 
 #### Representação
 
-- **Protótipos Funcionais de Alta Fidelidade**: Desde wireframes até mockups interativos, com iteração contínua.
+- **Protótipos Funcionais de Alta Fidelidade**: Desenvolver protótipos com diferentes
+níveis de detalhe, desde wireframes simples até mockups interativos, para representar
+os requisitos visuais e funcionais, que evolui com o feedback e as iterações
 
 #### Verificação e Validação
 
-- **Testes de Usabilidade**: Avaliar navegação e interação com usuários reais.
-- **Feedback do Cliente**: Coletar retorno imediato sobre os protótipos.
+- **Testes de Usabilidade**: Realizar testes com usuários reais para avaliar a facilidade de
+uso do protótipo e identificar problemas de navegação ou interação.
+- **Feedback do Cliente**: Revisar formalmente o protótipo com o cliente para alinhar
+expectativas e necessidades. Coletar feedback imediato em demonstrações e testes
+para ajustes rápidos e correta interpretação dos requisitos
+
+#### Organização e atualização
+
+- **User Story Mapping:** Utilizar o User Story Mapping para organizar e visualizar os
+requisitos emergentes em relação ao fluxo do usuário no sistema, facilitando a
+compreensão e o planejamento do desenvolvimento
 
 ### Fase de Implementação (Construção)
 
 Nesta fase, o sistema é desenvolvido com base nos protótipos validados.
 
-#### Organização e Atualização
+#### Análise e Concenso
 
-- **Discussões com Desenvolvedores**: Esclarecer requisitos durante a codificação e adaptar conforme necessário.
-
-#### Verificação e Validação
-
-- **Testes de Integração**: Verificar a comunicação entre componentes.
-- **Testes de Sistema**: Avaliar o comportamento completo do sistema.
-- **Revisões de Código**: Validar aderência aos padrões e à arquitetura.
+- **Discussões com desenvolvedores:** Utilizadas para esclarecer detalhes de requisitos
+que surgem durante a codificação, resolver ambiguidades encontradas na prática e
+adaptar requisitos de forma ágil conforme o desenvolvimento avança.
 
 ### Fase de Implantação e Entrega (Cutover)
 
-Fase final, focada na entrega e aceitação do sistema.
+Nesta fase, o foco é a implantação do sistema no ambiente de produção e a garantia de que ele
+atenda às expectativas do cliente.
 
 #### Verificação e Validação
 
-- **Testes de Aceitação pelo Cliente**: Confirmar se o sistema atende aos requisitos e expectativas.
+- **Testes de Aceitação pelo Cliente**: Realizados para confirmar se o sistema final atende a todos os requisitos e expectativas do cliente.
+- **Coleta de feedback do usuário**: Utilizada para identificar oportunidades de melhoria
+e problemas que possam surgir após a implantação.
 
-#### Organização e Atualização
+#### Organização e Atualização (Feedback Pós-Implantação)
 
-- **Feedback Pós-Implantação**: Coletar retorno dos usuários e planejar melhorias.
+- **Análise de problemas e sugestões:** ealizada para planejar futuras iterações e
+atualizações do sistema, garantindo a sua evolução contínua
 
 ---
 

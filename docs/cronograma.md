@@ -10,11 +10,11 @@ A partir da estratégia de desenvolvimento de software estabelecida, tem-se a se
 | User Design      | 1            | 14/05 – 20/05/2025       | Reunião com stakeholders + definição de padrões visuais e técnicos            |
 | User Design      | 2            | 21/05 – 27/05/2025       | Montagem do backlog + definição do MVP + início da prototipação               |
 | User Design      | 3            | 28/05 – 03/06/2025       | Finalização do protótipo + finalização da configuração do ambiente + validação do protótipo com stakeholders |
-| Construção       | 1            | 04/06 – 10/06/2025       | Onboarding genérico + Cadastro e login de usuários                            |
-| Construção       | 2            | 11/06 – 17/06/2025       | Teste de perfil gamificado + Visualização dinâmica dos programas de intercâmbio |
-| Construção       | 3            | 18/06 – 24/06/2025       | Visualização do programa mais adequado ao perfil + Simulador de orçamento + Página detalhada de cada programa |
-| Construção       | 4            | 25/06 – 01/07/2025       | Quiz específico do programa + Contato com especialista                        |
-| Construção       | 5            | 02/07 – 08/07/2025       | Cadastro e login da empresa + Edição/adicionar programas + Cadastro de promoções + Painel administrativo básico |
+| Construção       | 1            | 04/06 – 10/06/2025       | Onboarding + Cadastro (US01/US19) e login de usuários (US02)                            |
+| Construção       | 2            | 11/06 – 17/06/2025       | Teste de perfil gamificado (US05) + Visualização dinâmica dos programas de intercâmbio (US06) + tela de perfil principal |
+| Construção       | 3            | 18/06 – 24/06/2025       | Editar perfil (US03) + Página detalhada de cada programa (US14) + Quiz específico de cada programa (US07) |
+| Construção       | 4            | 25/06 – 01/07/2025       | Visualizar sugestão de programa (US10) + Contato com especialista (US15) + Visualizar dúvidas frequentes (US12)	                        |
+| Construção       | 5            | 02/07 – 08/07/2025       | Painel administrativo básico: Atualizar programas (US29) + cadastrar novo programa (US30) |
 | Implantação      | 1            | 09/07 – 15/07/2025       | Entrega final e testes                                                         |
 
 ---

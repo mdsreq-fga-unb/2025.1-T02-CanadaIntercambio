@@ -13,9 +13,15 @@ Outro ponto importante foi o desenvolvimento da nossa visão crítica para probl
 ---
 
 ## Unidade 2
+
 Nesta unidade, aprofundamos os aprendizados sobre o processo de Engenharia de Requisitos, com foco nos aspectos humanos, na definição do backlog, no conceito de MVP e nos critérios de DoR e DoD. Esses conteúdos contribuíram para organizar melhor nosso processo, estabelecer critérios claros de início e conclusão das tarefas e garantir maior alinhamento com o cliente.
 
 As principais dificuldades da equipe foram aplicar os processos da Engenharia de Requisitos ao nosso projeto e estruturar o MVP. Tivemos dificuldade em adaptar as etapas ao nosso contexto e em selecionar, entre tantos requisitos possíveis, quais realmente deveriam compor o MVP. Conseguimos superar esses desafios por meio de discussões em grupo, uso de técnicas de priorização, aplicação prática dos conteúdos ensinados pelo professor em sala e foco constante nos objetivos do projeto, o que nos ajudou a montar um backlog mais estratégico e voltado à entrega de valor.
 
+---
 
+## Unidade 3
 
+Nesta unidade, aprendemos a estruturar melhor nosso backlog com o uso de técnicas como Product Backlog Building (PBB), User Story Mapping (USM) e Behavior Driven Development (BDD). Esses métodos ajudaram a organizar as funcionalidades com foco nos objetivos do projeto, facilitando a definição do MVP e a escrita de critérios de aceitação claros.
+
+Tivemos dificuldades em aplicar o USM e escrever os cenários BDD de forma precisa. Superamos isso com discussões em grupo, revisão contínua das histórias e aplicação prática dos conceitos. Com isso, conseguimos montar um backlog mais claro, estratégico e alinhado à entrega de valor.

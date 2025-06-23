@@ -14,105 +14,46 @@ Esses objetivos servem como base para a estruturação e priorização dos itens
 
 O backlog geral contém todas as funcionalidades e melhorias planejadas para o software. Cada item é detalhado e priorizado para garantir uma visão clara do que será desenvolvido ao longo do projeto. 
 
-### Requisitos Funcionais
-
-| **Código** | **Requisito** | **Referente a** |
-|--------|-----------|-------------|
-| RF01 | Criar conta na plataforma | Potencial Intercambista |
-| RF02 | Fazer login na plataforma | Potencial Intercambista |
-| RF03 | Editar perfil na plataforma | Potencial Intercambista |
-| RF04 | Excluir conta da plataforma | Potencial Intercambista |
-| RF05 | Realizar teste de perfil gamificado de intercâmbio | Potencial Intercambista |
-| RF06 | Visualizar programas de intercâmbio de forma mais dinâmica | Potencial Intercambista |
-| RF07 | Realizar quiz do programa da Canada Intercâmbio | Potencial Intercambista |
-| RF08 | Realizar quiz de nivelamento de inglês | Potencial Intercambista |
-| RF09 | Realizar quiz cultural sobre o Canadá | Potencial Intercambista |
-| RF10 | Visualizar programa recomendado com base no quiz | Potencial Intercambista |
-| RF11 | Simular o custo estimado dos programas de intercâmbio | Potencial Intercambista |
-| RF12 | Esclarecer dúvidas comuns com chatbot | Potencial Intercambista |
-| RF13 | Visualizar promoções gerais | Potencial Intercambista |
-| RF14 | Visualizar informações específicas de cada programa | Potencial Intercambista |
-| RF15 | Falar com o especialista após quiz | Potencial Intercambista |
-| RF16 a RF23 | Funcionalidades do Intercambista | Intercambista |
-| RF24 a RF37 | Funcionalidades da Empresa | Empresa |
-
----
-
-### User Stories
-
-| **Código** | **User Story** |
-|--------|------------|
-| US01 | Como visitante, quero criar uma conta na plataforma para acessar os recursos e personalizar minha experiência. |
-| US02 | Como usuário, quero fazer login na plataforma para acessar minha conta e funcionalidades exclusivas. |
-| US03 | Como usuário, quero editar meu perfil para manter minhas informações atualizadas. |
-| US04 | Como usuário, quero excluir minha conta caso eu decida não utilizar mais a plataforma. |
-| US05 | Como usuário, quero realizar um teste gamificado de perfil para descobrir qual tipo de programa combina mais comigo. |
-| US06 | Como usuário, quero visualizar programas de intercâmbio de forma dinâmica para entender melhor as opções disponíveis. |
-| US07 | Como usuário, quero realizar o quiz do programa da Canada Intercâmbio para verificar se ele é ideal para mim. |
-| US08 | Como usuário, quero realizar um quiz de nivelamento de inglês para entender se atendo aos requisitos mínimos dos programas. |
-| US09 | Como usuário, quero realizar um quiz cultural sobre o Canadá para testar meus conhecimentos sobre o país. |
-| US10 | Como usuário, quero ver o programa mais recomendado com base no quiz realizado para facilitar minha escolha. |
-| US11 | Como usuário, quero simular o custo estimado de cada programa de intercâmbio para avaliar minha viabilidade financeira. |
-| US12 | Como usuário, quero esclarecer dúvidas comuns por meio de um chatbot para resolver questões iniciais rapidamente. |
-| US13 | Como usuário, quero visualizar promoções gerais para aproveitar oportunidades especiais. |
-| US14 | Como usuário, quero visualizar informações específicas de cada programa para me aprofundar nas opções de interesse. |
-| US15 | Como usuário, quero falar com um especialista após o quiz para esclarecer dúvidas ou iniciar um atendimento personalizado. |
-| US16 | Como intercambista, quero receber notificações sobre próximos passos e prazos importantes para não perder nenhum evento. |
-| US17 | Como intercambista, quero receber alertas personalizados relacionados ao cronograma da minha viagem para me organizar melhor. |
-| US18 | Como intercambista, quero acessar informações úteis sobre o país de destino para me preparar para a experiência. |
-| US19 | Como intercambista, quero acessar dicas culturais e de adaptação ao novo ambiente para evitar choques culturais. |
-| US20 | Como intercambista, quero visualizar a lista de documentos necessários para a viagem para garantir que tudo esteja em ordem. |
-| US21 | Como intercambista, quero acompanhar o status dos documentos enviados para saber o que já foi aceito e o que está pendente. |
-| US22 | Como intercambista, quero interagir com a Canada Intercâmbio durante o meu intercâmbio para tirar dúvidas ou pedir ajuda. |
-| US23 | Como intercambista, quero avaliar minha experiência após o retorno para contribuir com melhorias na empresa. |
-| US24 | Como empresa, quero criar um perfil para gerenciar as informações da organização na plataforma. |
-| US25 | Como empresa, quero editar meu perfil para manter os dados atualizados. |
-| US26 | Como empresa, quero excluir minha conta caso não queira mais utilizar o sistema. |
-| US27 | Como empresa, quero acessar os dados dos quizzes realizados por usuários para entender melhor o público. |
-| US28 | Como empresa, quero visualizar resultados dos quizzes de programa para acompanhar os interesses dos usuários. |
-| US29 | Como empresa, quero visualizar resultados dos quizzes de inglês para entender o nível dos candidatos. |
-| US30 | Como empresa, quero visualizar resultados dos quizzes culturais para saber o quanto os usuários conhecem o Canadá. |
-| US31 | Como empresa, quero adicionar, editar ou remover programas de intercâmbio para manter o portfólio atualizado. |
-| US32 | Como empresa, quero adicionar, editar ou remover o conteúdo dos quizzes para manter a relevância das perguntas. |
-| US33 | Como empresa, quero adicionar, editar ou remover promoções para atrair mais usuários. |
-| US34 | Como empresa, quero gerenciar o cronograma dos usuários e configurar lembretes automáticos para melhorar a organização. |
-| US35 | Como empresa, quero gerenciar alertas personalizados para melhorar a experiência dos usuários. |
-| US36 | Como empresa, quero adicionar conteúdos na área do intercambista para oferecer informações úteis durante o processo. |
-| US37 | Como empresa, quero acessar avaliações deixadas pelos intercambistas para identificar pontos fortes e fracos. |
-
----
-
-### Épicos
-
-| **ID do Épico** | **Épico** | **Descrição** |
-|-------------|-------|-----------|
-| EP01 | Acesso e Gerenciamento de Conta | Acesso e edição de login |
-| EP02 | Ferramentas de Autoavaliação | Avaliação de inglês e cultura |
-| EP03 | Exploração de Programas e Promoções | Descoberta e recomendação |
-| EP04 | Suporte Inicial ao Cliente | Chatbot e contato com especialista |
-| EP05 | Acompanhamento do Programa | Área do intercambista |
-| EP06 | Administração da Plataforma | Gestão da empresa |
-| EP07 | Apoio ao Atendimento | Acesso a resultados e dados |
-
----
-
-### Tabela de Temas, Épicos e User Stories
-
-| **ID do Épico** | **Épico**                                 | **US’s relacionadas**                                   |
-|-------------|----------------------------------------|-----------------------------------------------------|
-| EP01        | Acesso e Gerenciamento de Conta        | US01, US02, US03, US04, US16, US17, US24, US25, US26 |
-| EP02        | Ferramentas de Autoavaliação           | US05, US07, US08, US09                              |
-| EP03        | Exploração de Programas e Promoções    | US06, US10, US11, US13, US14                        |
-| EP04        | Suporte Inicial ao Cliente             | US12, US15                                          |
-| EP05        | Acompanhamento do Programa (Intercambista) | US18, US19, US20, US21, US22, US23              |
-| EP06        | Administração da Plataforma (Empresa)  | US31, US32, US33, US34, US35, US36, US37            |
-| EP07        | Apoio ao Atendimento                   | US27, US28, US29, US30                              |
+| Código RF | Requisito | Código US | User Story | Referente a | Épico |
+|-----------|-----------|-----------|------------|-------------|-------|
+| RF01 | Registrar-se como potencial intercambista, preenchendo dados básicos (nome, sobrenome, email, telefone com DDD, cidade, qual a unidade mais próxima do usuário, senha, confirmar senha) | US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos para criar uma conta na plataforma. | Potencial Intercambista | EP01 - Cadastro e Acesso |
+| RF02 | Fazer login na plataforma como potencial intercambista, intercambista e administrador | US02 | Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado. | Todos os usuários | EP01 - Cadastro e Acesso |
+| RF03 | Editar perfil na plataforma como potencial intercambista e administrador | US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. | Potencial Intercambista | EP01 - Cadastro e Acesso |
+| RF04 | Excluir conta da plataforma como potencial intercambista, intercambista e administrador | US04 | Como usuário, quero excluir minha conta da plataforma para encerrar meu vínculo com o sistema. | Potencial Intercambista | EP01 - Cadastro e Acesso |
+| RF05 | Responder um teste para identificar o perfil ideal de intercâmbio do usuário com base nas respostas. | US05 | Como potencial intercambista, quero responder um teste para descobrir qual programa combina mais com meu perfil. | Potencial Intercambista | EP02 - Testes e Quizzes |
+| RF06 | Navegar por programas | US06 | Como potencial intercambista, quero navegar por programas. | Potencial Intercambista | EP03 - Navegação e Exploração de Programas |
+| RF07 | Responder um quiz específico sobre os programas da Canada Intercambio para verificar o entendimento do usuário sobre as opções disponíveis. | US07 | Como potencial intercambista, quero responder um quiz sobre os programas da Canada Intercambio para verificar meu entendimento sobre as opções. | Potencial Intercambista | EP02 - Testes e Quizzes |
+| RF08 | Responder um quiz de nivelamento de inglês com perguntas objetivas elaboradas para avaliar o domínio da língua. | US08 | Como potencial intercambista, quero responder um quiz de nivelamento de inglês para saber meu nível de domínio da língua. | Potencial Intercambista | EP02 - Testes e Quizzes |
+| RF09 | Responder um quiz sobre aspectos culturais e geográficos do Canadá. | US09 | Como potencial intercambista, quero responder um quiz sobre cultura e geografia do Canadá para me preparar melhor para o intercâmbio. | Potencial Intercambista | EP02 - Testes e Quizzes |
+| RF10 | Visualizar sugestão de programa com base nas respostas dos quizzes e testes. | US10 | Como potencial intercambista, quero visualizar sugestões de programas com base nas respostas dos quizzes para facilitar minha decisão. | Potencial Intercambista | EP03 - Navegação e Exploração de Programas |
+| RF11 | Simular o custo estimado dos programas de intercâmbio | US11 | Como potencial intercambista, quero simular o custo estimado dos programas de intercâmbio para planejar meus gastos. | Potencial Intercambista | EP03 - Navegação e Exploração de Programas |
+| RF12 | Visualizar respostas para dúvidas frequentes | US12 | Como potencial intercambista, quero visualizar respostas para dúvidas frequentes para esclarecer minhas principais questões. | Potencial Intercambista | EP03 - Navegação e Exploração de Programas |
+| RF13 | Acessar uma área com promoções ativas. | US13 | Como potencial intercambista, quero acessar uma área com promoções ativas para aproveitar oportunidades de desconto. | Potencial Intercambista | EP03 - Navegação e Exploração de Programas |
+| RF14 | Visualizar informações detalhadas de cada programa (duração, país, valor, requisitos) | US14 | Como potencial intercambista, quero visualizar informações detalhadas de cada programa para comparar e escolher o melhor para mim. | Potencial Intercambista | EP03 - Navegação e Exploração de Programas |
+| RF15 | Solicitar contato com um especialista da Canada Intercambio | US15 | Como potencial intercambista, quero solicitar contato com um especialista da Canada Intercambio para esclarecer dúvidas sobre os programas. | Potencial Intercambista | EP04 - Suporte e Contato |
+| RF16 | Editar perfil na plataforma como intercambista já matriculado (como contato de emergência) | US16 | Como intercambista já matriculado, quero editar meu perfil para atualizar informações como contato de emergência. | Intercambista | EP01 - Cadastro e Acesso |
+| RF17 | Acessar o contrato digital assinado do programa de intercâmbio contratado. | US17 | Como intercambista, quero acessar meu contrato digital assinado para consultar detalhes do meu programa. | Intercambista | EP05 - Área do Intercambista |
+| RF18 | Visualizar atividades no cronograma do programa de intercâmbio | US18 | Como intercambista, quero visualizar as atividades no cronograma do meu programa de intercâmbio para acompanhar minha jornada. | Intercambista | EP05 - Área do Intercambista |
+| RF19 | Criar conta como empresa preenchendo dados básicos (nome, sobrenome, email corporativo, senha, confirmar senha, número, função, filial) | US19 | Como empresa, quero criar uma conta preenchendo meus dados básicos para utilizar a plataforma de intercâmbio. | Empresa | EP01 - Cadastro e Acesso |
+| RF20 | Alterar tipo de conta de um potencial intercambista para uma conta de intercambista após um fechamento de contrato. | US20 | Como empresa, quero alterar o tipo de conta de um potencial intercambista para intercambista após o fechamento de contrato para refletir o status atual. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF21 | Consultar informações preenchidas e perfil do potencial intercambista para atendimento. | US21 | Como empresa, quero consultar as informações e o perfil de um potencial intercambista para realizar um atendimento mais assertivo. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF22 | Consultar respostas e recomendações do quiz do programa | US22 | Como empresa, quero consultar as respostas e recomendações do quiz do programa para entender o perfil do intercambista. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF23 | Consultar o nível de inglês do aluno baseado no quiz | US23 | Como empresa, quero consultar o nível de inglês do aluno baseado no quiz para indicar os programas adequados. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF24 | Ver desempenho do aluno no quiz cultural | US24 | Como empresa, quero ver o desempenho do aluno no quiz cultural para avaliar seu conhecimento sobre o Canadá. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF25 | Cadastrar o contrato do intercambista na plataforma | US25 | Como empresa, quero cadastrar o contrato do intercambista na plataforma para formalizar a contratação. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF26 | Inserir as atividades no cronograma de cada programa | US26 | Como empresa, quero inserir as atividades no cronograma dos programas para organizar a agenda dos intercambistas. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF27 | Editar as atividades no cronograma de cada programa | US27 | Como empresa, quero editar as atividades no cronograma para manter o planejamento atualizado. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF28 | Adicionar promoções | US28 | Como empresa, quero adicionar promoções para atrair mais potenciais intercambistas. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF29 | Atualizar informações de programas existentes | US29 | Como empresa, quero atualizar informações de programas existentes para garantir que os dados estejam corretos e atualizados. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF30 | Cadastrar novos programas de intercâmbio | US30 | Como empresa, quero cadastrar novos programas de intercâmbio para expandir a oferta da plataforma. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF31 | Inserir dados de novos intercambistas contratados | US31 | Como empresa, quero inserir os dados de novos intercambistas contratados para começar o acompanhamento do programa. | Empresa | EP06 - Gestão da Conta Corporativa / Empresa |
+| RF32 | Excluir conta do intercambista após a conclusão do programa | US32 | Como empresa, quero excluir a conta de um intercambista após a conclusão do programa para manter o sistema limpo e organizado. | Empresa | EP01 - Cadastro e Acesso |
 
 ---
 
 ## Priorização do Backlog Geral
 
-A priorização foi feita com base na técnica MoSCoW, conforme descrito abaixo:
+A priorização de valor de negócio foi feita com base na técnica MoSCoW, conforme descrito abaixo:
 
 - **Must Have (Essenciais):** Funcionalidades sem as quais o MVP não é viável. Devem ser entregues obrigatoriamente na primeira versão.
 - **Should Have (Importantes):** São importantes, mas podem ser entregues após o MVP sem comprometer sua funcionalidade.
@@ -127,50 +68,62 @@ Para definir essa classificação, aplicamos uma metodologia baseada em três pe
 
 Cada resposta afirmativa somou 1 ponto. As histórias com 3 pontos foram classificadas como **Must**, com 2 pontos como **Should**, com 1 ponto como **Could**, e com 0 ponto como **Won’t**.
 
+Para a priorização técnica, aplicamos uma metodologia baseada em três perguntas-chave (perguntas-passe), com o objetivo de pontuar cada história de usuário de 1 a 4, considerando os principais obstáculos que podem dificultar sua implementação. Quanto maior a pontuação total, maior o esforço necessário.
+
+    1.  A tarefa envolve lógica difícil, uso de tecnologias novas ou integrações técnicas complexas?
+    2.  A tarefa vai demandar muitos dias úteis  para ser concluída?
+    3.  Essa tarefa depende de APIs de terceiros, serviços externos ou parceiros fora do nosso controle?
+
+Feitas as duas priorizações, classificamos cada uma em A (alto, >=2) ou B (baixo, <2), e dividimos em quadrantes:
+
+- I - AB - Ver e agir
+- II - AA - Complexos
+- III - BB - Prioritários
+- IV - BA - Descartar
+
+O diagrama de quadrantes fica da seguinte forma:
+
+![Diagrama de Quadrantes](docs/images/diagrama-M-T.png)
+
 Também levamos em consideração as diretrizes estratégicas da empresa:
 
-- A prioridade principal é **captar clientes**.
+- A prioridade principal é captar clientes.
 - A área do intercambista não será foco do MVP.
 - A área da empresa precisa garantir autonomia para cadastrar e editar seus próprios programas.
 
-### Tabela de User Stories
+### Tabela
 
-| **Código** | **User Story** | **Pontuação** | **Classificação** |
-|------------|----------------|----------------|--------------------|
-| US01 | Como visitante, quero criar uma conta na plataforma para que eu possa acessar os recursos disponíveis. | 3 | **Must Have** |
-| US02 | Como usuário, quero fazer login na plataforma para acessar minha conta e dados pessoais. | 3 | **Must Have** |
-| US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. | 2 | **Should Have** |
-| US04 | Como usuário, quero excluir minha conta da plataforma para encerrar meu vínculo com o sistema. | 1 | **Could Have** |
-| US05 | Como interessado em intercâmbio, quero realizar um teste de perfil gamificado para descobrir qual programa mais combina comigo. | 3 | **Must Have** |
-| US06 | Como usuário, quero visualizar os programas de intercâmbio de forma dinâmica para facilitar minha escolha. | 3 | **Must Have** |
-| US07 | Como interessado, quero realizar o quiz do programa da Canada Intercâmbio para saber meu nível de conhecimento sobre o programa. | 2 | **Should Have** |
-| US08 | Como usuário, quero realizar um quiz de nivelamento de inglês para avaliar meu nível atual. | 2 | **Should Have** |
-| US09 | Como usuário, quero realizar um quiz cultural sobre o Canadá para me preparar melhor para a experiência. | 1 | **Could Have** |
-| US10 | Como usuário, quero visualizar o programa de intercâmbio mais adequado ao meu perfil. | 3 | **Must Have** |
-| US11 | Como usuário, quero simular o custo estimado dos programas de intercâmbio para planejar meu orçamento. | 3 | **Must Have** |
-| US12 | Como usuário, quero esclarecer dúvidas comuns com um chatbot para obter ajuda rapidamente. | 2 | **Should Have** |
-| US13 | Como usuário, quero visualizar promoções gerais para aproveitar oportunidades disponíveis. | 2 | **Should Have** |
-| US14 | Como usuário, quero visualizar informações específicas de cada programa. | 2 | **Should Have** |
-| US15 | Como interessado, quero poder entrar em contato com o especialista após realizar o quiz de programas específicos. | 3 | **Must Have** |
-| US16 | Como intercambista, quero fazer login na plataforma para acompanhar meu programa de intercâmbio. | 0 | **Won’t Have** |
-| US17 | Como intercambista, quero editar meu perfil para manter minhas informações atualizadas durante o programa. | 0 | **Won’t Have** |
-| US18 | Como intercambista, quero visualizar notícias sobre o local de intercâmbio contratado. | 0 | **Won’t Have** |
-| US19 | Como intercambista, quero acompanhar a contagem regressiva para o início do meu intercâmbio para me organizar melhor. | 0 | **Won’t Have** |
-| US20 | Como intercambista, quero visualizar o contrato do programa para entender meus direitos e deveres. | 0 | **Won’t Have** |
-| US21 | Como intercambista, quero cadastrar um contato de emergência para situações imprevistas. | 0 | **Won’t Have** |
-| US22 | Como intercambista, quero visualizar dicas sobre o local do intercâmbio para me preparar culturalmente e logisticamente. | 0 | **Won’t Have** |
-| US23 | Como intercambista, quero visualizar as atividades do cronograma para acompanhar minha rotina no intercâmbio. | 0 | **Won’t Have** |
-| US24 | Como empresa, quero criar meu perfil para divulgar meus programas na plataforma. | 2 | **Should Have** |
-| US25 | Como empresa, quero editar meu perfil para manter as informações da organização atualizadas. | 2 | **Should Have** |
-| US26 | Como empresa, quero excluir minha conta para encerrar minha atuação na plataforma. | 1 | **Could Have** |
-| US27 | Como atendente, quero acessar dados do potencial intercambista para personalizar o atendimento. | 2 | **Should Have** |
-| US28 | Como atendente, quero acessar o resultado do quiz do programa para entender o perfil do usuário. | 2 | **Should Have** |
-| US29 | Como atendente, quero acessar o resultado do quiz de nivelamento de inglês para oferecer opções compatíveis. | 2 | **Should Have** |
-| US30 | Como atendente, quero acessar o resultado do quiz cultural sobre o Canadá para auxiliar na orientação do cliente. | 1 | **Could Have** |
-| US31 | Como empresa, quero cadastrar contratos para formalizar acordos com os intercambistas. | 1 | **Could Have** |
-| US32 | Como empresa, quero cadastrar atividades no cronograma do programa para organizar as etapas do intercâmbio. | 0 | **Won’t Have** |
-| US33 | Como empresa, quero adicionar promoções para atrair mais interessados. | 2 | **Should Have** |
-| US34 | Como empresa, quero editar os programas disponíveis para mantê-los atualizados. | 3 | **Must Have** |
-| US35 | Como empresa, quero adicionar novos programas de intercâmbio para ampliar minha oferta. | 3 | **Must Have** |
-| US36 | Como empresa, quero cadastrar intercambistas para iniciar o processo de intercâmbio. | 0 | **Won’t Have** |
-| US37 | Como empresa, quero excluir a conta de um intercambista quando necessário para manter o sistema atualizado. | 0 | **Won’t Have** |
+| Código | User Story | Pontuação | MoSCoW | Classificação MoSCoW | Pontuação Técnica | Classificação |
+|--------|------------|-----------|--------|-----------------------|-------------------|---------------|
+| US01 | Como potencial intercambista, quero me registrar preenchendo meus dados básicos para criar uma conta na plataforma. | 3A | Must Have | 1B | AB - 1 |
+| US02 | Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado | 3A | Must Have | 1B | AB - 1 |
+| US03 | Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas. | 2A | Should Have | 1B | AB - 1 |
+| US04 | Como usuário, quero excluir minha conta da plataforma para encerrar meu vínculo com o sistema. | 1B | Could Have | 1B | BB - 3 |
+| US05 | Como potencial intercambista, quero responder um teste para descobrir qual programa combina mais com meu perfil. | 3A | Must Have | 3A | AA - 2 |
+| US06 | Como potencial intercambista, quero navegar por programas. | 3A | Must Have | 2A | AA - 2 |
+| US07 | Como potencial intercambista, quero responder um quiz sobre os programas da Canada Intercambio para verificar meu entendimento sobre as opções. | 3A | Should Have | 2A | AA - 2 |
+| US08 | Como potencial intercambista, quero responder um quiz de nivelamento de inglês para saber meu nível de domínio da língua. | 1B | Could Have | 2B | BB - 3 |
+| US09 | Como potencial intercambista, quero responder um quiz sobre cultura e geografia do Canadá para me preparar melhor para o intercâmbio. | 1B | Could Have | 2A | BA - 4 |
+| US10 | Como potencial intercambista, quero visualizar sugestões de programas com base nas respostas dos quizzes para facilitar minha decisão. | 3A | Must Have | 3A | AA - 2 |
+| US11 | Como potencial intercambista, quero simular o custo estimado dos programas de intercâmbio para planejar meus gastos. | 1A | Should Have | 3B | BA - 4 |
+| US12 | Como potencial intercambista, quero visualizar respostas para dúvidas frequentes para esclarecer minhas principais questões. | 3A | Must Have | 2A | AA - 2 |
+| US13 | Como potencial intercambista, quero acessar uma área com promoções ativas para aproveitar oportunidades de desconto. | 1B | Should Have | 1B | BB - 3 |
+| US14 | Como potencial intercambista, quero visualizar informações detalhadas de cada programa para comparar e escolher o melhor para mim. | 3A | Must Have | 2A | AA - 2 |
+| US15 | Como potencial intercambista, quero solicitar contato com um especialista da Canada Intercambio para esclarecer dúvidas sobre os programas. | 3A | Must Have | 1B | AB - 1 |
+| US16 | Como intercambista já matriculado, quero editar meu perfil para atualizar informações como contato de emergência | 1B | Could Have | 1B | BB - 3 |
+| US17 | Como intercambista, quero acessar meu contrato digital assinado para consultar detalhes do meu programa. | 1B | Could Have | 1B | BB - 3 |
+| US18 | Como intercambista, quero visualizar as atividades no cronograma do meu programa de intercâmbio para acompanhar minha jornada | 1B | Could Have | 1A | BB - 3 |
+| US19 | Como empresa, quero criar uma conta preenchendo meus dados básicos para utilizar a plataforma de intercâmbio. | 3A | Must Have | 1B | AB - 1 |
+| US20 | Como empresa, quero alterar o tipo de conta de um potencial intercambista para intercambista após o fechamento de contrato para refletir o status atual. | 1B | Could Have | 1B | BB - 3 |
+| US21 | Como empresa, quero consultar as informações e o perfil de um potencial intercambista para realizar um atendimento mais assertivo. | 1B | Should Have | 1B | BB - 3 |
+| US22 | Como empresa, quero consultar as respostas e recomendações do quiz do programa para entender o perfil do intercambista. | 1B | Should Have | 1B | BB - 3 |
+| US23 | Como empresa, quero consultar o nível de inglês do aluno baseado no quiz para indicar os programas adequados. | 1B | Should Have | 1B | BB - 3 |
+| US24 | Como empresa, quero ver o desempenho do aluno no quiz cultural para avaliar seu conhecimento sobre o Canadá. | 1B | Should Have | 1B | BB - 3 |
+| US25 | Como empresa, quero cadastrar o contrato do intercambista na plataforma para formalizar a contratação. | 1B | Could Have | 1B | BB - 3 |
+| US26 | Como empresa, quero inserir as atividades no cronograma dos programas para organizar a agenda dos intercambistas. | 1B | Could Have | 1B | BB - 3 |
+| US27 | Como empresa, quero editar as atividades no cronograma para manter o planejamento atualizado. | 1B | Could Have | 1B | BB - 3 |
+| US28 | Como empresa, quero adicionar promoções para atrair mais potenciais intercambistas. | 1B | Should Have | 1B | BB - 3 |
+| US29 | Como empresa, quero atualizar informações de programas existentes para garantir que os dados estejam corretos e atualizados. | 3A | Must Have | 2A | AA - 2 |
+| US30 | Como empresa, quero cadastrar novos programas de intercâmbio para expandir a oferta da plataforma. | 3A | Must Have | 2A | AA - 2 |
+| US31 | Como empresa, quero inserir os dados de novos intercambistas contratados para começar o acompanhamento do programa. | 1B | Could Have | 1B | BB - 3 |
+| US32 | Como empresa, quero excluir a conta de um intercambista após a conclusão do programa para manter o sistema limpo e organizado. | 1B | Could Have | 1B | BB - 3 |
