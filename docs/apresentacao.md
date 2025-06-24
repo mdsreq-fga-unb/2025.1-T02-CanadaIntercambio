@@ -19,7 +19,7 @@ Abaixo está o vídeo de apresentação da Unidade 2:
 # Apresentação - Unidade 3
 Abaixo está o vídeo de apresentação da Unidade 3: 
 
-<iframe width="100%" height="400" src="https://www.youtube.com/watch?v=7fnWqhGlQxY" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/7fnWqhGlQxY?si=1GernFJ5ftVwPXfN" frameborder="0" allowfullscreen></iframe>
 
 > *Nota: Caso o vídeo não carregue, você pode assistir diretamente pelo [YouTube](https://www.youtube.com/watch?v=7fnWqhGlQxY). 
 
