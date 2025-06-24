@@ -41,7 +41,7 @@ As tecnologias escolhidas garantem performance e escalabilidade:
 
 - **Front-end**: React Native  
 - **Back-end**: Node.js + Express  
-- **Banco de dados**: PostgreSQL
+- **Banco de dados**: PostgreSQL + Prisma ORM 
 
 ---
 

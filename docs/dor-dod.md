@@ -11,14 +11,14 @@ A Definition of Ready (DoR) tem como objetivo garantir que os itens do backlog e
 
 Os critérios listados a seguir são verificáveis, objetivos e de fácil entendimento, adequados à dinâmica iterativa do RAD:
 
-- A user story está escrita no formato padrão ("Como [tipo_de_usuário], quero [ação], para [benefício]");
-- A user story está claramente relacionada aos objetivos estratégicos do projeto, sendo possível identificar como a funcionalidade contribui para os resultados esperados pelo negócio;
+- A user story está escrita no formato padrão ("Como [tipo de usuário], quero [ação], para [benefício]").
+- A user story está claramente relacionada aos objetivos estratégicos do projeto, sendo possível identificar como a funcionalidade contribui para os resultados esperados pelo negócio.
 - O escopo da funcionalidade está delimitado e validado com o cliente;
-- Contém critérios de aceitação claros e objetivos;
-- Está priorizada no backlog com base no modelo MoSCoW;
-- Todas as dependências com outras funcionalidades estão mapeadas;
-- Está dentro da capacidade do ciclo do RAD;
-- As regras de negócio estão descritas em formato BDD (Given-When-Then), garantindo clareza sobre os comportamentos esperados da funcionalidade. Esses cenários estão acessíveis para a equipe e alinhados aos critérios de aceitação da User Story.
+- Contém critérios de aceitação claros e objetivos.
+- Está priorizada no backlog com base no modelo MoSCoW.
+- Todas as dependências com outras funcionalidades estão mapeadas.
+- Está dentro da capacidade do ciclo do RAD
+- As regras de negócio estão descritas em formato BDD (Given-When-Then), garantindo clareza sobre os comportamentos esperados da funcionalidade. Esses cenários estão acessíveis para a equipe e alinhados aos critérios de aceitação da User Story
 
 ---
 
