@@ -29,8 +29,7 @@ Este documento apresenta os critérios de aceitação completos para os Product 
 - O cadastro só é salvo se todas as informações essenciais forem preenchidas corretamente.
 - Um identificador único é gerado automaticamente para o paciente após o registro.
 
-<details>
-<summary><strong>BDDs (clique para expandir)</strong></summary>
+**BDDs:** 
 
 ```gherkin
 Dado que o usuário acessa o formulário de cadastro do paciente,
@@ -41,8 +40,6 @@ Dado que o usuário concluiu o cadastro do paciente,
 Quando o sistema processa o registro,
 Então um identificador único é gerado automaticamente para o paciente.
 ```
-
-</details>
 
 ---
 
