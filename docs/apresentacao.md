@@ -19,9 +19,9 @@ Abaixo está o vídeo de apresentação da Unidade 2:
 # Apresentação - Unidade 3
 Abaixo está o vídeo de apresentação da Unidade 2: 
 
-<iframe width="100%" height="400" src="https://youtu.be/7fnWqhGlQxY" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://youtu.be/7fnWqhGlQxY?si=Ku-DxoBV8QB46KoK" frameborder="0" allowfullscreen></iframe>
 
-> *Nota: Caso o vídeo não carregue, você pode assistir diretamente pelo [YouTube](https://youtu.be/7fnWqhGlQxY). 
+> *Nota: Caso o vídeo não carregue, você pode assistir diretamente pelo [YouTube](https://youtu.be/7fnWqhGlQxY?si=Ku-DxoBV8QB46KoK). 
 
 ---
 
