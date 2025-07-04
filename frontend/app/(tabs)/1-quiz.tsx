@@ -7,7 +7,7 @@ export default function QuizInicial() {
       <View style={styles.header}>
         <View style={styles.logoPlaceholder} />
         <Text style={styles.headerText}>
-          Canada <Text style={styles.headerLight}>Intercâmbio</Text>
+          Canada <Text style={styles.headerLight}>Intercambio</Text>
         </Text>
       </View>
 

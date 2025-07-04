@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
+import { router } from 'expo-router';
 
 //verificar a curva do header e footer
 
@@ -38,13 +39,13 @@ const OnboardNormal = () => {
         <Text style={[styles.description, { fontSize: descriptionFontSize }]}>
           Descubra programas, filtre opções, simule custos e tire dúvidas com a ajuda do aplicativo CanadaWay.
         </Text>
-        <TouchableOpacity style={[styles.button, { width: buttonWidth }]}>
+        <TouchableOpacity style={[styles.button, { width: buttonWidth }]} onPress={() => router.push('/login')}>
           <Text style={[styles.buttonText, { fontSize: buttonFontSize }]}>Já tenho conta</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, { width: buttonWidth }]}>
+        <TouchableOpacity style={[styles.button, { width: buttonWidth }]} onPress={() => router.push('/cadastro_adm')}>
           <Text style={[styles.buttonText, { fontSize: buttonFontSize }]}>Criar conta como administrador</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, { width: buttonWidth }]}>
+        <TouchableOpacity style={[styles.button, { width: buttonWidth }]} onPress={() => router.push('/cadastro_visitante')}>
           <Text style={[styles.buttonText, { fontSize: buttonFontSize }]}>Criar conta como visitante</Text>
         </TouchableOpacity>
       </View>
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   topCurve: {
-    backgroundColor: '#EE3224',
+    backgroundColor: '#CC2027',
     borderBottomLeftRadius: width * 0.25,
     borderBottomRightRadius: width * 0.25,
     transform: [{ scaleX: 1.5 }],
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#EE3224',
+    color: '#CC2027',
     marginBottom: height * 0.025,
     lineHeight: width * 0.075,
   },
@@ -112,12 +113,12 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   buttonText: {
-    color: '#EE3224',
+    color: '#CC2027',
     fontWeight: 'bold',
     textAlign: 'center',
   },
   bottomCurve: {
-    backgroundColor: '#EE3224',
+    backgroundColor: '#CC2027',
     borderTopLeftRadius: width * 0.25,
     borderTopRightRadius: width * 0.25,
     transform: [{ scaleX: 1.5 }],

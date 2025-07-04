@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
+import { router } from 'expo-router';
 
 export default function CadastroVisitante() {
   const [nome, setNome] = useState('');
@@ -17,6 +18,7 @@ export default function CadastroVisitante() {
 
   return (
     <View style={styles.container}>
+      {/* Header */}
       <View style={styles.header}>
         <Image
           source={require('../../assets/images/login_logo.png')} 
@@ -73,7 +75,7 @@ export default function CadastroVisitante() {
             onValueChange={setUnidade}
             style={styles.picker}
           >
-            <Picker.Item label="Unidade Mais Próxima de Você" value="" color="#888"/>
+            <Picker.Item label="Filial" value="" color="#888"/>
             <Picker.Item label="São Paulo" value="sp" color="#888"/>
             <Picker.Item label="Rio de Janeiro" value="rj" color="#888"/>
           </Picker>
@@ -106,7 +108,7 @@ export default function CadastroVisitante() {
             <Text style={styles.link}>políticas de privacidade</Text>.
           </Text>
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/programas')}>
           <Text style={styles.buttonText}>Criar</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     overflow: 'hidden',
   },
-  picker: { width: '100%', height: 40 },
+  picker: { width: '100%', height: 40 , color: '#888', borderWidth: 0, backgroundColor: 'transparent', paddingHorizontal: 10 },
   checkboxContainer: { flexDirection: 'row', alignItems: 'flex-start', marginVertical: 10, width: 300},
   checkboxText: { flex: 1, fontSize: 12, color: '#333', marginLeft: 8 },
   link: { color: '#cb2328', textDecorationLine: 'underline' },

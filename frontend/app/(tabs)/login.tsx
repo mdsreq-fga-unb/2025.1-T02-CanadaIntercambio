@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
@@ -30,14 +31,14 @@ export default function LoginScreen() {
           placeholderTextColor="#888"
           secureTextEntry
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/programas')}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push('/nada')}>
           <Text style={styles.forgot}>Esqueceu sua senha?</Text>
         </TouchableOpacity>
         <Text style={styles.or}>ou</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push('/cadastro_visitante')}>
           <Text style={styles.register}>Cadastre-se</Text>
         </TouchableOpacity>
       </View>
