@@ -1,6 +1,23 @@
+import React, { useState } from 'react'; // Adicionado 'useState' para gerenciar o estado do pop-up
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import Popup from '../../components/PopupRN'; // Linha modificada: Importa o componente Popup adaptado para React Native, ajustando o caminho relativo
 
 export default function QuizInicial() {
+  // Linha adicionada: Declara um estado 'showPopup' para controlar a visibilidade do pop-up. Inicialmente é 'false' (oculto).
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Linha adicionada: Função que será chamada quando o botão 'Saber mais sobre esse' for pressionado.
+  // Ela define 'showPopup' como 'true', o que fará o pop-up aparecer.
+  const handleSaberMais = () => {
+    setShowPopup(true);
+  };
+
+  // Linha adicionada: Função que será chamada quando o pop-up precisar ser fechado (ex: clicando no botão 'Obrigada!').
+  // Ela define 'showPopup' como 'false', o que fará o pop-up desaparecer.
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -15,8 +32,6 @@ export default function QuizInicial() {
       <View style={styles.content}>
         <Text style={styles.title}>Resultado do Quiz!</Text>
 
-    
-
         <Text style={styles.subtitle}>
           <Text style={styles.highlight}>High School</Text> {'\n'}é o ideal para você!
         </Text>
@@ -29,7 +44,8 @@ export default function QuizInicial() {
           </Text>
         </View>
 
-        <Pressable style={styles.button}>
+        {/* Linha modificada: Adicionado o 'onPress' para chamar a função 'handleSaberMais' quando o botão for clicado. */}
+        <Pressable style={styles.button} onPress={handleSaberMais}>
           <Text style={styles.buttonText}>Saber mais sobre esse</Text>
         </Pressable>
 
@@ -40,6 +56,10 @@ export default function QuizInicial() {
 
       {/* Footer */}
       <View style={styles.footer} />
+
+      {/* Linha adicionada: Renderiza o componente Popup. Sua visibilidade é controlada pelo estado 'showPopup'. */}
+      {/* A função 'handleClosePopup' é passada para o Popup para que ele possa se fechar. */}
+      <Popup visible={showPopup} onClose={handleClosePopup} />
     </View>
   );
 }
@@ -68,7 +88,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
-    paddingTop: 40, // ✅ Adiciona mais espaço superior
+    paddingTop: 40, // Adiciona mais espaço superior
   },
   headerLight: {
     fontWeight: '300',
