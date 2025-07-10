@@ -8,6 +8,20 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface RegisterRequest {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phone?: string;
+  city?: string;
+  nearestUnit?: string;
+  userType: 'visitante' | 'intercambista' | 'admin';
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  internalRole?: string;
+}
+
 export interface AuthResponse {
   success: boolean;
   message: string;
@@ -78,23 +92,104 @@ class AuthService {
   // Fazer login
   async login(loginData: LoginRequest): Promise<AuthResponse> {
     try {
+      console.log('Tentando login para:', loginData.email);
+      
       const response: AxiosResponse<AuthResponse> = await this.api.post(
         API_CONFIG.ENDPOINTS.LOGIN,
         loginData
       );
 
+      console.log('Resposta da API:', response.status, response.data);
+
       if (response.data.success && response.data.data) {
         // Salvar token e dados do usuário
         await AsyncStorage.setItem(STORAGE_KEYS.TOKEN, response.data.data.token);
         await AsyncStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.data.data.user));
+        
+        console.log('Token e usuário salvos com sucesso');
       }
 
       return response.data;
     } catch (error: any) {
-      if (error.response?.data) {
-        throw new Error(error.response.data.message || 'Erro ao fazer login');
+      console.error('Erro no authService.login:', error);
+      
+      if (error.response) {
+        // Erro da API com resposta
+        const status = error.response.status;
+        const message = error.response.data?.message;
+        
+        console.log('Erro da API:', status, message);
+        
+        if (status === 401) {
+          throw new Error('E-mail ou senha incorretos');
+        } else if (status === 404) {
+          throw new Error('Usuário não encontrado');
+        } else if (status === 422) {
+          throw new Error(message || 'Dados inválidos');
+        } else {
+          throw new Error(message || 'Erro do servidor');
+        }
+      } else if (error.request) {
+        // Erro de rede
+        console.log('Erro de rede:', error.request);
+        throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
+      } else {
+        // Outro tipo de erro
+        console.log('Erro desconhecido:', error.message);
+        throw new Error('Erro inesperado: ' + error.message);
       }
-      throw new Error('Erro de conexão. Verifique sua internet.');
+    }
+  }
+
+  // Fazer registro
+  async register(registerData: RegisterRequest): Promise<AuthResponse> {
+    try {
+      console.log('Tentando registrar usuário:', registerData.email);
+      
+      const response: AxiosResponse<AuthResponse> = await this.api.post(
+        API_CONFIG.ENDPOINTS.REGISTER,
+        registerData
+      );
+
+      console.log('Resposta da API de registro:', response.status, response.data);
+
+      if (response.data.success && response.data.data) {
+        // Salvar token e dados do usuário
+        await AsyncStorage.setItem(STORAGE_KEYS.TOKEN, response.data.data.token);
+        await AsyncStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.data.data.user));
+        
+        console.log('Token e usuário salvos com sucesso após registro');
+      }
+
+      return response.data;
+    } catch (error: any) {
+      console.error('Erro no authService.register:', error);
+      
+      if (error.response) {
+        // Erro da API com resposta
+        const status = error.response.status;
+        const message = error.response.data?.message;
+        
+        console.log('Erro da API de registro:', status, message);
+        
+        if (status === 400) {
+          throw new Error(message || 'Dados de registro inválidos');
+        } else if (status === 409) {
+          throw new Error('E-mail já está em uso');
+        } else if (status === 422) {
+          throw new Error(message || 'Dados inválidos');
+        } else {
+          throw new Error(message || 'Erro do servidor');
+        }
+      } else if (error.request) {
+        // Erro de rede
+        console.log('Erro de rede no registro:', error.request);
+        throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
+      } else {
+        // Outro tipo de erro
+        console.log('Erro desconhecido no registro:', error.message);
+        throw new Error('Erro inesperado: ' + error.message);
+      }
     }
   }
 

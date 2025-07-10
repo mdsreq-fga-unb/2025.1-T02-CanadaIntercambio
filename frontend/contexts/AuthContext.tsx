@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { authService, LoginRequest } from '../services/authService';
+import { authService, LoginRequest, RegisterRequest } from '../services/authService';
 
 interface User {
   id: number;
@@ -14,6 +14,7 @@ interface AuthContextData {
   loading: boolean;
   isAuthenticated: boolean;
   login: (credentials: LoginRequest) => Promise<void>;
+  register: (registerData: RegisterRequest) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -49,15 +50,59 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = async (credentials: LoginRequest) => {
     try {
+      setLoading(true);
       const response = await authService.login(credentials);
       
       if (response.success && response.data) {
         setUser(response.data.user);
+        console.log('Login realizado com sucesso:', response.data.user.email);
       } else {
         throw new Error(response.message || 'Erro ao fazer login');
       }
-    } catch (error) {
-      throw error; // Repassa o erro para o componente
+    } catch (error: any) {
+      console.error('Erro no login:', error);
+      
+      // Melhorar as mensagens de erro
+      if (error.message.includes('401') || error.message.includes('Unauthorized')) {
+        throw new Error('E-mail ou senha incorretos');
+      } else if (error.message.includes('404')) {
+        throw new Error('Usuário não encontrado');
+      } else if (error.message.includes('connection') || error.message.includes('network')) {
+        throw new Error('Erro de conexão. Verifique sua internet.');
+      } else {
+        throw new Error(error.message || 'Erro inesperado. Tente novamente.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const register = async (registerData: RegisterRequest) => {
+    try {
+      setLoading(true);
+      const response = await authService.register(registerData);
+      
+      if (response.success && response.data) {
+        setUser(response.data.user);
+        console.log('Registro realizado com sucesso:', response.data.user.email);
+      } else {
+        throw new Error(response.message || 'Erro ao fazer registro');
+      }
+    } catch (error: any) {
+      console.error('Erro no registro:', error);
+      
+      // Melhorar as mensagens de erro
+      if (error.message.includes('409') || error.message.includes('E-mail já está em uso')) {
+        throw new Error('E-mail já está em uso');
+      } else if (error.message.includes('400') || error.message.includes('inválidos')) {
+        throw new Error('Dados inválidos. Verifique as informações.');
+      } else if (error.message.includes('connection') || error.message.includes('network')) {
+        throw new Error('Erro de conexão. Verifique sua internet.');
+      } else {
+        throw new Error(error.message || 'Erro inesperado. Tente novamente.');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,6 +123,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     isAuthenticated: !!user,
     login,
     logout,
+    register,
   };
 
   return (

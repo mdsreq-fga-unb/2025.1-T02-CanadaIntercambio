@@ -32,7 +32,7 @@ export const Input: React.FC<InputProps> = ({
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginBottom: 10,
+    marginBottom: 15,
   },
   label: {
     fontSize: 14,
@@ -42,13 +42,14 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    height: 40,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
-    paddingHorizontal: 10,
+    height: 48,
+    backgroundColor: '#f8f9fa',
+    borderRadius: 8,
+    paddingHorizontal: 15,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: 'transparent',
+    borderColor: '#dee2e6',
+    color: '#333',
   },
   inputError: {
     borderColor: '#e74c3c',
@@ -58,5 +59,6 @@ const styles = StyleSheet.create({
     color: '#e74c3c',
     fontSize: 12,
     marginTop: 5,
+    marginLeft: 5,
   },
 });

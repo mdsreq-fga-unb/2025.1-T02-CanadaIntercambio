@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Alert, ScrollView } from 'react-native';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { Toast } from '../../components/Toast';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLoginForm } from '../../hooks/useLoginForm';
 
@@ -20,6 +21,24 @@ export default function LoginScreen() {
     clearErrors,
   } = useLoginForm();
 
+  const [toast, setToast] = useState<{
+    visible: boolean;
+    message: string;
+    type: 'success' | 'error' | 'info';
+  }>({
+    visible: false,
+    message: '',
+    type: 'info',
+  });
+
+  const showToast = (message: string, type: 'success' | 'error' | 'info' = 'info') => {
+    setToast({ visible: true, message, type });
+  };
+
+  const hideToast = () => {
+    setToast(prev => ({ ...prev, visible: false }));
+  };
+
   const handleLogin = async () => {
     // Limpar erros anteriores
     clearErrors();
@@ -34,19 +53,15 @@ export default function LoginScreen() {
     try {
       await login({ email: email.trim(), password });
       
-      // Sucesso - redirecionar
-      Alert.alert(
-        'Sucesso!', 
-        'Login realizado com sucesso',
-        [{ text: 'OK', onPress: () => router.push('/programas') }]
-      );
+      // Sucesso - redirecionar imediatamente
+      console.log('Login realizado com sucesso, redirecionando...');
+      router.replace('/');
+      
     } catch (error: any) {
-      // Erro - mostrar mensagem
-      Alert.alert(
-        'Erro no Login',
-        error.message || 'Erro inesperado. Tente novamente.',
-        [{ text: 'OK' }]
-      );
+      // Erro - mostrar toast de erro
+      const errorMessage = error.message || 'Erro inesperado. Tente novamente.';
+      showToast(errorMessage, 'error');
+      console.error('Erro no login:', error);
     } finally {
       setLoading(false);
     }
@@ -107,11 +122,14 @@ export default function LoginScreen() {
             />
             
             <Button
-              title="Entrar"
+              title={loading ? "Entrando..." : "Entrar"}
               onPress={handleLogin}
               loading={loading}
-              disabled={loading}
-              style={styles.loginButton}
+              disabled={loading || !email.trim() || !password}
+              style={[
+                styles.loginButton,
+                (loading || !email.trim() || !password) && styles.loginButtonDisabled
+              ]}
             />
           </View>
           
@@ -138,6 +156,14 @@ export default function LoginScreen() {
       </ScrollView>
       
       <View style={styles.footer} />
+
+      {/* Toast para feedback */}
+      <Toast
+        visible={toast.visible}
+        message={toast.message}
+        type={toast.type}
+        onHide={hideToast}
+      />
     </View>
   );
 }
@@ -164,44 +190,53 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     justifyContent: 'center',
     paddingHorizontal: 20,
+    minHeight: 500,
   },
   welcome: { 
-    fontSize: 22, 
+    fontSize: 24, 
     fontWeight: 'bold', 
     color: '#cb2328', 
-    marginBottom: 20 
+    marginBottom: 20,
+    textAlign: 'center',
   },
   logo: { 
-    width: 300, 
+    width: '80%',
+    maxWidth: 300, 
     height: 90, 
     marginBottom: 30 
   },
   form: {
     width: '100%',
-    maxWidth: 300,
+    maxWidth: 350,
     alignItems: 'center',
   },
   loginButton: {
     width: '100%',
-    marginVertical: 10,
+    marginVertical: 15,
+  },
+  loginButtonDisabled: {
+    opacity: 0.6,
   },
   forgot: { 
     color: '#cb2328', 
-    marginTop: 10, 
+    marginTop: 15, 
     fontWeight: 'bold', 
-    textAlign: 'center' 
+    textAlign: 'center',
+    fontSize: 16,
   },
   or: { 
     color: '#cb2328', 
     marginTop: 30, 
     fontWeight: 'bold', 
-    textAlign: 'center' 
+    textAlign: 'center',
+    fontSize: 16,
   },
   register: { 
     color: '#cb2328', 
-    marginTop: 5, 
+    marginTop: 10, 
     fontWeight: 'bold', 
-    textAlign: 'center' 
+    textAlign: 'center',
+    fontSize: 16,
   },
   disabledText: {
     opacity: 0.5,

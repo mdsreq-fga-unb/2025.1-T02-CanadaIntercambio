@@ -25,69 +25,88 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const isDisabled = disabled || loading;
 
-  // Criar estilo dinâmico para o botão
-  const getButtonStyle = () => {
-    let buttonStyle = { ...styles.button };
+  const getButtonStyles = () => {
+    const baseStyles = [styles.button];
     
-    // Aplicar variante
-    if (variant === 'primary') {
-      buttonStyle = { ...buttonStyle, ...styles.primaryButton };
-    } else if (variant === 'secondary') {
-      buttonStyle = { ...buttonStyle, ...styles.secondaryButton };
-    } else if (variant === 'outline') {
-      buttonStyle = { ...buttonStyle, ...styles.outlineButton };
+    // Variant styles
+    switch (variant) {
+      case 'primary':
+        baseStyles.push(styles.primaryButton);
+        break;
+      case 'secondary':
+        baseStyles.push(styles.secondaryButton);
+        break;
+      case 'outline':
+        baseStyles.push(styles.outlineButton);
+        break;
     }
     
-    // Aplicar tamanho
-    if (size === 'small') {
-      buttonStyle = { ...buttonStyle, ...styles.smallButton };
-    } else if (size === 'medium') {
-      buttonStyle = { ...buttonStyle, ...styles.mediumButton };
-    } else if (size === 'large') {
-      buttonStyle = { ...buttonStyle, ...styles.largeButton };
+    // Size styles
+    switch (size) {
+      case 'small':
+        baseStyles.push(styles.smallButton);
+        break;
+      case 'medium':
+        baseStyles.push(styles.mediumButton);
+        break;
+      case 'large':
+        baseStyles.push(styles.largeButton);
+        break;
     }
     
-    // Aplicar estado desabilitado
+    // Disabled style
     if (isDisabled) {
-      buttonStyle = { ...buttonStyle, ...styles.disabledButton };
+      baseStyles.push(styles.disabledButton);
     }
     
-    return [buttonStyle, style];
+    // Custom style
+    if (style) {
+      baseStyles.push(style);
+    }
+    
+    return baseStyles;
   };
 
-  // Criar estilo dinâmico para o texto
-  const getTextStyle = () => {
-    let textStyle = { ...styles.buttonText };
+  const getTextStyles = () => {
+    const textStyles = [styles.buttonText];
     
-    // Aplicar cor da variante
-    if (variant === 'primary') {
-      textStyle = { ...textStyle, ...styles.primaryText };
-    } else if (variant === 'secondary') {
-      textStyle = { ...textStyle, ...styles.secondaryText };
-    } else if (variant === 'outline') {
-      textStyle = { ...textStyle, ...styles.outlineText };
+    // Variant text styles
+    switch (variant) {
+      case 'primary':
+        textStyles.push(styles.primaryText);
+        break;
+      case 'secondary':
+        textStyles.push(styles.secondaryText);
+        break;
+      case 'outline':
+        textStyles.push(styles.outlineText);
+        break;
     }
     
-    // Aplicar tamanho de texto
-    if (size === 'small') {
-      textStyle = { ...textStyle, ...styles.smallText };
-    } else if (size === 'medium') {
-      textStyle = { ...textStyle, ...styles.mediumText };
-    } else if (size === 'large') {
-      textStyle = { ...textStyle, ...styles.largeText };
+    // Size text styles
+    switch (size) {
+      case 'small':
+        textStyles.push(styles.smallText);
+        break;
+      case 'medium':
+        textStyles.push(styles.mediumText);
+        break;
+      case 'large':
+        textStyles.push(styles.largeText);
+        break;
     }
     
-    // Aplicar estado desabilitado
+    // Disabled text style
     if (isDisabled) {
-      textStyle = { ...textStyle, ...styles.disabledText };
+      textStyles.push(styles.disabledText);
     }
     
-    return textStyle;
+    return textStyles;
   };
 
   return (
     <TouchableOpacity
-      style={getButtonStyle()}
+      style={getButtonStyles()}
       disabled={isDisabled}
       {...props}
     >
@@ -97,7 +116,7 @@ export const Button: React.FC<ButtonProps> = ({
           size="small" 
         />
       ) : (
-        <Text style={getTextStyle()}>{title}</Text>
+        <Text style={getTextStyles()}>{title}</Text>
       )}
     </TouchableOpacity>
   );
@@ -109,8 +128,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
+    minHeight: 45,
     paddingHorizontal: 20,
-    paddingVertical: 12,
   },
   
   // Variants
@@ -129,15 +148,15 @@ const styles = StyleSheet.create({
   
   // Sizes
   smallButton: {
-    paddingVertical: 8,
+    minHeight: 36,
     paddingHorizontal: 16,
   },
   mediumButton: {
-    paddingVertical: 12,
+    minHeight: 45,
     paddingHorizontal: 20,
   },
   largeButton: {
-    paddingVertical: 16,
+    minHeight: 52,
     paddingHorizontal: 24,
   },
   
@@ -150,7 +169,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 16,
   },
   primaryText: {
     color: '#fff',
