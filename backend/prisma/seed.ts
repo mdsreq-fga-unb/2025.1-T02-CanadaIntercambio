@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
@@ -15,20 +16,37 @@ async function main() {
   await prisma.visitante.deleteMany();
   await prisma.user.deleteMany();
 
+  // Hash das senhas de teste
+  const hashedPassword = await bcrypt.hash('123456', 10);
+
   console.log("👥 Criando usuários de teste...");
+  
+  // Usuário visitante simples para teste de login
+  const testUser = await prisma.user.create({
+    data: {
+      firstName: "Teste",
+      lastName: "Usuario",
+      email: "teste@email.com",
+      passwordHash: hashedPassword,
+      visitante: {
+        create: {}
+      },
+    },
+  });
+
   await prisma.user.createMany({
     data: [
       {
         firstName: "João",
         lastName: "Silva",
         email: "joao.silva@email.com",
-        passwordHash: "senha123",
+        passwordHash: hashedPassword,
       },
       {
         firstName: "Maria",
         lastName: "Santos",
         email: "maria.santos@email.com",
-        passwordHash: "senha123",
+        passwordHash: hashedPassword,
       },
     ],
   });
@@ -38,7 +56,7 @@ async function main() {
       firstName: "Admin",
       lastName: "Sistema",
       email: "admin@sistema.com",
-      passwordHash: "admin123",
+      passwordHash: hashedPassword,
       admin: {
         create: {
           internalRole: "SUPERADMIN",
@@ -52,7 +70,7 @@ async function main() {
       firstName: "Carlos",
       lastName: "Visitante",
       email: "carlos.visitante@email.com",
-      passwordHash: "senha123",
+      passwordHash: hashedPassword,
       visitante: {
         create: {
           quizProfileResult: { perfil: "explorador" },
@@ -67,7 +85,7 @@ async function main() {
       firstName: "Ana",
       lastName: "Inter",
       email: "ana.inter@email.com",
-      passwordHash: "senha123",
+      passwordHash: hashedPassword,
       intercambista: {
         create: {
           emergencyContactName: "Mãe da Ana",
@@ -122,6 +140,13 @@ async function main() {
   });
 
   console.log("✅ Seed finalizado com sucesso!");
+  console.log("\n🔑 CREDENCIAIS DE TESTE:");
+  console.log("📧 Email: teste@email.com");
+  console.log("🔒 Senha: 123456");
+  console.log("👤 Tipo: visitante");
+  console.log("\n📧 Admin: admin@sistema.com");
+  console.log("🔒 Senha: 123456");
+  console.log("👤 Tipo: admin");
 }
 
 main()
