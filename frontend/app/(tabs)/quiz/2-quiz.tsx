@@ -1,6 +1,16 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useQuiz } from './QuizContext';
+import { useRouter } from 'expo-router';
 
-export default function QuizInicial() {
+export default function QuizPergunta2() {
+  const { setAnswer } = useQuiz();
+  const router = useRouter();
+
+  function handleSelect(option: string) {
+    setAnswer(2, option); // 2 = número da pergunta
+    router.push('/quiz/3-quiz'); // vá para a próxima pergunta
+  }
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -11,23 +21,23 @@ export default function QuizInicial() {
         </Text>
       </View>
 
-     {/* Conteúdo */}
+      {/* Conteúdo */}
       <View style={styles.content}>
         <Text style={styles.title}>O que você busca em seu intercâmbio?</Text>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Aprender ou melhorar um idioma')}>
           <Text style={styles.buttonText}>Aprender ou melhorar um idioma</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Estudar')}>
           <Text style={styles.buttonText}>Estudar</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Trabalhar')}>
           <Text style={styles.buttonText}>Trabalhar</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Ferias')}>
           <Text style={styles.buttonText}>Ferias</Text>
         </Pressable>
       </View>

@@ -1,6 +1,16 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useQuiz } from './QuizContext';
+import { useRouter } from 'expo-router';
 
-export default function QuizInicial() {
+export default function QuizPergunta1() {
+  const { setAnswer } = useQuiz();
+  const router = useRouter();
+
+  function handleSelect(option: string) {
+    setAnswer(1, option); // 1 = número da pergunta
+    router.push('/quiz/2-quiz'); // vá para a próxima pergunta
+  }
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -11,23 +21,23 @@ export default function QuizInicial() {
         </Text>
       </View>
 
-     {/* Conteúdo */}
+      {/* Conteúdo */}
       <View style={styles.content}>
         <Text style={styles.title}>Qual a sua faixa etária?</Text>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Menor de 18 anos')}>
           <Text style={styles.buttonText}>Menor de 18 anos</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('18 a 29 anos')}>
           <Text style={styles.buttonText}>18 a 29 anos</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('30 a 39 anos')}>
           <Text style={styles.buttonText}>30 a 39 anos</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('40 anos ou mais')}>
           <Text style={styles.buttonText}>40 anos ou mais</Text>
         </Pressable>
       </View>

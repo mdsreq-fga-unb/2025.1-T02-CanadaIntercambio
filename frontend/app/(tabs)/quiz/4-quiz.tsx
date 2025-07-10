@@ -1,6 +1,16 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useQuiz } from './QuizContext';
+import { useRouter } from 'expo-router';
 
-export default function QuizInicial() {
+export default function QuizPergunta4() {
+  const { setAnswer } = useQuiz();
+  const router = useRouter();
+
+  function handleSelect(option: string) {
+    setAnswer(4, option); // 4 = número da pergunta
+    router.push('/quiz/5-quiz'); // vá para a próxima pergunta
+  }
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -11,23 +21,23 @@ export default function QuizInicial() {
         </Text>
       </View>
 
-     {/* Conteúdo */}
+      {/* Conteúdo */}
       <View style={styles.content}>
         <Text style={styles.title}>Com quem você pretende ou gostaria de viajar?</Text>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Sozinho')}>
           <Text style={styles.buttonText}>Sozinho</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Amigos')}>
           <Text style={styles.buttonText}>Amigos</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Grupo')}>
           <Text style={styles.buttonText}>Grupo</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Familia')}>
           <Text style={styles.buttonText}>Familia</Text>
         </Pressable>
       </View>

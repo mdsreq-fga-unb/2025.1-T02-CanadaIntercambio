@@ -1,6 +1,17 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useQuiz } from './QuizContext';
+import { useRouter } from 'expo-router';
 
-export default function QuizInicial() {
+export default function QuizPergunta3() {
+  const { setAnswer } = useQuiz();
+  const router = useRouter();
+
+  function handleSelect(option: string) {
+    setAnswer(3, option); // 2 = número da pergunta
+    router.push('/quiz/4-quiz'); // vá para a próxima pergunta
+  }
+
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -11,23 +22,23 @@ export default function QuizInicial() {
         </Text>
       </View>
 
-     {/* Conteúdo */}
+      {/* Conteúdo */}
       <View style={styles.content}>
         <Text style={styles.title}>Por quanto tempo você gostaria de ficar?</Text>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Ate 1 mês')}>
           <Text style={styles.buttonText}>Ate 1 mês</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('1 a 3 meses')}>
           <Text style={styles.buttonText}>1 a 3 meses</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('4 a 6 meses')}>
           <Text style={styles.buttonText}>4 a 6 meses</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Mais de 6 meses')}>
           <Text style={styles.buttonText}>Mais de 6 meses</Text>
         </Pressable>
       </View>

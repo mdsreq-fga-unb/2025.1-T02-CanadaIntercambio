@@ -1,6 +1,16 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useQuiz } from './QuizContext';
+import { useRouter } from 'expo-router';
 
 export default function QuizInicial() {
+  const { setAnswer } = useQuiz();
+  const router = useRouter();
+
+  function handleSelect(option: string) {
+    setAnswer(6, option); // 6 = número da pergunta
+    router.push('../resultado-quiz'); // vai para a tela de resultado do quiz
+  }
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -11,23 +21,23 @@ export default function QuizInicial() {
         </Text>
       </View>
 
-     {/* Conteúdo */}
+      {/* Conteúdo */}
       <View style={styles.content}>
         <Text style={styles.title}>Qual o orçamento (em reais) disponível?</Text>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Ate 15.000 reais')}>
           <Text style={styles.buttonText}>Ate 15.000 reais</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Entre 15.000 e 30.000 reais')}>
           <Text style={styles.buttonText}>Entre 15.000 e 30.000 reais</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Entre 30.000 e 50.000 reais')}>
           <Text style={styles.buttonText}>Entre 30.000 e 50.000 reais</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Mais de 50.000 reais')}>
           <Text style={styles.buttonText}>Mais de 50.000 reais</Text>
         </Pressable>
       </View>

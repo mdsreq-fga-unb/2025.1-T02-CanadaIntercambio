@@ -1,6 +1,16 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useQuiz } from './QuizContext';
+import { useRouter } from 'expo-router';
 
-export default function QuizInicial() {
+export default function QuizPergunta5() {
+  const { setAnswer } = useQuiz();
+  const router = useRouter();
+
+  function handleSelect(option: string) {
+    setAnswer(5, option); // 5 = número da pergunta
+    router.push('/quiz/6-quiz'); // vá para a próxima pergunta
+  }
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -11,23 +21,23 @@ export default function QuizInicial() {
         </Text>
       </View>
 
-     {/* Conteúdo */}
+      {/* Conteúdo */}
       <View style={styles.content}>
         <Text style={styles.title}>Qual seu nível atual de inglês?</Text>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Iniciante')}>
           <Text style={styles.buttonText}>Iniciante</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Intermediario')}>
           <Text style={styles.buttonText}>Intermediario</Text>
         </Pressable>
-o
-        <Pressable style={styles.button}>
+
+        <Pressable style={styles.button} onPress={() => handleSelect('Avançado')}>
           <Text style={styles.buttonText}>Avançado</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => handleSelect('Fluente')}>
           <Text style={styles.buttonText}>Fluente</Text>
         </Pressable>
       </View>

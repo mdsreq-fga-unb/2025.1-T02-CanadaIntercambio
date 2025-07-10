@@ -1,89 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-import axios from 'axios';
+import { router } from 'expo-router';
+import  { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
-  const [dummyText, setDummyText] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/dummy')
-      .then((res) => setDummyText(res.data.message))
-      .catch(() => setDummyText('Erro ao buscar API.'));
-  }, []);
+export default function LoginScreen() {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <View style={styles.container}>
+      <View style={styles.header} />
+      <View style={styles.content}>
+        <Text style={styles.welcome}>Seja Bem-Vindo!</Text>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require('../../assets/images/login_logo.png')} 
+          style={styles.logo}
+          resizeMode="contain"
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Texto da API:</ThemedText>
-        <ThemedText>{dummyText}</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          placeholderTextColor="#888"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          value={senha}
+          onChangeText={setSenha}
+          placeholderTextColor="#888"
+          secureTextEntry
+        />
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/programas')}>
+          <Text style={styles.buttonText}>Entrar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push('/nada')}>
+          <Text style={styles.forgot}>Esqueceu sua senha?</Text>
+        </TouchableOpacity>
+        <Text style={styles.or}>ou</Text>
+        <TouchableOpacity onPress={() => router.push('/cadastro_visitante')}>
+          <Text style={styles.register}>Cadastre-se</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.footer} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: { flex: 1, backgroundColor: '#fff' },
+  header: { height: 60, backgroundColor: '#cb2328' },
+  footer: { height: 40, backgroundColor: '#cb2328', marginTop: 'auto' },
+  content: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  welcome: { fontSize: 22, fontWeight: 'bold', color: '#cb2328', marginBottom: 20 },
+  logo: { width: 300, height: 90, marginBottom: 30 },
+  input: {
+    width: 300,
+    height: 40,
+    backgroundColor: '#ddd',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  button: {
+    width: 300,
+    height: 45,
+    backgroundColor: '#cb2328',
+    borderRadius: 5,
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    marginVertical: 10,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
+  forgot: { color: '#cb2328', marginTop: 10, fontWeight: 'bold', textAlign: 'center' },
+  or: { color: '#cb2328', marginTop: 30, fontWeight: 'bold', textAlign: 'center' },
+  register: { color: '#cb2328', marginTop: 5, fontWeight: 'bold', textAlign: 'center' },
 });
