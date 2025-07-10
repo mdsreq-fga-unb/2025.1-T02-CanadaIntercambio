@@ -52,8 +52,12 @@ export const Toast: React.FC<ToastProps> = ({
       case 'error':
         return '#dc3545';
       default:
-        return '#6c757d';
+        return '#17a2b8';
     }
+  };
+
+  const getTextColor = () => {
+    return '#fff';
   };
 
   return (
@@ -66,7 +70,7 @@ export const Toast: React.FC<ToastProps> = ({
         },
       ]}
     >
-      <Text style={styles.message}>{message}</Text>
+      <Text style={[styles.message, { color: getTextColor() }]}>{message}</Text>
     </Animated.View>
   );
 };
@@ -82,9 +86,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     zIndex: 1000,
     elevation: 1000,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
   message: {
-    color: '#fff',
     textAlign: 'center',
     fontSize: 16,
     fontWeight: '500',

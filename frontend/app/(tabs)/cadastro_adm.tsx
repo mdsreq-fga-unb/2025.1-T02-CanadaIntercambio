@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import { router } from 'expo-router';
+import { useAuth } from '../../contexts/AuthContext';
 
-export default function CadastroVisitante() {
+export default function CadastroAdm() {
+  const { register } = useAuth();
   const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
   const [ddd, setDdd] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -13,8 +16,67 @@ export default function CadastroVisitante() {
   const [unidade, setUnidade] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [passaporte, setPassaporte] = useState('');
+  const [cargoInterno, setCargoInterno] = useState('');
   const [aceito, setAceito] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleRegister = async () => {
+    // Validar se aceitou os termos
+    if (!aceito) {
+      Alert.alert('Erro', 'Você deve aceitar os termos e condições para continuar.');
+      return;
+    }
+
+    // Validar campos obrigatórios
+    if (!nome || !sobrenome || !email || !senha || !confirmarSenha || !cargoInterno) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    // Validar se senhas coincidem
+    if (senha !== confirmarSenha) {
+      Alert.alert('Erro', 'As senhas não coincidem.');
+      return;
+    }
+
+    // Validar senha (mínimo 6 caracteres)
+    if (senha.length < 6) {
+      Alert.alert('Erro', 'A senha deve ter pelo menos 6 caracteres.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await register({
+        firstName: nome,
+        lastName: sobrenome,
+        email: email.trim(),
+        password: senha,
+        phone: ddd && telefone ? `${ddd}${telefone}` : undefined,
+        nearestUnit: unidade || undefined,
+        userType: 'admin',
+        internalRole: cargoInterno,
+      });
+      
+      // Sucesso - redirecionar para programas
+      Alert.alert(
+        'Sucesso!', 
+        'Cadastro de administrador realizado com sucesso! Bem-vindo!',
+        [{ text: 'OK', onPress: () => router.replace('/programas') }]
+      );
+    } catch (error: any) {
+      // Erro - mostrar mensagem detalhada
+      const errorMessage = error.message || 'Erro inesperado. Tente novamente.';
+      Alert.alert(
+        'Erro no Cadastro',
+        errorMessage,
+        [{ text: 'OK' }]
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -27,13 +89,22 @@ export default function CadastroVisitante() {
         />
       </View>
       <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-        <Text style={styles.title}>Preencha os dados abaixo:</Text>
+        <Text style={styles.title}>Cadastro de Administrador</Text>
         <TextInput
           style={styles.input}
-          placeholder="Nome Completo"
+          placeholder="Nome"
           value={nome}
           onChangeText={setNome}
           placeholderTextColor="#888"
+          editable={!loading}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Sobrenome"
+          value={sobrenome}
+          onChangeText={setSobrenome}
+          placeholderTextColor="#888"
+          editable={!loading}
         />
         <TextInput
           style={styles.input}
@@ -42,6 +113,15 @@ export default function CadastroVisitante() {
           onChangeText={setEmail}
           keyboardType="email-address"
           placeholderTextColor="#888"
+          editable={!loading}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Cargo Interno"
+          value={cargoInterno}
+          onChangeText={setCargoInterno}
+          placeholderTextColor="#888"
+          editable={!loading}
         />
         <View style={styles.row}>
           <TextInput
@@ -108,8 +188,14 @@ export default function CadastroVisitante() {
             <Text style={styles.link}>políticas de privacidade</Text>.
           </Text>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/programas')}>
-          <Text style={styles.buttonText}>Criar</Text>
+        <TouchableOpacity 
+          style={[styles.button, loading && styles.buttonDisabled]} 
+          onPress={handleRegister}
+          disabled={loading}
+        >
+          <Text style={styles.buttonText}>
+            {loading ? 'Criando...' : 'Criar'}
+          </Text>
         </TouchableOpacity>
       </ScrollView>
       <View style={styles.footer} />
@@ -154,6 +240,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 20,
+  },
+  buttonDisabled: {
+    opacity: 0.6,
   },
   buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 18 },
 });

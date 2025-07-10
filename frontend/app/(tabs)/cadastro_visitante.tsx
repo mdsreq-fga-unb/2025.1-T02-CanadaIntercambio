@@ -55,11 +55,11 @@ export default function CadastroVisitante() {
     try {
       await register(getRegisterData());
       
-      // Sucesso - redirecionar
+      // Sucesso - redirecionar para programas
       Alert.alert(
         'Sucesso!', 
         'Cadastro realizado com sucesso! Bem-vindo!',
-        [{ text: 'OK', onPress: () => router.replace('/') }]
+        [{ text: 'OK', onPress: () => router.replace('/programas') }]
       );
     } catch (error: any) {
       // Erro - mostrar mensagem detalhada

@@ -17,9 +17,9 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
       console.log('Não autenticado, redirecionando para login');
       router.replace('/login');
     } else if (isAuthenticated && isOnLoginPage) {
-      // Se autenticado e está na página de login, vai para área autenticada
-      console.log('Autenticado, redirecionando para home');
-      router.replace('/');
+      // Se autenticado e está na página de login, vai para programas
+      console.log('Autenticado, redirecionando para programas');
+      router.replace('/programas');
     }
   }, [isAuthenticated, loading, pathname]);
 

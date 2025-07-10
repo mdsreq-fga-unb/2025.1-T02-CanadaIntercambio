@@ -53,15 +53,29 @@ export default function LoginScreen() {
     try {
       await login({ email: email.trim(), password });
       
-      // Sucesso - redirecionar imediatamente
-      console.log('Login realizado com sucesso, redirecionando...');
-      router.replace('/');
+      // Sucesso - mostrar toast e redirecionar
+      console.log('Login realizado com sucesso, redirecionando para programas...');
+      showToast('Login realizado com sucesso!', 'success');
+      
+      // Aguardar um pouco para mostrar o toast antes de redirecionar
+      setTimeout(() => {
+        router.replace('/programas');
+      }, 500);
       
     } catch (error: any) {
-      // Erro - mostrar toast de erro
+      // Erro - mostrar toast de erro com duração maior
       const errorMessage = error.message || 'Erro inesperado. Tente novamente.';
       showToast(errorMessage, 'error');
       console.error('Erro no login:', error);
+      
+      // Também mostrar um Alert para garantir que o usuário veja o erro
+      setTimeout(() => {
+        Alert.alert(
+          'Erro no Login',
+          errorMessage,
+          [{ text: 'OK' }]
+        );
+      }, 100);
     } finally {
       setLoading(false);
     }
@@ -163,6 +177,7 @@ export default function LoginScreen() {
         message={toast.message}
         type={toast.type}
         onHide={hideToast}
+        duration={toast.type === 'error' ? 5000 : 3000}
       />
     </View>
   );
