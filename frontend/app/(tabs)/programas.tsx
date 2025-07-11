@@ -130,15 +130,16 @@ const ProgramasScreen: React.FC = () => {
   return (
     <ProtectedRoute>
       <View style={styles.container}>
-        <View style={styles.header} />
+        <View style={styles.header}>
+          <Image
+            source={require('../../assets/images/login_logo.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+        </View>
         
         <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
           <View style={styles.headerSection}>
-            <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-              <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
-              <Text style={styles.backButtonText}>Voltar</Text>
-            </TouchableOpacity>
-            
             <Text style={styles.title}>Programas</Text>
           </View>
           
@@ -202,9 +203,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  header: {
-    height: 60,
-    backgroundColor: '#cb2328',
+  header: { 
+    height: 70, 
+    backgroundColor: '#cb2328', 
+    justifyContent: 'center', 
+    alignItems: 'center' 
   },
   footer: {
     height: 40,
@@ -224,11 +227,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-  logo: {
-    width: '80%',
-    maxWidth: 300,
-    height: 90,
-    marginBottom: 30,
+  logo: { 
+    width: 250, 
+    height: 60, 
+    marginTop: 10, 
+    marginBottom: 0, 
+    maxWidth: undefined
   },
   scrollContainer: {
     flex: 1,
