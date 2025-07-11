@@ -1,14 +1,14 @@
-import  { useState, useEffect } from 'react'; // Adicionado 'useState' para gerenciar o estado do pop-up
+import  { useState, useEffect } from 'react'; // Adicionado 'useState' para gerenciar o estado do pop-up 
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import Popup from '../../components/PopupRN'; // Linha modificada: Importa o componente Popup adaptado para React Native, ajustando o caminho relativo
 import { useRouter } from 'expo-router';
 import { useQuiz } from '../../src/context/QuizContext';
+import {gerarRecomendacao} from '../../src/utils/gerarRecomendacao'; // Importa a função de recomendação
 
 export default function ResultadoQuiz() {
   const { answers } = useQuiz();
+  const resultado = gerarRecomendacao(answers);
   const router = useRouter();
-
-
 
    ///Retornando o resultado do quiz no console
    useEffect(() => {
@@ -16,10 +16,9 @@ export default function ResultadoQuiz() {
     Object.entries(answers).forEach(([questao, resposta]) => {
       console.log(`Pergunta ${questao}: ${resposta}`);
     });
+
+    console.log('Resultado sugerido:', resultado.titulo);
   }, [answers]);  
-
-
-
 
   // Linha adicionada: Declara um estado 'showPopup' para controlar a visibilidade do pop-up. Inicialmente é 'false' (oculto).
   const [showPopup, setShowPopup] = useState(false);
@@ -51,15 +50,13 @@ export default function ResultadoQuiz() {
         <Text style={styles.title}>Resultado do Quiz!</Text>
 
         <Text style={styles.subtitle}>
-          <Text style={styles.highlight}>High School</Text> {'\n'}é o ideal para você!
-        </Text>
+        <Text style={styles.highlight}>{resultado.titulo}</Text> {'\n'}é o ideal para você!
+      </Text>
 
         <View style={styles.list}>
-          <Text style={styles.listItem}>• Curta ou média duração (1 a 3 anos)</Text>
-          <Text style={styles.listItem}>• Foco em treinamento prático</Text>
-          <Text style={styles.listItem}>
-            • Experiência profissional no Canadá e, em alguns casos, oportunidade de imigração
-          </Text>
+          {resultado.descricao.map((item, index) => (
+            <Text key={index} style={styles.listItem}>• {item}</Text>
+          ))}
         </View>
 
         {/* Linha modificada: Adicionado o 'onPress' para chamar a função 'handleSaberMais' quando o botão for clicado. */}
