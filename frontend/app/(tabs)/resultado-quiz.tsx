@@ -1,4 +1,4 @@
-import  { useState } from 'react'; // Adicionado 'useState' para gerenciar o estado do pop-up
+import  { useState, useEffect } from 'react'; // Adicionado 'useState' para gerenciar o estado do pop-up
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import Popup from '../../components/PopupRN'; // Linha modificada: Importa o componente Popup adaptado para React Native, ajustando o caminho relativo
 import { useRouter } from 'expo-router';
@@ -7,6 +7,20 @@ import { useQuiz } from './quiz/QuizContext';;
 export default function ResultadoQuiz() {
   const { answers } = useQuiz();
   const router = useRouter();
+
+
+
+   ///Retornando o resultado do quiz no console
+   useEffect(() => {
+    console.log('Respostas selecionadas:');
+    Object.entries(answers).forEach(([questao, resposta]) => {
+      console.log(`Pergunta ${questao}: ${resposta}`);
+    });
+  }, [answers]);  
+
+
+
+
   // Linha adicionada: Declara um estado 'showPopup' para controlar a visibilidade do pop-up. Inicialmente é 'false' (oculto).
   const [showPopup, setShowPopup] = useState(false);
 
