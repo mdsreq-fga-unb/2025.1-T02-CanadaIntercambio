@@ -35,6 +35,30 @@ export function gerarRecomendacao(answers: QuizAnswers): ResultadoQuiz {
     };
   }
 
+
+  // --- COLLEGE OU UNIVERSIDADE ---
+    const isCollegeOuUniversidade =
+    ['18 a 29 anos'].includes(idade) &&
+    ['Aprender ou melhorar idioma', 'Estudar'].includes(objetivo) &&
+    ['Mais de 6 meses'].includes(duracao) &&
+    ['Sozinho', 'Amigos', 'Familia'].includes(companhia) &&
+    ['Intermediario', 'Avançado', 'Fluente'].includes(ingles) &&
+    ['Entre 80.000 e 120.000 reais', 'Acima de 120.000 reais'].includes(orcamento);
+
+    if (isCollegeOuUniversidade) {
+    return {
+        titulo: 'College ou Universidade',
+        descricao: [
+        'Você tem o perfil ideal para programas de longa duração no Canadá.',
+        'O College oferece cursos técnicos e profissionalizantes (1 a 3 anos).',
+        'A Universidade oferece cursos acadêmicos em diversas áreas (3 a 4 anos).',
+        'Ambas as opções podem abrir portas para trabalho e imigração.',
+        ],
+    };
+    }
+
+
+  /*
   // --- COLLEGE ---
   const isCollege =
     ['18 a 29 anos'].includes(idade) &&
@@ -74,6 +98,7 @@ export function gerarRecomendacao(answers: QuizAnswers): ResultadoQuiz {
       ],
     };
   }
+    */
 
   // --- FALLBACK ---
   return {
