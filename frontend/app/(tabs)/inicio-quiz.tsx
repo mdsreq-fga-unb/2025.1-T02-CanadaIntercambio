@@ -1,6 +1,11 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { router } from 'expo-router';
 
 export default function QuizInicial() {
+  const handleStartQuiz = () => {
+    router.push('/quiz');
+  };
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -19,7 +24,7 @@ export default function QuizInicial() {
           para você!
         </Text>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={handleStartQuiz}>
           <Text style={styles.buttonText}>Começar</Text>
         </Pressable>
 

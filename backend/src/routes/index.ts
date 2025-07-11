@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { AuthRoutes } from './authRoutes';
 import { TestRoutes } from './testRoutes';
+import { ProgramRoutes } from './programRoutes';
+import { QuizRoutes } from './quizRoutes';
 
 export class AppRoutes {
   private router: Router;
@@ -17,6 +19,14 @@ export class AppRoutes {
     // Rotas de autenticação
     const authRoutes = new AuthRoutes(this.prisma);
     this.router.use('/auth', authRoutes.getRouter());
+
+    // Rotas de programas
+    const programRoutes = new ProgramRoutes(this.prisma);
+    this.router.use('/programs', programRoutes.getRouter());
+
+    // Rotas de quiz
+    const quizRoutes = new QuizRoutes(this.prisma);
+    this.router.use('/quiz', quizRoutes.getRouter());
 
     // Rotas de teste para verificar autenticação e autorização
     const testRoutes = new TestRoutes(this.prisma);
