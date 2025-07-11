@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { QuizProvider } from './(tabs)/quiz/QuizContext'; // ajuste o caminho se necessário
+import { QuizProvider } from '../src/context/QuizContext'; // ajuste o caminho se necessário
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();

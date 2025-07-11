@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-import { useQuiz } from './QuizContext';
+import { useQuiz } from '../../../src/context/QuizContext'; // ajuste o caminho se necessário
 import { useRouter } from 'expo-router';
 
 export default function QuizInicial() {
@@ -29,16 +29,16 @@ export default function QuizInicial() {
           <Text style={styles.buttonText}>Ate 15.000 reais</Text>
         </Pressable>
 
-        <Pressable style={styles.button} onPress={() => handleSelect('Entre 15.000 e 30.000 reais')}>
-          <Text style={styles.buttonText}>Entre 15.000 e 30.000 reais</Text>
+        <Pressable style={styles.button} onPress={() => handleSelect('Entre 15.000 e 80.000 reais')}>
+          <Text style={styles.buttonText}>Entre 15.000 e 80.000 reais</Text>
         </Pressable>
 
-        <Pressable style={styles.button} onPress={() => handleSelect('Entre 30.000 e 50.000 reais')}>
-          <Text style={styles.buttonText}>Entre 30.000 e 50.000 reais</Text>
+        <Pressable style={styles.button} onPress={() => handleSelect('Entre 80.000 e 120.000 reais')}>
+          <Text style={styles.buttonText}>Entre 80.000 e 120.000 reais</Text>
         </Pressable>
 
-        <Pressable style={styles.button} onPress={() => handleSelect('Mais de 50.000 reais')}>
-          <Text style={styles.buttonText}>Mais de 50.000 reais</Text>
+        <Pressable style={styles.button} onPress={() => handleSelect('Acima de 120.000 reais')}>
+          <Text style={styles.buttonText}>Acima de 120.000 reais</Text>
         </Pressable>
       </View>
 

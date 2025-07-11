@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-import { useQuiz } from './QuizContext';
+import { useQuiz } from '../../../src/context/QuizContext';
 import { useRouter } from 'expo-router';
 
 export default function QuizPergunta4() {
