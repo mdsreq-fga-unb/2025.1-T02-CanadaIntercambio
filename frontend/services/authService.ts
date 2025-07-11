@@ -107,16 +107,18 @@ class AuthService {
         await AsyncStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.data.data.user));
         
         console.log('Token e usuário salvos com sucesso');
+        return response.data;
+      } else {
+        // Se a API retornou success: false, lançar erro
+        throw new Error(response.data.message || 'Credenciais inválidas');
       }
-
-      return response.data;
     } catch (error: any) {
       console.error('Erro no authService.login:', error);
       
       if (error.response) {
         // Erro da API com resposta
         const status = error.response.status;
-        const message = error.response.data?.message;
+        const message = error.response.data?.message || 'Erro do servidor';
         
         console.log('Erro da API:', status, message);
         
@@ -126,17 +128,18 @@ class AuthService {
           throw new Error('Usuário não encontrado');
         } else if (status === 422) {
           throw new Error(message || 'Dados inválidos');
+        } else if (status === 400) {
+          throw new Error(message || 'Dados inválidos');
         } else {
-          throw new Error(message || 'Erro do servidor');
+          throw new Error(message);
         }
       } else if (error.request) {
         // Erro de rede
         console.log('Erro de rede:', error.request);
         throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
       } else {
-        // Outro tipo de erro
-        console.log('Erro desconhecido:', error.message);
-        throw new Error('Erro inesperado: ' + error.message);
+        // Outro tipo de erro ou erro já tratado
+        throw new Error(error.message || 'Erro inesperado');
       }
     }
   }

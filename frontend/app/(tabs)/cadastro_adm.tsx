@@ -4,6 +4,7 @@ import { Checkbox } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import { router } from 'expo-router';
 import { useAuth } from '../../contexts/AuthContext';
+import { TextInputMask } from 'react-native-masked-text';
 
 export default function CadastroAdm() {
   const { register } = useAuth();
@@ -133,13 +134,20 @@ export default function CadastroAdm() {
             maxLength={3}
             placeholderTextColor="#888"
           />
-          <TextInput
-            style={[styles.input, styles.inputTelefone]}
-            placeholder="Telefone"
+          <Text style={styles.label}>Telefone</Text>
+          <TextInputMask
+            type={'cel-phone'}
+            options={{
+              maskType: 'BRL',
+              withDDD: true,
+              dddMask: '(99) '
+            }}
             value={telefone}
             onChangeText={setTelefone}
+            style={styles.input}
+            placeholder="(99) 99999-9999"
             keyboardType="phone-pad"
-            placeholderTextColor="#888"
+            editable={!loading}
           />
         </View>
         <TextInput
@@ -228,7 +236,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     overflow: 'hidden',
   },
-  picker: { width: '100%', height: 40 , color: '#888', borderWidth: 0, backgroundColor: 'transparent', paddingHorizontal: 10 },
+  picker: {
+    height: 48,
+    borderWidth: 1,
+    borderColor: '#DDD',
+    borderRadius: 8,
+    backgroundColor: '#FFF',
+    color: '#333',
+    paddingHorizontal: 12,
+    marginBottom: 12,
+    fontSize: 16,
+  },
   checkboxContainer: { flexDirection: 'row', alignItems: 'flex-start', marginVertical: 10, width: 300},
   checkboxText: { flex: 1, fontSize: 12, color: '#333', marginLeft: 8 },
   link: { color: '#cb2328', textDecorationLine: 'underline' },
@@ -245,4 +263,10 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 18 },
+  label: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 4,
+    color: '#CC2027',
+  },
 });

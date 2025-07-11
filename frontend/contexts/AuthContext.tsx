@@ -49,29 +49,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const login = async (credentials: LoginRequest) => {
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await authService.login(credentials);
-      
       if (response.success && response.data) {
         setUser(response.data.user);
         console.log('Login realizado com sucesso:', response.data.user.email);
       } else {
+        // Não altera o estado do usuário em caso de erro, apenas joga a exceção
         throw new Error(response.message || 'Erro ao fazer login');
       }
     } catch (error: any) {
+      // Não altera o estado do usuário em caso de erro, apenas joga a exceção
       console.error('Erro no login:', error);
-      
-      // Melhorar as mensagens de erro
-      if (error.message.includes('401') || error.message.includes('Unauthorized')) {
-        throw new Error('E-mail ou senha incorretos');
-      } else if (error.message.includes('404')) {
-        throw new Error('Usuário não encontrado');
-      } else if (error.message.includes('connection') || error.message.includes('network')) {
-        throw new Error('Erro de conexão. Verifique sua internet.');
-      } else {
-        throw new Error(error.message || 'Erro inesperado. Tente novamente.');
-      }
+      throw new Error(error.message || 'Erro inesperado. Tente novamente.');
     } finally {
       setLoading(false);
     }

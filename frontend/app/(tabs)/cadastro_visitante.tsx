@@ -7,6 +7,7 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { useAuth } from '../../contexts/AuthContext';
 import { useRegisterForm } from '../../hooks/useRegisterForm';
+import { TextInputMask } from 'react-native-masked-text';
 
 export default function CadastroVisitante() {
   const { register } = useAuth();
@@ -112,14 +113,23 @@ export default function CadastroVisitante() {
           editable={!loading}
         />
         
-        <Input
-          placeholder="Telefone (opcional)"
-          value={phone}
-          onChangeText={setPhone}
-          error={errors.phone}
-          keyboardType="phone-pad"
-          editable={!loading}
-        />
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Telefone</Text>
+          <TextInputMask
+            type={'cel-phone'}
+            options={{
+              maskType: 'BRL',
+              withDDD: true,
+              dddMask: '(99) '
+            }}
+            value={phone}
+            onChangeText={setPhone}
+            style={styles.input}
+            placeholder="(99) 99999-9999"
+            keyboardType="phone-pad"
+            editable={!loading}
+          />
+        </View>
 
         <View style={styles.pickerContainer}>
           <Picker
@@ -213,6 +223,25 @@ const styles = StyleSheet.create({
     color: '#cb2328', 
     marginVertical: 20, 
     textAlign: 'center' 
+  },
+  inputContainer: {
+    width: '100%',
+    maxWidth: 350,
+    marginBottom: 15,
+  },
+  label: {
+    fontSize: 14,
+    color: '#333',
+    marginBottom: 5,
+  },
+  input: {
+    height: 48,
+    borderColor: '#dee2e6',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    backgroundColor: '#f8f9fa',
+    color: '#333',
   },
   pickerContainer: {
     width: '100%',

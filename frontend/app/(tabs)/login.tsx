@@ -60,22 +60,13 @@ export default function LoginScreen() {
       // Aguardar um pouco para mostrar o toast antes de redirecionar
       setTimeout(() => {
         router.replace('/programas');
-      }, 500);
+      }, 1000);
       
     } catch (error: any) {
-      // Erro - mostrar toast de erro com duração maior
+      // Erro - mostrar toast de erro
       const errorMessage = error.message || 'Erro inesperado. Tente novamente.';
-      showToast(errorMessage, 'error');
       console.error('Erro no login:', error);
-      
-      // Também mostrar um Alert para garantir que o usuário veja o erro
-      setTimeout(() => {
-        Alert.alert(
-          'Erro no Login',
-          errorMessage,
-          [{ text: 'OK' }]
-        );
-      }, 100);
+      showToast(errorMessage, 'error');
     } finally {
       setLoading(false);
     }
@@ -147,10 +138,7 @@ export default function LoginScreen() {
             />
           </View>
           
-          <TouchableOpacity 
-            onPress={() => router.push('/nada')}
-            disabled={loading}
-          >
+          <TouchableOpacity onPress={() => router.push('/nada')}disabled={loading}>
             <Text style={[styles.forgot, loading && styles.disabledText]}>
               Esqueceu sua senha?
             </Text>
@@ -158,10 +146,7 @@ export default function LoginScreen() {
           
           <Text style={styles.or}>ou</Text>
           
-          <TouchableOpacity 
-            onPress={() => router.push('/cadastro_visitante')}
-            disabled={loading}
-          >
+          <TouchableOpacity onPress={() => router.push('/cadastro_visitante')}disabled={loading}>
             <Text style={[styles.register, loading && styles.disabledText]}>
               Cadastre-se
             </Text>
@@ -241,14 +226,14 @@ const styles = StyleSheet.create({
   },
   or: { 
     color: '#cb2328', 
-    marginTop: 30, 
+    marginTop: 15, 
     fontWeight: 'bold', 
     textAlign: 'center',
     fontSize: 16,
   },
   register: { 
     color: '#cb2328', 
-    marginTop: 10, 
+    marginTop: 15, 
     fontWeight: 'bold', 
     textAlign: 'center',
     fontSize: 16,

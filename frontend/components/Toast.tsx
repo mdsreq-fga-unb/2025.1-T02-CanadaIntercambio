@@ -40,10 +40,11 @@ export const Toast: React.FC<ToastProps> = ({
       }, duration);
 
       return () => clearTimeout(timer);
+    } else {
+      // Reset opacity when not visible
+      fadeAnim.setValue(0);
     }
   }, [visible, fadeAnim, duration, onHide]);
-
-  if (!visible) return null;
 
   const getBackgroundColor = () => {
     switch (type) {
@@ -59,6 +60,8 @@ export const Toast: React.FC<ToastProps> = ({
   const getTextColor = () => {
     return '#fff';
   };
+
+  if (!visible) return null;
 
   return (
     <Animated.View
