@@ -72,7 +72,7 @@ class QuizService {
   // Buscar quiz por tipo
   async getQuiz(type: string): Promise<Quiz> {
     try {
-      const response = await this.api.get<QuizResponse>(`/api/quiz/${type}`);
+      const response = await this.api.get<QuizResponse>(`/quiz/${type}`);
       
       if (response.data.success) {
         return response.data.data;
@@ -88,7 +88,7 @@ class QuizService {
   // Buscar perguntas do quiz
   async getQuizQuestions(type: string): Promise<Quiz> {
     try {
-      const response = await this.api.get<QuizResponse>(`/api/quiz/${type}/questions`);
+      const response = await this.api.get<QuizResponse>(`/quiz/${type}/questions`);
       
       if (response.data.success) {
         return response.data.data;
@@ -104,7 +104,7 @@ class QuizService {
   // Submeter respostas do quiz
   async submitQuiz(quizId: number, userId: number, answers: QuizAnswer[]): Promise<QuizResult> {
     try {
-      const response = await this.api.post<QuizResultResponse>('/api/quiz/submit', {
+      const response = await this.api.post<QuizResultResponse>('/quiz/submit', {
         quizId,
         userId,
         answers
@@ -124,7 +124,7 @@ class QuizService {
   // Buscar resultado do quiz
   async getQuizResult(userId: number): Promise<QuizResult> {
     try {
-      const response = await this.api.get<QuizResultResponse>(`/api/quiz/result/${userId}`);
+      const response = await this.api.get<QuizResultResponse>(`/quiz/result/${userId}`);
       
       if (response.data.success) {
         return response.data.data;
@@ -140,7 +140,7 @@ class QuizService {
   // Buscar histórico de quizzes
   async getQuizHistory(userId: number): Promise<QuizResult[]> {
     try {
-      const response = await this.api.get<{success: boolean; data: QuizResult[]}>(`/api/quiz/history/${userId}`);
+      const response = await this.api.get<{success: boolean; data: QuizResult[]}>(`/quiz/history/${userId}`);
       
       if (response.data.success) {
         return response.data.data;

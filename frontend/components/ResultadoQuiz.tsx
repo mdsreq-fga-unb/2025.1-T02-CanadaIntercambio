@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert, ScrollView, SafeAreaView, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useAuth } from '../contexts/AuthContext';
 import { quizService, QuizResult } from '../services/quizService';
 import { programService } from '../services/programService';
+
+const loginLogo = require("../assets/images/login_logo.png");
 
 export default function ResultadoQuiz() {
   const { resultId } = useLocalSearchParams();
@@ -99,16 +101,24 @@ export default function ResultadoQuiz() {
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.logoPlaceholder} />
-          <Text style={styles.headerText}>
-            Canada <Text style={styles.headerLight}>Intercâmbio</Text>
-          </Text>
+        <View style={styles.header} />
+        
+        <View style={styles.content}>
+          <Text style={styles.welcome}>Resultado do Quiz</Text>
+          
+          <Image
+            source={require('../assets/images/login_logo.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#DC2626" />
+            <Text style={styles.loadingText}>Carregando resultado...</Text>
+          </View>
         </View>
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#DC2626" />
-          <Text style={styles.loadingText}>Carregando resultado...</Text>
-        </View>
+        
+        <View style={styles.footer} />
       </SafeAreaView>
     );
   }
@@ -116,19 +126,27 @@ export default function ResultadoQuiz() {
   if (error) {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.logoPlaceholder} />
-          <Text style={styles.headerText}>
-            Canada <Text style={styles.headerLight}>Intercâmbio</Text>
-          </Text>
+        <View style={styles.header} />
+        
+        <View style={styles.content}>
+          <Text style={styles.welcome}>Resultado do Quiz</Text>
+          
+          <Image
+            source={loginLogo}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          
+          <View style={styles.errorContainer}>
+            <MaterialIcons name="quiz" size={48} color="#DC2626" />
+            <Text style={styles.errorText}>{error}</Text>
+            <TouchableOpacity style={styles.retryButton} onPress={() => router.push('/inicio-quiz')}>
+              <Text style={styles.retryButtonText}>Fazer Quiz</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.errorContainer}>
-          <MaterialIcons name="quiz" size={48} color="#DC2626" />
-          <Text style={styles.errorText}>{error}</Text>
-          <TouchableOpacity style={styles.retryButton} onPress={() => router.push('/inicio-quiz')}>
-            <Text style={styles.retryButtonText}>Fazer Quiz</Text>
-          </TouchableOpacity>
-        </View>
+        
+        <View style={styles.footer} />
       </SafeAreaView>
     );
   }
@@ -139,17 +157,14 @@ export default function ResultadoQuiz() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.logoPlaceholder} />
-        <Text style={styles.headerText}>
-          Canada <Text style={styles.headerLight}>Intercâmbio</Text>
-        </Text>
-      </View>
+      <View style={styles.header} />
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.resultContainer}>
+      <ScrollView style={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <View style={styles.headerSection}>
           <Text style={styles.title}>Resultado do Quiz!</Text>
+        </View>
 
+        <View style={styles.resultContainer}>
           {result.recommendedProgram && (
             <>
               <Text style={styles.subtitle}>
@@ -204,6 +219,8 @@ export default function ResultadoQuiz() {
           )}
         </View>
       </ScrollView>
+      
+      <View style={styles.footer} />
     </SafeAreaView>
   );
 }
@@ -214,42 +231,50 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    backgroundColor: '#DC2626',
-    height: 100,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
+    height: 60,
+    backgroundColor: '#cb2328',
   },
-  logoPlaceholder: {
-    width: 32,
-    height: 32,
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    marginTop: 40,
-  },
-  headerText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    paddingTop: 40,
-  },
-  headerLight: {
-    fontWeight: '300',
+  footer: {
+    height: 40,
+    backgroundColor: '#cb2328',
   },
   content: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  welcome: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#cb2328',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  logo: {
+    width: '80%',
+    maxWidth: 300,
+    height: 90,
+    marginBottom: 30,
+  },
+  scrollContent: {
+    flex: 1,
+  },
+  headerSection: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#cb2328',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   resultContainer: {
     padding: 24,
     alignItems: 'center',
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#DC2626',
-    textAlign: 'center',
-    marginBottom: 24,
   },
   subtitle: {
     fontSize: 24,

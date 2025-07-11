@@ -99,6 +99,11 @@ const ProgramasScreen: React.FC = () => {
         <View style={styles.header} />
         
         <View style={styles.content}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
+            <Text style={styles.backButtonText}>Voltar</Text>
+          </TouchableOpacity>
+          
           <Text style={styles.welcome}>Programas</Text>
           
           <Image
@@ -124,6 +129,11 @@ const ProgramasScreen: React.FC = () => {
         <View style={styles.header} />
         
         <View style={styles.content}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
+            <Text style={styles.backButtonText}>Voltar</Text>
+          </TouchableOpacity>
+          
           <Text style={styles.welcome}>Programas</Text>
           
           <Image
@@ -150,54 +160,50 @@ const ProgramasScreen: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.header} />
       
-      <View style={styles.content}>
-        <Text style={styles.welcome}>Programas</Text>
+      <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+        <View style={styles.headerSection}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
+            <Text style={styles.backButtonText}>Voltar</Text>
+          </TouchableOpacity>
+          
+          <Text style={styles.title}>Programas</Text>
+        </View>
         
-        <Image
-          source={loginLogo}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        
-        {/* Content */}
-        <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-          {/* Recommended Program Section */}
-          {recommendedPrograms.length > 0 && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>
-                {user ? 'Programas recomendados para você' : 'Programas em destaque'}
-              </Text>
-              {recommendedPrograms.map((program) => (
+        {/* Recommended Program Section */}
+        {recommendedPrograms.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>
+              {user ? 'Programas recomendados para você' : 'Programas em destaque'}
+            </Text>
+            {recommendedPrograms.map((program: Program) => (
+              <ProgramCard 
+                key={program.id}
+                program={program}
+                onPress={() => handleProgramPress(program)}
+              />
+            ))}
+          </View>
+        )}
+
+        {/* Other Programs Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Outros programas</Text>
+          {programs.length > 0 ? (
+            programs
+              .filter((p: Program) => !recommendedPrograms.find((r: Program) => r.id === p.id))
+              .map((program: Program) => (
                 <ProgramCard 
                   key={program.id}
                   program={program}
                   onPress={() => handleProgramPress(program)}
                 />
-              ))}
-            </View>
+              ))
+          ) : (
+            <Text style={styles.noProgramsText}>Nenhum programa disponível no momento.</Text>
           )}
-
-          {/* Other Programs Section */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Outros programas</Text>
-            {programs.length > 0 ? (
-              programs
-                .filter(p => !recommendedPrograms.find(r => r.id === p.id))
-                .map((program) => (
-                  <ProgramCard 
-                    key={program.id}
-                    program={program}
-                    onPress={() => handleProgramPress(program)}
-                  />
-                ))
-            ) : (
-              <Text style={styles.noProgramsText}>Nenhum programa disponível no momento.</Text>
-            )}
-          </View>
-        </ScrollView>
-      </View>
-      
-      <View style={styles.footer} />
+        </View>
+      </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNavigation}>
@@ -230,7 +236,6 @@ const styles = StyleSheet.create({
   footer: {
     height: 40,
     backgroundColor: '#cb2328',
-    marginTop: 'auto',
   },
   content: {
     flex: 1,
@@ -254,10 +259,32 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    width: '100%',
+  },
+  headerSection: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  backButtonText: {
+    color: '#cb2328',
+    fontSize: 16,
+    marginLeft: 8,
+    fontWeight: '600',
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#cb2328',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   section: {
     marginBottom: 24,
+    paddingHorizontal: 20,
   },
   sectionTitle: {
     color: '#DC2626',
@@ -319,37 +346,34 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    gap: 16,
   },
   loadingText: {
-    marginTop: 16,
     fontSize: 16,
-    color: '#6B7280',
-    textAlign: 'center',
+    color: '#6c757d',
   },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    gap: 16,
+    paddingHorizontal: 24,
   },
   errorText: {
-    marginTop: 16,
     fontSize: 16,
-    color: '#6B7280',
+    color: '#DC2626',
     textAlign: 'center',
-    marginBottom: 20,
   },
   retryButton: {
     backgroundColor: '#DC2626',
-    paddingHorizontal: 24,
     paddingVertical: 12,
+    paddingHorizontal: 24,
     borderRadius: 8,
   },
   retryButtonText: {
-    color: 'white',
-    fontWeight: '600',
+    color: '#fff',
     fontSize: 16,
+    fontWeight: '600',
   },
   noProgramsText: {
     color: '#6B7280',

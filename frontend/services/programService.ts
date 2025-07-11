@@ -28,12 +28,22 @@ export interface Program {
   
   // Critérios para matching
   targetAgeRange?: string;
-  purpose?: string;
-  durationRange?: string;
-  companionshipType?: string;
-  englishLevel?: string;
+  targetFocus?: string;
+  targetMethod?: string;
+  targetType?: string;
+  targetWorkload?: string;
+  targetLanguageLevel?: string;
+  targetPriceRange?: string;
+  targetDuration?: string;
+  targetCountry?: string;
+  experienceLevel?: string;
+  studyGoals?: string;
+  preferredLocation?: string;
+  budgetRange?: string;
+  timeCommitment?: string;
 }
 
+// Tipos para resposta da API
 export interface ProgramsResponse {
   success: boolean;
   data: Program[];
@@ -62,7 +72,7 @@ class ProgramService {
   // Buscar todos os programas
   async getPrograms(): Promise<Program[]> {
     try {
-      const response = await this.api.get<ProgramsResponse>('/api/programs');
+      const response = await this.api.get<ProgramsResponse>('/programs');
       
       if (response.data.success) {
         return response.data.data;
@@ -78,7 +88,7 @@ class ProgramService {
   // Buscar programa por ID
   async getProgramById(id: number): Promise<Program> {
     try {
-      const response = await this.api.get<ProgramResponse>(`/api/programs/${id}`);
+      const response = await this.api.get<ProgramResponse>(`/programs/${id}`);
       
       if (response.data.success) {
         return response.data.data;
@@ -94,7 +104,7 @@ class ProgramService {
   // Buscar programas ativos
   async getActivePrograms(): Promise<Program[]> {
     try {
-      const response = await this.api.get<ProgramsResponse>('/api/programs?active=true');
+      const response = await this.api.get<ProgramsResponse>('/programs?active=true');
       
       if (response.data.success) {
         return response.data.data;
@@ -107,10 +117,10 @@ class ProgramService {
     }
   }
 
-  // Buscar programas recomendados para um usuário
+  // Buscar programas recomendados
   async getRecommendedPrograms(userId: number): Promise<Program[]> {
     try {
-      const response = await this.api.get<ProgramsResponse>(`/api/programs/recommended/${userId}`);
+      const response = await this.api.get<ProgramsResponse>(`/programs/recommended/${userId}`);
       
       if (response.data.success) {
         return response.data.data;
@@ -123,7 +133,7 @@ class ProgramService {
     }
   }
 
-  // Formatador de preço
+  // Formatar preço para exibição
   formatPrice(price: number): string {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -131,7 +141,7 @@ class ProgramService {
     }).format(price);
   }
 
-  // Formatador de duração
+  // Formatar duração para exibição
   formatDuration(weeks: number): string {
     if (weeks === 1) return '1 semana';
     if (weeks < 4) return `${weeks} semanas`;
@@ -139,10 +149,40 @@ class ProgramService {
     const months = Math.floor(weeks / 4);
     const remainingWeeks = weeks % 4;
     
-    if (months === 1 && remainingWeeks === 0) return '1 mês';
-    if (remainingWeeks === 0) return `${months} meses`;
+    if (months === 1) {
+      if (remainingWeeks === 0) return '1 mês';
+      return `1 mês e ${remainingWeeks} semana${remainingWeeks > 1 ? 's' : ''}`;
+    }
     
+    if (remainingWeeks === 0) return `${months} meses`;
     return `${months} meses e ${remainingWeeks} semana${remainingWeeks > 1 ? 's' : ''}`;
+  }
+
+  // Validar dados do programa
+  validateProgram(program: Partial<Program>): string[] {
+    const errors: string[] = [];
+    
+    if (!program.title || program.title.trim().length < 3) {
+      errors.push('Título deve ter pelo menos 3 caracteres');
+    }
+    
+    if (!program.description || program.description.trim().length < 10) {
+      errors.push('Descrição deve ter pelo menos 10 caracteres');
+    }
+    
+    if (!program.durationWeeks || program.durationWeeks < 1) {
+      errors.push('Duração deve ser de pelo menos 1 semana');
+    }
+    
+    if (!program.price || program.price <= 0) {
+      errors.push('Preço deve ser maior que zero');
+    }
+    
+    if (!program.country || program.country.trim().length < 2) {
+      errors.push('País deve ser informado');
+    }
+    
+    return errors;
   }
 }
 

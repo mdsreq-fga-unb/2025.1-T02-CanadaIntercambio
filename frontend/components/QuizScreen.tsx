@@ -224,6 +224,11 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ quizType = 'PERFIL' }) => {
         <View style={styles.header} />
         
         <View style={styles.content}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
+            <Text style={styles.backButtonText}>Voltar</Text>
+          </TouchableOpacity>
+          
           <Text style={styles.welcome}>Quiz</Text>
           
           <Image
@@ -249,6 +254,11 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ quizType = 'PERFIL' }) => {
         <View style={styles.header} />
         
         <View style={styles.content}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
+            <Text style={styles.backButtonText}>Voltar</Text>
+          </TouchableOpacity>
+          
           <Text style={styles.welcome}>Quiz</Text>
           
           <Image
@@ -279,23 +289,22 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ quizType = 'PERFIL' }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header} />
       
-      <View style={styles.content}>
-        <Text style={styles.welcome}>Quiz</Text>
-        
-        <Image
-          source={loginLogo}
-          style={styles.logo}
-          resizeMode="contain"
-        />
+      <ScrollView style={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <View style={styles.headerSection}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
+            <Text style={styles.backButtonText}>Voltar</Text>
+          </TouchableOpacity>
+          
+          <Text style={styles.title}>Quiz</Text>
+        </View>
         
         {renderProgressBar()}
+        
+        {renderQuestion(quiz.questions[currentStep])}
+      </ScrollView>
 
-        <ScrollView style={styles.scrollContent} showsVerticalScrollIndicator={false}>
-          {renderQuestion(quiz.questions[currentStep])}
-        </ScrollView>
-
-        {renderNavigationButtons()}
-      </View>
+      {renderNavigationButtons()}
       
       <View style={styles.footer} />
     </SafeAreaView>
@@ -333,17 +342,37 @@ const styles = StyleSheet.create({
     width: '80%',
     maxWidth: 300,
     height: 90,
-    marginBottom: 20,
+    marginBottom: 30,
   },
   scrollContent: {
     flex: 1,
-    width: '100%',
+  },
+  headerSection: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  backButtonText: {
+    color: '#cb2328',
+    fontSize: 16,
+    marginLeft: 8,
+    fontWeight: '600',
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#cb2328',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   progressContainer: {
-    width: '100%',
+    paddingHorizontal: 20,
     paddingVertical: 16,
     backgroundColor: '#f8f9fa',
-    marginBottom: 20,
   },
   progressBar: {
     height: 8,
@@ -405,7 +434,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 16,
     backgroundColor: '#f8f9fa',
-    width: '100%',
   },
   navButton: {
     flexDirection: 'row',
