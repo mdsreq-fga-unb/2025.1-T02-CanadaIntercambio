@@ -10,14 +10,24 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (loading) return; // Aguardar verificação de autenticação
 
-    const isOnLoginPage = pathname === '/login' || pathname === '/cadastro_visitante';
+    // Definir rotas públicas que não precisam de autenticação
+    const publicRoutes = [
+      '/onboard_inicial',
+      '/onboard', 
+      '/login',
+      '/cadastro_visitante',
+      '/cadastro_adm',
+      '/cadastro_visitante_new'
+    ];
 
-    if (!isAuthenticated && !isOnLoginPage) {
-      // Se não autenticado e não está na página de login, vai para login
-      console.log('Não autenticado, redirecionando para login');
-      router.replace('/login');
-    } else if (isAuthenticated && isOnLoginPage) {
-      // Se autenticado e está na página de login, vai para programas
+    const isOnPublicPage = publicRoutes.includes(pathname);
+
+    if (!isAuthenticated && !isOnPublicPage) {
+      // Se não autenticado e não está em uma página pública, vai para onboard inicial
+      console.log('Não autenticado, redirecionando para onboard inicial');
+      router.replace('/onboard_inicial');
+    } else if (isAuthenticated && (pathname === '/login' || pathname === '/cadastro_visitante' || pathname === '/cadastro_adm')) {
+      // Se autenticado e está em uma página de login/cadastro, vai para programas
       console.log('Autenticado, redirecionando para programas');
       router.replace('/programas');
     }

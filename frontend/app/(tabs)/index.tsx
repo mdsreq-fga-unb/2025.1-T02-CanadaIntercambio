@@ -10,8 +10,8 @@ export default function HomeScreen() {
     if (loading) return; // Aguardar verificação de autenticação
     
     if (!isAuthenticated) {
-      // Se não autenticado, redirecionar para login
-      router.replace('/login');
+      // Se não autenticado, redirecionar para onboard inicial
+      router.replace('/onboard_inicial');
     } else {
       // Se autenticado, redirecionar para programas
       router.replace('/programas');

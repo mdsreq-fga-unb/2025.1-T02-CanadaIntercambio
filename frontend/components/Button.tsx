@@ -93,7 +93,7 @@ export const Button: React.FC<ButtonProps> = ({
     >
       {loading ? (
         <ActivityIndicator 
-          color={variant === 'primary' ? '#fff' : '#cb2328'} 
+          color={variant === 'primary' ? '#fff' : '#CC2027'} 
           size="small" 
         />
       ) : (
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
   
   // Variants
   primaryButton: {
-    backgroundColor: '#cb2328',
-    borderColor: '#cb2328',
+    backgroundColor: '#CC2027',
+    borderColor: '#CC2027',
   },
   secondaryButton: {
     backgroundColor: '#f8f9fa',
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   outlineButton: {
     backgroundColor: 'transparent',
-    borderColor: '#cb2328',
+    borderColor: '#CC2027',
   },
   
   // Sizes
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     color: '#6c757d',
   },
   outlineText: {
-    color: '#cb2328',
+    color: '#CC2027',
   },
   
   // Text sizes

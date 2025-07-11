@@ -4,6 +4,7 @@ import { MaterialCommunityIcons, FontAwesome, Ionicons } from '@expo/vector-icon
 import { programService, Program } from '../../services/programService';
 import { useAuth } from '../../contexts/AuthContext';
 import { router } from 'expo-router';
+import { ProtectedRoute } from '../../components/ProtectedRoute';
 
 const torontoSkyline = require("../../assets/images/toronto.jpg");
 const loginLogo = require("../../assets/images/login_logo.png");
@@ -95,55 +96,25 @@ const ProgramasScreen: React.FC = () => {
 
   if (loading) {
     return (
-      <View style={styles.container}>
-        <View style={styles.header} />
-        
-        <View style={styles.content}>
-          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-            <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
-            <Text style={styles.backButtonText}>Voltar</Text>
-          </TouchableOpacity>
-          
-          <Text style={styles.welcome}>Programas</Text>
-          
-          <Image
-            source={loginLogo}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          
-          <View style={styles.loadingContainer}>
-            <ActivityIndicator size="large" color="#DC2626" />
+      <ProtectedRoute>
+        <View style={styles.container}>
+          <View style={styles.header} />
+          <View style={styles.content}>
+            <ActivityIndicator size="large" color="#cb2328" />
             <Text style={styles.loadingText}>Carregando programas...</Text>
           </View>
+          <View style={styles.footer} />
         </View>
-        
-        <View style={styles.footer} />
-      </View>
+      </ProtectedRoute>
     );
   }
 
   if (error) {
     return (
-      <View style={styles.container}>
-        <View style={styles.header} />
-        
-        <View style={styles.content}>
-          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-            <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
-            <Text style={styles.backButtonText}>Voltar</Text>
-          </TouchableOpacity>
-          
-          <Text style={styles.welcome}>Programas</Text>
-          
-          <Image
-            source={loginLogo}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          
-          <View style={styles.errorContainer}>
-            <MaterialCommunityIcons name="alert-circle" size={48} color="#DC2626" />
+      <ProtectedRoute>
+        <View style={styles.container}>
+          <View style={styles.header} />
+          <View style={styles.content}>
             <Text style={styles.errorText}>{error}</Text>
             <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
               <Text style={styles.retryButtonText}>Tentar novamente</Text>
@@ -152,75 +123,77 @@ const ProgramasScreen: React.FC = () => {
         </View>
         
         <View style={styles.footer} />
-      </View>
+      </ProtectedRoute>
     );
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header} />
-      
-      <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-        <View style={styles.headerSection}>
-          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-            <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
-            <Text style={styles.backButtonText}>Voltar</Text>
-          </TouchableOpacity>
-          
-          <Text style={styles.title}>Programas</Text>
-        </View>
+    <ProtectedRoute>
+      <View style={styles.container}>
+        <View style={styles.header} />
         
-        {/* Recommended Program Section */}
-        {recommendedPrograms.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>
-              {user ? 'Programas recomendados para você' : 'Programas em destaque'}
-            </Text>
-            {recommendedPrograms.map((program: Program) => (
-              <ProgramCard 
-                key={program.id}
-                program={program}
-                onPress={() => handleProgramPress(program)}
-              />
-            ))}
+        <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+          <View style={styles.headerSection}>
+            <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+              <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
+              <Text style={styles.backButtonText}>Voltar</Text>
+            </TouchableOpacity>
+            
+            <Text style={styles.title}>Programas</Text>
           </View>
-        )}
-
-        {/* Other Programs Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Outros programas</Text>
-          {programs.length > 0 ? (
-            programs
-              .filter((p: Program) => !recommendedPrograms.find((r: Program) => r.id === p.id))
-              .map((program: Program) => (
+          
+          {/* Recommended Program Section */}
+          {recommendedPrograms.length > 0 && (
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>
+                {user ? 'Programas recomendados para você' : 'Programas em destaque'}
+              </Text>
+              {recommendedPrograms.map((program: Program) => (
                 <ProgramCard 
                   key={program.id}
                   program={program}
                   onPress={() => handleProgramPress(program)}
                 />
-              ))
-          ) : (
-            <Text style={styles.noProgramsText}>Nenhum programa disponível no momento.</Text>
+              ))}
+            </View>
           )}
-        </View>
-      </ScrollView>
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNavigation}>
-        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/programas')}>
-          <MaterialCommunityIcons name="map-marker" size={24} color="white" />
-          <Text style={styles.navText}>Programas</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/perfil_principal')}>
-          <FontAwesome name="user" size={24} color="white" />
-          <Text style={styles.navText}>Perfil</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/inicio-quiz')}>
-          <Ionicons name="chatbox" size={24} color="white" />
-          <Text style={styles.navText}>Quiz</Text>
-        </TouchableOpacity>
+          {/* Other Programs Section */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Outros programas</Text>
+            {programs.length > 0 ? (
+              programs
+                .filter((p: Program) => !recommendedPrograms.find((r: Program) => r.id === p.id))
+                .map((program: Program) => (
+                  <ProgramCard 
+                    key={program.id}
+                    program={program}
+                    onPress={() => handleProgramPress(program)}
+                  />
+                ))
+            ) : (
+              <Text style={styles.noProgramsText}>Nenhum programa disponível no momento.</Text>
+            )}
+          </View>
+        </ScrollView>
+
+        {/* Bottom Navigation */}
+        <View style={styles.bottomNavigation}>
+          <TouchableOpacity style={styles.navItem} onPress={() => router.push('/programas')}>
+            <MaterialCommunityIcons name="map-marker" size={24} color="white" />
+            <Text style={styles.navText}>Programas</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem} onPress={() => router.push('/perfil_principal')}>
+            <FontAwesome name="user" size={24} color="white" />
+            <Text style={styles.navText}>Perfil</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem} onPress={() => router.push('/inicio-quiz')}>
+            <Ionicons name="chatbox" size={24} color="white" />
+            <Text style={styles.navText}>Quiz</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </ProtectedRoute>
   );
 };
 
