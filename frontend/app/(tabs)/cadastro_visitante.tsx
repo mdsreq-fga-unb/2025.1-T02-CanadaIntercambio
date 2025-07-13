@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
-import { Checkbox } from 'react-native-paper';
-import { Picker } from '@react-native-picker/picker';
-import { router } from 'expo-router';
-import { Input } from '../../components/Input';
-import { Button } from '../../components/Button';
-import { useAuth } from '../../contexts/AuthContext';
-import { useRegisterForm } from '../../hooks/useRegisterForm';
-import { TextInputMask } from 'react-native-masked-text';
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Image, ScrollView, Alert } from "react-native";
+import { Checkbox } from "react-native-paper";
+import { Picker } from "@react-native-picker/picker";
+import { router } from "expo-router";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { useAuth } from "../../contexts/AuthContext";
+import { useRegisterForm } from "../../hooks/useRegisterForm";
+import { TextInputMask } from "react-native-masked-text";
+import { Unit, unitService } from "@/services/unitService";
 
 export default function CadastroVisitante() {
   const { register } = useAuth();
@@ -16,7 +17,7 @@ export default function CadastroVisitante() {
     lastName,
     email,
     phone,
-    nearestUnit,
+    nearestUnitId,
     password,
     confirmPassword,
     errors,
@@ -25,7 +26,7 @@ export default function CadastroVisitante() {
     setLastName,
     setEmail,
     setPhone,
-    setNearestUnit,
+    setNearestUnitId,
     setPassword,
     setConfirmPassword,
     setLoading,
@@ -35,40 +36,47 @@ export default function CadastroVisitante() {
   } = useRegisterForm();
 
   const [aceito, setAceito] = useState(false);
+  const [units, setUnits] = useState<Unit[]>([]);
+
+  useEffect(() => {
+    const loadUnits = async () => {
+      try {
+        const data = await unitService.getAll();
+        setUnits(data);
+      } catch {
+        Alert.alert("Erro", "Não foi possível carregar as unidades.");
+      }
+    };
+
+    loadUnits();
+  }, []);
 
   const handleRegister = async () => {
-    // Limpar erros anteriores
     clearErrors();
 
-    // Validar se aceitou os termos
     if (!aceito) {
-      Alert.alert('Erro', 'Você deve aceitar os termos e condições para continuar.');
+      Alert.alert(
+        "Erro",
+        "Você deve aceitar os termos e condições para continuar."
+      );
       return;
     }
 
-    // Validar formulário
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setLoading(true);
 
     try {
       await register(getRegisterData());
-      
-      // Sucesso - redirecionar para programas
-      Alert.alert(
-        'Sucesso!', 
-        'Cadastro realizado com sucesso! Bem-vindo!',
-        [{ text: 'OK', onPress: () => router.replace('/programas') }]
-      );
+
+      Alert.alert("Sucesso!", "Cadastro realizado com sucesso! Bem-vindo!", [
+        { text: "OK", onPress: () => router.replace("/programas") },
+      ]);
     } catch (error: any) {
-      // Erro - mostrar mensagem detalhada
-      const errorMessage = error.message || 'Erro inesperado. Tente novamente.';
       Alert.alert(
-        'Erro no Cadastro',
-        errorMessage,
-        [{ text: 'OK' }]
+        "Erro no Cadastro",
+        error.message || "Erro inesperado. Tente novamente.",
+        [{ text: "OK" }]
       );
     } finally {
       setLoading(false);
@@ -79,14 +87,17 @@ export default function CadastroVisitante() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require('../../assets/images/login_logo.png')} 
+          source={require("../../assets/images/login_logo.png")}
           style={styles.logo}
           resizeMode="contain"
         />
       </View>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView
+        contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+      >
         <Text style={styles.title}>Preencha os dados abaixo:</Text>
-        
+
         <Input
           placeholder="Nome"
           value={firstName}
@@ -94,7 +105,6 @@ export default function CadastroVisitante() {
           error={errors.firstName}
           editable={!loading}
         />
-        
         <Input
           placeholder="Sobrenome"
           value={lastName}
@@ -102,7 +112,6 @@ export default function CadastroVisitante() {
           error={errors.lastName}
           editable={!loading}
         />
-        
         <Input
           placeholder="Email"
           value={email}
@@ -112,16 +121,12 @@ export default function CadastroVisitante() {
           autoCapitalize="none"
           editable={!loading}
         />
-        
+
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Telefone</Text>
           <TextInputMask
-            type={'cel-phone'}
-            options={{
-              maskType: 'BRL',
-              withDDD: true,
-              dddMask: '(99) '
-            }}
+            type={"cel-phone"}
+            options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
             value={phone}
             onChangeText={setPhone}
             style={styles.input}
@@ -133,20 +138,18 @@ export default function CadastroVisitante() {
 
         <View style={styles.pickerContainer}>
           <Picker
-            selectedValue={nearestUnit}
-            onValueChange={setNearestUnit}
+            selectedValue={nearestUnitId}
+            onValueChange={(value) => setNearestUnitId(Number(value))}
             style={styles.picker}
             enabled={!loading}
           >
-            <Picker.Item label="Selecione a unidade mais próxima" value="" />
-            <Picker.Item label="São Paulo - SP" value="sao-paulo" />
-            <Picker.Item label="Rio de Janeiro - RJ" value="rio-janeiro" />
-            <Picker.Item label="Belo Horizonte - MG" value="belo-horizonte" />
-            <Picker.Item label="Brasília - DF" value="brasilia" />
-            <Picker.Item label="Porto Alegre - RS" value="porto-alegre" />
+            <Picker.Item label="Selecione a unidade mais próxima" value={0} />
+            {units.map((unit) => (
+              <Picker.Item key={unit.id} label={unit.name} value={unit.id} />
+            ))}
           </Picker>
         </View>
-        
+
         <Input
           placeholder="Senha"
           value={password}
@@ -155,7 +158,6 @@ export default function CadastroVisitante() {
           secureTextEntry
           editable={!loading}
         />
-        
         <Input
           placeholder="Confirmar senha"
           value={confirmPassword}
@@ -167,16 +169,16 @@ export default function CadastroVisitante() {
 
         <View style={styles.checkboxContainer}>
           <Checkbox
-            status={aceito ? 'checked' : 'unchecked'}
+            status={aceito ? "checked" : "unchecked"}
             onPress={() => setAceito(!aceito)}
             disabled={loading}
           />
           <Text style={styles.checkboxText}>
-            Eu li e concordo em receber notificações e demais informativos da Canada Intercambio de acordo com as{' '}
+            Eu li e concordo com as{" "}
             <Text style={styles.link}>políticas de privacidade</Text>.
           </Text>
         </View>
-        
+
         <Button
           title={loading ? "Criando..." : "Criar Conta"}
           onPress={handleRegister}
@@ -191,92 +193,57 @@ export default function CadastroVisitante() {
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    backgroundColor: '#fff' 
+  container: { flex: 1, backgroundColor: "#fff" },
+  header: {
+    height: 70,
+    backgroundColor: "#cb2328",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  header: { 
-    height: 70, 
-    backgroundColor: '#cb2328', 
-    justifyContent: 'center', 
-    alignItems: 'center' 
+  logo: { width: 250, height: 60, marginTop: 10 },
+  footer: { height: 40, backgroundColor: "#cb2328", marginTop: "auto" },
+  content: {
+    alignItems: "center",
+    padding: 20,
+    flexGrow: 1,
+    justifyContent: "center",
   },
-  logo: { 
-    width: 250, 
-    height: 60, 
-    marginTop: 10 
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#cb2328",
+    marginVertical: 20,
+    textAlign: "center",
   },
-  footer: { 
-    height: 40, 
-    backgroundColor: '#cb2328', 
-    marginTop: 'auto' 
-  },
-  content: { 
-    alignItems: 'center', 
-    padding: 20, 
-    flexGrow: 1, 
-    justifyContent: 'center' 
-  },
-  title: { 
-    fontSize: 24, 
-    fontWeight: 'bold', 
-    color: '#cb2328', 
-    marginVertical: 20, 
-    textAlign: 'center' 
-  },
-  inputContainer: {
-    width: '100%',
-    maxWidth: 350,
-    marginBottom: 15,
-  },
-  label: {
-    fontSize: 14,
-    color: '#333',
-    marginBottom: 5,
-  },
+  inputContainer: { width: "100%", maxWidth: 350, marginBottom: 15 },
+  label: { fontSize: 14, color: "#333", marginBottom: 5 },
   input: {
     height: 48,
-    borderColor: '#dee2e6',
+    borderColor: "#dee2e6",
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,
-    backgroundColor: '#f8f9fa',
-    color: '#333',
+    backgroundColor: "#f8f9fa",
+    color: "#333",
   },
   pickerContainer: {
-    width: '100%',
+    width: "100%",
     maxWidth: 350,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: "#f8f9fa",
     borderRadius: 8,
     marginBottom: 15,
     borderWidth: 1,
-    borderColor: '#dee2e6',
+    borderColor: "#dee2e6",
   },
-  picker: { 
-    width: '100%', 
-    height: 48,
-    color: '#333',
-  },
-  checkboxContainer: { 
-    flexDirection: 'row', 
-    alignItems: 'flex-start', 
-    marginVertical: 10, 
-    width: '100%',
+  picker: { width: "100%", height: 48, color: "#333" },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginVertical: 10,
+    width: "100%",
     maxWidth: 350,
   },
-  checkboxText: { 
-    flex: 1, 
-    fontSize: 12, 
-    color: '#333', 
-    marginLeft: 8 
-  },
-  link: { 
-    color: '#cb2328', 
-    textDecorationLine: 'underline' 
-  },
-  button: {
-    width: '100%',
-    maxWidth: 350,
-    marginVertical: 20,
-  },
+  checkboxText: { flex: 1, fontSize: 12, color: "#333", marginLeft: 8 },
+  link: { color: "#cb2328", textDecorationLine: "underline" },
+  button: { width: "100%", maxWidth: 350, marginVertical: 20 },
 });

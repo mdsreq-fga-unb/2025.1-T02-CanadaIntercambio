@@ -1,4 +1,4 @@
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient, User } from "@prisma/client";
 
 export class UserRepository {
   private prisma: PrismaClient;
@@ -36,7 +36,7 @@ export class UserRepository {
     passwordHash: string;
     phone?: string;
     city?: string;
-    nearestUnit?: string;
+    nearestUnitId?: number;
   }): Promise<User> {
     return await this.prisma.user.create({
       data: userData,
@@ -51,10 +51,13 @@ export class UserRepository {
     });
   }
 
-  async createIntercambista(userId: number, data?: {
-    emergencyContactName?: string;
-    emergencyContactPhone?: string;
-  }): Promise<void> {
+  async createIntercambista(
+    userId: number,
+    data?: {
+      emergencyContactName?: string;
+      emergencyContactPhone?: string;
+    }
+  ): Promise<void> {
     await this.prisma.intercambista.create({
       data: {
         userId,
@@ -73,10 +76,10 @@ export class UserRepository {
     });
   }
 
-  getUserType(user: any): 'visitante' | 'intercambista' | 'admin' | null {
-    if (user.admin) return 'admin';
-    if (user.intercambista) return 'intercambista';
-    if (user.visitante) return 'visitante';
+  getUserType(user: any): "visitante" | "intercambista" | "admin" | null {
+    if (user.admin) return "admin";
+    if (user.intercambista) return "intercambista";
+    if (user.visitante) return "visitante";
     return null;
   }
 }

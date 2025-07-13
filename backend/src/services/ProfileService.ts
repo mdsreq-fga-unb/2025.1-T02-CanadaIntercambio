@@ -1,6 +1,6 @@
-import { PrismaClient, Prisma } from '@prisma/client';
-import { AuthService } from './AuthService'; // ajuste o caminho se necessário
-import { UserRepository } from '../repositories/UserRepository';
+import { PrismaClient, Prisma } from "@prisma/client";
+import { AuthService } from "./AuthService"; // ajuste o caminho se necessário
+import { UserRepository } from "../repositories/UserRepository";
 
 export class ProfileService {
   private prisma: PrismaClient;
@@ -10,12 +10,16 @@ export class ProfileService {
   constructor(prisma: PrismaClient) {
     this.prisma = prisma;
     this.userRepository = new UserRepository(prisma);
-    this.authService = new AuthService(prisma); // usa o mesmo prisma
+    this.authService = new AuthService(prisma);
   }
 
-  async updateProfile(userId: number, userType: 'visitante' | 'intercambista' | 'admin', data: any) {
+  async updateProfile(
+    userId: number,
+    userType: "visitante" | "intercambista" | "admin",
+    data: any
+  ) {
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error('Usuário não encontrado');
+    if (!user) throw new Error("Usuário não encontrado");
 
     const oldEmail = user.email;
 
@@ -26,20 +30,21 @@ export class ProfileService {
         lastName: data.lastName,
         city: data.city,
         phone: data.phone,
-        nearestUnit: data.nearestUnit,
+        nearestUnitId: data.nearestUnitId,
         email: data.email ?? user.email,
-        ...(data.password && { passwordHash: await this.hashPassword(data.password) }),
+        ...(data.password && {
+          passwordHash: await this.hashPassword(data.password),
+        }),
       },
     });
-
 
     const updatedProfile = await this.getProfile(userId);
     const newUserType = this.userRepository.getUserType(updatedProfile);
 
     let newToken: string | undefined;
     if (oldEmail !== updatedUser.email || userType !== newUserType) {
-      if (!newUserType) throw new Error('Tipo de usuário não identificado');
-      newToken = this.authService['generateToken']({
+      if (!newUserType) throw new Error("Tipo de usuário não identificado");
+      newToken = this.authService["generateToken"]({
         userId: updatedUser.id,
         email: updatedUser.email,
         userType: newUserType,
@@ -50,7 +55,7 @@ export class ProfileService {
   }
 
   private async hashPassword(password: string): Promise<string> {
-    const bcrypt = await import('bcryptjs');
+    const bcrypt = await import("bcryptjs");
     return bcrypt.hash(password, 10);
   }
 

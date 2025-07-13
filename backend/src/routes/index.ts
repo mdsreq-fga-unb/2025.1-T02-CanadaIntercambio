@@ -1,10 +1,11 @@
-import { Router } from 'express';
-import { PrismaClient } from '@prisma/client';
-import { AuthRoutes } from './authRoutes';
-import { TestRoutes } from './testRoutes';
-import { ProgramRoutes } from './programRoutes';
-import { QuizRoutes } from './quizRoutes';
-import { ProfileRoutes } from './profileRoutes';
+import { Router } from "express";
+import { PrismaClient } from "@prisma/client";
+import { AuthRoutes } from "./authRoutes";
+import { TestRoutes } from "./testRoutes";
+import { ProgramRoutes } from "./programRoutes";
+import { QuizRoutes } from "./quizRoutes";
+import { ProfileRoutes } from "./profileRoutes";
+import { UnitRoutes } from "./unitRoutes";
 
 export class AppRoutes {
   private router: Router;
@@ -19,30 +20,34 @@ export class AppRoutes {
   private setupRoutes(): void {
     // Rotas de autenticação
     const authRoutes = new AuthRoutes(this.prisma);
-    this.router.use('/auth', authRoutes.getRouter());
+    this.router.use("/auth", authRoutes.getRouter());
 
     // Rotas de perfil
     const profileRoutes = new ProfileRoutes(this.prisma);
-    this.router.use('/profile', profileRoutes.getRouter());
+    this.router.use("/profile", profileRoutes.getRouter());
+
+    // Rotas de unidade
+    const unitRoutes = new UnitRoutes(this.prisma);
+    this.router.use("/units", unitRoutes.getRouter());
 
     // Rotas de programas
     const programRoutes = new ProgramRoutes(this.prisma);
-    this.router.use('/programs', programRoutes.getRouter());
+    this.router.use("/programs", programRoutes.getRouter());
 
     // Rotas de quiz
     const quizRoutes = new QuizRoutes(this.prisma);
-    this.router.use('/quiz', quizRoutes.getRouter());
+    this.router.use("/quiz", quizRoutes.getRouter());
 
     // Rotas de teste para verificar autenticação e autorização
     const testRoutes = new TestRoutes(this.prisma);
-    this.router.use('/test', testRoutes.getRouter());
+    this.router.use("/test", testRoutes.getRouter());
 
     // Rota de teste básica
-    this.router.get('/health', (req, res) => {
-      res.json({ 
-        status: 'ok', 
+    this.router.get("/health", (req, res) => {
+      res.json({
+        status: "ok",
         timestamp: new Date().toISOString(),
-        uptime: process.uptime()
+        uptime: process.uptime(),
       });
     });
   }

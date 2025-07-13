@@ -1,79 +1,104 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
-import { Checkbox } from 'react-native-paper';
-import { Picker } from '@react-native-picker/picker';
-import { router } from 'expo-router';
-import { useAuth } from '../../contexts/AuthContext';
-import { TextInputMask } from 'react-native-masked-text';
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, ScrollView, Image, Alert } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { Toast } from "../../components/Toast";
+import { useAuth } from "../../contexts/AuthContext";
+import { profileService } from "../../services/profileService";
+import { unitService, Unit } from "../../services/unitService";
+import { TextInputMask } from "react-native-masked-text";
+import { useEditProfileForm } from "../../hooks/useEditProfileForm";
 
-export default function CadastroAdm() {
-  const { register } = useAuth();
-  const [nome, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
-  const [email, setEmail] = useState('');
-  const [ddd, setDdd] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
-  const [unidade, setUnidade] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [cargoInterno, setCargoInterno] = useState('');
-  const [aceito, setAceito] = useState(false);
+export default function EditarPerfilScreen() {
+  const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [units, setUnits] = useState<Unit[]>([]);
 
-  const handleRegister = async () => {
-    // Validar se aceitou os termos
-    if (!aceito) {
-      Alert.alert('Erro', 'Você deve aceitar os termos e condições para continuar.');
-      return;
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    nearestUnitId,
+    setFirstName,
+    setLastName,
+    setEmail,
+    setPhone,
+    setNearestUnitId,
+    validateForm,
+    clearErrors,
+    errors,
+    isFormValid,
+  } = useEditProfileForm();
+
+  const [toast, setToast] = useState({
+    visible: false,
+    message: "",
+    type: "info" as "success" | "error" | "info",
+  });
+
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "info"
+  ) => {
+    setToast({ visible: true, message, type });
+  };
+
+  const hideToast = () => setToast((prev) => ({ ...prev, visible: false }));
+
+  useEffect(() => {
+    if (!authLoading) {
+      loadProfile();
     }
+    loadUnits();
+  }, [authLoading]);
 
-    // Validar campos obrigatórios
-    if (!nome || !sobrenome || !email || !senha || !confirmarSenha || !cargoInterno) {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos obrigatórios.');
-      return;
+  const loadUnits = async () => {
+    try {
+      const data = await unitService.getAll();
+      // Evita unidades duplicadas
+      const unique = Array.from(new Map(data.map((u) => [u.id, u])).values());
+      setUnits(unique);
+    } catch (err) {
+      showToast("Erro ao carregar unidades", "error");
     }
+  };
 
-    // Validar se senhas coincidem
-    if (senha !== confirmarSenha) {
-      Alert.alert('Erro', 'As senhas não coincidem.');
-      return;
+  const loadProfile = async () => {
+    try {
+      setLoading(true);
+      const profile = await profileService.getProfile();
+      setFirstName(profile.firstName || "");
+      setLastName(profile.lastName || "");
+      setEmail(profile.email || "");
+      setPhone(profile.phone || "");
+      setNearestUnitId(profile.nearestUnitId || 0);
+    } catch (err) {
+      console.error("Erro ao carregar perfil:", err);
+      showToast("Erro ao carregar perfil", "error");
+    } finally {
+      setLoading(false);
     }
+  };
 
-    // Validar senha (mínimo 6 caracteres)
-    if (senha.length < 6) {
-      Alert.alert('Erro', 'A senha deve ter pelo menos 6 caracteres.');
-      return;
-    }
-
-    setLoading(true);
+  const handleSave = async () => {
+    clearErrors();
+    if (!validateForm()) return;
 
     try {
-      await register({
-        firstName: nome,
-        lastName: sobrenome,
-        email: email.trim(),
-        password: senha,
-        phone: ddd && telefone ? `${ddd}${telefone}` : undefined,
-        nearestUnit: unidade || undefined,
-        userType: 'admin',
-        internalRole: cargoInterno,
+      setLoading(true);
+      await profileService.updateProfile({
+        firstName,
+        lastName,
+        email,
+        phone,
+        nearestUnitId,
       });
-      
-      // Sucesso - redirecionar para programas
-      Alert.alert(
-        'Sucesso!', 
-        'Cadastro de administrador realizado com sucesso! Bem-vindo!',
-        [{ text: 'OK', onPress: () => router.replace('/programas') }]
-      );
-    } catch (error: any) {
-      // Erro - mostrar mensagem detalhada
-      const errorMessage = error.message || 'Erro inesperado. Tente novamente.';
-      Alert.alert(
-        'Erro no Cadastro',
-        errorMessage,
-        [{ text: 'OK' }]
-      );
+      showToast("Perfil atualizado com sucesso!", "success");
+    } catch (err: any) {
+      console.error("Erro ao atualizar perfil:", err);
+      showToast(err.message || "Erro ao salvar perfil", "error");
     } finally {
       setLoading(false);
     }
@@ -81,192 +106,146 @@ export default function CadastroAdm() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Image
-          source={require('../../assets/images/login_logo.png')} 
+          source={require("../../assets/images/login_logo.png")}
           style={styles.logo}
           resizeMode="contain"
         />
       </View>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-        <Text style={styles.title}>Cadastro de Administrador</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Nome"
-          value={nome}
-          onChangeText={setNome}
-          placeholderTextColor="#888"
-          editable={!loading}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Sobrenome"
-          value={sobrenome}
-          onChangeText={setSobrenome}
-          placeholderTextColor="#888"
-          editable={!loading}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          placeholderTextColor="#888"
-          editable={!loading}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Cargo Interno"
-          value={cargoInterno}
-          onChangeText={setCargoInterno}
-          placeholderTextColor="#888"
-          editable={!loading}
-        />
-        <View style={styles.row}>
-          <TextInput
-            style={[styles.input, styles.inputDDD]}
-            placeholder="DDD"
-            value={ddd}
-            onChangeText={setDdd}
-            keyboardType="numeric"
-            maxLength={3}
-            placeholderTextColor="#888"
+
+      <ScrollView
+        contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Text style={styles.title}>Atualize suas informações:</Text>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Nome</Text>
+          <Input
+            placeholder="Nome"
+            value={firstName}
+            onChangeText={setFirstName}
+            editable={!loading}
+            error={errors.firstName}
           />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Sobrenome</Text>
+          <Input
+            placeholder="Sobrenome"
+            value={lastName}
+            onChangeText={setLastName}
+            editable={!loading}
+            error={errors.lastName}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>E-mail</Text>
+          <Input
+            placeholder="E-mail"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            editable={!loading}
+            error={errors.email}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
           <Text style={styles.label}>Telefone</Text>
           <TextInputMask
-            type={'cel-phone'}
-            options={{
-              maskType: 'BRL',
-              withDDD: true,
-              dddMask: '(99) '
-            }}
-            value={telefone}
-            onChangeText={setTelefone}
+            type={"cel-phone"}
+            options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
+            value={phone}
+            onChangeText={setPhone}
             style={styles.input}
             placeholder="(99) 99999-9999"
             keyboardType="phone-pad"
             editable={!loading}
           />
+          {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
         </View>
-        <TextInput
-          style={styles.input}
-          placeholder="Data de Nascimento"
-          value={dataNascimento}
-          onChangeText={setDataNascimento}
-          placeholderTextColor="#888"
-        />
-        <View style={styles.pickerContainer}>
-          <Picker
-            selectedValue={unidade}
-            onValueChange={setUnidade}
-            style={styles.picker}
-          >
-            <Picker.Item label="Filial" value="" color="#888"/>
-            <Picker.Item label="São Paulo" value="sp" color="#888"/>
-            <Picker.Item label="Rio de Janeiro" value="rj" color="#888"/>
-          </Picker>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Unidade mais próxima</Text>
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={nearestUnitId}
+              onValueChange={(value) => setNearestUnitId(Number(value))}
+              enabled={!loading}
+              style={styles.picker}
+            >
+              <Picker.Item label="Selecione a unidade mais próxima" value={0} />
+              {units.map((unit) => (
+                <Picker.Item key={unit.id} label={unit.name} value={unit.id} />
+              ))}
+            </Picker>
+          </View>
+          {errors.nearestUnitId && (
+            <Text style={styles.errorText}>{errors.nearestUnitId}</Text>
+          )}
         </View>
-        <TextInput
-          style={styles.input}
-          placeholder="Senha"
-          value={senha}
-          onChangeText={setSenha}
-          secureTextEntry
-          placeholderTextColor="#888"
+
+        <Button
+          title={loading ? "Salvando..." : "Salvar"}
+          onPress={handleSave}
+          loading={loading}
+          disabled={loading || !isFormValid}
+          style={styles.button}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirmar Senha"
-          value={confirmarSenha}
-          onChangeText={setConfirmarSenha}
-          secureTextEntry
-          placeholderTextColor="#888"
-        />
-        <View style={styles.checkboxContainer}>
-          <Checkbox
-            status={aceito ? 'checked' : 'unchecked'}
-            onPress={() => setAceito(!aceito)}
-            color="#cb2328"
-            uncheckedColor='#888'
-          />
-          <Text style={styles.checkboxText}>
-            Eu li e concordo em receber notificações e demais informativos da Canada Intercambio de acordo com as{' '}
-            <Text style={styles.link}>políticas de privacidade</Text>.
-          </Text>
-        </View>
-        <TouchableOpacity 
-          style={[styles.button, loading && styles.buttonDisabled]} 
-          onPress={handleRegister}
-          disabled={loading}
-        >
-          <Text style={styles.buttonText}>
-            {loading ? 'Criando...' : 'Criar'}
-          </Text>
-        </TouchableOpacity>
       </ScrollView>
+
       <View style={styles.footer} />
+      <Toast
+        visible={toast.visible}
+        message={toast.message}
+        type={toast.type}
+        onHide={hideToast}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', justifyContent: 'center'  },
-  header: { height: 70, backgroundColor: '#cb2328', justifyContent: 'center', alignItems: 'center' },
+  container: { flex: 1, backgroundColor: "#fff" },
+  header: {
+    height: 70,
+    backgroundColor: "#cb2328",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   logo: { width: 250, height: 60, marginTop: 10 },
-  footer: { height: 40, backgroundColor: '#cb2328', marginTop: 'auto' },
-  content: { alignItems: 'center', padding: 20 , flex: 1, justifyContent: 'center' },
-  title: { fontSize: 24, fontWeight: 'bold', color: '#cb2328', marginVertical: 20, textAlign: 'center', alignSelf: 'stretch' },
+  footer: { height: 40, backgroundColor: "#cb2328", marginTop: "auto" },
+  content: { alignItems: "center", padding: 20, flexGrow: 1 },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#cb2328",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  inputContainer: { width: "100%", maxWidth: 350, marginBottom: 15 },
+  label: { fontSize: 14, color: "#333", marginBottom: 5 },
   input: {
-    width: 300,
-    height: 40,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-  },
-  row: { flexDirection: 'row', justifyContent: 'space-between', width: 300 },
-  inputDDD: { width: 70, marginRight: 10 },
-  inputTelefone: { flex: 1 },
-  pickerContainer: {
-    width: 300,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
-    marginBottom: 10,
-    overflow: 'hidden',
-  },
-  picker: {
     height: 48,
+    borderColor: "#dee2e6",
     borderWidth: 1,
-    borderColor: '#DDD',
     borderRadius: 8,
-    backgroundColor: '#FFF',
-    color: '#333',
-    paddingHorizontal: 12,
-    marginBottom: 12,
-    fontSize: 16,
+    paddingHorizontal: 10,
+    backgroundColor: "#f8f9fa",
+    color: "#333",
   },
-  checkboxContainer: { flexDirection: 'row', alignItems: 'flex-start', marginVertical: 10, width: 300},
-  checkboxText: { flex: 1, fontSize: 12, color: '#333', marginLeft: 8 },
-  link: { color: '#cb2328', textDecorationLine: 'underline' },
-  button: {
-    width: 300,
-    height: 45,
-    backgroundColor: '#cb2328',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 20,
+  pickerContainer: {
+    backgroundColor: "#f8f9fa",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#dee2e6",
   },
-  buttonDisabled: {
-    opacity: 0.6,
-  },
-  buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 18 },
-  label: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    marginBottom: 4,
-    color: '#CC2027',
-  },
+  picker: { height: 48, width: "100%", color: "#333" },
+  errorText: { color: "red", fontSize: 12, marginTop: 4 },
+  button: { width: "100%", maxWidth: 350, marginTop: 20 },
 });

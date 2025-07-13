@@ -1,50 +1,48 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export function useEditProfileForm() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [nearestUnit, setNearestUnit] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [nearestUnitId, setNearestUnitId] = useState(0);
 
   const [errors, setErrors] = useState<{
     firstName?: string;
     lastName?: string;
     email?: string;
     phone?: string;
-    nearestUnit?: string;
+    nearestUnitId?: string;
   }>({});
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
 
     if (!firstName.trim()) {
-      newErrors.firstName = 'Nome é obrigatório';
+      newErrors.firstName = "Nome é obrigatório";
     }
 
     if (!lastName.trim()) {
-      newErrors.lastName = 'Sobrenome é obrigatório';
+      newErrors.lastName = "Sobrenome é obrigatório";
     }
 
     if (!email.trim()) {
-      newErrors.email = 'Email é obrigatório';
+      newErrors.email = "Email é obrigatório";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = "Email inválido";
     }
 
     if (!phone.trim()) {
-      newErrors.phone = 'Telefone é obrigatório';
+      newErrors.phone = "Telefone é obrigatório";
     } else {
-      const digits = phone.replace(/\D/g, '');
+      const digits = phone.replace(/\D/g, "");
       if (digits.length < 10 || digits.length > 11) {
-        newErrors.phone = 'Telefone deve ter DDD e número válido';
-      } else if (!/^\d{10,11}$/.test(digits)) {
-        newErrors.phone = 'Telefone inválido';
+        newErrors.phone = "Telefone deve ter DDD e número válido";
       }
     }
 
-    if (!nearestUnit.trim()) {
-      newErrors.nearestUnit = 'Unidade mais próxima é obrigatória';
+    if (!nearestUnitId || nearestUnitId === 0) {
+      newErrors.nearestUnitId = "Unidade mais próxima é obrigatória";
     }
 
     setErrors(newErrors);
@@ -54,28 +52,27 @@ export function useEditProfileForm() {
   const clearErrors = () => setErrors({});
 
   const isFormValid =
-  firstName.trim() !== '' &&
-  lastName.trim() !== '' &&
-  email.trim() !== '' &&
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
-  phone.trim().length >= 10 && // Ex: (11) 91234-5678
-  nearestUnit.trim() !== '';
-
+    firstName.trim() !== "" &&
+    lastName.trim() !== "" &&
+    email.trim() !== "" &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
+    phone.trim().length >= 10 &&
+    nearestUnitId !== 0;
 
   return {
     firstName,
     lastName,
     email,
     phone,
-    nearestUnit,
+    nearestUnitId,
     setFirstName,
     setLastName,
     setEmail,
     setPhone,
-    setNearestUnit,
+    setNearestUnitId,
     validateForm,
     clearErrors,
     errors,
-    isFormValid
+    isFormValid,
   };
 }

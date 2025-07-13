@@ -5,8 +5,8 @@ export interface RegisterRequest {
   password: string;
   phone?: string;
   city?: string;
-  nearestUnit?: string;
-  userType: 'visitante' | 'intercambista' | 'admin';
+  nearestUnitId?: number;
+  userType: "visitante" | "intercambista" | "admin";
   // Campos específicos para admin
   internalRole?: string;
   // Campos específicos para intercambista
@@ -25,7 +25,7 @@ export interface AuthResponse {
     firstName: string;
     lastName: string;
     email: string;
-    userType: 'visitante' | 'intercambista' | 'admin';
+    userType: "visitante" | "intercambista" | "admin";
   };
   token: string;
 }
@@ -33,7 +33,7 @@ export interface AuthResponse {
 export interface JwtPayload {
   userId: number;
   email: string;
-  userType: 'visitante' | 'intercambista' | 'admin';
+  userType: "visitante" | "intercambista" | "admin";
 }
 
 export interface AuthenticatedRequest extends Request {

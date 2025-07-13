@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { Input } from '../../components/Input';
-import { Button } from '../../components/Button';
-import { Toast } from '../../components/Toast';
-import { useAuth } from '../../contexts/AuthContext';
-import { profileService } from '../../services/profileService';
-import { TextInputMask } from 'react-native-masked-text';
-import { useEditProfileForm } from '../../hooks/useEditProfileForm';
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { Toast } from "../../components/Toast";
+import { useAuth } from "../../contexts/AuthContext";
+import { profileService } from "../../services/profileService";
+import { unitService } from "../../services/unitService";
+import { TextInputMask } from "react-native-masked-text";
+import { useEditProfileForm } from "../../hooks/useEditProfileForm";
 
 export default function EditarPerfilScreen() {
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
+
+  const [units, setUnits] = useState<{ id: number; name: string }[]>([]);
 
   const {
     firstName,
     lastName,
     email,
     phone,
-    nearestUnit,
+    nearestUnitId,
     setFirstName,
     setLastName,
     setEmail,
     setPhone,
-    setNearestUnit,
+    setNearestUnitId,
     validateForm,
     clearErrors,
     errors,
@@ -32,19 +35,23 @@ export default function EditarPerfilScreen() {
 
   const [toast, setToast] = useState({
     visible: false,
-    message: '',
-    type: 'info' as 'success' | 'error' | 'info',
+    message: "",
+    type: "info" as "success" | "error" | "info",
   });
 
-  const showToast = (message: string, type: 'success' | 'error' | 'info' = 'info') => {
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "info"
+  ) => {
     setToast({ visible: true, message, type });
   };
 
-  const hideToast = () => setToast(prev => ({ ...prev, visible: false }));
+  const hideToast = () => setToast((prev) => ({ ...prev, visible: false }));
 
   useEffect(() => {
     if (!authLoading) {
       loadProfile();
+      loadUnits();
     }
   }, [authLoading]);
 
@@ -52,16 +59,26 @@ export default function EditarPerfilScreen() {
     try {
       setLoading(true);
       const profile = await profileService.getProfile();
-      setFirstName(profile.firstName || '');
-      setLastName(profile.lastName || '');
-      setEmail(profile.email || '');
-      setPhone(profile.phone || '');
-      setNearestUnit(profile.nearestUnit || '');
+      setFirstName(profile.firstName || "");
+      setLastName(profile.lastName || "");
+      setEmail(profile.email || "");
+      setPhone(profile.phone || "");
+      setNearestUnitId(profile.nearestUnitId || 0);
     } catch (err) {
-      console.error('Erro ao carregar perfil:', err);
-      showToast('Erro ao carregar perfil', 'error');
+      console.error("Erro ao carregar perfil:", err);
+      showToast("Erro ao carregar perfil", "error");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadUnits = async () => {
+    try {
+      const response = await unitService.getAll();
+      setUnits(response);
+    } catch (err) {
+      console.error("Erro ao carregar unidades:", err);
+      showToast("Erro ao carregar unidades", "error");
     }
   };
 
@@ -76,12 +93,12 @@ export default function EditarPerfilScreen() {
         lastName,
         email,
         phone,
-        nearestUnit,
+        nearestUnitId,
       });
-      showToast('Perfil atualizado com sucesso!', 'success');
+      showToast("Perfil atualizado com sucesso!", "success");
     } catch (err: any) {
-      console.error('Erro ao atualizar perfil:', err);
-      showToast(err.message || 'Erro ao salvar perfil', 'error');
+      console.error("Erro ao atualizar perfil:", err);
+      showToast(err.message || "Erro ao salvar perfil", "error");
     } finally {
       setLoading(false);
     }
@@ -90,10 +107,17 @@ export default function EditarPerfilScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('../../assets/images/login_logo.png')} style={styles.logo} resizeMode="contain" />
+        <Image
+          source={require("../../assets/images/login_logo.png")}
+          style={styles.logo}
+          resizeMode="contain"
+        />
       </View>
 
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView
+        contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+      >
         <Text style={styles.title}>Atualize suas informações:</Text>
 
         <View style={styles.inputContainer}>
@@ -134,8 +158,8 @@ export default function EditarPerfilScreen() {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Telefone</Text>
           <TextInputMask
-            type={'cel-phone'}
-            options={{ maskType: 'BRL', withDDD: true, dddMask: '(99) ' }}
+            type={"cel-phone"}
+            options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
             value={phone}
             onChangeText={setPhone}
             style={styles.input}
@@ -150,24 +174,24 @@ export default function EditarPerfilScreen() {
           <Text style={styles.label}>Unidade mais próxima</Text>
           <View style={styles.pickerContainer}>
             <Picker
-              selectedValue={nearestUnit}
-              onValueChange={setNearestUnit}
+              selectedValue={nearestUnitId}
+              onValueChange={(itemValue) => setNearestUnitId(Number(itemValue))}
               enabled={!loading}
               style={styles.picker}
             >
-              <Picker.Item label="Selecione a unidade mais próxima" value="" />
-              <Picker.Item label="São Paulo - SP" value="sao-paulo" />
-              <Picker.Item label="Rio de Janeiro - RJ" value="rio-janeiro" />
-              <Picker.Item label="Belo Horizonte - MG" value="belo-horizonte" />
-              <Picker.Item label="Brasília - DF" value="brasilia" />
-              <Picker.Item label="Porto Alegre - RS" value="porto-alegre" />
+              <Picker.Item label="Selecione a unidade mais próxima" value={0} />
+              {units.map((unit) => (
+                <Picker.Item key={unit.id} label={unit.name} value={unit.id} />
+              ))}
             </Picker>
           </View>
-          {errors.nearestUnit && <Text style={styles.errorText}>{errors.nearestUnit}</Text>}
+          {errors.nearestUnitId && (
+            <Text style={styles.errorText}>{errors.nearestUnitId}</Text>
+          )}
         </View>
 
         <Button
-          title={loading ? 'Salvando...' : 'Salvar'}
+          title={loading ? "Salvando..." : "Salvar"}
           onPress={handleSave}
           loading={loading}
           disabled={loading || !isFormValid}
@@ -176,36 +200,52 @@ export default function EditarPerfilScreen() {
       </ScrollView>
 
       <View style={styles.footer} />
-      <Toast visible={toast.visible} message={toast.message} type={toast.type} onHide={hideToast} />
+      <Toast
+        visible={toast.visible}
+        message={toast.message}
+        type={toast.type}
+        onHide={hideToast}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
-  header: { height: 70, backgroundColor: '#cb2328', justifyContent: 'center', alignItems: 'center' },
+  container: { flex: 1, backgroundColor: "#fff" },
+  header: {
+    height: 70,
+    backgroundColor: "#cb2328",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   logo: { width: 250, height: 60, marginTop: 10 },
-  footer: { height: 40, backgroundColor: '#cb2328', marginTop: 'auto' },
-  content: { alignItems: 'center', padding: 20, flexGrow: 1 },
-  title: { fontSize: 22, fontWeight: 'bold', color: '#cb2328', marginBottom: 20, textAlign: 'center' },
-  inputContainer: { width: '100%', maxWidth: 350, marginBottom: 15 },
-  label: { fontSize: 14, color: '#333', marginBottom: 5 },
+  footer: { height: 40, backgroundColor: "#cb2328", marginTop: "auto" },
+  content: { alignItems: "center", padding: 20, flexGrow: 1 },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#cb2328",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  inputContainer: { width: "100%", maxWidth: 350, marginBottom: 15 },
+  label: { fontSize: 14, color: "#333", marginBottom: 5 },
   input: {
     height: 48,
-    borderColor: '#dee2e6',
+    borderColor: "#dee2e6",
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,
-    backgroundColor: '#f8f9fa',
-    color: '#333',
+    backgroundColor: "#f8f9fa",
+    color: "#333",
   },
   pickerContainer: {
-    backgroundColor: '#f8f9fa',
+    backgroundColor: "#f8f9fa",
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#dee2e6',
+    borderColor: "#dee2e6",
   },
-  picker: { height: 48, width: '100%', color: '#333' },
-  errorText: { color: 'red', fontSize: 12, marginTop: 4 },
-  button: { width: '100%', maxWidth: 350, marginTop: 20 },
+  picker: { height: 48, width: "100%", color: "#333" },
+  errorText: { color: "red", fontSize: 12, marginTop: 4 },
+  button: { width: "100%", maxWidth: 350, marginTop: 20 },
 });

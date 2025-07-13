@@ -27,7 +27,8 @@ model User {
   email        String    @unique
   phone        String?
   city         String?
-  nearestUnit  String?
+  nearestUnitId Int?
+  nearestUnit   Unit?  @relation("UserUnit", fields: [nearestUnitId], references: [id])
   passwordHash String
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
@@ -179,4 +180,16 @@ model QuizRecommendation {
   @@index([quizResultId])
   @@index([programId])
   @@index([score])
+}
+
+// Tabela para unidades
+model Unit {
+  id        Int     @id @default(autoincrement())
+  name      String
+  phone     String?
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users     User[]  @relation("UserUnit")
 }

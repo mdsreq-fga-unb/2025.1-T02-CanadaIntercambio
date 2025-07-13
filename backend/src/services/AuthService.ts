@@ -1,8 +1,13 @@
-import bcrypt from 'bcryptjs';
-import jwt, { SignOptions } from 'jsonwebtoken';
-import { PrismaClient } from '@prisma/client';
-import { UserRepository } from '../repositories/UserRepository';
-import { RegisterRequest, LoginRequest, AuthResponse, JwtPayload } from '../types/auth';
+import bcrypt from "bcryptjs";
+import jwt, { SignOptions } from "jsonwebtoken";
+import { PrismaClient } from "@prisma/client";
+import { UserRepository } from "../repositories/UserRepository";
+import {
+  RegisterRequest,
+  LoginRequest,
+  AuthResponse,
+  JwtPayload,
+} from "../types/auth";
 
 export class AuthService {
   private userRepository: UserRepository;
@@ -17,33 +22,33 @@ export class AuthService {
     // Verificar se o usuário já existe
     const existingUser = await this.userRepository.findByEmail(data.email);
     if (existingUser) {
-      throw new Error('E-mail já está em uso');
+      throw new Error("E-mail já está em uso");
     }
 
     // Validar campos obrigatórios
     if (!data.firstName || !data.lastName || !data.email || !data.password) {
-      throw new Error('Campos obrigatórios não preenchidos');
+      throw new Error("Campos obrigatórios não preenchidos");
     }
 
     // Validar formato do e-mail
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
-      throw new Error('Formato de e-mail inválido');
+      throw new Error("Formato de e-mail inválido");
     }
 
     // Validar senha (mínimo 6 caracteres)
     if (data.password.length < 6) {
-      throw new Error('Senha deve ter pelo menos 6 caracteres');
+      throw new Error("Senha deve ter pelo menos 6 caracteres");
     }
 
     // Validar tipo de usuário
-    if (!['visitante', 'intercambista', 'admin'].includes(data.userType)) {
-      throw new Error('Tipo de usuário inválido');
+    if (!["visitante", "intercambista", "admin"].includes(data.userType)) {
+      throw new Error("Tipo de usuário inválido");
     }
 
     // Validar campos específicos do admin
-    if (data.userType === 'admin' && !data.internalRole) {
-      throw new Error('Campo internalRole é obrigatório para administradores');
+    if (data.userType === "admin" && !data.internalRole) {
+      throw new Error("Campo internalRole é obrigatório para administradores");
     }
 
     // Hash da senha
@@ -61,21 +66,21 @@ export class AuthService {
           passwordHash,
           phone: data.phone,
           city: data.city,
-          nearestUnit: data.nearestUnit,
+          nearestUnitId: data.nearestUnitId,
         });
 
         // Criar registro específico do tipo de usuário
         switch (data.userType) {
-          case 'visitante':
+          case "visitante":
             await this.userRepository.createVisitante(user.id);
             break;
-          case 'intercambista':
+          case "intercambista":
             await this.userRepository.createIntercambista(user.id, {
               emergencyContactName: data.emergencyContactName,
               emergencyContactPhone: data.emergencyContactPhone,
             });
             break;
-          case 'admin':
+          case "admin":
             await this.userRepository.createAdmin(user.id, data.internalRole!);
             break;
         }
@@ -101,32 +106,35 @@ export class AuthService {
         token,
       };
     } catch (error) {
-      throw new Error('Erro ao criar usuário: ' + (error as Error).message);
+      throw new Error("Erro ao criar usuário: " + (error as Error).message);
     }
   }
 
   async login(data: LoginRequest): Promise<AuthResponse> {
     // Validar campos obrigatórios
     if (!data.email || !data.password) {
-      throw new Error('E-mail e senha são obrigatórios');
+      throw new Error("E-mail e senha são obrigatórios");
     }
 
     // Buscar usuário
     const user = await this.userRepository.findByEmail(data.email);
     if (!user) {
-      throw new Error('Credenciais inválidas');
+      throw new Error("Credenciais inválidas");
     }
 
     // Verificar senha
-    const isPasswordValid = await bcrypt.compare(data.password, user.passwordHash);
+    const isPasswordValid = await bcrypt.compare(
+      data.password,
+      user.passwordHash
+    );
     if (!isPasswordValid) {
-      throw new Error('Credenciais inválidas');
+      throw new Error("Credenciais inválidas");
     }
 
     // Determinar tipo de usuário
     const userType = this.userRepository.getUserType(user);
     if (!userType) {
-      throw new Error('Tipo de usuário não encontrado');
+      throw new Error("Tipo de usuário não encontrado");
     }
 
     // Gerar token JWT
@@ -152,7 +160,7 @@ export class AuthService {
     const secret = process.env.JWT_SECRET;
 
     if (!secret) {
-      throw new Error('JWT_SECRET não está configurado');
+      throw new Error("JWT_SECRET não está configurado");
     }
 
     return jwt.sign(
@@ -162,7 +170,7 @@ export class AuthService {
         userType: payload.userType,
       },
       secret,
-      { expiresIn: '7d' }
+      { expiresIn: "7d" }
     );
   }
 
@@ -170,14 +178,14 @@ export class AuthService {
     const secret = process.env.JWT_SECRET;
 
     if (!secret) {
-      throw new Error('JWT_SECRET não está configurado');
+      throw new Error("JWT_SECRET não está configurado");
     }
 
     try {
       const decoded = jwt.verify(token, secret) as JwtPayload;
       return decoded;
     } catch (error) {
-      throw new Error('Token inválido');
+      throw new Error("Token inválido");
     }
   }
 }
