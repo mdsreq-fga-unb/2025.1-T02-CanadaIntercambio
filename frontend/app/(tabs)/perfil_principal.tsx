@@ -1,8 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { MaterialIcons, Feather, Entypo, FontAwesome, Ionicons } from '@expo/vector-icons';
+import { MaterialIcons, Feather, Entypo, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useAuth } from '../../contexts/AuthContext';
+import { getGravatarUrl } from '../../utils/gravatar';
+import { useRouter } from 'expo-router';
 
 export default function PerfilPrincipal() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const gravatarUrl = user?.email ? getGravatarUrl(user.email, 100) : undefined;
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -14,11 +21,19 @@ export default function PerfilPrincipal() {
       </View>
       <View style={styles.profileContainer}>
         <View style={styles.avatarCircle}>
-          <Feather name="user" size={60} color="#bbb" />
+          {gravatarUrl ? (
+            <Image
+              source={{ uri: gravatarUrl }}
+              style={{ width: 60, height: 60, borderRadius: 30 }}
+              resizeMode="cover"
+            />
+          ) : (
+            <Feather name="user" size={60} color="#bbb" />
+          )}
         </View>
         <View style={styles.profileText}>
-          <Text style={styles.profileName}>Marina</Text>
-          <Text style={styles.profileType}>Interessado</Text>
+          <Text style={styles.profileName}>{user?.firstName || 'Usuário'}</Text>
+          <Text style={styles.profileType}>{user?.userType === 'intercambista' ? 'Intercambista' : user?.userType === 'admin' ? 'Administrador' : 'Interessado'}</Text>
         </View>
       </View>
       <View style={styles.menuContainer}>
@@ -56,7 +71,20 @@ export default function PerfilPrincipal() {
       <TouchableOpacity style={styles.logoutButton}>
         <Text style={styles.logoutText}>Sair</Text>
       </TouchableOpacity>
-      <View style={styles.footer} />
+      <View style={styles.bottomNavigation}>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/programas')}>
+          <MaterialCommunityIcons name="map-marker" size={24} color="white" />
+          <Text style={styles.navText}>Programas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/perfil_principal')}>
+          <FontAwesome name="user" size={24} color="white" />
+          <Text style={styles.navText}>Perfil</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/inicio-quiz')}>
+          <Ionicons name="chatbox" size={24} color="white" />
+          <Text style={styles.navText}>Quiz</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -108,5 +136,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
-  footer: { height: 40, backgroundColor: '#cb2328', marginTop: 'auto' },
+  bottomNavigation: {
+    backgroundColor: '#DC2626',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 12,
+    paddingBottom: 20,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  navItem: {
+    alignItems: 'center',
+  },
+  navText: {
+    color: 'white',
+    fontSize: 10,
+    marginTop: 4,
+  },
 });

@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
+import { AppRoutes } from './src/routes/index';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,10 +11,16 @@ const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
+// Usar rotas modularizadas
+const appRoutes = new AppRoutes(prisma);
+app.use('/api', appRoutes.getRouter());
+
+// Rota básica de teste
 app.get('/ping', (req, res) => {
   res.send('pong');
 });
 
+// Rota de status do sistema
 app.get('/', async (req, res) => {
   try {
     // Testar conexão com o banco
@@ -30,32 +37,6 @@ app.get('/', async (req, res) => {
       database: 'disconnected',
       error: 'Database connection failed'
     });
-  }
-});
-
-app.get('/dummy', (req, res) => {
-  res.json({ message: 'Texto de exemplo vindo da API TypeScript!' });
-});
-
-// Rota simples para testar o Prisma
-app.get('/users', async (req, res) => {
-  try {
-    const users = await prisma.user.findMany();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: 'Erro ao buscar usuários' });
-  }
-});
-
-app.post('/users', async (req, res) => {
-  try {
-    const { name, email } = req.body;
-    const user = await prisma.user.create({
-      data: { name, email }
-    });
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ error: 'Erro ao criar usuário' });
   }
 });
 

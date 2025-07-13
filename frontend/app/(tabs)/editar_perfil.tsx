@@ -1,213 +1,251 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, Platform } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { Feather, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { Toast } from "../../components/Toast";
+import { useAuth } from "../../contexts/AuthContext";
+import { profileService } from "../../services/profileService";
+import { unitService } from "../../services/unitService";
+import { TextInputMask } from "react-native-masked-text";
+import { useEditProfileForm } from "../../hooks/useEditProfileForm";
 
-export default function EditarPerfil() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
-  const [unidade, setUnidade] = useState('');
-  const [temPassaporte, setTemPassaporte] = useState('');
+export default function EditarPerfilScreen() {
+  const { user, loading: authLoading } = useAuth();
+  const [loading, setLoading] = useState(false);
 
-  const unidades = [
-    'Brasília',
-    'São Paulo',
-    'Rio de Janeiro',
-    'Belo Horizonte',
-    'Outra'
-  ];
+  const [units, setUnits] = useState<{ id: number; name: string }[]>([]);
+
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    nearestUnitId,
+    setFirstName,
+    setLastName,
+    setEmail,
+    setPhone,
+    setNearestUnitId,
+    validateForm,
+    clearErrors,
+    errors,
+    isFormValid,
+  } = useEditProfileForm();
+
+  const [toast, setToast] = useState({
+    visible: false,
+    message: "",
+    type: "info" as "success" | "error" | "info",
+  });
+
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "info"
+  ) => {
+    setToast({ visible: true, message, type });
+  };
+
+  const hideToast = () => setToast((prev) => ({ ...prev, visible: false }));
+
+  useEffect(() => {
+    if (!authLoading) {
+      loadProfile();
+      loadUnits();
+    }
+  }, [authLoading]);
+
+  const loadProfile = async () => {
+    try {
+      setLoading(true);
+      const profile = await profileService.getProfile();
+      setFirstName(profile.firstName || "");
+      setLastName(profile.lastName || "");
+      setEmail(profile.email || "");
+      setPhone(profile.phone || "");
+      setNearestUnitId(profile.nearestUnitId || 0);
+    } catch (err) {
+      console.error("Erro ao carregar perfil:", err);
+      showToast("Erro ao carregar perfil", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadUnits = async () => {
+    try {
+      const response = await unitService.getAll();
+      setUnits(response);
+    } catch (err) {
+      console.error("Erro ao carregar unidades:", err);
+      showToast("Erro ao carregar unidades", "error");
+    }
+  };
+
+  const handleSave = async () => {
+    clearErrors();
+    if (!validateForm()) return;
+
+    try {
+      setLoading(true);
+      await profileService.updateProfile({
+        firstName,
+        lastName,
+        email,
+        phone,
+        nearestUnitId,
+      });
+      showToast("Perfil atualizado com sucesso!", "success");
+    } catch (err: any) {
+      console.error("Erro ao atualizar perfil:", err);
+      showToast(err.message || "Erro ao salvar perfil", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Image
-          source={require('../../assets/images/login_logo.png')}
+          source={require("../../assets/images/login_logo.png")}
           style={styles.logo}
           resizeMode="contain"
         />
       </View>
 
-      {/* Voltar */}
-      <TouchableOpacity style={styles.backButton} onPress={() => { /* navegação de voltar */ }}>
-        <Feather name="arrow-left" size={28} color="#cb2328" />
-      </TouchableOpacity>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Text style={styles.title}>Atualize suas informações:</Text>
 
-      {/* Foto de perfil */}
-      <View style={styles.profileContainer}>
-        <View style={styles.avatarCircle}>
-          <Feather name="user" size={60} color="#bbb" />
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Nome</Text>
+          <Input
+            placeholder="Nome"
+            value={firstName}
+            onChangeText={setFirstName}
+            editable={!loading}
+            error={errors.firstName}
+          />
         </View>
-        <TouchableOpacity>
-          <Text style={styles.alterarFoto}>Alterar foto de perfil</Text>
-        </TouchableOpacity>
-      </View>
 
-      {/* Formulário */}
-      <View style={styles.formContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Nome Completo"
-          value={nome}
-          onChangeText={setNome}
-        />
-        <TextInput
-          style={[styles.input, styles.input]}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Telefone"
-          value={telefone}
-          onChangeText={setTelefone}
-          keyboardType="phone-pad"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Data de Nascimento"
-          value={dataNascimento}
-          onChangeText={setDataNascimento}
-        />
-        {/* Unidade como Picker em todas as plataformas */}
-        <View style={styles.pickerWrapper}>
-          <Picker
-            selectedValue={unidade}
-            onValueChange={setUnidade}
-            style={styles.picker}
-          >
-            <Picker.Item label="Unidade Mais Próxima de Você" value="" />
-            {unidades.map(u => (
-              <Picker.Item key={u} label={u} value={u} />
-            ))}
-          </Picker>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Sobrenome</Text>
+          <Input
+            placeholder="Sobrenome"
+            value={lastName}
+            onChangeText={setLastName}
+            editable={!loading}
+            error={errors.lastName}
+          />
         </View>
-        {/* Passaporte */}
-        <View style={styles.pickerWrapper}>
-          <Picker
-            selectedValue={temPassaporte}
-            onValueChange={setTemPassaporte}
-            style={styles.picker}
-          >
-            <Picker.Item label="Já tem Passaporte" value="" />
-            <Picker.Item label="Sim" value="sim" />
-            <Picker.Item label="Não" value="nao" />
-          </Picker>
-        </View>
-        <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.saveButtonText}>Salvar</Text>
-        </TouchableOpacity>
-      </View>
 
-      {/* Footer */}
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>E-mail</Text>
+          <Input
+            placeholder="E-mail"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            editable={!loading}
+            error={errors.email}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Telefone</Text>
+          <TextInputMask
+            type={"cel-phone"}
+            options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
+            value={phone}
+            onChangeText={setPhone}
+            style={styles.input}
+            placeholder="(99) 99999-9999"
+            keyboardType="phone-pad"
+            editable={!loading}
+          />
+          {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Unidade mais próxima</Text>
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={nearestUnitId}
+              onValueChange={(itemValue) => setNearestUnitId(Number(itemValue))}
+              enabled={!loading}
+              style={styles.picker}
+            >
+              <Picker.Item label="Selecione a unidade mais próxima" value={0} />
+              {units.map((unit) => (
+                <Picker.Item key={unit.id} label={unit.name} value={unit.id} />
+              ))}
+            </Picker>
+          </View>
+          {errors.nearestUnitId && (
+            <Text style={styles.errorText}>{errors.nearestUnitId}</Text>
+          )}
+        </View>
+
+        <Button
+          title={loading ? "Salvando..." : "Salvar"}
+          onPress={handleSave}
+          loading={loading}
+          disabled={loading || !isFormValid}
+          style={styles.button}
+        />
+      </ScrollView>
+
       <View style={styles.footer} />
-
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNavigation}>
-        <View style={styles.navItem}>
-          <MaterialCommunityIcons name="map-marker" size={24} color="white" />
-          <Text style={styles.navText}>Programas</Text>
-        </View>
-        <View style={styles.navItem}>
-          <FontAwesome name="user" size={24} color="white" />
-          <Text style={styles.navText}>Perfil</Text>
-        </View>
-        <View style={styles.navItem}>
-          <Ionicons name="chatbox" size={24} color="white" />
-          <Text style={styles.navText}>Quiz</Text>
-        </View>
-      </View>
+      <Toast
+        visible={toast.visible}
+        message={toast.message}
+        type={toast.type}
+        onHide={hideToast}
+      />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
-  header: { height: 70, backgroundColor: '#cb2328', justifyContent: 'center', alignItems: 'center' },
-  logo: { width: 200, height: 60, marginTop: 10 },
-  backButton: { position: 'absolute', top: 30, left: 20, zIndex: 2 },
-  profileContainer: {
-    alignItems: 'center',
-    marginTop: 24,
-    marginBottom: 8,
+  container: { flex: 1, backgroundColor: "#fff" },
+  header: {
+    height: 70,
+    backgroundColor: "#cb2328",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  avatarCircle: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: '#eee',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 8,
+  logo: { width: 250, height: 60, marginTop: 10 },
+  footer: { height: 40, backgroundColor: "#cb2328", marginTop: "auto" },
+  content: { alignItems: "center", padding: 20, flexGrow: 1 },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#cb2328",
+    marginBottom: 20,
+    textAlign: "center",
   },
-  alterarFoto: {
-    color: '#cb2328',
-    fontWeight: 'bold',
-    marginBottom: 8,
-    fontSize: 15,
-  },
-  formContainer: {
-    width: '85%',
-    alignSelf: 'center',
-    marginTop: 8,
-  },
+  inputContainer: { width: "100%", maxWidth: 350, marginBottom: 15 },
+  label: { fontSize: 14, color: "#333", marginBottom: 5 },
   input: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    marginBottom: 12,
-    fontSize: 16,
-  },
-  inputHighlight: {
-    borderColor: '#B39DDB',
-    borderWidth: 2,
-  },
-  pickerWrapper: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    marginBottom: 12,
-    overflow: 'hidden',
-    backgroundColor: '#f5f5f5',
-  },
-  picker: {
     height: 48,
-    width: '100%',
-  },
-  saveButton: {
-    backgroundColor: '#cb2328',
+    borderColor: "#dee2e6",
+    borderWidth: 1,
     borderRadius: 8,
-    paddingVertical: 14,
-    alignItems: 'center',
-    marginTop: 8,
+    paddingHorizontal: 10,
+    backgroundColor: "#f8f9fa",
+    color: "#333",
   },
-  saveButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 17,
+  pickerContainer: {
+    backgroundColor: "#f8f9fa",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#dee2e6",
   },
-  footer: { height: 40, marginTop: 'auto' },
-
-  bottomNavigation: {
-    backgroundColor: '#DC2626',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 12,
-    paddingBottom: 20, // Ajuste para a safe area em dispositivos com notch
-  },
-  navItem: {
-    alignItems: 'center',
-  },
-  navText: {
-    color: 'white',
-    fontSize: 10,
-    marginTop: 4,
-  },
+  picker: { height: 48, width: "100%", color: "#333" },
+  errorText: { color: "red", fontSize: 12, marginTop: 4 },
+  button: { width: "100%", maxWidth: 350, marginTop: 20 },
 });

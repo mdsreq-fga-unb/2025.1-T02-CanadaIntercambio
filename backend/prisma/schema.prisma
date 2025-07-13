@@ -13,6 +13,13 @@ enum QuizType {
   TESTE
 }
 
+enum QuestionType {
+  SINGLE_CHOICE
+  MULTIPLE_CHOICE
+  TEXT
+  SCALE
+}
+
 model User {
   id           Int       @id @default(autoincrement())
   firstName    String
@@ -20,7 +27,8 @@ model User {
   email        String    @unique
   phone        String?
   city         String?
-  nearestUnit  String?
+  nearestUnitId Int?
+  nearestUnit   Unit?  @relation("UserUnit", fields: [nearestUnitId], references: [id])
   passwordHash String
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
@@ -67,11 +75,33 @@ model Program {
   description   String?
   durationWeeks Int?
   country       String?
-  price         Decimal   @db.Decimal(14,2)
+  price         Decimal  @db.Decimal(14,2)
   requirements  String?
-  isActive      Boolean   @default(true)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Novos campos detalhados
+  focus         String?  // Foco do programa
+  method        String?  // Método de ensino
+  type          String?  // Tipo do programa
+  workload      String?  // Carga horária
+  languageLevel String?  // Nível do idioma
+  minAge        Int?     // Idade mínima
+  maxAge        Int?     // Idade máxima
+  minDuration   Int?     // Duração mínima em semanas
+  maxDuration   Int?     // Duração máxima em semanas
+  priceRange    String?  // Faixa de preço
+  
+  // Critérios para matching do quiz
+  targetAgeRange    String?  // Faixa etária alvo
+  purpose           String?  // Propósito (idioma, estudo, trabalho, férias)
+  durationRange     String?  // Duração preferida
+  companionshipType String?  // Tipo de companhia
+  englishLevel      String?  // Nível de inglês necessário
+  
+  quizRecommendations QuizRecommendation[]
+  recommendedInResults QuizResult[] @relation("RecommendedProgram")
 }
 
 model Quiz {
@@ -86,15 +116,21 @@ model Quiz {
 }
 
 model QuizQuestion {
-  id            Int      @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   quizId        Int
   question      String
-  options       Json?
-  correctOption String?
+  questionType  QuestionType @default(SINGLE_CHOICE)
+  options       Json?        // Array de opções
+  correctOption String?      // Para quizzes com resposta correta
+  isRequired    Boolean      @default(true)
+  order         Int          // Ordem da pergunta
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 
-  quiz Quiz @relation(fields: [quizId], references: [id])
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
 
   @@index([quizId])
+  @@index([order])
 }
 
 model QuizResult {
@@ -102,12 +138,58 @@ model QuizResult {
   userId     Int
   quizId     Int
   score      Int?
-  resultData Json?
+  resultData Json?    // Respostas detalhadas
   createdAt  DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id])
-  quiz Quiz @relation(fields: [quizId], references: [id])
+  updatedAt  DateTime @updatedAt
+  
+  // Campos específicos para análise
+  ageRange        String?
+  purpose         String?  // o que busca no intercâmbio
+  durationRange   String?  // máximo de tempo
+  companionship   String?  // sozinho ou acompanhado
+  englishLevel    String?  // nível de inglês
+  priceRange      String?  // faixa de preço
+  
+  // Recomendação
+  recommendedProgramId Int?
+  recommendationScore  Float?
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  recommendedProgram Program? @relation("RecommendedProgram", fields: [recommendedProgramId], references: [id])
+  
+  recommendations QuizRecommendation[]
 
   @@index([userId])
   @@index([quizId])
+  @@index([recommendedProgramId])
+}
+
+// Tabela para histórico de recomendações
+model QuizRecommendation {
+  id        Int      @id @default(autoincrement())
+  quizResultId Int
+  programId    Int
+  score        Float   // Pontuação da recomendação
+  reason       String? // Motivo da recomendação
+  createdAt    DateTime @default(now())
+  
+  quizResult QuizResult @relation(fields: [quizResultId], references: [id], onDelete: Cascade)
+  program    Program    @relation(fields: [programId], references: [id], onDelete: Cascade)
+  
+  @@index([quizResultId])
+  @@index([programId])
+  @@index([score])
+}
+
+// Tabela para unidades
+model Unit {
+  id        Int     @id @default(autoincrement())
+  name      String
+  phone     String?
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users     User[]  @relation("UserUnit")
 }

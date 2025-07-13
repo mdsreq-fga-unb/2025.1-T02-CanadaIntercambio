@@ -39,12 +39,15 @@ const OnboardNormal = () => {
         <Text style={[styles.description, { fontSize: descriptionFontSize }]}>
           Descubra programas, filtre opções, simule custos e tire dúvidas com a ajuda do aplicativo CanadaWay.
         </Text>
+        
         <TouchableOpacity style={[styles.button, { width: buttonWidth }]} onPress={() => router.push('/login')}>
           <Text style={[styles.buttonText, { fontSize: buttonFontSize }]}>Já tenho conta</Text>
         </TouchableOpacity>
+        
         <TouchableOpacity style={[styles.button, { width: buttonWidth }]} onPress={() => router.push('/cadastro_adm')}>
           <Text style={[styles.buttonText, { fontSize: buttonFontSize }]}>Criar conta como administrador</Text>
         </TouchableOpacity>
+        
         <TouchableOpacity style={[styles.button, { width: buttonWidth }]} onPress={() => router.push('/cadastro_visitante')}>
           <Text style={[styles.buttonText, { fontSize: buttonFontSize }]}>Criar conta como visitante</Text>
         </TouchableOpacity>
