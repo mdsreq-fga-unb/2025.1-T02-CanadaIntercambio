@@ -7,16 +7,28 @@ import { Toast } from '../../components/Toast';
 import { useAuth } from '../../contexts/AuthContext';
 import { profileService } from '../../services/profileService';
 import { TextInputMask } from 'react-native-masked-text';
+import { useEditProfileForm } from '../../hooks/useEditProfileForm';
 
 export default function EditarPerfilScreen() {
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [nearestUnit, setNearestUnit] = useState('');
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    nearestUnit,
+    setFirstName,
+    setLastName,
+    setEmail,
+    setPhone,
+    setNearestUnit,
+    validateForm,
+    clearErrors,
+    errors,
+    isFormValid,
+  } = useEditProfileForm();
 
   const [toast, setToast] = useState({
     visible: false,
@@ -54,6 +66,9 @@ export default function EditarPerfilScreen() {
   };
 
   const handleSave = async () => {
+    clearErrors();
+    if (!validateForm()) return;
+
     try {
       setLoading(true);
       await profileService.updateProfile({
@@ -83,12 +98,24 @@ export default function EditarPerfilScreen() {
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Nome</Text>
-          <Input placeholder="Nome" value={firstName} onChangeText={setFirstName} editable={!loading} />
+          <Input
+            placeholder="Nome"
+            value={firstName}
+            onChangeText={setFirstName}
+            editable={!loading}
+            error={errors.firstName}
+          />
         </View>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Sobrenome</Text>
-          <Input placeholder="Sobrenome" value={lastName} onChangeText={setLastName} editable={!loading} />
+          <Input
+            placeholder="Sobrenome"
+            value={lastName}
+            onChangeText={setLastName}
+            editable={!loading}
+            error={errors.lastName}
+          />
         </View>
 
         <View style={styles.inputContainer}>
@@ -100,6 +127,7 @@ export default function EditarPerfilScreen() {
             keyboardType="email-address"
             autoCapitalize="none"
             editable={!loading}
+            error={errors.email}
           />
         </View>
 
@@ -107,11 +135,7 @@ export default function EditarPerfilScreen() {
           <Text style={styles.label}>Telefone</Text>
           <TextInputMask
             type={'cel-phone'}
-            options={{
-              maskType: 'BRL',
-              withDDD: true,
-              dddMask: '(99) '
-            }}
+            options={{ maskType: 'BRL', withDDD: true, dddMask: '(99) ' }}
             value={phone}
             onChangeText={setPhone}
             style={styles.input}
@@ -119,6 +143,7 @@ export default function EditarPerfilScreen() {
             keyboardType="phone-pad"
             editable={!loading}
           />
+          {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
         </View>
 
         <View style={styles.inputContainer}>
@@ -138,13 +163,14 @@ export default function EditarPerfilScreen() {
               <Picker.Item label="Porto Alegre - RS" value="porto-alegre" />
             </Picker>
           </View>
+          {errors.nearestUnit && <Text style={styles.errorText}>{errors.nearestUnit}</Text>}
         </View>
 
         <Button
           title={loading ? 'Salvando...' : 'Salvar'}
           onPress={handleSave}
           loading={loading}
-          disabled={loading}
+          disabled={loading || !isFormValid}
           style={styles.button}
         />
       </ScrollView>
@@ -179,14 +205,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#dee2e6',
   },
-  picker: {
-    height: 48,
-    width: '100%',
-    color: '#333',
-  },
-  button: {
-    width: '100%',
-    maxWidth: 350,
-    marginTop: 20,
-  },
+  picker: { height: 48, width: '100%', color: '#333' },
+  errorText: { color: 'red', fontSize: 12, marginTop: 4 },
+  button: { width: '100%', maxWidth: 350, marginTop: 20 },
 });
