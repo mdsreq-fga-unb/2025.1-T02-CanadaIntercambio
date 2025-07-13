@@ -62,7 +62,18 @@ export class ProfileService {
   async getProfile(userId: number) {
     return this.prisma.user.findUnique({
       where: { id: userId },
-      include: { visitante: true, intercambista: true, admin: true },
+      include: {
+        visitante: true,
+        intercambista: true,
+        admin: true,
+        nearestUnit: {
+          select: {
+            id: true,
+            name: true,
+            phone: true,
+          },
+        },
+      },
     });
   }
 }
