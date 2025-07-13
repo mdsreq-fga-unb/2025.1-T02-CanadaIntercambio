@@ -52,7 +52,11 @@ export default function PerfilPrincipal() {
     }
 
     const digitsOnly = unitPhone.replace(/\D/g, "");
-    const whatsappLink = `https://wa.me/55${digitsOnly}`;
+    const message =
+      "Olá, vim pelo App e gostaria de saber mais sobre os programas de intercâmbio.";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/55${digitsOnly}?text=${encodedMessage}`;
+
     Linking.openURL(whatsappLink).catch(() => {
       Alert.alert("Erro", "Não foi possível abrir o WhatsApp.");
     });
