@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function useEditProfileForm() {
   const [firstName, setFirstName] = useState("");
@@ -14,6 +14,22 @@ export function useEditProfileForm() {
     phone?: string;
     nearestUnitId?: string;
   }>({});
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const phoneDigits = phone.replace(/\D/g, "");
+
+    setIsFormValid(
+      firstName.trim() !== "" &&
+        lastName.trim() !== "" &&
+        email.trim() !== "" &&
+        emailValid &&
+        phoneDigits.length >= 10 &&
+        nearestUnitId !== 0
+    );
+  }, [firstName, lastName, email, phone, nearestUnitId]);
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
@@ -50,14 +66,6 @@ export function useEditProfileForm() {
   };
 
   const clearErrors = () => setErrors({});
-
-  const isFormValid =
-    firstName.trim() !== "" &&
-    lastName.trim() !== "" &&
-    email.trim() !== "" &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
-    phone.trim().length >= 10 &&
-    nearestUnitId !== 0;
 
   return {
     firstName,

@@ -10,6 +10,11 @@ export interface Profile {
   phone?: string;
   city?: string;
   nearestUnitId?: number;
+  nearestUnit?: {
+    id: number;
+    name: string;
+    phone: string;
+  };
   birthDate?: string;
   hasPassport?: boolean;
 }
