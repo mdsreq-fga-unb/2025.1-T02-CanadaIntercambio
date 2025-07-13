@@ -4,6 +4,7 @@ import { AuthRoutes } from './authRoutes';
 import { TestRoutes } from './testRoutes';
 import { ProgramRoutes } from './programRoutes';
 import { QuizRoutes } from './quizRoutes';
+import { ProfileRoutes } from './profileRoutes';
 
 export class AppRoutes {
   private router: Router;
@@ -19,6 +20,10 @@ export class AppRoutes {
     // Rotas de autenticação
     const authRoutes = new AuthRoutes(this.prisma);
     this.router.use('/auth', authRoutes.getRouter());
+
+    // Rotas de perfil
+    const profileRoutes = new ProfileRoutes(this.prisma);
+    this.router.use('/profile', profileRoutes.getRouter());
 
     // Rotas de programas
     const programRoutes = new ProgramRoutes(this.prisma);
