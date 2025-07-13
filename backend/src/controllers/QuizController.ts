@@ -86,6 +86,8 @@ export class QuizController {
   async submitQuiz(req: Request, res: Response): Promise<void> {
     try {
       const { quizId, userId, answers } = req.body;
+      
+      console.log('Dados recebidos:', { quizId, userId, answers });
 
       // Validar se o quiz existe
       const quiz = await this.prisma.quiz.findUnique({
@@ -114,9 +116,14 @@ export class QuizController {
         return;
       }
 
-      // Processar respostas e calcular resultado
-      const processedAnswers = this.processAnswers(answers);
-      const recommendedProgram = await this.calculateRecommendation(processedAnswers);
+      // Processar respostas de forma simples
+      const processedAnswers = answers.reduce((acc: any, answer: any) => {
+        acc[`pergunta_${answer.questionId}`] = answer.selectedOption;
+        return acc;
+      }, {});
+
+      // Buscar programa recomendado de forma simples
+      const recommendedProgram = await this.getRecommendedProgram(processedAnswers);
 
       // Salvar resultado no banco
       const quizResult = await this.prisma.quizResult.create({
@@ -125,7 +132,7 @@ export class QuizController {
           quizId,
           resultData: processedAnswers,
           recommendedProgramId: recommendedProgram?.id || null,
-          ...this.extractUserProfile(processedAnswers)
+          score: 85 // Score padrão
         }
       });
 
@@ -133,6 +140,11 @@ export class QuizController {
         success: true,
         data: {
           id: quizResult.id,
+          quiz: {
+            id: quiz.id,
+            title: quiz.title,
+            type: quiz.type
+          },
           recommendedProgram,
           resultData: processedAnswers,
           completedAt: quizResult.createdAt
@@ -143,6 +155,7 @@ export class QuizController {
       res.status(500).json({
         success: false,
         message: 'Erro interno do servidor',
+        error: error instanceof Error ? error.message : 'Erro desconhecido'
       });
     }
   }
@@ -350,49 +363,246 @@ export class QuizController {
       const ageRange = answers['1'];
       const purpose = answers['2'];
       const durationRange = answers['3'];
+      const companionship = answers['4'];
       const englishLevel = answers['5'];
       const priceRange = answers['6'];
 
-      // Aplicar regras de recomendação
-      const programs = await this.prisma.program.findMany({
+      console.log('Calculando recomendação para:', { ageRange, purpose, durationRange, englishLevel, priceRange });
+
+      // Aplicar regras de recomendação baseadas no frontend gerarRecomendacao.ts
+      
+      // HIGH SCHOOL
+      if (ageRange === 'Menor de 18 anos' &&
+          ['Aprender ou melhorar idioma', 'Estudar'].includes(purpose) &&
+          ['1 a 3 meses', '4 a 6 meses', 'Mais de 6 meses'].includes(durationRange) &&
+          ['Sozinho', 'Amigos', 'Familia'].includes(companionship) &&
+          ['Intermediario', 'Avançado', 'Fluente'].includes(englishLevel) &&
+          ['Entre 80.000 e 120.000 reais', 'Acima de 120.000 reais'].includes(priceRange)) {
+        
+        const highSchoolProgram = await this.prisma.program.findFirst({
+          where: { 
+            isActive: true,
+            title: { contains: 'High School', mode: 'insensitive' }
+          }
+        });
+        
+        if (highSchoolProgram) {
+          return {
+            ...highSchoolProgram,
+            recommendationType: 'High School',
+            recommendationDescription: [
+              'Programa completo para adolescentes entre 14 e 18 anos.',
+              'Currículo com esportes, artes e imersão cultural.',
+              'Duração de 1 semestre a 1 ano acadêmico.'
+            ]
+          };
+        }
+      }
+
+      // COLLEGE OU UNIVERSIDADE
+      if (ageRange === '18 a 29 anos' &&
+          ['Aprender ou melhorar idioma', 'Estudar'].includes(purpose) &&
+          durationRange === 'Mais de 6 meses' &&
+          ['Sozinho', 'Amigos', 'Familia'].includes(companionship) &&
+          ['Intermediario', 'Avançado', 'Fluente'].includes(englishLevel) &&
+          ['Entre 80.000 e 120.000 reais', 'Acima de 120.000 reais'].includes(priceRange)) {
+        
+        const collegeProgram = await this.prisma.program.findFirst({
+          where: { 
+            isActive: true,
+            OR: [
+              { title: { contains: 'College', mode: 'insensitive' } },
+              { title: { contains: 'Universidade', mode: 'insensitive' } }
+            ]
+          }
+        });
+        
+        if (collegeProgram) {
+          return {
+            ...collegeProgram,
+            recommendationType: 'College ou Universidade',
+            recommendationDescription: [
+              'Você tem o perfil ideal para programas de longa duração no Canadá.',
+              'O College oferece cursos técnicos e profissionalizantes (1 a 3 anos).',
+              'A Universidade oferece cursos acadêmicos em diversas áreas (3 a 4 anos).',
+              'Ambas as opções podem abrir portas para trabalho e imigração.'
+            ]
+          };
+        }
+      }
+
+      // CURSO DE IDIOMA - recomendação mais geral
+      const languageProgram = await this.prisma.program.findFirst({
+        where: { 
+          isActive: true,
+          OR: [
+            { title: { contains: 'Inglês', mode: 'insensitive' } },
+            { title: { contains: 'Francês', mode: 'insensitive' } }
+          ]
+        }
+      });
+
+      if (languageProgram) {
+        return {
+          ...languageProgram,
+          recommendationType: 'Curso de Idioma',
+          recommendationDescription: [
+            'Programa ideal para aperfeiçoar suas habilidades linguísticas.',
+            'Flexibilidade de duração e intensidade.',
+            'Ótima opção para uma primeira experiência internacional.'
+          ]
+        };
+      }
+
+      // FALLBACK - programa padrão
+      const defaultProgram = await this.prisma.program.findFirst({
         where: { isActive: true }
       });
 
-      // Filtrar programas baseado nas respostas
-      const filteredPrograms = programs.filter(program => {
-        // Regra 1: Idade
-        if (ageRange === 'Menor de 18 anos' && !program.title.includes('High School')) {
-          return false;
-        }
-        
-        if (ageRange === '30 anos ou mais' && program.title.includes('High School')) {
-          return false;
-        }
+      return {
+        ...defaultProgram,
+        recommendationType: 'Programa Recomendado',
+        recommendationDescription: [
+          'Ainda estamos encontrando o melhor programa para você.',
+          'Entre em contato para receber uma recomendação personalizada.'
+        ]
+      };
 
-        // Regra 2: Propósito
-        if (purpose === 'aprender ou melhorar idioma' && 
-            !program.title.toLowerCase().includes('inglês') && 
-            !program.title.toLowerCase().includes('francês')) {
-          return false;
-        }
-
-        // Regra 3: Duração
-        if (durationRange === 'Até 1 mês' && (program.durationWeeks || 0) > 4) {
-          return false;
-        }
-
-        // Regra 4: Nível de inglês
-        if (englishLevel === 'iniciante' && program.languageLevel === 'Avançado ao fluente') {
-          return false;
-        }
-
-        return true;
-      });
-
-      // Retornar o programa com maior pontuação
-      return filteredPrograms.length > 0 ? filteredPrograms[0] : programs[0];
     } catch (error) {
       console.error('Erro ao calcular recomendação:', error);
+      return null;
+    }
+  }
+
+  // Método inteligente para recomendar programa
+  private async getRecommendedProgram(answers: any): Promise<any> {
+    try {
+      const idade = answers.pergunta_1;
+      const objetivo = answers.pergunta_2;
+      const duracao = answers.pergunta_3;
+      const companhia = answers.pergunta_4;
+      const ingles = answers.pergunta_5;
+      const orcamento = answers.pergunta_6;
+
+      console.log('Analisando respostas:', { idade, objetivo, duracao, companhia, ingles, orcamento });
+
+      // HIGH SCHOOL para menores de 18 anos
+      if (idade === 'Menor de 18 anos') {
+        const highSchoolProgram = await this.prisma.program.findFirst({
+          where: { 
+            isActive: true,
+            title: { contains: 'High School', mode: 'insensitive' }
+          }
+        });
+        
+        if (highSchoolProgram) {
+          return {
+            ...highSchoolProgram,
+            recommendationType: 'High School',
+            recommendationDescription: [
+              'Programa ideal para sua idade!',
+              'Ensino médio completo no Canadá com imersão cultural.',
+              'Inclui esportes, artes e desenvolvimento pessoal.'
+            ]
+          };
+        }
+      }
+
+      // COLLEGE/UNIVERSIDADE para 18-29 anos com objetivo de estudar
+      if (idade === '18 a 29 anos' && 
+          ['estudar', 'Estudar'].includes(objetivo) && 
+          ['Mais de 6 meses', 'mais de 6 meses'].includes(duracao)) {
+        
+        const collegeProgram = await this.prisma.program.findFirst({
+          where: { 
+            isActive: true,
+            OR: [
+              { title: { contains: 'College', mode: 'insensitive' } },
+              { title: { contains: 'Universidade', mode: 'insensitive' } }
+            ]
+          }
+        });
+        
+        if (collegeProgram) {
+          return {
+            ...collegeProgram,
+            recommendationType: 'College/Universidade',
+            recommendationDescription: [
+              'Perfeito para seus objetivos acadêmicos!',
+              'Formação profissional reconhecida internacionalmente.',
+              'Oportunidades de trabalho e imigração.'
+            ]
+          };
+        }
+      }
+
+      // CURSO DE INGLÊS para quem quer aprender idioma
+      if (['aprender ou melhorar idioma', 'Aprender ou melhorar idioma'].includes(objetivo)) {
+        const englishProgram = await this.prisma.program.findFirst({
+          where: { 
+            isActive: true,
+            title: { contains: 'Inglês', mode: 'insensitive' }
+          }
+        });
+        
+        if (englishProgram) {
+          return {
+            ...englishProgram,
+            recommendationType: 'Curso de Inglês',
+            recommendationDescription: [
+              'Ideal para aperfeiçoar seu inglês!',
+              'Metodologia focada nas 4 habilidades linguísticas.',
+              'Flexibilidade de duração e intensidade.'
+            ]
+          };
+        }
+      }
+
+      // TRABALHO para quem busca trabalhar
+      if (['trabalhar', 'Trabalhar'].includes(objetivo)) {
+        const workProgram = await this.prisma.program.findFirst({
+          where: { 
+            isActive: true,
+            OR: [
+              { title: { contains: 'Work', mode: 'insensitive' } },
+              { title: { contains: 'Trabalho', mode: 'insensitive' } }
+            ]
+          }
+        });
+        
+        if (workProgram) {
+          return {
+            ...workProgram,
+            recommendationType: 'Programa de Trabalho',
+            recommendationDescription: [
+              'Oportunidade para trabalhar no Canadá!',
+              'Experiência profissional internacional.',
+              'Desenvolvimento de carreira.'
+            ]
+          };
+        }
+      }
+
+      // PROGRAMA PADRÃO - retorna primeiro programa ativo
+      const defaultProgram = await this.prisma.program.findFirst({
+        where: { isActive: true }
+      });
+
+      if (defaultProgram) {
+        return {
+          ...defaultProgram,
+          recommendationType: 'Programa Recomendado',
+          recommendationDescription: [
+            'Baseado no seu perfil, este programa pode ser interessante.',
+            'Entre em contato para uma consulta personalizada.',
+            'Temos várias opções que podem se adequar ao seu objetivo.'
+          ]
+        };
+      }
+
+      return null;
+    } catch (error) {
+      console.error('Erro ao buscar programa recomendado:', error);
       return null;
     }
   }

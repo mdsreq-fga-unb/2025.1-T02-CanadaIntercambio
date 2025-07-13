@@ -274,60 +274,60 @@ async function main() {
     },
   });
 
-  // College Privado
-  const collegePrivadoProgram = await prisma.program.create({
+  // High School Program
+  const highSchoolProgram = await prisma.program.create({
     data: {
-      title: "College Privado",
-      description: "Cursos práticos e técnicos em college privado com experiência profissional no Canadá",
-      durationWeeks: 80,
+      title: "High School no Canadá",
+      description: "Programa de ensino médio completo para estudantes internacionais entre 14 e 18 anos",
+      durationWeeks: 40, // 1 ano acadêmico
       country: "Canadá",
-      price: 180000.0,
-      requirements: "17 anos +, Ensino médio ou equivalente, Proficiência em inglês por meio de exames como TOEFL e IELTS",
+      price: 125000.0,
+      requirements: "Idade entre 14 e 18 anos, histórico escolar, comprovante de inglês intermediário",
       isActive: true,
       
       // Dados detalhados
-      focus: "Foco em habilidades e treinamento práticos em tecnologia, negócios, saúde, turismo, design, culinária e mais",
-      method: "Experiência profissional no Canadá e, em alguns casos, oportunidade de imigração",
-      type: "Curta ou média duração (1 a 3 anos) - Foco em treinamento prático",
-      workload: "Tempo integral com experiência prática",
+      focus: "Educação secundária completa com imersão cultural",
+      method: "Currículo canadense completo com esportes, artes e atividades extracurriculares",
+      type: "Ensino Médio",
+      workload: "Tempo integral (30-35 horas por semana)",
       languageLevel: "Intermediário ao avançado",
-      minAge: 17,
-      maxAge: 65,
-      minDuration: 52,
-      maxDuration: 156,
+      minAge: 14,
+      maxAge: 18,
+      minDuration: 20, // 1 semestre
+      maxDuration: 40, // 1 ano
       priceRange: "Acima de 120.000 reais",
       
       // Critérios para matching
-      targetAgeRange: "18 a 29 anos",
+      targetAgeRange: "menor de 18 anos",
       purpose: "estudar",
       durationRange: "mais de 6 meses",
       companionshipType: "qualquer",
-      englishLevel: "avançado",
+      englishLevel: "intermediario",
     },
   });
 
-  // College Público
-  const collegePublicoProgram = await prisma.program.create({
+  // College Program
+  const collegeProgram = await prisma.program.create({
     data: {
-      title: "College Público",
-      description: "Cursos práticos e técnicos em college público com experiência profissional no Canadá",
-      durationWeeks: 80,
+      title: "College Técnico no Canadá",
+      description: "Programas técnicos e profissionalizantes em diversas áreas com possibilidade de imigração",
+      durationWeeks: 78, // 1.5 anos
       country: "Canadá",
-      price: 120000.0,
-      requirements: "17 anos +, Ensino médio ou equivalente, Proficiência em inglês por meio de exames como TOEFL e IELTS",
+      price: 180000.0,
+      requirements: "Ensino médio completo, inglês avançado, carta de motivação",
       isActive: true,
       
       // Dados detalhados
-      focus: "Foco em habilidades e treinamento práticos em tecnologia, negócios, saúde, turismo, design, culinária e mais",
-      method: "Experiência profissional no Canadá e, em alguns casos, oportunidade de imigração",
-      type: "Curta ou média duração (1 a 3 anos) - Foco em treinamento prático",
-      workload: "Tempo integral com experiência prática",
-      languageLevel: "Intermediário ao avançado",
-      minAge: 17,
-      maxAge: 65,
-      minDuration: 52,
-      maxDuration: 156,
-      priceRange: "Entre 80.000 e 120.000 reais",
+      focus: "Formação técnica com foco profissional",
+      method: "Combinação de teoria e prática com estágios obrigatórios",
+      type: "Educação Técnica Superior",
+      workload: "Tempo integral (25-30 horas por semana)",
+      languageLevel: "Avançado ao fluente",
+      minAge: 18,
+      maxAge: 35,
+      minDuration: 52, // 1 ano
+      maxDuration: 156, // 3 anos
+      priceRange: "Acima de 120.000 reais",
       
       // Critérios para matching
       targetAgeRange: "18 a 29 anos",
@@ -458,10 +458,10 @@ async function main() {
             question: "O que você busca no intercâmbio?",
             questionType: "SINGLE_CHOICE",
             options: [
-              "aprender ou melhorar idioma",
-              "estudar",
-              "trabalhar",
-              "férias"
+              "Aprender ou melhorar idioma",
+              "Estudar",
+              "Trabalhar",
+              "Ferias"
             ],
             isRequired: true,
             order: 2,
@@ -470,10 +470,10 @@ async function main() {
             question: "Qual o máximo de tempo que você tem disponível?",
             questionType: "SINGLE_CHOICE",
             options: [
-              "Até 1 mês",
+              "Ate 1 mês",
               "1 a 3 meses",
               "4 a 6 meses",
-              "mais de 6 meses"
+              "Mais de 6 meses"
             ],
             isRequired: true,
             order: 3,
@@ -494,10 +494,10 @@ async function main() {
             question: "Qual o seu nível de inglês?",
             questionType: "SINGLE_CHOICE",
             options: [
-              "iniciante",
-              "intermediário",
-              "avançado",
-              "fluente"
+              "Iniciante",
+              "Intermediario",
+              "Avançado",
+              "Fluente"
             ],
             isRequired: true,
             order: 5,
@@ -506,8 +506,8 @@ async function main() {
             question: "Qual a sua faixa de orçamento?",
             questionType: "SINGLE_CHOICE",
             options: [
-              "Até 15.000 reais",
-              "Entre 30.000 e 80.000 reais",
+              "Ate 15.000 reais",
+              "Entre 15.000 e 80.000 reais",
               "Entre 80.000 e 120.000 reais",
               "Acima de 120.000 reais"
             ],

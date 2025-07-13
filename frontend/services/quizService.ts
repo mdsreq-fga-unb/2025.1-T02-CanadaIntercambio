@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { API_CONFIG } from '../constants/api';
+import { API_CONFIG, STORAGE_KEYS } from '../constants/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Tipos para Quiz
@@ -61,7 +61,7 @@ class QuizService {
 
     // Interceptor para adicionar token de autenticação
     this.api.interceptors.request.use(async (config) => {
-      const token = await AsyncStorage.getItem('authToken');
+      const token = await AsyncStorage.getItem(STORAGE_KEYS.TOKEN);
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }

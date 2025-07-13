@@ -108,11 +108,16 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ quizType = 'PERFIL' }) => {
   };
 
   const handleSubmit = async () => {
-    if (!quiz || !user) return;
+    if (!quiz) return;
+
+    // Para testes, vamos usar um userId padrão se não houver usuário logado
+    const userId = user?.id || 1;
 
     try {
       setSubmitting(true);
-      const result = await quizService.submitQuiz(quiz.id, user.id, answers);
+      console.log('Submetendo quiz com respostas:', answers);
+      const result = await quizService.submitQuiz(quiz.id, userId, answers);
+      console.log('Resultado recebido:', result);
       
       // Limpar progresso salvo
       await quizService.clearProgress();

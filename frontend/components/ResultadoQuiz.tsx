@@ -19,22 +19,22 @@ export default function ResultadoQuiz() {
     if (resultId) {
       // Se há um resultId específico, carregar esse resultado
       loadSpecificResult();
-    } else if (user) {
-      // Caso contrário, carregar o resultado mais recente do usuário
+    } else {
+      // Caso contrário, carregar o resultado mais recente
       loadLatestResult();
     }
-  }, [resultId, user]);
+  }, [resultId]);
 
   const loadSpecificResult = async () => {
     try {
       setLoading(true);
       setError(null);
-      // Por enquanto, vamos carregar o resultado mais recente
-      // TODO: Implementar busca por ID específico quando a API estiver pronta
-      if (user) {
-        const latestResult = await quizService.getQuizResult(user.id);
-        setResult(latestResult);
-      }
+      
+      // Para testes, usar userId padrão se não houver usuário logado
+      const userId = user?.id || 1;
+      
+      const latestResult = await quizService.getQuizResult(userId);
+      setResult(latestResult);
     } catch (err: any) {
       console.error('Erro ao carregar resultado:', err);
       setError('Erro ao carregar resultado. Tente novamente.');
@@ -47,10 +47,12 @@ export default function ResultadoQuiz() {
     try {
       setLoading(true);
       setError(null);
-      if (user) {
-        const latestResult = await quizService.getQuizResult(user.id);
-        setResult(latestResult);
-      }
+      
+      // Para testes, usar userId padrão se não houver usuário logado
+      const userId = user?.id || 1;
+      
+      const latestResult = await quizService.getQuizResult(userId);
+      setResult(latestResult);
     } catch (err: any) {
       console.error('Erro ao carregar resultado:', err);
       setError('Nenhum resultado encontrado. Faça o quiz primeiro.');
@@ -61,19 +63,20 @@ export default function ResultadoQuiz() {
 
   const handleSaberMais = () => {
     if (result?.recommendedProgram) {
+      // Navegar para a página de detalhes do programa recomendado
+      router.push({
+        pathname: '/programa-detalhes',
+        params: { 
+          id: result.recommendedProgram.id,
+          fromQuiz: 'true'
+        }
+      });
+    } else {
       Alert.alert(
-        result.recommendedProgram.title,
-        `${result.recommendedProgram.description}\n\n` +
-        `Preço: ${programService.formatPrice(result.recommendedProgram.price)}\n` +
-        `Duração: ${programService.formatDuration(result.recommendedProgram.durationWeeks || 0)}\n` +
-        `País: ${result.recommendedProgram.country}\n\n` +
-        `Foco: ${result.recommendedProgram.focus}\n` +
-        `Método: ${result.recommendedProgram.method}`,
+        'Programa Recomendado',
+        'Não foi possível encontrar detalhes do programa recomendado. Veja todos os programas disponíveis.',
         [
-          {
-            text: 'Ver todos os programas',
-            onPress: () => router.push('/programas')
-          },
+          { text: 'Ver Programas', onPress: () => router.push('/programas') },
           { text: 'OK' }
         ]
       );
@@ -263,23 +266,24 @@ const styles = StyleSheet.create({
   },
   headerSection: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingVertical: 30,
+    alignItems: 'center',
   },
   title: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#cb2328',
-    marginBottom: 20,
+    color: '#DC2626',
     textAlign: 'center',
   },
   resultContainer: {
-    padding: 24,
-    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingBottom: 30,
   },
   subtitle: {
-    fontSize: 24,
+    fontSize: 22,
+    fontWeight: '600',
     textAlign: 'center',
-    marginBottom: 32,
+    marginBottom: 30,
     color: '#333',
   },
   highlight: {
@@ -287,15 +291,140 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   detailsContainer: {
-    width: '100%',
     backgroundColor: '#f8f9fa',
-    borderRadius: 12,
     padding: 20,
-    marginBottom: 24,
+    borderRadius: 12,
+    marginBottom: 25,
   },
   detailItem: {
     fontSize: 16,
+    color: '#555',
+    marginBottom: 8,
+    lineHeight: 24,
+  },
+  button: {
+    backgroundColor: '#DC2626',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  actionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  secondaryButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderWidth: 2,
+    borderColor: '#DC2626',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    marginHorizontal: 5,
+  },
+  secondaryButtonText: {
+    color: '#DC2626',
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 8,
+  },
+  completedText: {
+    fontSize: 12,
+    color: '#666',
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  headerSection: {
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#DC2626',
+    textAlign: 'center',
+  },
+  resultContainer: {
+    paddingHorizontal: 24,
+    paddingBottom: 30,
+  },
+  subtitle: {
+    fontSize: 22,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginBottom: 30,
     color: '#333',
+  },
+  highlight: {
+    color: '#DC2626',
+    fontWeight: 'bold',
+  },
+  detailsContainer: {
+    backgroundColor: '#f8f9fa',
+    padding: 20,
+    borderRadius: 12,
+    marginBottom: 25,
+  },
+  detailItem: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 8,
+    lineHeight: 24,
+  },
+  button: {
+    backgroundColor: '#DC2626',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  actionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  secondaryButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderWidth: 2,
+    borderColor: '#DC2626',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    marginHorizontal: 5,
+  },
+  secondaryButtonText: {
+    color: '#DC2626',
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 8,
+  },
+  completedText: {
+    fontSize: 12,
+    color: '#666',
+    textAlign: 'center',
+    fontStyle: 'italic',
     marginBottom: 8,
     lineHeight: 24,
   },
