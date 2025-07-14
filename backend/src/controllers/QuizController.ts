@@ -116,6 +116,20 @@ export class QuizController {
         return;
       }
 
+      // Validar se todas as perguntas obrigatórias foram respondidas
+      const requiredQuestions = quiz.questions.filter(q => q.isRequired);
+      const answeredQuestionIds = answers.map((a: any) => a.questionId);
+      const missingQuestions = requiredQuestions.filter(q => !answeredQuestionIds.includes(q.id));
+
+      if (missingQuestions.length > 0) {
+        res.status(400).json({
+          success: false,
+          message: `Perguntas obrigatórias não respondidas: ${missingQuestions.map(q => q.order).join(', ')}`,
+          missingQuestions: missingQuestions.map(q => ({ id: q.id, order: q.order, question: q.question }))
+        });
+        return;
+      }
+
       // Processar respostas de forma simples
       const processedAnswers = answers.reduce((acc: any, answer: any) => {
         acc[`pergunta_${answer.questionId}`] = answer.selectedOption;
