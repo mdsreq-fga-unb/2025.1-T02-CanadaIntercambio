@@ -33,6 +33,7 @@ export default function CadastroVisitante() {
     validateForm,
     clearErrors,
     getRegisterData,
+    isFormValid,
   } = useRegisterForm();
 
   const [aceito, setAceito] = useState(false);
@@ -186,8 +187,11 @@ export default function CadastroVisitante() {
           title={loading ? "Criando..." : "Criar Conta"}
           onPress={handleRegister}
           loading={loading}
-          disabled={loading || !aceito}
-          style={styles.button}
+          disabled={loading || !aceito || !isFormValid}
+          style={[
+            styles.button,
+            (loading || !aceito || !isFormValid) && styles.disabledButton,
+          ]}
         />
       </ScrollView>
       <View style={styles.footer} />
@@ -270,5 +274,17 @@ const styles = StyleSheet.create({
   },
   checkboxText: { flex: 1, fontSize: 12, color: "#333", marginLeft: 8 },
   link: { color: "#cb2328", textDecorationLine: "underline" },
-  button: { width: "100%", maxWidth: 350, marginVertical: 20 },
+  button: {
+    width: "100%",
+    maxWidth: 350,
+    marginVertical: 20,
+    backgroundColor: "#cb2328",
+    borderRadius: 8,
+    padding: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  disabledButton: {
+    opacity: 0.6,
+  },
 });
