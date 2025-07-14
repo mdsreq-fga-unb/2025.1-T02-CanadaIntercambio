@@ -193,7 +193,7 @@ export default function EditarProgramaScreen() {
           onPress={() => router.push("/inicio-quiz")}
         >
           <Ionicons name="chatbox" size={24} color="white" />
-          <Text style={styles.navText}>Quiz</Text>
+          <Text style={styles.navText}>FAQ</Text>
         </TouchableOpacity>
       </View>
 
