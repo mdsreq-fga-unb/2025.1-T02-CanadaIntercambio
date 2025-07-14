@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image, ScrollView, Alert } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { Picker } from "@react-native-picker/picker";
 import { router } from "expo-router";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { Toast } from "../../components/Toast";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRegisterForm } from "../../hooks/useRegisterForm";
 import { TextInputMask } from "react-native-masked-text";
@@ -38,6 +39,26 @@ export default function CadastroVisitante() {
 
   const [aceito, setAceito] = useState(false);
   const [units, setUnits] = useState<Unit[]>([]);
+  const [toast, setToast] = useState<{
+    visible: boolean;
+    message: string;
+    type: "success" | "error" | "info";
+  }>({
+    visible: false,
+    message: "",
+    type: "info",
+  });
+
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "info"
+  ) => {
+    setToast({ visible: true, message, type });
+  };
+
+  const hideToast = () => {
+    setToast((prev) => ({ ...prev, visible: false }));
+  };
 
   useEffect(() => {
     const loadUnits = async () => {
@@ -45,7 +66,7 @@ export default function CadastroVisitante() {
         const data = await unitService.getAll();
         setUnits(data);
       } catch {
-        Alert.alert("Erro", "Não foi possível carregar as unidades.");
+        showToast("Não foi possível carregar as unidades.", "error");
       }
     };
 
@@ -56,10 +77,7 @@ export default function CadastroVisitante() {
     clearErrors();
 
     if (!aceito) {
-      Alert.alert(
-        "Erro",
-        "Você deve aceitar os termos e condições para continuar."
-      );
+      showToast("Você deve aceitar os termos e condições para continuar.", "error");
       return;
     }
 
@@ -72,7 +90,7 @@ export default function CadastroVisitante() {
 
       // Redireciona imediatamente para o quiz
       router.replace("/quiz");
-      Alert.alert("Sucesso!", "Cadastro realizado com sucesso! Bem-vindo!");
+      showToast("Cadastro realizado com sucesso! Bem-vindo!", "success");
     } catch (error: any) {
       let errorMsg = "Erro inesperado. Tente novamente.";
       if (
@@ -82,7 +100,7 @@ export default function CadastroVisitante() {
         errorMsg =
           "Este e-mail já está cadastrado. Tente fazer login ou utilize outro e-mail.";
       }
-      Alert.alert("Erro no Cadastro", errorMsg, [{ text: "OK" }]);
+      showToast(errorMsg, "error");
     } finally {
       setLoading(false);
     }
@@ -133,18 +151,27 @@ export default function CadastroVisitante() {
             options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
             value={phone}
             onChangeText={setPhone}
-            style={styles.TextInputmask}
+            style={[
+              styles.TextInputmask,
+              errors.phone && { borderColor: "#dc3545" }
+            ]}
             placeholder="Telefone"
             keyboardType="phone-pad"
             editable={!loading}
           />
+          {errors.phone && (
+            <Text style={styles.errorText}>{errors.phone}</Text>
+          )}
         </View>
 
         <View style={styles.pickerContainer}>
           <Picker
             selectedValue={nearestUnitId}
             onValueChange={(value) => setNearestUnitId(Number(value))}
-            style={styles.picker}
+            style={[
+              styles.picker,
+              errors.nearestUnitId && { borderColor: "#dc3545" }
+            ]}
             enabled={!loading}
           >
             <Picker.Item label="Selecione a unidade mais próxima" value={0} />
@@ -152,6 +179,9 @@ export default function CadastroVisitante() {
               <Picker.Item key={unit.id} label={unit.name} value={unit.id} />
             ))}
           </Picker>
+          {errors.nearestUnitId && (
+            <Text style={styles.errorText}>{errors.nearestUnitId}</Text>
+          )}
         </View>
 
         <Input
@@ -195,6 +225,15 @@ export default function CadastroVisitante() {
         />
       </ScrollView>
       <View style={styles.footer} />
+      
+      {/* Toast para feedback */}
+      <Toast
+        visible={toast.visible}
+        message={toast.message}
+        type={toast.type}
+        onHide={hideToast}
+        duration={toast.type === "error" ? 5000 : 3000}
+      />
     </View>
   );
 }
@@ -286,5 +325,11 @@ const styles = StyleSheet.create({
   },
   disabledButton: {
     opacity: 0.6,
+  },
+  errorText: {
+    color: "#dc3545",
+    fontSize: 12,
+    marginTop: 5,
+    marginBottom: 10,
   },
 });

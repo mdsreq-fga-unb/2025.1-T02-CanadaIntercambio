@@ -54,8 +54,10 @@ export const useRegisterForm = () => {
       newErrors.confirmPassword = "Senhas não coincidem";
     }
 
-    if (phone && phone.length < 10) {
-      newErrors.phone = "Telefone deve ter pelo menos 10 dígitos";
+    // Validar telefone - considerar máscara brasileira
+    const phoneNumbers = phone.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+    if (!phoneNumbers || phoneNumbers.length < 10) {
+      newErrors.phone = "Telefone é obrigatório e deve ter pelo menos 10 dígitos";
     }
 
     if (!nearestUnitId || nearestUnitId === 0) {
@@ -71,8 +73,8 @@ export const useRegisterForm = () => {
     lastName: lastName.trim(),
     email: email.trim(),
     password,
-    phone: phone || undefined,
-    city: city || undefined,
+    phone: phone,
+    city: "Não especificado", // Valor padrão já que não coletamos esse campo
     nearestUnitId,
     userType: "visitante",
   });
@@ -127,6 +129,7 @@ export const useRegisterForm = () => {
       email.trim() &&
       password.length >= 6 &&
       password === confirmPassword &&
+      phone.replace(/\D/g, '').length >= 10 &&
       nearestUnitId > 0,
   };
 };

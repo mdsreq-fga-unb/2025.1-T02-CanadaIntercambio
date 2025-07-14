@@ -32,7 +32,6 @@ export class AuthService {
       !data.email ||
       !data.password ||
       !data.phone ||
-      !data.city ||
       !data.nearestUnitId
     ) {
       throw new Error("Todos os campos são obrigatórios para cadastro de visitante");
