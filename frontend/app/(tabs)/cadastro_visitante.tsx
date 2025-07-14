@@ -69,15 +69,19 @@ export default function CadastroVisitante() {
     try {
       await register(getRegisterData());
 
-      Alert.alert("Sucesso!", "Cadastro realizado com sucesso! Bem-vindo!", [
-        { text: "OK", onPress: () => router.replace("/programas") },
-      ]);
+      // Redireciona imediatamente para o quiz
+      router.replace("/quiz");
+      Alert.alert("Sucesso!", "Cadastro realizado com sucesso! Bem-vindo!");
     } catch (error: any) {
-      Alert.alert(
-        "Erro no Cadastro",
-        error.message || "Erro inesperado. Tente novamente.",
-        [{ text: "OK" }]
-      );
+      let errorMsg = "Erro inesperado. Tente novamente.";
+      if (
+        error?.message?.toLowerCase().includes("email") &&
+        error?.message?.toLowerCase().includes("exist")
+      ) {
+        errorMsg =
+          "Este e-mail já está cadastrado. Tente fazer login ou utilize outro e-mail.";
+      }
+      Alert.alert("Erro no Cadastro", errorMsg, [{ text: "OK" }]);
     } finally {
       setLoading(false);
     }
@@ -122,7 +126,7 @@ export default function CadastroVisitante() {
           editable={!loading}
         />
 
-        <View style={styles.TextInputMaskContainer}>          
+        <View style={styles.TextInputMaskContainer}>
           <TextInputMask
             type={"cel-phone"}
             options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
@@ -226,36 +230,43 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   TextInputMaskContainer: {
-  width: '100%',
+    width: "100%",
   },
   TextInputmask: {
-    width: '100%',
-    maxWidth: '100%',
-    backgroundColor: '#f8f9fa',
-    color: '#888888',
+    width: "100%",
+    maxWidth: "100%",
+    backgroundColor: "#f8f9fa",
+    color: "#888888",
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     paddingHorizontal: 14,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: 15,
-    height: 48, 
+    height: 48,
   },
-  pickerContainer: { 
-    width: '100%',
+  pickerContainer: {
+    width: "100%",
   },
   picker: {
-    width: '100%',
-    maxWidth: '100%',
-    backgroundColor: '#f8f9fa',
-    color: '#888888',
+    width: "100%",
+    maxWidth: "100%",
+    backgroundColor: "#f8f9fa",
+    color: "#888888",
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     paddingHorizontal: 14,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: 15,
-    height: 48, 
+    height: 48,
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+    width: "100%",
+    maxWidth: 350,
   },
   checkboxText: { flex: 1, fontSize: 12, color: "#333", marginLeft: 8 },
   link: { color: "#cb2328", textDecorationLine: "underline" },
