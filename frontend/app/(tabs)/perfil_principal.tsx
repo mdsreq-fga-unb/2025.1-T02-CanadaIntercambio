@@ -22,7 +22,7 @@ import { useRouter } from "expo-router";
 import { profileService } from "../../services/profileService";
 
 export default function PerfilPrincipal() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const router = useRouter();
   const gravatarUrl = user?.email ? getGravatarUrl(user.email, 100) : undefined;
 
@@ -196,7 +196,10 @@ export default function PerfilPrincipal() {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.logoutButton}>
+      <TouchableOpacity style={styles.logoutButton} onPress={async () => {
+        await logout();
+        router.replace('/onboard_inicial');
+      }}>
         <Text style={styles.logoutText}>Sair</Text>
       </TouchableOpacity>
 
