@@ -1,104 +1,91 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, Image, Alert } from "react-native";
-import { Picker } from "@react-native-picker/picker";
+import { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  Alert,
+  Modal,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
+import { Checkbox } from "react-native-paper";
+import { router } from "expo-router";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { Toast } from "../../components/Toast";
-import { useAuth } from "../../contexts/AuthContext";
-import { profileService } from "../../services/profileService";
-import { unitService, Unit } from "../../services/unitService";
-import { TextInputMask } from "react-native-masked-text";
-import { useEditProfileForm } from "../../hooks/useEditProfileForm";
+import { Unit, unitService } from "@/services/unitService";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRegisterAdminForm } from "@/hooks/userRegisterAdminForm";
 
-export default function EditarPerfilScreen() {
-  const { user, loading: authLoading } = useAuth();
-  const [loading, setLoading] = useState(false);
-  const [units, setUnits] = useState<Unit[]>([]);
-
+export default function CadastroAdmin() {
+  const { register } = useAuth();
   const {
     firstName,
     lastName,
     email,
     phone,
     nearestUnitId,
+    internalRole,
+    password,
+    confirmPassword,
+    errors,
+    validateForm,
+    clearErrors,
+    getRegisterData,
     setFirstName,
     setLastName,
     setEmail,
     setPhone,
     setNearestUnitId,
-    validateForm,
-    clearErrors,
-    errors,
-    isFormValid,
-  } = useEditProfileForm();
+    setInternalRole,
+    setPassword,
+    setConfirmPassword,
+  } = useRegisterAdminForm();
 
-  const [toast, setToast] = useState({
-    visible: false,
-    message: "",
-    type: "info" as "success" | "error" | "info",
-  });
-
-  const showToast = (
-    message: string,
-    type: "success" | "error" | "info" = "info"
-  ) => {
-    setToast({ visible: true, message, type });
-  };
-
-  const hideToast = () => setToast((prev) => ({ ...prev, visible: false }));
+  const [aceito, setAceito] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [units, setUnits] = useState<Unit[]>([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    if (!authLoading) {
-      loadProfile();
-    }
+    const loadUnits = async () => {
+      try {
+        const data = await unitService.getAll();
+        setUnits(data);
+      } catch {
+        Alert.alert("Erro", "Não foi possível carregar as unidades.");
+      }
+    };
+
     loadUnits();
-  }, [authLoading]);
+  }, []);
 
-  const loadUnits = async () => {
-    try {
-      const data = await unitService.getAll();
-      // Evita unidades duplicadas
-      const unique = Array.from(new Map(data.map((u) => [u.id, u])).values());
-      setUnits(unique);
-    } catch (err) {
-      showToast("Erro ao carregar unidades", "error");
-    }
-  };
-
-  const loadProfile = async () => {
-    try {
-      setLoading(true);
-      const profile = await profileService.getProfile();
-      setFirstName(profile.firstName || "");
-      setLastName(profile.lastName || "");
-      setEmail(profile.email || "");
-      setPhone(profile.phone || "");
-      setNearestUnitId(profile.nearestUnitId || 0);
-    } catch (err) {
-      console.error("Erro ao carregar perfil:", err);
-      showToast("Erro ao carregar perfil", "error");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleSave = async () => {
+  const handleRegister = async () => {
     clearErrors();
+
+    if (!aceito) {
+      Alert.alert(
+        "Erro",
+        "Você deve aceitar os termos e condições para continuar."
+      );
+      return;
+    }
+
     if (!validateForm()) return;
 
+    setLoading(true);
+
     try {
-      setLoading(true);
-      await profileService.updateProfile({
-        firstName,
-        lastName,
-        email,
-        phone,
-        nearestUnitId,
-      });
-      showToast("Perfil atualizado com sucesso!", "success");
-    } catch (err: any) {
-      console.error("Erro ao atualizar perfil:", err);
-      showToast(err.message || "Erro ao salvar perfil", "error");
+      await register(getRegisterData());
+
+      Alert.alert("Sucesso!", "Cadastro realizado com sucesso!", [
+        { text: "OK", onPress: () => router.replace("/programas") },
+      ]);
+    } catch (error: any) {
+      Alert.alert("Erro no Cadastro", error.message || "Erro inesperado.", [
+        { text: "OK" },
+      ]);
     } finally {
       setLoading(false);
     }
@@ -118,94 +105,127 @@ export default function EditarPerfilScreen() {
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
       >
-        <Text style={styles.title}>Atualize suas informações:</Text>
+        <Text style={styles.title}>Cadastro de Administrador</Text>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Nome</Text>
-          <Input
-            placeholder="Nome"
-            value={firstName}
-            onChangeText={setFirstName}
-            editable={!loading}
-            error={errors.firstName}
-          />
-        </View>
+        <Input
+          placeholder="Nome"
+          value={firstName}
+          onChangeText={setFirstName}
+          error={errors.firstName}
+          editable={!loading}
+        />
+        <Input
+          placeholder="Sobrenome"
+          value={lastName}
+          onChangeText={setLastName}
+          error={errors.lastName}
+          editable={!loading}
+        />
+        <Input
+          placeholder="Email corporativo"
+          value={email}
+          onChangeText={setEmail}
+          error={errors.email}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          editable={!loading}
+        />
+        <Input
+          placeholder="Telefone com DDD"
+          value={phone}
+          onChangeText={setPhone}
+          error={errors.phone}
+          keyboardType="phone-pad"
+          editable={!loading}
+        />
+        <Input
+          placeholder="Função na empresa"
+          value={internalRole}
+          onChangeText={setInternalRole}
+          error={errors.internalRole}
+          editable={!loading}
+        />
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Sobrenome</Text>
-          <Input
-            placeholder="Sobrenome"
-            value={lastName}
-            onChangeText={setLastName}
-            editable={!loading}
-            error={errors.lastName}
-          />
-        </View>
+        <Input
+          placeholder="Senha"
+          value={password}
+          onChangeText={setPassword}
+          error={errors.password}
+          secureTextEntry
+          editable={!loading}
+        />
+        <Input
+          placeholder="Confirmar senha"
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+          error={errors.confirmPassword}
+          secureTextEntry
+          editable={!loading}
+        />
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>E-mail</Text>
-          <Input
-            placeholder="E-mail"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            editable={!loading}
-            error={errors.email}
-          />
-        </View>
+        <TouchableOpacity
+          style={styles.selectButton}
+          onPress={() => setModalVisible(true)}
+          disabled={loading}
+        >
+          <Text
+            style={nearestUnitId ? styles.selectText : styles.selectPlaceholder}
+          >
+            {nearestUnitId
+              ? units.find((u) => u.id === nearestUnitId)?.name
+              : "Selecione uma filial"}
+          </Text>
+        </TouchableOpacity>
+        {errors.nearestUnitId && (
+          <Text style={styles.errorText}>{errors.nearestUnitId}</Text>
+        )}
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Telefone</Text>
-          <TextInputMask
-            type={"cel-phone"}
-            options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
-            value={phone}
-            onChangeText={setPhone}
-            style={styles.input}
-            placeholder="(99) 99999-9999"
-            keyboardType="phone-pad"
-            editable={!loading}
-          />
-          {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Unidade mais próxima</Text>
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={nearestUnitId}
-              onValueChange={(value) => setNearestUnitId(Number(value))}
-              enabled={!loading}
-              style={styles.picker}
-            >
-              <Picker.Item label="Selecione a unidade mais próxima" value={0} />
-              {units.map((unit) => (
-                <Picker.Item key={unit.id} label={unit.name} value={unit.id} />
-              ))}
-            </Picker>
+        <Modal visible={modalVisible} transparent animationType="slide">
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>Selecione a filial</Text>
+              <FlatList
+                data={units}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    style={styles.modalItem}
+                    onPress={() => {
+                      setNearestUnitId(item.id);
+                      setModalVisible(false);
+                    }}
+                  >
+                    <Text style={styles.modalItemText}>{item.name}</Text>
+                  </TouchableOpacity>
+                )}
+              />
+              <Button title="Cancelar" onPress={() => setModalVisible(false)} />
+            </View>
           </View>
-          {errors.nearestUnitId && (
-            <Text style={styles.errorText}>{errors.nearestUnitId}</Text>
-          )}
+        </Modal>
+
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            status={aceito ? "checked" : "unchecked"}
+            onPress={() => setAceito(!aceito)}
+            disabled={loading}
+          />
+          <Text style={styles.checkboxText}>
+            Eu li e concordo com as{" "}
+            <Text style={styles.link}>políticas de privacidade</Text>.
+          </Text>
         </View>
 
         <Button
-          title={loading ? "Salvando..." : "Salvar"}
-          onPress={handleSave}
+          title={loading ? "Criando..." : "Criar Conta"}
+          onPress={handleRegister}
           loading={loading}
-          disabled={loading || !isFormValid}
+          disabled={loading || !aceito}
           style={styles.button}
         />
       </ScrollView>
 
       <View style={styles.footer} />
-      <Toast
-        visible={toast.visible}
-        message={toast.message}
-        type={toast.type}
-        onHide={hideToast}
-      />
     </View>
   );
 }
@@ -220,32 +240,86 @@ const styles = StyleSheet.create({
   },
   logo: { width: 250, height: 60, marginTop: 10 },
   footer: { height: 40, backgroundColor: "#cb2328", marginTop: "auto" },
-  content: { alignItems: "center", padding: 20, flexGrow: 1 },
+  content: {
+    alignItems: "center",
+    padding: 20,
+    flexGrow: 1,
+    justifyContent: "center",
+  },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#cb2328",
-    marginBottom: 20,
+    marginVertical: 20,
     textAlign: "center",
   },
-  inputContainer: { width: "100%", maxWidth: 350, marginBottom: 15 },
   label: { fontSize: 14, color: "#333", marginBottom: 5 },
-  input: {
+  errorText: { color: "red", fontSize: 12, marginTop: 4 },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+    width: "100%",
+    maxWidth: 350,
+  },
+  checkboxText: { flex: 1, fontSize: 12, color: "#333", marginLeft: 8 },
+  link: { color: "#cb2328", textDecorationLine: "underline" },
+  button: { width: "100%", maxWidth: 350, marginVertical: 20 },
+  inputContainer: {
+    width: "100%",
+    maxWidth: 350,
+    marginBottom: 15,
+    alignSelf: "center",
+  },
+  selectButton: {
     height: 48,
-    borderColor: "#dee2e6",
+    width: "100%",
+    maxWidth: 350,
+    justifyContent: "center",
+    paddingHorizontal: 16,
     borderWidth: 1,
+    borderColor: "#dee2e6",
     borderRadius: 8,
-    paddingHorizontal: 10,
     backgroundColor: "#f8f9fa",
+    marginBottom: 15,
+    alignSelf: "center",
+  },
+  selectText: {
+    color: "#333",
+    fontSize: 16,
+  },
+  selectPlaceholder: {
+    color: "#888",
+    fontSize: 16,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    width: "100%",
+    maxHeight: "80%",
+    padding: 20,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    textAlign: "center",
+    color: "#cb2328",
+  },
+  modalItem: {
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+  },
+  modalItemText: {
+    fontSize: 16,
     color: "#333",
   },
-  pickerContainer: {
-    backgroundColor: "#f8f9fa",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#dee2e6",
-  },
-  picker: { height: 48, width: "100%", color: "#333" },
-  errorText: { color: "red", fontSize: 12, marginTop: 4 },
-  button: { width: "100%", maxWidth: 350, marginTop: 20 },
 });
