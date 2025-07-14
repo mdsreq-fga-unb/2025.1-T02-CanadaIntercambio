@@ -27,6 +27,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   useEffect(() => {
     loadStoredUser();
@@ -49,6 +50,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const login = async (credentials: LoginRequest) => {
+    setIsLoggingIn(true);
     setLoading(true);
     try {
       const response = await authService.login(credentials);
@@ -64,6 +66,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.error('Erro no login:', error);
       throw new Error(error.message || 'Erro inesperado. Tente novamente.');
     } finally {
+      setIsLoggingIn(false);
       setLoading(false);
     }
   };
@@ -110,7 +113,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const value: AuthContextData = {
     user,
-    loading,
+    loading: loading || isLoggingIn,
     isAuthenticated: !!user,
     login,
     logout,
