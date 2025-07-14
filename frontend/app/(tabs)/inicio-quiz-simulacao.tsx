@@ -15,7 +15,7 @@ export default function QuizInicial() {
   const handleStartQuiz = () => {
     router.push({
       pathname: "/quiz",
-      params: { quizType: "PERFIL" },
+      params: { quizType: "SIMULACAO" },
     });
   };
 
@@ -33,14 +33,13 @@ export default function QuizInicial() {
           <Text style={styles.backButtonText}>Voltar</Text>
         </TouchableOpacity>
 
-        <Text style={styles.welcome}>Quiz de Perfil</Text>
+        <Text style={styles.welcome}>Quiz de Verificação</Text>
 
         <Image source={loginLogo} style={styles.logo} resizeMode="contain" />
 
         <Text style={styles.title}>
-          Descubra o programa {"\n"}
-          de intercâmbio ideal {"\n"}
-          para você!
+          Teste seus conhecimentos {"\n"}
+          sobre o programa de intercâmbio
         </Text>
 
         <Pressable style={styles.button} onPress={handleStartQuiz}>
@@ -48,8 +47,8 @@ export default function QuizInicial() {
         </Pressable>
 
         <Text style={styles.subtext}>
-          São apenas 6 perguntinhas, {"\n"}
-          prometemos que será bem rapidinho!
+          São só 5 perguntas rápidas para {"\n"}
+          você entender melhor como tudo funciona!
         </Text>
       </View>
 

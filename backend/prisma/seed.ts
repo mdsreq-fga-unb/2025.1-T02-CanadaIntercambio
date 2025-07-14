@@ -16,6 +16,7 @@ async function main() {
   await prisma.intercambista.deleteMany();
   await prisma.visitante.deleteMany();
   await prisma.user.deleteMany();
+  await prisma.unit.deleteMany();
 
   // Hash das senhas de teste
   const hashedPassword = await bcrypt.hash("123456", 10);
@@ -709,6 +710,81 @@ async function main() {
       priceRange: "Entre 30.000 e 80.000 reais",
       recommendedProgramId: inglesGeralProgram.id,
       recommendationScore: 95.0,
+    },
+  });
+
+  const quizInformativo = await prisma.quiz.create({
+    data: {
+      title: "Quiz Informativo sobre o Programa de Intercâmbio",
+      type: "SIMULACAO",
+      questions: {
+        create: [
+          {
+            question:
+              "Qual dos fatores geralmente é necessário para participar deste programa?",
+            questionType: "SINGLE_CHOICE",
+            options: [
+              "Ter cidadania canadense",
+              "Possuir proficiência no idioma exigido",
+              "Já ter feito outro intercâmbio anteriormente",
+              "Ter mais de 30 anos obrigatoriamente",
+            ],
+            isRequired: true,
+            order: 1,
+          },
+          {
+            question: "Qual a média de tempo de duração deste programa?",
+            questionType: "SINGLE_CHOICE",
+            options: [
+              "De 1 a 2 semanas",
+              "De 1 a 3 meses",
+              "De 3 a 6 meses",
+              "1 ano ou mais",
+            ],
+            isRequired: true,
+            order: 2,
+          },
+          {
+            question:
+              "Qual das opções melhor descreve o objetivo geral deste programa?",
+            questionType: "SINGLE_CHOICE",
+            options: [
+              "Obter visto de trabalho para imigrar",
+              "Alcançar um objetivo específico como aprender, estudar, trabalhar ou vivenciar uma nova cultura",
+              "Realizar estágio obrigatório em empresas locais",
+              "Preparar-se para concursos públicos no Brasil",
+            ],
+            isRequired: true,
+            order: 3,
+          },
+          {
+            question:
+              "Qual é, geralmente, a idade mínima para participar deste programa?",
+            questionType: "SINGLE_CHOICE",
+            options: [
+              "14 anos ou mais",
+              "17 anos ou mais",
+              "18 anos ou mais",
+              "Qualquer idade",
+            ],
+            isRequired: true,
+            order: 4,
+          },
+          {
+            question:
+              "Qual das opções abaixo pode influenciar diretamente o valor total deste programa?",
+            questionType: "SINGLE_CHOICE",
+            options: [
+              "O número de seguidores do participante nas redes sociais",
+              "A estação do ano em que o aluno pretende viajar",
+              "O tempo de duração e o tipo de programa escolhido",
+              "O país de origem do participante",
+            ],
+            isRequired: true,
+            order: 5,
+          },
+        ],
+      },
     },
   });
 

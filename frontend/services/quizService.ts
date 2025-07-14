@@ -1,12 +1,12 @@
-import axios, { AxiosInstance } from 'axios';
-import { API_CONFIG, STORAGE_KEYS } from '../constants/api';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios, { AxiosInstance } from "axios";
+import { API_CONFIG, STORAGE_KEYS } from "../constants/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Tipos para Quiz
 export interface QuizQuestion {
   id: number;
   question: string;
-  questionType: 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE' | 'TEXT' | 'SCALE';
+  questionType: "SINGLE_CHOICE" | "MULTIPLE_CHOICE" | "TEXT" | "SCALE";
   options: string[];
   isRequired: boolean;
   order: number;
@@ -15,7 +15,7 @@ export interface QuizQuestion {
 export interface Quiz {
   id: number;
   title: string;
-  type: 'PERFIL' | 'SIMULACAO' | 'TESTE';
+  type: "PERFIL" | "SIMULACAO" | "TESTE";
   questions: QuizQuestion[];
 }
 
@@ -55,7 +55,7 @@ class QuizService {
       baseURL: API_CONFIG.BASE_URL,
       timeout: API_CONFIG.TIMEOUT,
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
@@ -73,122 +73,168 @@ class QuizService {
   async getQuiz(type: string): Promise<Quiz> {
     try {
       const response = await this.api.get<QuizResponse>(`/quiz/${type}`);
-      
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Erro ao buscar quiz');
+        throw new Error(response.data.message || "Erro ao buscar quiz");
       }
     } catch (error: any) {
-      console.error('Erro ao buscar quiz:', error);
-      throw new Error('Erro ao carregar quiz. Tente novamente.');
+      console.error("Erro ao buscar quiz:", error);
+      throw new Error("Erro ao carregar quiz. Tente novamente.");
     }
   }
 
   // Buscar perguntas do quiz
   async getQuizQuestions(type: string): Promise<Quiz> {
     try {
-      const response = await this.api.get<QuizResponse>(`/quiz/${type}/questions`);
-      
+      const response = await this.api.get<QuizResponse>(
+        `/quiz/${type}/questions`
+      );
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Erro ao buscar perguntas');
+        throw new Error(response.data.message || "Erro ao buscar perguntas");
       }
     } catch (error: any) {
-      console.error('Erro ao buscar perguntas:', error);
-      throw new Error('Erro ao carregar perguntas. Tente novamente.');
+      console.error("Erro ao buscar perguntas:", error);
+      throw new Error("Erro ao carregar perguntas. Tente novamente.");
     }
   }
 
   // Submeter respostas do quiz
-  async submitQuiz(quizId: number, userId: number, answers: QuizAnswer[]): Promise<QuizResult> {
+  async submitQuiz(
+    quizId: number,
+    userId: number,
+    answers: QuizAnswer[]
+  ): Promise<QuizResult> {
     try {
-      const response = await this.api.post<QuizResultResponse>('/quiz/submit', {
+      const response = await this.api.post<QuizResultResponse>("/quiz/submit", {
         quizId,
         userId,
-        answers
+        answers,
       });
-      
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Erro ao submeter quiz');
+        throw new Error(response.data.message || "Erro ao submeter quiz");
       }
     } catch (error: any) {
-      console.error('Erro ao submeter quiz:', error);
-      throw new Error('Erro ao salvar respostas. Tente novamente.');
+      console.error("Erro ao submeter quiz:", error);
+      throw new Error("Erro ao salvar respostas. Tente novamente.");
+    }
+  }
+
+  async submit(
+    quizId: number,
+    userId: number,
+    answers: QuizAnswer[]
+  ): Promise<QuizResult> {
+    try {
+      const response = await this.api.post<QuizResultResponse>("/quiz/submit", {
+        quizId,
+        userId,
+        answers,
+      });
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.message || "Erro ao submeter quiz");
+      }
+    } catch (error: any) {
+      console.error("Erro ao submeter quiz:", error);
+      throw new Error("Erro ao salvar respostas. Tente novamente.");
     }
   }
 
   // Buscar resultado do quiz
   async getQuizResult(userId: number): Promise<QuizResult> {
     try {
-      const response = await this.api.get<QuizResultResponse>(`/quiz/result/${userId}`);
-      
+      const response = await this.api.get<QuizResultResponse>(
+        `/quiz/result/${userId}`
+      );
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Resultado não encontrado');
+        throw new Error(response.data.message || "Resultado não encontrado");
       }
     } catch (error: any) {
-      console.error('Erro ao buscar resultado:', error);
-      throw new Error('Erro ao carregar resultado. Tente novamente.');
+      console.error("Erro ao buscar resultado:", error);
+      throw new Error("Erro ao carregar resultado. Tente novamente.");
     }
   }
 
   // Buscar histórico de quizzes
   async getQuizHistory(userId: number): Promise<QuizResult[]> {
     try {
-      const response = await this.api.get<{success: boolean; data: QuizResult[]}>(`/quiz/history/${userId}`);
-      
+      const response = await this.api.get<{
+        success: boolean;
+        data: QuizResult[];
+      }>(`/quiz/history/${userId}`);
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error('Erro ao buscar histórico');
+        throw new Error("Erro ao buscar histórico");
       }
     } catch (error: any) {
-      console.error('Erro ao buscar histórico:', error);
-      throw new Error('Erro ao carregar histórico. Tente novamente.');
+      console.error("Erro ao buscar histórico:", error);
+      throw new Error("Erro ao carregar histórico. Tente novamente.");
     }
   }
 
   // Salvar progresso localmente
-  async saveProgress(quizId: number, currentStep: number, answers: QuizAnswer[]): Promise<void> {
+  async saveProgress(
+    quizId: number,
+    currentStep: number,
+    answers: QuizAnswer[],
+    quizType: string
+  ): Promise<void> {
     try {
+      const key = `quizProgress_${quizType}`;
       const progressData = {
         quizId,
         currentStep,
         answers,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
-      
-      await AsyncStorage.setItem('quizProgress', JSON.stringify(progressData));
+
+      await AsyncStorage.setItem(key, JSON.stringify(progressData));
     } catch (error) {
-      console.error('Erro ao salvar progresso:', error);
+      console.error("Erro ao salvar progresso:", error);
     }
   }
 
   // Carregar progresso salvo
-  async loadProgress(): Promise<{quizId: number; currentStep: number; answers: QuizAnswer[]} | null> {
+  async loadProgress(quizType: string): Promise<{
+    quizId: number;
+    currentStep: number;
+    answers: QuizAnswer[];
+  } | null> {
     try {
-      const progressData = await AsyncStorage.getItem('quizProgress');
+      const key = `quizProgress_${quizType}`;
+      const progressData = await AsyncStorage.getItem(key);
       if (progressData) {
         return JSON.parse(progressData);
       }
       return null;
     } catch (error) {
-      console.error('Erro ao carregar progresso:', error);
+      console.error("Erro ao carregar progresso:", error);
       return null;
     }
   }
 
   // Limpar progresso salvo
-  async clearProgress(): Promise<void> {
+  async clearProgress(quizType: string): Promise<void> {
     try {
-      await AsyncStorage.removeItem('quizProgress');
+      const key = `quizProgress_${quizType}`;
+      await AsyncStorage.removeItem(key);
     } catch (error) {
-      console.error('Erro ao limpar progresso:', error);
+      console.error("Erro ao limpar progresso:", error);
     }
   }
 
@@ -197,13 +243,13 @@ class QuizService {
     if (!question.isRequired) return true;
 
     switch (question.questionType) {
-      case 'SINGLE_CHOICE':
+      case "SINGLE_CHOICE":
         return !!answer.selectedOption;
-      case 'MULTIPLE_CHOICE':
+      case "MULTIPLE_CHOICE":
         return !!(answer.selectedOptions && answer.selectedOptions.length > 0);
-      case 'TEXT':
+      case "TEXT":
         return !!(answer.textAnswer && answer.textAnswer.trim());
-      case 'SCALE':
+      case "SCALE":
         return answer.scaleValue !== undefined && answer.scaleValue !== null;
       default:
         return false;
