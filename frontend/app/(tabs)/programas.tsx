@@ -41,9 +41,6 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ program, onPress }) => (
           {program.description || "Clique para mais informações."}
         </Text>
         <View style={styles.cardDetails}>
-          <Text style={styles.cardPrice}>
-            {programService.formatPrice(program.price)}
-          </Text>
           <Text style={styles.cardDuration}>
             {program.country} •{" "}
             {programService.formatDuration(program.durationWeeks || 0)}
@@ -353,12 +350,6 @@ const styles = StyleSheet.create({
   },
   cardDetails: {
     marginTop: 4,
-  },
-  cardPrice: {
-    color: "#059669",
-    fontWeight: "600",
-    fontSize: 14,
-    marginBottom: 2,
   },
   cardDuration: {
     color: "#6B7280",

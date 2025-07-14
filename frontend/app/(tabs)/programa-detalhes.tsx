@@ -153,9 +153,6 @@ export default function ProgramaDetalhesScreen() {
 
         <View style={styles.detailsSection}>
           <View style={styles.priceContainer}>
-            <Text style={styles.price}>
-              {programService.formatPrice(program.price)}
-            </Text>
             <Text style={styles.duration}>
               {programService.formatDuration(program.durationWeeks)} •{" "}
               {program.country}
