@@ -23,39 +23,93 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     id: 1,
-    question: "Pergunta",
+    question: "Posso pagar a faculdade por mês, como é no Brasil?",
     answer:
-      "O Milus canadense é mais barato que a mercadoria, e que torna a vida de um intercambista mais acessível.",
+      "As instituições de ensino canadenses pedem que o valor integral do período seja pago antes do início. Alunos canadenses costumam financiar com o banco.",
   },
   {
     id: 2,
-    question: "Pergunta",
+    question: "Como faço para conseguir uma bolsa de estudos?",
     answer:
-      "O Milus canadense é mais barato que a mercadoria, e que torna a vida de um intercambista mais acessível.",
+      "A maioria das bolsas são para canadenses. Algumas instituições oferecem bolsas parciais para brasileiros. Fale com nossa equipe para saber mais.",
   },
   {
     id: 3,
-    question: "Pergunta",
+    question: "Posso trabalhar enquanto estudo?",
     answer:
-      "O Milus canadense é mais barato que a mercadoria, e que torna a vida de um intercambista mais acessível.",
+      "Sim, estudantes de College público podem trabalhar até 24h semanais. Os trabalhos geralmente são em serviços, com salário mínimo da província.",
   },
   {
     id: 4,
-    question: "Pergunta",
+    question: "Posso continuar no Canadá depois de terminar meu curso?",
     answer:
-      "O Milus canadense é mais barato que a mercadoria, e que torna a vida de um intercambista mais acessível.",
+      "Sim! Com cursos superiores a 9 meses, é possível solicitar um visto de trabalho (PGWP) por até 3 anos, dependendo da duração do curso.",
   },
   {
     id: 5,
-    question: "Pergunta",
+    question: "O que é um curso de Pathway?",
     answer:
-      "O Milus canadense é mais barato que a mercadoria, e que torna a vida de um intercambista mais acessível.",
+      "Um Pathway é um programa preparatório para desenvolver inglês/francês e/ou habilidades acadêmicas antes de iniciar a graduação no Canadá.",
   },
   {
     id: 6,
-    question: "Pergunta",
+    question: "Posso trabalhar enquanto faço um curso de Pathway?",
     answer:
-      "O Milus canadense é mais barato que a mercadoria, e que torna a vida de um intercambista mais acessível.",
+      "Normalmente não. Verifique as condições específicas do seu visto com um especialista da Canada Intercambio.",
+  },
+    {
+    id: 7,
+    question: "Preciso ter inglês fluente para estudar no Canadá?",
+    answer:
+      "Sim, é necessário comprovar proficiência com testes como TOEFL ou IELTS. Algumas instituições aceitam cursos de inglês preparatórios antes da graduação.",
+  },
+  {
+    id: 8,
+    question: "O que é um Career College?",
+    answer:
+      "Career Colleges são instituições privadas com foco em capacitação prática e rápida para o mercado de trabalho, com duração de até 2 anos.",
+  },
+  {
+    id: 9,
+    question: "Career College dá direito ao PGWP?",
+    answer:
+      "Não. Programas em Career Colleges não são elegíveis ao PGWP. Apenas alguns programas de colleges públicos oferecem essa possibilidade.",
+  },
+  {
+    id: 10,
+    question: "Posso transferir minha faculdade do Brasil para o Canadá?",
+    answer:
+      "É possível em cursos como Administração, TI e Design, mas depende da análise da grade curricular pela instituição canadense e de tradução juramentada dos documentos.",
+  },
+  {
+    id: 11,
+    question: "Quando começa o ano letivo no Canadá?",
+    answer:
+      "Geralmente em setembro, com entradas adicionais em janeiro ou maio para alguns cursos. Consulte a instituição de interesse.",
+  },
+  {
+    id: 12,
+    question: "O que é PGWP (Post-Graduation Work Permit)?",
+    answer:
+      "É uma permissão de trabalho concedida após a graduação em instituições elegíveis, válida por até 3 anos, proporcional ao tempo do curso.",
+  },
+  {
+    id: 13,
+    question: "Quanto custa estudar em um Career College?",
+    answer:
+      "Os valores variam entre CAD 8.000 e CAD 25.000, dependendo da área, duração e localização do curso.",
+  },
+  {
+    id: 14,
+    question: "Pathway isenta do IELTS ou TOEFL?",
+    answer:
+      "Sim. Ao concluir um programa de Pathway com desempenho satisfatório, muitas instituições dispensam o teste de proficiência.",
+  },
+  {
+    id: 15,
+    question: "Quais são os países com menor custo de vida para intercâmbio?",
+    answer:
+      "Argentina, África do Sul, Malta e cidades menores na Espanha costumam oferecer menor custo de vida para estudantes."
   },
 ];
 
