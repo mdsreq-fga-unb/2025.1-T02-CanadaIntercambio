@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
 
 export class ProgramController {
   private prisma: PrismaClient;
@@ -12,11 +12,11 @@ export class ProgramController {
   async getPrograms(req: Request, res: Response): Promise<void> {
     try {
       const { active } = req.query;
-      
+
       const programs = await this.prisma.program.findMany({
-        where: active === 'true' ? { isActive: true } : {},
+        where: active === "true" ? { isActive: true } : {},
         orderBy: {
-          createdAt: 'desc',
+          createdAt: "desc",
         },
       });
 
@@ -25,10 +25,10 @@ export class ProgramController {
         data: programs,
       });
     } catch (error) {
-      console.error('Erro ao buscar programas:', error);
+      console.error("Erro ao buscar programas:", error);
       res.status(500).json({
         success: false,
-        message: 'Erro interno do servidor',
+        message: "Erro interno do servidor",
       });
     }
   }
@@ -37,7 +37,7 @@ export class ProgramController {
   async getProgramById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
-      
+
       const program = await this.prisma.program.findUnique({
         where: { id: parseInt(id) },
       });
@@ -45,7 +45,7 @@ export class ProgramController {
       if (!program) {
         res.status(404).json({
           success: false,
-          message: 'Programa não encontrado',
+          message: "Programa não encontrado",
         });
         return;
       }
@@ -55,10 +55,10 @@ export class ProgramController {
         data: program,
       });
     } catch (error) {
-      console.error('Erro ao buscar programa:', error);
+      console.error("Erro ao buscar programa:", error);
       res.status(500).json({
         success: false,
-        message: 'Erro interno do servidor',
+        message: "Erro interno do servidor",
       });
     }
   }
@@ -67,11 +67,11 @@ export class ProgramController {
   async getRecommendedPrograms(req: Request, res: Response): Promise<void> {
     try {
       const { userId } = req.params;
-      
+
       // Buscar resultado mais recente do quiz do usuário
       const quizResult = await this.prisma.quizResult.findFirst({
         where: { userId: parseInt(userId) },
-        orderBy: { createdAt: 'desc' },
+        orderBy: { createdAt: "desc" },
       });
 
       let recommendedPrograms;
@@ -82,16 +82,26 @@ export class ProgramController {
           where: {
             isActive: true,
             AND: [
-              quizResult.ageRange ? { targetAgeRange: { contains: quizResult.ageRange } } : {},
-              quizResult.purpose ? { purpose: { contains: quizResult.purpose } } : {},
-              quizResult.durationRange ? { durationRange: { contains: quizResult.durationRange } } : {},
-              quizResult.englishLevel ? { englishLevel: { contains: quizResult.englishLevel } } : {},
-              quizResult.priceRange ? { priceRange: { contains: quizResult.priceRange } } : {},
-            ].filter(condition => Object.keys(condition).length > 0),
+              quizResult.ageRange
+                ? { targetAgeRange: { contains: quizResult.ageRange } }
+                : {},
+              quizResult.purpose
+                ? { purpose: { contains: quizResult.purpose } }
+                : {},
+              quizResult.durationRange
+                ? { durationRange: { contains: quizResult.durationRange } }
+                : {},
+              quizResult.englishLevel
+                ? { englishLevel: { contains: quizResult.englishLevel } }
+                : {},
+              quizResult.priceRange
+                ? { priceRange: { contains: quizResult.priceRange } }
+                : {},
+            ].filter((condition) => Object.keys(condition).length > 0),
           },
           take: 5,
           orderBy: {
-            createdAt: 'desc',
+            createdAt: "desc",
           },
         });
 
@@ -101,7 +111,7 @@ export class ProgramController {
             where: { isActive: true },
             take: 3,
             orderBy: {
-              createdAt: 'desc',
+              createdAt: "desc",
             },
           });
         }
@@ -111,7 +121,7 @@ export class ProgramController {
           where: { isActive: true },
           take: 3,
           orderBy: {
-            createdAt: 'desc',
+            createdAt: "desc",
           },
         });
       }
@@ -121,10 +131,10 @@ export class ProgramController {
         data: recommendedPrograms,
       });
     } catch (error) {
-      console.error('Erro ao buscar programas recomendados:', error);
+      console.error("Erro ao buscar programas recomendados:", error);
       res.status(500).json({
         success: false,
-        message: 'Erro interno do servidor',
+        message: "Erro interno do servidor",
       });
     }
   }
@@ -133,7 +143,7 @@ export class ProgramController {
   async createProgram(req: Request, res: Response): Promise<void> {
     try {
       const programData = req.body;
-      
+
       const program = await this.prisma.program.create({
         data: programData,
       });
@@ -141,13 +151,13 @@ export class ProgramController {
       res.status(201).json({
         success: true,
         data: program,
-        message: 'Programa criado com sucesso',
+        message: "Programa criado com sucesso",
       });
     } catch (error) {
-      console.error('Erro ao criar programa:', error);
+      console.error("Erro ao criar programa:", error);
       res.status(500).json({
         success: false,
-        message: 'Erro interno do servidor',
+        message: "Erro interno do servidor",
       });
     }
   }
@@ -157,7 +167,7 @@ export class ProgramController {
     try {
       const { id } = req.params;
       const programData = req.body;
-      
+
       const program = await this.prisma.program.update({
         where: { id: parseInt(id) },
         data: programData,
@@ -166,13 +176,13 @@ export class ProgramController {
       res.status(200).json({
         success: true,
         data: program,
-        message: 'Programa atualizado com sucesso',
+        message: "Programa atualizado com sucesso",
       });
     } catch (error) {
-      console.error('Erro ao atualizar programa:', error);
+      console.error("Erro ao atualizar programa:", error);
       res.status(500).json({
         success: false,
-        message: 'Erro interno do servidor',
+        message: "Erro interno do servidor",
       });
     }
   }
@@ -181,7 +191,7 @@ export class ProgramController {
   async deleteProgram(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
-      
+
       await this.prisma.program.update({
         where: { id: parseInt(id) },
         data: { isActive: false },
@@ -189,13 +199,13 @@ export class ProgramController {
 
       res.status(200).json({
         success: true,
-        message: 'Programa desativado com sucesso',
+        message: "Programa desativado com sucesso",
       });
     } catch (error) {
-      console.error('Erro ao deletar programa:', error);
+      console.error("Erro ao deletar programa:", error);
       res.status(500).json({
         success: false,
-        message: 'Erro interno do servidor',
+        message: "Erro interno do servidor",
       });
     }
   }

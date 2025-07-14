@@ -203,6 +203,17 @@ class ProgramService {
     return errors;
   }
 
+  async createProgram(data: Partial<Program>): Promise<Program> {
+    data.price = 100;
+    const response = await this.api.post("/programs", data);
+
+    if (!response.data.success) {
+      throw new Error(response.data.message || "Erro ao criar programa");
+    }
+
+    return response.data.data;
+  }
+
   // Atualizar programa por ID
   async updateProgram(id: number, data: Partial<Program>): Promise<void> {
     try {

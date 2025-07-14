@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// app/cadastrar-programa.tsx
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,7 +9,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { useLocalSearchParams, router } from "expo-router";
+import { router } from "expo-router";
 import {
   MaterialCommunityIcons,
   FontAwesome,
@@ -17,25 +18,40 @@ import {
 import { Program, programService } from "@/services/programService";
 import { Toast } from "../../components/Toast";
 
-export default function EditarProgramaScreen() {
-  const { id } = useLocalSearchParams();
-  const [program, setProgram] = useState<Program | null>(null);
+export default function CadastrarProgramaScreen() {
+  /** --------- estado --------- */
+  const [program, setProgram] = useState<Partial<Program>>({
+    title: "",
+    description: "",
+    durationWeeks: undefined,
+    country: "",
+    focus: "",
+    method: "",
+    type: "",
+    workload: "",
+    languageLevel: "",
+    requirements: "",
+    price: undefined,
+  });
   const [loading, setLoading] = useState(false);
 
+  /** --------- toast --------- */
   const [toast, setToast] = useState<{
     visible: boolean;
     message: string;
     type: "success" | "error" | "info";
-  }>({
-    visible: false,
-    message: "",
-    type: "info",
-  });
+  }>({ visible: false, message: "", type: "info" });
 
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "info"
+  ) => setToast({ visible: true, message, type });
+
+  const hideToast = () => setToast((prev) => ({ ...prev, visible: false }));
+
+  /** --------- validação --------- */
   const isFormValid = (): boolean => {
-    if (!program) return false;
-
-    const requiredFields: (keyof Program)[] = [
+    const required: (keyof Program)[] = [
       "title",
       "description",
       "durationWeeks",
@@ -47,66 +63,37 @@ export default function EditarProgramaScreen() {
       "languageLevel",
       "requirements",
     ];
-
-    return requiredFields.every(
-      (field) =>
-        program[field] !== undefined && String(program[field]).trim() !== ""
+    return required.every(
+      (f) => program[f] !== undefined && String(program[f]).trim() !== ""
     );
   };
 
-  const showToast = (
-    message: string,
-    type: "success" | "error" | "info" = "info"
-  ) => {
-    setToast({ visible: true, message, type });
-  };
+  /** --------- handlers --------- */
+  const handleChange = (field: keyof Program, value: string) => {
+    setProgram((prev) => {
+      if (!prev) return prev;
 
-  const hideToast = () => {
-    setToast((prev) => ({ ...prev, visible: false }));
-  };
+      const newValue = field === "durationWeeks" ? Number(value) : value;
 
-  useEffect(() => {
-    if (id) loadProgram();
-  }, [id]);
-
-  const loadProgram = async () => {
-    try {
-      setLoading(true);
-      const data = await programService.getProgramById(Number(id));
-      setProgram(data);
-    } catch (err) {
-      showToast("Erro ao carregar programa", "error");
-    } finally {
-      setLoading(false);
-    }
+      return { ...prev, [field]: newValue };
+    });
   };
 
   const handleSave = async () => {
-    if (!program) return;
-
     try {
       setLoading(true);
-      await programService.updateProgram(Number(id), program);
-      showToast("Programa atualizado com sucesso!", "success");
+      await programService.createProgram(program);
+      showToast("Programa criado com sucesso!", "success");
+      setTimeout(() => router.replace("/programas"), 1200);
     } catch (err) {
-      showToast("Erro ao atualizar programa", "error");
+      console.error(err);
+      showToast("Erro ao criar programa", "error");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleChange = (field: keyof Program, value: string) => {
-    setProgram((prev) => (prev ? { ...prev, [field]: value } : prev));
-  };
-
-  if (!program) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.loading}>Carregando...</Text>
-      </View>
-    );
-  }
-
+  /** --------- render --------- */
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       {/* Cabeçalho */}
@@ -124,9 +111,9 @@ export default function EditarProgramaScreen() {
         />
       </View>
 
-      {/* Conteúdo principal */}
+      {/* Formulário */}
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>Editar Programa</Text>
+        <Text style={styles.title}>Cadastrar Programa</Text>
 
         {[
           { label: "Título", key: "title" },
@@ -148,7 +135,7 @@ export default function EditarProgramaScreen() {
             <Text style={styles.label}>{label}</Text>
             <TextInput
               style={styles.input}
-              value={String(program?.[key as keyof Program] || "")}
+              value={String(program[key as keyof Program] || "")}
               onChangeText={(v) => handleChange(key as keyof Program, v)}
               keyboardType={keyboardType as any}
               multiline={multiline}
@@ -165,39 +152,38 @@ export default function EditarProgramaScreen() {
           onPress={handleSave}
           disabled={!isFormValid() || loading}
         >
-          <MaterialCommunityIcons name="content-save" size={20} color="white" />
+          <MaterialCommunityIcons name="content-save" size={20} color="#fff" />
           <Text style={styles.saveButtonText}>
-            {loading ? "Salvando..." : "Salvar Alterações"}
+            {loading ? "Salvando..." : "Criar Programa"}
           </Text>
         </TouchableOpacity>
       </ScrollView>
 
-      {/* Navbar inferior */}
+      {/* Navbar */}
       <View style={styles.bottomNavigation}>
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => router.push("/programas")}
         >
-          <MaterialCommunityIcons name="map-marker" size={24} color="white" />
+          <MaterialCommunityIcons name="map-marker" size={24} color="#fff" />
           <Text style={styles.navText}>Programas</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => router.push("/perfil_principal")}
         >
-          <FontAwesome name="user" size={24} color="white" />
+          <FontAwesome name="user" size={24} color="#fff" />
           <Text style={styles.navText}>Perfil</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => router.push("/inicio-quiz")}
         >
-          <Ionicons name="chatbox" size={24} color="white" />
+          <Ionicons name="chatbox" size={24} color="#fff" />
           <Text style={styles.navText}>Quiz</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Toast */}
       <Toast
         visible={toast.visible}
         message={toast.message}
@@ -209,6 +195,7 @@ export default function EditarProgramaScreen() {
   );
 }
 
+/* ---------- estilos ---------- */
 const styles = StyleSheet.create({
   header: {
     height: 70,
@@ -217,17 +204,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
   },
-  backButton: {
-    marginRight: 12,
-  },
-  logo: {
-    width: 200,
-    height: 40,
-  },
-  container: {
-    padding: 20,
-    backgroundColor: "#fff",
-  },
+  backButton: { marginRight: 12 },
+  logo: { width: 200, height: 40 },
+  container: { padding: 20, backgroundColor: "#fff" },
   title: {
     fontSize: 24,
     color: "#cb2328",
@@ -235,9 +214,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "center",
   },
-  field: {
-    marginBottom: 16,
-  },
+  field: { marginBottom: 16 },
   label: {
     fontSize: 14,
     fontWeight: "600",
@@ -266,12 +243,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 8,
   },
-  loading: {
-    textAlign: "center",
-    marginTop: 100,
-    fontSize: 16,
-    color: "#666",
-  },
+  disabledButton: { opacity: 0.5 },
   bottomNavigation: {
     backgroundColor: "#DC2626",
     flexDirection: "row",
@@ -279,15 +251,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingBottom: 20,
   },
-  navItem: {
-    alignItems: "center",
-  },
-  navText: {
-    color: "white",
-    fontSize: 10,
-    marginTop: 4,
-  },
-  disabledButton: {
-    opacity: 0.5,
-  },
+  navItem: { alignItems: "center" },
+  navText: { color: "#fff", fontSize: 10, marginTop: 4 },
 });

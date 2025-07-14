@@ -59,21 +59,6 @@ export default function PerfilPrincipal() {
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.menuItem}>
-          <Ionicons
-            name="add-circle-outline"
-            size={20}
-            color="#222"
-            style={styles.menuIcon}
-          />
-          <Text style={styles.menuText}>Cadastrar novos programas</Text>
-          <Feather
-            name="chevron-right"
-            size={22}
-            color="#1e1e1e"
-            style={styles.menuArrow}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
           <Feather
             name="settings"
             size={20}
