@@ -36,4 +36,46 @@ export class ProfileController {
       res.status(400).json({ success: false, message: (err as Error).message });
     }
   }
+
+  // Métodos para administradores
+  async getProfileByAdmin(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const targetUserId = parseInt(req.params.userId, 10);
+      if (isNaN(targetUserId)) {
+        return res.status(400).json({ success: false, message: 'ID de usuário inválido.' });
+      }
+      const profile = await this.profileService.getProfile(targetUserId);
+      res.status(200).json({ success: true, data: profile });
+    } catch (err) {
+      res.status(404).json({ success: false, message: (err as Error).message });
+    }
+  }
+
+  async updateProfileByAdmin(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const targetUserId = parseInt(req.params.userId, 10);
+      if (isNaN(targetUserId)) {
+        return res.status(400).json({ success: false, message: 'ID de usuário inválido.' });
+      }
+      const updatedProfile = await this.profileService.updateProfile(targetUserId, 'admin', req.body);
+      res.status(200).json({ 
+        success: true, 
+        message: 'Perfil do usuário atualizado com sucesso pelo administrador', 
+        data: updatedProfile 
+      });
+    } catch (err) {
+      res.status(400).json({ success: false, message: (err as Error).message });
+    }
+  }
+
+  async getAllUsers(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const users = await this.profileService.getAllUsers();
+      res.status(200).json({ success: true, data: users });
+    } catch (err) {
+      res.status(500).json({ success: false, message: (err as Error).message });
+    }
+  }
 }
+
+

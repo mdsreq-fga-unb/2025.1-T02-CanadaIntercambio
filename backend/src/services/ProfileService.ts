@@ -76,4 +76,43 @@ export class ProfileService {
       },
     });
   }
+
+//busca de usuários com o prisma
+  async getAllUsers() {
+    return this.prisma.user.findMany({
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        city: true,
+        phone: true,
+        createdAt: true,
+        visitante: {
+          select: {
+            id: true,
+          },
+        },
+        intercambista: {
+          select: {
+            id: true,
+          },
+        },
+        admin: {
+          select: {
+            id: true,
+          },
+        },
+        nearestUnit: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
 }

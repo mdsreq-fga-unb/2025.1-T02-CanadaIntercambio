@@ -6,6 +6,7 @@ import { ProgramRoutes } from "./programRoutes";
 import { QuizRoutes } from "./quizRoutes";
 import { ProfileRoutes } from "./profileRoutes";
 import { UnitRoutes } from "./unitRoutes";
+import { AdminRoutes } from "./adminRoutes";
 
 export class AppRoutes {
   private router: Router;
@@ -25,6 +26,10 @@ export class AppRoutes {
     // Rotas de perfil
     const profileRoutes = new ProfileRoutes(this.prisma);
     this.router.use("/profile", profileRoutes.getRouter());
+    
+    // Linhas adicionadas para configurar as rotas de administração
+    const adminRoutes = new AdminRoutes(this.prisma);
+    this.router.use("/admin", adminRoutes.getRouter());
 
     // Rotas de unidade
     const unitRoutes = new UnitRoutes(this.prisma);
