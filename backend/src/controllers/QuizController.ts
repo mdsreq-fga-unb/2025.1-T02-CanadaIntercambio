@@ -82,103 +82,62 @@ export class QuizController {
     }
   }
 
+  // Submeter respostas do quiz
   async submitQuiz(req: Request, res: Response): Promise<void> {
     try {
       const { quizId, userId, answers } = req.body;
 
-      console.log("📨 Dados recebidos:", { quizId, userId, answers });
+      console.log("Dados recebidos:", { quizId, userId, answers });
 
-      // Validar quiz
+      // Validar se o quiz existe
       const quiz = await this.prisma.quiz.findUnique({
         where: { id: quizId },
         include: { questions: true },
       });
 
       if (!quiz) {
-        res
-          .status(404)
-          .json({ success: false, message: "Quiz não encontrado" });
+        res.status(404).json({
+          success: false,
+          message: "Quiz não encontrado",
+        });
         return;
       }
 
-      // Validar usuário
+      // Validar se o usuário existe
       const user = await this.prisma.user.findUnique({
         where: { id: userId },
       });
 
       if (!user) {
-        res
-          .status(404)
-          .json({ success: false, message: "Usuário não encontrado" });
+        res.status(404).json({
+          success: false,
+          message: "Usuário não encontrado",
+        });
         return;
       }
 
-      // Variáveis para salvar no banco
-      let resultData: any = {};
-      let score = 0;
-      let recommendedProgram = null;
+      // Processar respostas de forma simples
+      const processedAnswers = answers.reduce((acc: any, answer: any) => {
+        acc[`pergunta_${answer.questionId}`] = answer.selectedOption;
+        return acc;
+      }, {});
 
-      // 🧠 Lógica condicional por tipo de quiz
-      if (quiz.type === "SIMULACAO") {
-        const gabarito: Record<number, string> = {
-          19: "B",
-          20: "C",
-          21: "B",
-          22: "C",
-          23: "C",
-        };
+      // Buscar programa recomendado de forma simples
+      const recommendedProgram = await this.getRecommendedProgram(
+        processedAnswers
+      );
 
-        const total = Object.keys(gabarito).length;
-        let acertos = 0;
-
-        for (const resposta of answers) {
-          const certa = gabarito[resposta.questionId];
-          if (resposta.selectedOption?.toUpperCase() === certa) {
-            acertos++;
-          }
-        }
-
-        score = (acertos / total) * 100;
-
-        resultData = {
-          respostas: answers,
-          acertos,
-          total,
-          feedback:
-            score === 100
-              ? "🎉 Parabéns! Você acertou tudo!"
-              : score >= 60
-              ? "✅ Muito bem! Você conhece bastante sobre o programa."
-              : "📘 Que tal revisar as informações e tentar de novo?",
-        };
-      } else if (quiz.type === "PERFIL") {
-        // Modelo antigo: perguntas de perfil → recomendações
-        resultData = answers.reduce((acc: any, answer: any) => {
-          acc[`pergunta_${answer.questionId}`] = answer.selectedOption;
-          return acc;
-        }, {});
-
-        recommendedProgram = await this.getRecommendedProgram(resultData);
-        score = 85; // Score simbólico para quizzes de perfil
-      } else {
-        res
-          .status(400)
-          .json({ success: false, message: "Tipo de quiz não suportado." });
-        return;
-      }
-
-      // Criar resultado
+      // Salvar resultado no banco
       const quizResult = await this.prisma.quizResult.create({
         data: {
           userId,
           quizId,
-          resultData,
-          score,
+          resultData: processedAnswers,
           recommendedProgramId: recommendedProgram?.id || null,
+          score: 85, // Score padrão
         },
       });
 
-      // Retornar resposta completa
       res.status(201).json({
         success: true,
         data: {
@@ -189,8 +148,7 @@ export class QuizController {
             type: quiz.type,
           },
           recommendedProgram,
-          resultData,
-          score,
+          resultData: processedAnswers,
           completedAt: quizResult.createdAt,
         },
       });
