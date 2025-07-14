@@ -211,7 +211,7 @@ const ProgramasScreen: React.FC = () => {
           </View>
         </ScrollView>
 
-        {/* Bottom Navigation */}
+        {/* Navbar */}
         <View style={styles.bottomNavigation}>
           <TouchableOpacity
             style={styles.navItem}
@@ -220,6 +220,7 @@ const ProgramasScreen: React.FC = () => {
             <MaterialCommunityIcons name="map-marker" size={24} color="white" />
             <Text style={styles.navText}>Programas</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.navItem}
             onPress={() => router.push("/perfil_principal")}
@@ -227,11 +228,12 @@ const ProgramasScreen: React.FC = () => {
             <FontAwesome name="user" size={24} color="white" />
             <Text style={styles.navText}>Perfil</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.navItem}
-            onPress={() => router.push("/inicio-quiz")}
+            onPress={() => router.push("/faq")}
           >
-            <Ionicons name="chatbox" size={24} color="white" />
+          <Ionicons name="chatbox" size={24} color="white" />
             <Text style={styles.navText}>FAQ</Text>
           </TouchableOpacity>
         </View>

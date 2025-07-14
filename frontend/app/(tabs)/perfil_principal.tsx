@@ -116,7 +116,7 @@ export default function PerfilPrincipal() {
         <TouchableOpacity style={styles.menuItem}>
           <Feather
             name="edit-2"
-            size={20}
+            size={22}
             color="#222"
             style={styles.menuIcon}
           />
@@ -203,6 +203,7 @@ export default function PerfilPrincipal() {
         <Text style={styles.logoutText}>Sair</Text>
       </TouchableOpacity>
 
+      {/* Navbar */}
       <View style={styles.bottomNavigation}>
         <TouchableOpacity
           style={styles.navItem}
@@ -222,9 +223,9 @@ export default function PerfilPrincipal() {
 
         <TouchableOpacity
           style={styles.navItem}
-          onPress={() => router.push("/inicio-quiz")}
+          onPress={() => router.push("/faq")}
         >
-          <Ionicons name="chatbox" size={24} color="white" />
+        <Ionicons name="chatbox" size={24} color="white" />
           <Text style={styles.navText}>FAQ</Text>
         </TouchableOpacity>
       </View>

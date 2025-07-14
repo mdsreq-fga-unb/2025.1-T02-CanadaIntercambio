@@ -6,10 +6,13 @@ import {
   FontAwesome,
   Ionicons,
 } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const torontoSkyline = require("../../assets/images/toronto.jpg");
 
 export default function ProgramaDetalhe() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -73,7 +76,7 @@ export default function ProgramaDetalhe() {
         </TouchableOpacity>
       </View>
 
-      {/* Bottom Navigation */}
+      {/* Navbar */}
       <View style={styles.bottomNavigation}>
         <View style={styles.navItem}>
           <MaterialCommunityIcons name="map-marker" size={24} color="white" />
@@ -85,7 +88,9 @@ export default function ProgramaDetalhe() {
         </View>
         <View style={styles.navItem}>
           <Ionicons name="chatbox" size={24} color="white" />
-          <Text style={styles.navText}>FAQ</Text>
+          <TouchableOpacity onPress={() => router.push("/faq")}>
+              <Text style={styles.navText}>FAQ</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

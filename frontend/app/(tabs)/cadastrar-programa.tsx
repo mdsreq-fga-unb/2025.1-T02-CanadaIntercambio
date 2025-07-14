@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-native";
 import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import {
   MaterialCommunityIcons,
   FontAwesome,
@@ -165,21 +166,23 @@ export default function CadastrarProgramaScreen() {
           style={styles.navItem}
           onPress={() => router.push("/programas")}
         >
-          <MaterialCommunityIcons name="map-marker" size={24} color="#fff" />
+          <MaterialCommunityIcons name="map-marker" size={24} color="white" />
           <Text style={styles.navText}>Programas</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => router.push("/perfil_principal")}
         >
-          <FontAwesome name="user" size={24} color="#fff" />
+          <FontAwesome name="user" size={24} color="white" />
           <Text style={styles.navText}>Perfil</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.navItem}
-          onPress={() => router.push("/inicio-quiz")}
+          onPress={() => router.push("/faq")}
         >
-          <Ionicons name="chatbox" size={24} color="#fff" />
+        <Ionicons name="chatbox" size={24} color="white" />
           <Text style={styles.navText}>FAQ</Text>
         </TouchableOpacity>
       </View>

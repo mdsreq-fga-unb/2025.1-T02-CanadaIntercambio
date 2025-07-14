@@ -13,6 +13,7 @@ import {
   MaterialCommunityIcons,
   FontAwesome,
 } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 interface FAQItem {
   id: number;
@@ -114,6 +115,7 @@ const faqData: FAQItem[] = [
 ];
 
 export default function FAQ() {
+  const router = useRouter();
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
 
   const toggleExpanded = (id: number) => {
@@ -171,20 +173,31 @@ export default function FAQ() {
         <View style={styles.faqContainer}>{faqData.map(renderFAQItem)}</View>
       </ScrollView>
 
-      {/* Bottom Navigation */}
+      {/* Navbar */}
       <View style={styles.bottomNavigation}>
-        <View style={styles.navItem}>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => router.push("/programas")}
+        >
           <MaterialCommunityIcons name="map-marker" size={24} color="white" />
           <Text style={styles.navText}>Programas</Text>
-        </View>
-        <View style={styles.navItem}>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => router.push("/perfil_principal")}
+        >
           <FontAwesome name="user" size={24} color="white" />
           <Text style={styles.navText}>Perfil</Text>
-        </View>
-        <View style={styles.navItem}>
-          <Ionicons name="chatbox" size={24} color="white" />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => router.push("/faq")}
+        >
+        <Ionicons name="chatbox" size={24} color="white" />
           <Text style={styles.navText}>FAQ</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
