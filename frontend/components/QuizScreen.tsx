@@ -136,6 +136,43 @@ const QuizScreen: React.FC = () => {
 
   const handleSubmit = async () => {
     if (!quiz) return;
+
+    // Validar se todas as perguntas obrigatórias foram respondidas
+    const unansweredQuestions = quiz.questions.filter((question) => {
+      if (!question.isRequired) return false;
+
+      const answer = answers.find((a) => a.questionId === question.id);
+      return !quizService.validateAnswer(
+        question,
+        answer || ({} as QuizAnswer)
+      );
+    });
+
+    if (unansweredQuestions.length > 0) {
+      const questionNumbers = unansweredQuestions
+        .map((q) => q.order)
+        .join(", ");
+      Alert.alert(
+        "Quiz Incompleto",
+        `Por favor, responda todas as perguntas obrigatórias antes de finalizar o quiz.\n\nPerguntas não respondidas: ${questionNumbers}`,
+        [
+          {
+            text: "OK",
+            onPress: () => {
+              // Navegar para a primeira pergunta não respondida
+              const firstUnanswered = unansweredQuestions[0];
+              const stepIndex = quiz.questions.findIndex(
+                (q) => q.id === firstUnanswered.id
+              );
+              if (stepIndex >= 0) {
+                setCurrentStep(stepIndex);
+              }
+            },
+          },
+        ]
+      );
+      return;
+    }
     const userId = user?.id || 1;
 
     try {
@@ -175,10 +212,23 @@ const QuizScreen: React.FC = () => {
 
   const renderQuestion = (question: QuizQuestion) => {
     const currentAnswer = answers.find((a) => a.questionId === question.id);
+    const isAnswered =
+      currentAnswer && quizService.validateAnswer(question, currentAnswer);
 
     return (
       <View style={styles.questionContainer}>
-        <Text style={styles.questionText}>{question.question}</Text>
+        <Text style={styles.questionText}>
+          {question.question}
+          {question.isRequired && (
+            <Text style={styles.requiredIndicator}> *</Text>
+          )}
+        </Text>
+
+        {question.isRequired && !isAnswered && (
+          <Text style={styles.requiredMessage}>
+            Esta pergunta é obrigatória
+          </Text>
+        )}
 
         <View style={styles.optionsContainer}>
           {question.options.map((option: string, index: number) => (
@@ -219,6 +269,9 @@ const QuizScreen: React.FC = () => {
       currentAnswer &&
       quizService.validateAnswer(currentQuestion, currentAnswer);
 
+    // Para perguntas obrigatórias, o botão deve estar desabilitado se não houver resposta
+    const canProceed = currentQuestion.isRequired ? hasAnswer : true;
+
     return (
       <View style={styles.navigationContainer}>
         <TouchableOpacity
@@ -248,10 +301,10 @@ const QuizScreen: React.FC = () => {
           style={[
             styles.navButton,
             styles.nextButton,
-            !hasAnswer && styles.navButtonDisabled,
+            !canProceed && styles.navButtonDisabled,
           ]}
           onPress={handleNext}
-          disabled={!hasAnswer || submitting}
+          disabled={!canProceed || submitting}
         >
           {submitting ? (
             <ActivityIndicator color="#fff" size="small" />
@@ -442,6 +495,18 @@ const styles = StyleSheet.create({
     color: "#DC2626",
     textAlign: "center",
     marginBottom: 32,
+  },
+  requiredIndicator: {
+    color: "#DC2626",
+    fontSize: 32,
+    fontWeight: "bold",
+  },
+  requiredMessage: {
+    color: "#DC2626",
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 20,
+    fontStyle: "italic",
   },
   optionsContainer: {
     width: "100%",

@@ -22,12 +22,19 @@ export class AuthService {
     // Verificar se o usuário já existe
     const existingUser = await this.userRepository.findByEmail(data.email);
     if (existingUser) {
-      throw new Error("E-mail já está em uso");
+      throw new Error("E-mail já está cadastrado para outro visitante");
     }
 
-    // Validar campos obrigatórios
-    if (!data.firstName || !data.lastName || !data.email || !data.password) {
-      throw new Error("Campos obrigatórios não preenchidos");
+    // Validar campos obrigatórios para visitante
+    if (
+      !data.firstName ||
+      !data.lastName ||
+      !data.email ||
+      !data.password ||
+      !data.phone ||
+      !data.nearestUnitId
+    ) {
+      throw new Error("Todos os campos são obrigatórios para cadastro de visitante");
     }
 
     // Validar formato do e-mail

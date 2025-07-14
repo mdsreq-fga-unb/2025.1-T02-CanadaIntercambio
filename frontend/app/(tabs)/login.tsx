@@ -13,10 +13,12 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { Toast } from "../../components/Toast";
 import { useAuth } from "../../contexts/AuthContext";
+import { useNavigation } from "../../contexts/NavigationContext";
 import { useLoginForm } from "../../hooks/useLoginForm";
 
 export default function LoginScreen() {
   const { login } = useAuth();
+  const { setIsInLoginProcess, setLastLoginAttempt } = useNavigation();
   const {
     email,
     password,
@@ -60,6 +62,8 @@ export default function LoginScreen() {
     }
 
     setLoading(true);
+    setIsInLoginProcess(true);
+    setLastLoginAttempt(Date.now());
 
     try {
       await login({ email: email.trim(), password });
@@ -81,6 +85,7 @@ export default function LoginScreen() {
       showToast(errorMessage, "error");
     } finally {
       setLoading(false);
+      setIsInLoginProcess(false);
     }
   };
 

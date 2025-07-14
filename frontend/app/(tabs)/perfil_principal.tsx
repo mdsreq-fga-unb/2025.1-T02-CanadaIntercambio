@@ -22,7 +22,7 @@ import { useRouter } from "expo-router";
 import { profileService } from "../../services/profileService";
 
 export default function PerfilPrincipal() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const router = useRouter();
   const gravatarUrl = user?.email ? getGravatarUrl(user.email, 100) : undefined;
 
@@ -120,7 +120,9 @@ export default function PerfilPrincipal() {
             color="#222"
             style={styles.menuIcon}
           />
-          <Text style={styles.menuText}>Editar Dados</Text>
+        <TouchableOpacity style={styles.menuText} onPress={() => router.push('/editar_perfil')}>
+          <Text >Editar Dados</Text>
+        </TouchableOpacity>
           <Feather
             name="chevron-right"
             size={22}
@@ -194,7 +196,10 @@ export default function PerfilPrincipal() {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.logoutButton}>
+      <TouchableOpacity style={styles.logoutButton} onPress={async () => {
+        await logout();
+        router.replace('/onboard_inicial');
+      }}>
         <Text style={styles.logoutText}>Sair</Text>
       </TouchableOpacity>
 

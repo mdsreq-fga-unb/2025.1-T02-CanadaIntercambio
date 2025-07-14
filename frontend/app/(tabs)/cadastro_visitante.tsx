@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image, ScrollView, Alert } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { Picker } from "@react-native-picker/picker";
 import { router } from "expo-router";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { Toast } from "../../components/Toast";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRegisterForm } from "../../hooks/useRegisterForm";
 import { TextInputMask } from "react-native-masked-text";
@@ -33,10 +34,31 @@ export default function CadastroVisitante() {
     validateForm,
     clearErrors,
     getRegisterData,
+    isFormValid,
   } = useRegisterForm();
 
   const [aceito, setAceito] = useState(false);
   const [units, setUnits] = useState<Unit[]>([]);
+  const [toast, setToast] = useState<{
+    visible: boolean;
+    message: string;
+    type: "success" | "error" | "info";
+  }>({
+    visible: false,
+    message: "",
+    type: "info",
+  });
+
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "info"
+  ) => {
+    setToast({ visible: true, message, type });
+  };
+
+  const hideToast = () => {
+    setToast((prev) => ({ ...prev, visible: false }));
+  };
 
   useEffect(() => {
     const loadUnits = async () => {
@@ -44,7 +66,7 @@ export default function CadastroVisitante() {
         const data = await unitService.getAll();
         setUnits(data);
       } catch {
-        Alert.alert("Erro", "Não foi possível carregar as unidades.");
+        showToast("Não foi possível carregar as unidades.", "error");
       }
     };
 
@@ -55,10 +77,7 @@ export default function CadastroVisitante() {
     clearErrors();
 
     if (!aceito) {
-      Alert.alert(
-        "Erro",
-        "Você deve aceitar os termos e condições para continuar."
-      );
+      showToast("Você deve aceitar os termos e condições para continuar.", "error");
       return;
     }
 
@@ -69,15 +88,19 @@ export default function CadastroVisitante() {
     try {
       await register(getRegisterData());
 
-      Alert.alert("Sucesso!", "Cadastro realizado com sucesso! Bem-vindo!", [
-        { text: "OK", onPress: () => router.replace("/programas") },
-      ]);
+      // Redireciona imediatamente para o quiz
+      router.replace("/quiz");
+      showToast("Cadastro realizado com sucesso! Bem-vindo!", "success");
     } catch (error: any) {
-      Alert.alert(
-        "Erro no Cadastro",
-        error.message || "Erro inesperado. Tente novamente.",
-        [{ text: "OK" }]
-      );
+      let errorMsg = "Erro inesperado. Tente novamente.";
+      if (
+        error?.message?.toLowerCase().includes("email") &&
+        error?.message?.toLowerCase().includes("exist")
+      ) {
+        errorMsg =
+          "Este e-mail já está cadastrado. Tente fazer login ou utilize outro e-mail.";
+      }
+      showToast(errorMsg, "error");
     } finally {
       setLoading(false);
     }
@@ -122,24 +145,33 @@ export default function CadastroVisitante() {
           editable={!loading}
         />
 
-        <View style={styles.TextInputMaskContainer}>          
+        <View style={styles.TextInputMaskContainer}>
           <TextInputMask
             type={"cel-phone"}
             options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
             value={phone}
             onChangeText={setPhone}
-            style={styles.TextInputmask}
+            style={[
+              styles.TextInputmask,
+              errors.phone && { borderColor: "#dc3545" }
+            ]}
             placeholder="Telefone"
             keyboardType="phone-pad"
             editable={!loading}
           />
+          {errors.phone && (
+            <Text style={styles.errorText}>{errors.phone}</Text>
+          )}
         </View>
 
         <View style={styles.pickerContainer}>
           <Picker
             selectedValue={nearestUnitId}
             onValueChange={(value) => setNearestUnitId(Number(value))}
-            style={styles.picker}
+            style={[
+              styles.picker,
+              errors.nearestUnitId && { borderColor: "#dc3545" }
+            ]}
             enabled={!loading}
           >
             <Picker.Item label="Selecione a unidade mais próxima" value={0} />
@@ -147,6 +179,9 @@ export default function CadastroVisitante() {
               <Picker.Item key={unit.id} label={unit.name} value={unit.id} />
             ))}
           </Picker>
+          {errors.nearestUnitId && (
+            <Text style={styles.errorText}>{errors.nearestUnitId}</Text>
+          )}
         </View>
 
         <Input
@@ -182,11 +217,23 @@ export default function CadastroVisitante() {
           title={loading ? "Criando..." : "Criar Conta"}
           onPress={handleRegister}
           loading={loading}
-          disabled={loading || !aceito}
-          style={styles.button}
+          disabled={loading || !aceito || !isFormValid}
+          style={[
+            styles.button,
+            (loading || !aceito || !isFormValid) && styles.disabledButton,
+          ]}
         />
       </ScrollView>
       <View style={styles.footer} />
+      
+      {/* Toast para feedback */}
+      <Toast
+        visible={toast.visible}
+        message={toast.message}
+        type={toast.type}
+        onHide={hideToast}
+        duration={toast.type === "error" ? 5000 : 3000}
+      />
     </View>
   );
 }
@@ -226,38 +273,63 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   TextInputMaskContainer: {
-  width: '100%',
+    width: "100%",
   },
   TextInputmask: {
-    width: '100%',
-    maxWidth: '100%',
-    backgroundColor: '#f8f9fa',
-    color: '#888888',
+    width: "100%",
+    maxWidth: "100%",
+    backgroundColor: "#f8f9fa",
+    color: "#888888",
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     paddingHorizontal: 14,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: 15,
-    height: 48, 
+    height: 48,
   },
-  pickerContainer: { 
-    width: '100%',
+  pickerContainer: {
+    width: "100%",
   },
   picker: {
-    width: '100%',
-    maxWidth: '100%',
-    backgroundColor: '#f8f9fa',
-    color: '#888888',
+    width: "100%",
+    maxWidth: "100%",
+    backgroundColor: "#f8f9fa",
+    color: "#888888",
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     paddingHorizontal: 14,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: 15,
-    height: 48, 
+    height: 48,
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+    width: "100%",
+    maxWidth: 350,
   },
   checkboxText: { flex: 1, fontSize: 12, color: "#333", marginLeft: 8 },
   link: { color: "#cb2328", textDecorationLine: "underline" },
-  button: { width: "100%", maxWidth: 350, marginVertical: 20 },
+  button: {
+    width: "100%",
+    maxWidth: 350,
+    marginVertical: 20,
+    backgroundColor: "#cb2328",
+    borderRadius: 8,
+    padding: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  disabledButton: {
+    opacity: 0.6,
+  },
+  errorText: {
+    color: "#dc3545",
+    fontSize: 12,
+    marginTop: 5,
+    marginBottom: 10,
+  },
 });
