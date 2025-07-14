@@ -227,14 +227,6 @@ export default function ResultadoQuiz() {
                 Ver todos os programas
               </Text>
             </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.secondaryButton}
-              onPress={handleRefazerQuiz}
-            >
-              <MaterialIcons name="refresh" size={20} color="#DC2626" />
-              <Text style={styles.secondaryButtonText}>Refazer quiz</Text>
-            </TouchableOpacity>
           </View>
 
           {result.completedAt && (
