@@ -1,11 +1,19 @@
-import { router } from 'expo-router';
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Alert, ScrollView } from 'react-native';
-import { Input } from '../../components/Input';
-import { Button } from '../../components/Button';
-import { Toast } from '../../components/Toast';
-import { useAuth } from '../../contexts/AuthContext';
-import { useLoginForm } from '../../hooks/useLoginForm';
+import { router } from "expo-router";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Alert,
+  ScrollView,
+} from "react-native";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { Toast } from "../../components/Toast";
+import { useAuth } from "../../contexts/AuthContext";
+import { useLoginForm } from "../../hooks/useLoginForm";
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -24,19 +32,22 @@ export default function LoginScreen() {
   const [toast, setToast] = useState<{
     visible: boolean;
     message: string;
-    type: 'success' | 'error' | 'info';
+    type: "success" | "error" | "info";
   }>({
     visible: false,
-    message: '',
-    type: 'info',
+    message: "",
+    type: "info",
   });
 
-  const showToast = (message: string, type: 'success' | 'error' | 'info' = 'info') => {
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "info"
+  ) => {
     setToast({ visible: true, message, type });
   };
 
   const hideToast = () => {
-    setToast(prev => ({ ...prev, visible: false }));
+    setToast((prev) => ({ ...prev, visible: false }));
   };
 
   const handleLogin = async () => {
@@ -52,21 +63,22 @@ export default function LoginScreen() {
 
     try {
       await login({ email: email.trim(), password });
-      
+
       // Sucesso - mostrar toast e redirecionar
-      console.log('Login realizado com sucesso, redirecionando para programas...');
-      showToast('Login realizado com sucesso!', 'success');
-      
+      console.log(
+        "Login realizado com sucesso, redirecionando para programas..."
+      );
+      showToast("Login realizado com sucesso!", "success");
+
       // Aguardar um pouco para mostrar o toast antes de redirecionar
       setTimeout(() => {
-        router.replace('/programas');
+        router.replace("/programas");
       }, 1000);
-      
     } catch (error: any) {
       // Erro - mostrar toast de erro
-      const errorMessage = error.message || 'Erro inesperado. Tente novamente.';
-      console.error('Erro no login:', error);
-      showToast(errorMessage, 'error');
+      const errorMessage = error.message || "Erro inesperado. Tente novamente.";
+      console.error("Erro no login:", error);
+      showToast(errorMessage, "error");
     } finally {
       setLoading(false);
     }
@@ -91,20 +103,20 @@ export default function LoginScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header} />
-      
-      <ScrollView 
+
+      <ScrollView
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.content}>
           <Text style={styles.welcome}>Seja Bem-Vindo!</Text>
-          
+
           <Image
-            source={require('../../assets/images/login_logo.png')} 
+            source={require("../../assets/images/login_logo.png")}
             style={styles.logo}
             resizeMode="contain"
           />
-          
+
           <View style={styles.form}>
             <Input
               placeholder="Digite seu e-mail"
@@ -116,7 +128,7 @@ export default function LoginScreen() {
               autoCorrect={false}
               editable={!loading}
             />
-            
+
             <Input
               placeholder="Digite sua senha"
               value={password}
@@ -125,7 +137,7 @@ export default function LoginScreen() {
               secureTextEntry
               editable={!loading}
             />
-            
+
             <Button
               title={loading ? "Entrando..." : "Entrar"}
               onPress={handleLogin}
@@ -133,27 +145,34 @@ export default function LoginScreen() {
               disabled={loading || !email.trim() || !password}
               style={[
                 styles.loginButton,
-                (loading || !email.trim() || !password) && styles.loginButtonDisabled
+                (loading || !email.trim() || !password) &&
+                  styles.loginButtonDisabled,
               ]}
             />
           </View>
-          
-          <TouchableOpacity onPress={() => router.push('/nada')}disabled={loading}>
+
+          <TouchableOpacity
+            onPress={() => router.push("/nada")}
+            disabled={loading}
+          >
             <Text style={[styles.forgot, loading && styles.disabledText]}>
               Esqueceu sua senha?
             </Text>
           </TouchableOpacity>
-          
+
           <Text style={styles.or}>ou</Text>
-          
-          <TouchableOpacity onPress={() => router.push('/cadastro_visitante')}disabled={loading}>
+
+          <TouchableOpacity
+            onPress={() => router.push("/cadastro_visitante")}
+            disabled={loading}
+          >
             <Text style={[styles.register, loading && styles.disabledText]}>
               Cadastre-se
             </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
-      
+
       <View style={styles.footer} />
 
       {/* Toast para feedback */}
@@ -162,80 +181,80 @@ export default function LoginScreen() {
         message={toast.message}
         type={toast.type}
         onHide={hideToast}
-        duration={toast.type === 'error' ? 5000 : 3000}
+        duration={toast.type === "error" ? 5000 : 3000}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    backgroundColor: '#fff' 
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
   },
-  header: { 
-    height: 60, 
-    backgroundColor: '#cb2328' 
+  header: {
+    height: 60,
+    backgroundColor: "#cb2328",
   },
-  footer: { 
-    height: 40, 
-    backgroundColor: '#cb2328', 
-    marginTop: 'auto' 
+  footer: {
+    height: 40,
+    backgroundColor: "#cb2328",
+    marginTop: "auto",
   },
   scrollContent: {
     flexGrow: 1,
   },
-  content: { 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center',
+  content: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 20,
     minHeight: 500,
   },
-  welcome: { 
-    fontSize: 24, 
-    fontWeight: 'bold', 
-    color: '#cb2328', 
+  welcome: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#cb2328",
     marginBottom: 20,
-    textAlign: 'center',
+    textAlign: "center",
   },
-  logo: { 
-    width: '80%',
-    maxWidth: 300, 
-    height: 90, 
-    marginBottom: 30 
+  logo: {
+    width: "80%",
+    maxWidth: 300,
+    height: 90,
+    marginBottom: 30,
   },
   form: {
-    width: '100%',
+    width: "100%",
     maxWidth: 350,
-    alignItems: 'center',
+    alignItems: "center",
   },
   loginButton: {
-    width: '100%',
+    width: "100%",
     marginVertical: 15,
   },
   loginButtonDisabled: {
     opacity: 0.6,
   },
-  forgot: { 
-    color: '#cb2328', 
-    marginTop: 15, 
-    fontWeight: 'bold', 
-    textAlign: 'center',
+  forgot: {
+    color: "#cb2328",
+    marginTop: 15,
+    fontWeight: "bold",
+    textAlign: "center",
     fontSize: 16,
   },
-  or: { 
-    color: '#cb2328', 
-    marginTop: 15, 
-    fontWeight: 'bold', 
-    textAlign: 'center',
+  or: {
+    color: "#cb2328",
+    marginTop: 15,
+    fontWeight: "bold",
+    textAlign: "center",
     fontSize: 16,
   },
-  register: { 
-    color: '#cb2328', 
-    marginTop: 15, 
-    fontWeight: 'bold', 
-    textAlign: 'center',
+  register: {
+    color: "#cb2328",
+    marginTop: 15,
+    fontWeight: "bold",
+    textAlign: "center",
     fontSize: 16,
   },
   disabledText: {

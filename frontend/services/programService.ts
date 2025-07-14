@@ -1,5 +1,7 @@
-import axios, { AxiosInstance } from 'axios';
-import { API_CONFIG } from '../constants/api';
+import axios, { AxiosInstance } from "axios";
+import { API_CONFIG } from "../constants/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { STORAGE_KEYS } from "../constants/api";
 
 // Tipos para Programa
 export interface Program {
@@ -13,7 +15,7 @@ export interface Program {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
-  
+
   // Campos detalhados
   focus?: string;
   method?: string;
@@ -25,7 +27,7 @@ export interface Program {
   minDuration?: number;
   maxDuration?: number;
   priceRange?: string;
-  
+
   // Critérios para matching
   targetAgeRange?: string;
   targetFocus?: string;
@@ -64,24 +66,32 @@ class ProgramService {
       baseURL: API_CONFIG.BASE_URL,
       timeout: API_CONFIG.TIMEOUT,
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
+    });
+
+    this.api.interceptors.request.use(async (config) => {
+      const token = await AsyncStorage.getItem(STORAGE_KEYS.TOKEN);
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
     });
   }
 
   // Buscar todos os programas
   async getPrograms(): Promise<Program[]> {
     try {
-      const response = await this.api.get<ProgramsResponse>('/programs');
-      
+      const response = await this.api.get<ProgramsResponse>("/programs");
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Erro ao buscar programas');
+        throw new Error(response.data.message || "Erro ao buscar programas");
       }
     } catch (error: any) {
-      console.error('Erro ao buscar programas:', error);
-      throw new Error('Erro ao carregar programas. Tente novamente.');
+      console.error("Erro ao buscar programas:", error);
+      throw new Error("Erro ao carregar programas. Tente novamente.");
     }
   }
 
@@ -89,100 +99,125 @@ class ProgramService {
   async getProgramById(id: number): Promise<Program> {
     try {
       const response = await this.api.get<ProgramResponse>(`/programs/${id}`);
-      
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Programa não encontrado');
+        throw new Error(response.data.message || "Programa não encontrado");
       }
     } catch (error: any) {
-      console.error('Erro ao buscar programa:', error);
-      throw new Error('Erro ao carregar programa. Tente novamente.');
+      console.error("Erro ao buscar programa:", error);
+      throw new Error("Erro ao carregar programa. Tente novamente.");
     }
   }
 
   // Buscar programas ativos
   async getActivePrograms(): Promise<Program[]> {
     try {
-      const response = await this.api.get<ProgramsResponse>('/programs?active=true');
-      
+      const response = await this.api.get<ProgramsResponse>(
+        "/programs?active=true"
+      );
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Erro ao buscar programas');
+        throw new Error(response.data.message || "Erro ao buscar programas");
       }
     } catch (error: any) {
-      console.error('Erro ao buscar programas ativos:', error);
-      throw new Error('Erro ao carregar programas. Tente novamente.');
+      console.error("Erro ao buscar programas ativos:", error);
+      throw new Error("Erro ao carregar programas. Tente novamente.");
     }
   }
 
   // Buscar programas recomendados
   async getRecommendedPrograms(userId: number): Promise<Program[]> {
     try {
-      const response = await this.api.get<ProgramsResponse>(`/programs/recommended/${userId}`);
-      
+      const response = await this.api.get<ProgramsResponse>(
+        `/programs/recommended/${userId}`
+      );
+
       if (response.data.success) {
         return response.data.data;
       } else {
-        throw new Error(response.data.message || 'Erro ao buscar recomendações');
+        throw new Error(
+          response.data.message || "Erro ao buscar recomendações"
+        );
       }
     } catch (error: any) {
-      console.error('Erro ao buscar programas recomendados:', error);
-      throw new Error('Erro ao carregar recomendações. Tente novamente.');
+      console.error("Erro ao buscar programas recomendados:", error);
+      throw new Error("Erro ao carregar recomendações. Tente novamente.");
     }
   }
 
   // Formatar preço para exibição
   formatPrice(price: number): string {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
     }).format(price);
   }
 
   // Formatar duração para exibição
   formatDuration(weeks: number): string {
-    if (weeks === 1) return '1 semana';
+    if (weeks === 1) return "1 semana";
     if (weeks < 4) return `${weeks} semanas`;
-    
+
     const months = Math.floor(weeks / 4);
     const remainingWeeks = weeks % 4;
-    
+
     if (months === 1) {
-      if (remainingWeeks === 0) return '1 mês';
-      return `1 mês e ${remainingWeeks} semana${remainingWeeks > 1 ? 's' : ''}`;
+      if (remainingWeeks === 0) return "1 mês";
+      return `1 mês e ${remainingWeeks} semana${remainingWeeks > 1 ? "s" : ""}`;
     }
-    
+
     if (remainingWeeks === 0) return `${months} meses`;
-    return `${months} meses e ${remainingWeeks} semana${remainingWeeks > 1 ? 's' : ''}`;
+    return `${months} meses e ${remainingWeeks} semana${
+      remainingWeeks > 1 ? "s" : ""
+    }`;
   }
 
   // Validar dados do programa
   validateProgram(program: Partial<Program>): string[] {
     const errors: string[] = [];
-    
+
     if (!program.title || program.title.trim().length < 3) {
-      errors.push('Título deve ter pelo menos 3 caracteres');
+      errors.push("Título deve ter pelo menos 3 caracteres");
     }
-    
+
     if (!program.description || program.description.trim().length < 10) {
-      errors.push('Descrição deve ter pelo menos 10 caracteres');
+      errors.push("Descrição deve ter pelo menos 10 caracteres");
     }
-    
+
     if (!program.durationWeeks || program.durationWeeks < 1) {
-      errors.push('Duração deve ser de pelo menos 1 semana');
+      errors.push("Duração deve ser de pelo menos 1 semana");
     }
-    
+
     if (!program.price || program.price <= 0) {
-      errors.push('Preço deve ser maior que zero');
+      errors.push("Preço deve ser maior que zero");
     }
-    
+
     if (!program.country || program.country.trim().length < 2) {
-      errors.push('País deve ser informado');
+      errors.push("País deve ser informado");
     }
-    
+
     return errors;
+  }
+
+  // Atualizar programa por ID
+  async updateProgram(id: number, data: Partial<Program>): Promise<void> {
+    try {
+      const response = await this.api.put<ProgramResponse>(
+        `/programs/${id}`,
+        data
+      );
+
+      if (!response.data.success) {
+        throw new Error(response.data.message || "Erro ao atualizar programa");
+      }
+    } catch (error: any) {
+      console.error("Erro ao atualizar programa:", error);
+      throw new Error("Erro ao salvar alterações. Tente novamente.");
+    }
   }
 }
 
