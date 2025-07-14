@@ -122,15 +122,14 @@ export default function CadastroVisitante() {
           editable={!loading}
         />
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Telefone</Text>
+        <View style={styles.TextInputMaskContainer}>          
           <TextInputMask
             type={"cel-phone"}
             options={{ maskType: "BRL", withDDD: true, dddMask: "(99) " }}
             value={phone}
             onChangeText={setPhone}
-            style={styles.input}
-            placeholder="(99) 99999-9999"
+            style={styles.TextInputmask}
+            placeholder="Telefone"
             keyboardType="phone-pad"
             editable={!loading}
           />
@@ -226,21 +225,37 @@ const styles = StyleSheet.create({
     backgroundColor: "#f8f9fa",
     color: "#333",
   },
+  TextInputMaskContainer: {
+  width: '100%',
+  },
+  TextInputmask: {
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: '#f8f9fa',
+    color: '#888888',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    paddingHorizontal: 14,
+    justifyContent: 'center',
+    marginBottom: 15,
+    height: 48, 
+  },
   pickerContainer: { 
     width: '100%',
   },
   picker: {
-  width: '100%',
-  maxWidth: '100%',
-  backgroundColor: '#f8f9fa',
-  color: '#888888',
-  borderRadius: 8,
-  borderWidth: 1,
-  borderColor: '#ddd',
-  paddingHorizontal: 14,
-  justifyContent: 'center',
-  marginBottom: 15,
-  height: 48, 
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: '#f8f9fa',
+    color: '#888888',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    paddingHorizontal: 14,
+    justifyContent: 'center',
+    marginBottom: 15,
+    height: 48, 
   },
   checkboxText: { flex: 1, fontSize: 12, color: "#333", marginLeft: 8 },
   link: { color: "#cb2328", textDecorationLine: "underline" },
