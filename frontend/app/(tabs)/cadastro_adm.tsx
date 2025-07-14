@@ -164,7 +164,7 @@ export default function CadastroAdmin() {
         />
 
         <TouchableOpacity
-          style={styles.selectButton}
+          style={styles.selectButtonContainer}
           onPress={() => setModalVisible(true)}
           disabled={loading}
         >
@@ -271,26 +271,26 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     alignSelf: "center",
   },
-  selectButton: {
-    height: 48,
-    width: "100%",
-    maxWidth: 350,
-    justifyContent: "center",
-    paddingHorizontal: 16,
-    borderWidth: 1,
-    borderColor: "#dee2e6",
-    borderRadius: 8,
-    backgroundColor: "#f8f9fa",
-    marginBottom: 15,
-    alignSelf: "center",
+  selectButtonContainer: {
+    width: '100%',
   },
   selectText: {
     color: "#333",
     fontSize: 16,
   },
   selectPlaceholder: {
-    color: "#888",
-    fontSize: 16,
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: '#f8f9fa',
+    color: '#888888',
+    paddingTop: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    paddingHorizontal: 14,
+    justifyContent: 'center',
+    marginBottom: 15,
+    height: 48, 
   },
   modalOverlay: {
     flex: 1,
