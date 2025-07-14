@@ -120,7 +120,9 @@ export default function PerfilPrincipal() {
             color="#222"
             style={styles.menuIcon}
           />
-          <Text style={styles.menuText}>Editar Dados</Text>
+        <TouchableOpacity style={styles.menuText} onPress={() => router.push('/editar_perfil')}>
+          <Text >Editar Dados</Text>
+        </TouchableOpacity>
           <Feather
             name="chevron-right"
             size={22}
