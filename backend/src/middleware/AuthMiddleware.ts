@@ -2,10 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { AuthService } from '../services/AuthService';
 import { JwtPayload } from '../types/auth';
-
-interface AuthenticatedRequest extends Request {
-  user?: JwtPayload;
-}
+import { AuthenticatedRequest } from '../types/express';
 
 export class AuthMiddleware {
   private authService: AuthService;

@@ -35,7 +35,3 @@ export interface JwtPayload {
   email: string;
   userType: "visitante" | "intercambista" | "admin";
 }
-
-export interface AuthenticatedRequest extends Request {
-  user?: JwtPayload;
-}

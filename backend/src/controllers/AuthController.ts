@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { AuthService } from '../services/AuthService';
 import { RegisterRequest, LoginRequest } from '../types/auth';
+import { AuthenticatedRequest } from '../types/express';
 
 export class AuthController {
   private authService: AuthService;
@@ -57,12 +58,10 @@ export class AuthController {
     });
   }
 
-  async me(req: Request, res: Response): Promise<void> {
+  async me(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
       // O middleware de autenticação já validou o token e anexou o usuário
-      const authReq = req as any;
-      
-      if (!authReq.user) {
+      if (!req.user) {
         res.status(401).json({
           success: false,
           message: 'Usuário não autenticado',
@@ -73,7 +72,7 @@ export class AuthController {
       res.status(200).json({
         success: true,
         data: {
-          user: authReq.user,
+          user: req.user,
         },
       });
     } catch (error) {

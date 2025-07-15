@@ -1,13 +1,7 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { ProfileService } from '../services/ProfileService';
-
-interface AuthenticatedRequest extends Request {
-  user?: {
-    userId: number;
-    userType: 'visitante' | 'intercambista' | 'admin';
-  };
-}
+import { AuthenticatedRequest } from '../types/express';
 
 export class ProfileController {
   private profileService: ProfileService;
