@@ -1,0 +1,2370 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../USM-canada/">
+      
+      
+        <link rel="next" href="../retrospectiva/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Casos de Uso - CanadaWay - Documentação do Projeto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#casos-de-uso" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-header__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CanadaWay - Documentação do Projeto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Casos de Uso
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CanadaWay - Documentação do Projeto
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-nav__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CanadaWay - Documentação do Projeto
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CanadaWay - Documentação do Projeto
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../produto-visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proposta-solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solução Proposta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cronograma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cronograma e Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipe-comunicacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equipe e Comunicação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requisitos de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dor-dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backlog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estudo-de-caso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estudo de caso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USM-canada/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USM - User Story Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Casos de Uso
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Casos de Uso
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#especificacoes-de-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Especificações de Casos de Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Especificações de Casos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualizar-agenda-de-atendimentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualizar Agenda de Atendimentos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizar Agenda de Atendimentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agendar-exame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agendar Exame
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agendar Exame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciar-perfil-profissional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciar Perfil Profissional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gerenciar Perfil Profissional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciar-perfil-profissional_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciar Perfil Profissional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gerenciar Perfil Profissional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receber-orientacoes-pos-consulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receber Orientações Pós-Consulta
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Receber Orientações Pós-Consulta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciar-usuarios-e-parceiros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciar Usuários e Parceiros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gerenciar Usuários e Parceiros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pontos-de-extensao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agendar-visita-domiciliar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agendar Visita Domiciliar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agendar Visita Domiciliar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pontos-de-extensao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retrospectiva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retrospectiva
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Evidências de Execução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    APK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracao-ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuração de Ambiente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../licoes-aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lições
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resolucao-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resolução de Issues
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#especificacoes-de-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Especificações de Casos de Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Especificações de Casos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualizar-agenda-de-atendimentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualizar Agenda de Atendimentos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizar Agenda de Atendimentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agendar-exame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agendar Exame
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agendar Exame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciar-perfil-profissional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciar Perfil Profissional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gerenciar Perfil Profissional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciar-perfil-profissional_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciar Perfil Profissional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gerenciar Perfil Profissional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receber-orientacoes-pos-consulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receber Orientações Pós-Consulta
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Receber Orientações Pós-Consulta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-de-extensao_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ponto de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciar-usuarios-e-parceiros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciar Usuários e Parceiros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gerenciar Usuários e Parceiros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pontos-de-extensao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agendar-visita-domiciliar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agendar Visita Domiciliar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agendar Visita Domiciliar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-geral_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluxo-de-eventos_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pontos-de-extensao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos de Extensão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="casos-de-uso">Casos de Uso</h1>
+<p>O caso de uso escolhido pela nossa equipe foi o ConnectCare. Seguem o documento com as informações do caso.</p>
+<p><a href="../Exerc%C3%ADcio%20de%20Constru%C3%A7%C3%A3o%20de%20Diagrama%20de%20UC%20-%20ConnectCare.pdf">Clique aqui para visualizar o documento</a></p>
+<h2 id="diagrama">Diagrama</h2>
+<p><img alt="Diagrama" src="../images/connectcare.png" /></p>
+<h2 id="especificacoes-de-casos-de-uso">Especificações de Casos de Uso</h2>
+<h3 id="visualizar-agenda-de-atendimentos">Visualizar Agenda de Atendimentos</h3>
+<h4 id="descricao-geral">Descrição Geral</h4>
+<ul>
+<li><strong>Nome do Caso de Uso:</strong> Visualizar agenda de atendimentos</li>
+<li><strong>Breve descrição:</strong> Permite ao Profissional de Saúde acessar sua agenda de atendimentos no sistema, com visualização por dia, tipo e status. Essa função apoia o planejamento de serviços de saúde prestados à comunidade.</li>
+<li><strong>Atores:</strong> Profissional de Saúde</li>
+</ul>
+<h4 id="fluxo-de-eventos">Fluxo de Eventos</h4>
+<ul>
+<li>
+<p><strong>Fluxo Principal:</strong></p>
+</li>
+<li>
+<p>O Profissional acessa o sistema e realiza login com suas credenciais.</p>
+</li>
+<li>O sistema valida as credenciais e redireciona o usuário à tela inicial.</li>
+<li>O Profissional seleciona “Agenda de Atendimentos” no menu principal.</li>
+<li>O sistema exibe a agenda atual contendo:</li>
+<li>Nome dos pacientes  </li>
+<li>Horários dos atendimentos  </li>
+<li>Tipo de serviço (consulta, exame, visita)  </li>
+<li>Status (confirmado, pendente, cancelado)</li>
+<li>O Profissional pode aplicar filtros por data, tipo ou status.</li>
+<li>O sistema atualiza a agenda conforme os filtros.</li>
+<li>O Profissional pode acionar “Exportar Agenda” (ver ponto de extensão).</li>
+<li>
+<p>O caso de uso termina quando o Profissional retorna ao menu ou encerra a sessão.</p>
+</li>
+<li>
+<p><strong>Fluxos Alternativos:</strong></p>
+</li>
+</ul>
+<p><strong>FA01 – Agenda Vazia</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 4  </li>
+<li><strong>Condição:</strong> Nenhum atendimento encontrado para a data selecionada  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe: “Nenhum atendimento agendado para este período.”</li>
+<li>Mantém filtros ativos  </li>
+<li>
+<p><strong>Retorna ao passo 5 do fluxo principal</strong></p>
+</li>
+<li>
+<p><strong>Fluxos de Exceção:</strong></p>
+</li>
+</ul>
+<p><strong>FE01 – Falha na comunicação com o servidor</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 4  </li>
+<li><strong>Condição:</strong> Falha ao carregar a agenda  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe: “Não foi possível acessar a agenda. Verifique sua conexão ou tente novamente mais tarde.”</li>
+<li>
+<p>Permanece na tela com botão de recarregar</p>
+</li>
+<li>
+<p><strong>Requisitos Especiais:</strong></p>
+<ul>
+<li><strong>RE01:</strong> A agenda deve carregar em no máximo 3 segundos.  </li>
+<li><strong>RE02:</strong> Deve funcionar em dispositivos de baixa performance.  </li>
+<li><strong>RE03:</strong> Deve funcionar offline com cache local.  </li>
+<li><strong>RE04:</strong> Interface responsiva e acessível para toque e leitura.</li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>RN01:</strong> A agenda exibida deve pertencer exclusivamente ao profissional autenticado.  </li>
+<li><strong>RN02:</strong> Todos os acessos à funcionalidade devem ser registrados para auditoria.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pré-condições:</strong></p>
+<ul>
+<li>O usuário deve estar autenticado com sucesso.  </li>
+<li>Deve existir uma agenda associada ao perfil, mesmo que sem atendimentos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pós-condições</strong></p>
+<ul>
+<li>A agenda foi carregada com sucesso, ou uma tentativa foi registrada no log do sistema.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ponto-de-extensao">Ponto de Extensão</h4>
+<ul>
+<li>
+<p><strong>Exportar Agenda em PDF:</strong></p>
+<ul>
+<li><strong>Local:</strong> Após o passo 6 do fluxo principal  </li>
+<li><strong>Descrição:</strong> O profissional pode clicar em “Exportar Agenda” para gerar um arquivo PDF da visualização atual.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="agendar-exame">Agendar Exame</h3>
+<h4 id="descricao-geral_1">Descrição Geral</h4>
+<ul>
+<li><strong>Nome do Caso de Uso:</strong> Agendar Exame  </li>
+<li><strong>Breve descrição:</strong> Permite ao paciente agendar um exame por meio do sistema ConnectCare, selecionando especialidade, turno e possibilidade de atendimento.  </li>
+<li><strong>Atores:</strong> Paciente</li>
+</ul>
+<h4 id="fluxo-de-eventos_1">Fluxo de Eventos</h4>
+<ul>
+<li>
+<p><strong>Fluxo Principal:</strong></p>
+</li>
+<li>
+<p>O paciente seleciona a opção “Agendar exame”.</p>
+</li>
+<li>O sistema recupera a localização do paciente.</li>
+<li>O paciente seleciona a especialidade desejada.</li>
+<li>O paciente digita o turno de preferência.</li>
+<li>O sistema mostra as principais possibilidades de atendimento, em ordem decrescente de data (ver FA03).</li>
+<li>O paciente clica em uma possibilidade de atendimento.</li>
+<li>O sistema exibe uma caixa de confirmação.</li>
+<li>O paciente confirma o agendamento.</li>
+<li>
+<p>O sistema envia um e-mail de confirmação.</p>
+</li>
+<li>
+<p><strong>Fluxos Alternativos:</strong></p>
+</li>
+</ul>
+<p><strong>FA01 – Paciente não escolhe especialidade</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 3  </li>
+<li><strong>Condição:</strong> O paciente não seleciona uma especialidade  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe a mensagem: “Por favor, selecione uma especialidade para continuar.”  </li>
+<li><strong>Retorna ao passo 3 do fluxo principal</strong></li>
+</ul>
+<p><strong>FA02 – Paciente não escolhe turno</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 4  </li>
+<li><strong>Condição:</strong> O paciente não escolhe um turno de preferência  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe a mensagem: “Por favor, selecione um turno para continuar.”  </li>
+<li><strong>Retorna ao passo 4 do fluxo principal</strong></li>
+</ul>
+<p><strong>FA03 – Paciente não seleciona possibilidade de atendimento</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 6  </li>
+<li><strong>Condição:</strong> O paciente não clica em nenhuma das opções de atendimento  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema retorna à tela de opções de especialidade e turno  </li>
+<li>
+<p><strong>Retorna ao passo 3 do fluxo principal</strong></p>
+</li>
+<li>
+<p><strong>Fluxos de Exceção:</strong></p>
+</li>
+</ul>
+<p><strong>FE01 – Falha na Recuperação da Localização</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li><strong>Condição:</strong> O sistema não consegue recuperar a localização do paciente  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe a mensagem: “Não foi possível recuperar sua localização automaticamente.”  </li>
+<li>Solicita que o paciente insira a localização manualmente  </li>
+<li>O paciente insere a localização  </li>
+<li><strong>Retorna ao passo 3 do fluxo principal</strong></li>
+</ul>
+<p><strong>FE02 – Falha ao Exibir Possibilidades de Atendimento</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 5  </li>
+<li><strong>Condição:</strong> O sistema falha ao carregar as possibilidades de atendimento  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe: “Erro ao carregar opções de atendimento. Tente novamente mais tarde.”  </li>
+<li>O sistema tenta recarregar automaticamente  </li>
+<li>Caso a falha persista, sugere contato com o suporte  </li>
+<li>
+<p><strong>Encaminha o paciente ao menu inicial</strong></p>
+</li>
+<li>
+<p><strong>Requisitos Especiais:</strong></p>
+<ul>
+<li><strong>RE01:</strong> O sistema deve exibir pelo menos 3 opções de atendimento ordenadas por data.  </li>
+<li><strong>RE02:</strong> A confirmação por e-mail deve ocorrer em até 60 segundos após o agendamento.  </li>
+<li><strong>RE03:</strong> O sistema deve funcionar em dispositivos móveis com internet instável.  </li>
+<li><strong>RE04:</strong> O tempo máximo de resposta para carregamento das opções de atendimento deve ser de 4 segundos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>RN01:</strong> O paciente só pode agendar exames para especialidades disponíveis na sua região.  </li>
+<li><strong>RN02:</strong> Não é permitido mais de um agendamento por especialidade por dia.  </li>
+<li><strong>RN03:</strong> Todos os agendamentos devem ser associados ao CPF do paciente autenticado.  </li>
+<li><strong>RN04:</strong> O e-mail de confirmação deve conter a data, horário e local do exame.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pré-condições:</strong></p>
+<ul>
+<li>O paciente deve estar autenticado no sistema.  </li>
+<li>Devem existir especialidades e horários disponíveis para agendamento.  </li>
+<li>O sistema deve conseguir recuperar a localização do paciente (ou permitir entrada manual).  </li>
+<li>O sistema deve estar conectado a um servidor de e-mail funcional.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pós-condições</strong></p>
+<ul>
+<li>O exame foi agendado com sucesso e a confirmação foi enviada por e-mail.  </li>
+<li>Se o agendamento não foi concluído, nenhuma alteração foi registrada.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ponto-de-extensao_1">Ponto de Extensão</h4>
+<ul>
+<li><strong>Enviar notificações via WhatsApp:</strong> Após o envio do e-mail, o paciente pode ativar o envio de lembrete via WhatsApp com os dados do agendamento.</li>
+</ul>
+<hr />
+<h3 id="gerenciar-perfil-profissional">Gerenciar Perfil Profissional</h3>
+<h4 id="descricao-geral_2">Descrição Geral</h4>
+<ul>
+<li><strong>Nome do Caso de Uso:</strong> Gerenciar Perfil Profissional  </li>
+<li><strong>Breve descrição:</strong> Permite que o Profissional de Saúde mantenha e atualize suas informações dentro do sistema ConnectCare, incluindo qualificações, horários e dados pessoais, visando garantir informações atualizadas e acessíveis para os pacientes.  </li>
+<li><strong>Atores:</strong> Profissional de Saúde</li>
+</ul>
+<h4 id="fluxo-de-eventos_2">Fluxo de Eventos</h4>
+<ul>
+<li>
+<p><strong>Fluxo Principal:</strong></p>
+</li>
+<li>
+<p>O Profissional de Saúde seleciona a opção “Gerenciar perfil profissional”.</p>
+</li>
+<li>O sistema exibe a interface com as seguintes opções:</li>
+<li>Editar informações pessoais</li>
+<li>Gerenciar qualificações e especialidades (ver FA01)</li>
+<li>Gerenciar horários de disponibilidade/agenda (ver FA02)</li>
+<li>Visualizar perfil (ver FA03)</li>
+<li>Sair sem salvar (ver FA04)</li>
+<li>O Profissional seleciona “Editar informações pessoais”.</li>
+<li>O sistema exibe o formulário preenchido com os dados atuais.</li>
+<li>O Profissional edita os dados desejados.</li>
+<li>O Profissional solicita a gravação das alterações.</li>
+<li>O sistema valida os dados preenchidos (ver FE01).</li>
+<li>O sistema atualiza os dados no banco e exibe mensagem de sucesso.</li>
+<li>
+<p>O caso de uso é encerrado.</p>
+</li>
+<li>
+<p><strong>Fluxos Alternativos:</strong></p>
+</li>
+</ul>
+<p><strong>FA01 – Gerenciar Qualificações e Especialidades</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe a seção com diplomas e certificações.</li>
+<li>O Profissional pode adicionar, editar ou remover qualificações.</li>
+<li>O sistema valida os dados (ver FE01).</li>
+<li>O sistema atualiza o perfil e exibe mensagem de sucesso.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA02 – Gerenciar Horários de Disponibilidade/Agenda</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe a disponibilidade atual do profissional.</li>
+<li>O Profissional pode adicionar, editar ou remover blocos de horário.</li>
+<li>O sistema valida os dados (ver FE01).</li>
+<li>O sistema atualiza a agenda e confirma a alteração.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA03 – Visualizar Perfil</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe o perfil em modo somente leitura.</li>
+<li>O Profissional revisa os dados e pode retornar ao menu ou sair.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA04 – Sair Sem Salvar Alterações</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 5 ou FA01.3 ou FA02.3  </li>
+<li>
+<p><strong>Ação:</strong></p>
+<ul>
+<li>O sistema detecta alterações não salvas.</li>
+<li>Pergunta se deseja descartá-las.</li>
+<li>O Profissional confirma a saída.</li>
+<li>O sistema descarta mudanças e retorna ao menu inicial.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Fluxos de Exceção:</strong></p>
+</li>
+</ul>
+<p><strong>FE01 – Validação de Informações</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passos 7, FA01.3, FA02.3  </li>
+<li><strong>Condição:</strong> Dados inválidos ou ausentes.  </li>
+<li>
+<p><strong>Ação:</strong></p>
+<ul>
+<li>O sistema exibe mensagem com erro detalhado.</li>
+<li>Retorna ao passo em que o erro ocorreu.</li>
+<li>Permite correção e continuação do caso de uso.</li>
+</ul>
+</li>
+<li>
+<p><strong>Requisitos Especiais:</strong></p>
+<ul>
+<li>Nenhum requisito especial informado para esta funcionalidade.</li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>RN01:</strong> Nome completo é obrigatório.  </li>
+<li><strong>RN02:</strong> E-mail deve estar em formato válido.  </li>
+<li><strong>RN03:</strong> Telefones devem seguir padrão (XX) XXXXX-XXXX.  </li>
+<li><strong>RN04:</strong> Especialidades devem ser selecionadas de uma lista predefinida.  </li>
+<li><strong>RN05:</strong> Datas de disponibilidade devem ser futuras e com intervalo máximo de 1 ano.  </li>
+<li><strong>RN06:</strong> Horários de atendimento não podem se sobrepor e devem estar no horário comercial.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pré-condições:</strong></p>
+<ul>
+<li>O profissional deve estar autenticado.  </li>
+<li>As informações do perfil devem estar previamente cadastradas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pós-condições</strong></p>
+<ul>
+<li>Os dados do perfil foram atualizados com sucesso, ou uma tentativa inválida foi registrada.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ponto-de-extensao_2">Ponto de Extensão</h4>
+<ul>
+<li>Nenhum ponto de extensão aplicável.</li>
+</ul>
+<hr />
+<h3 id="gerenciar-perfil-profissional_1">Gerenciar Perfil Profissional</h3>
+<h4 id="descricao-geral_3">Descrição Geral</h4>
+<ul>
+<li><strong>Nome do Caso de Uso:</strong> Gerenciar Perfil Profissional  </li>
+<li><strong>Breve descrição:</strong> Permite que o Profissional de Saúde mantenha e atualize suas informações dentro do sistema ConnectCare, incluindo qualificações, horários e dados pessoais, visando garantir informações atualizadas e acessíveis para os pacientes.  </li>
+<li><strong>Atores:</strong> Profissional de Saúde</li>
+</ul>
+<h4 id="fluxo-de-eventos_3">Fluxo de Eventos</h4>
+<ul>
+<li>
+<p><strong>Fluxo Principal:</strong></p>
+</li>
+<li>
+<p>O Profissional de Saúde seleciona a opção “Gerenciar perfil profissional”.</p>
+</li>
+<li>O sistema exibe a interface com as seguintes opções:</li>
+<li>Editar informações pessoais</li>
+<li>Gerenciar qualificações e especialidades (ver FA01)</li>
+<li>Gerenciar horários de disponibilidade/agenda (ver FA02)</li>
+<li>Visualizar perfil (ver FA03)</li>
+<li>Sair sem salvar (ver FA04)</li>
+<li>O Profissional seleciona “Editar informações pessoais”.</li>
+<li>O sistema exibe o formulário preenchido com os dados atuais.</li>
+<li>O Profissional edita os dados desejados.</li>
+<li>O Profissional solicita a gravação das alterações.</li>
+<li>O sistema valida os dados preenchidos (ver FE01).</li>
+<li>O sistema atualiza os dados no banco e exibe mensagem de sucesso.</li>
+<li>
+<p>O caso de uso é encerrado.</p>
+</li>
+<li>
+<p><strong>Fluxos Alternativos:</strong></p>
+</li>
+</ul>
+<p><strong>FA01 – Gerenciar Qualificações e Especialidades</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe a seção com diplomas e certificações.</li>
+<li>O Profissional pode adicionar, editar ou remover qualificações.</li>
+<li>O sistema valida os dados (ver FE01).</li>
+<li>O sistema atualiza o perfil e exibe mensagem de sucesso.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA02 – Gerenciar Horários de Disponibilidade/Agenda</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe a disponibilidade atual do profissional.</li>
+<li>O Profissional pode adicionar, editar ou remover blocos de horário.</li>
+<li>O sistema valida os dados (ver FE01).</li>
+<li>O sistema atualiza a agenda e confirma a alteração.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA03 – Visualizar Perfil</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe o perfil em modo somente leitura.</li>
+<li>O Profissional revisa os dados e pode retornar ao menu ou sair.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA04 – Sair Sem Salvar Alterações</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 5 ou FA01.3 ou FA02.3  </li>
+<li>
+<p><strong>Ação:</strong></p>
+<ul>
+<li>O sistema detecta alterações não salvas.</li>
+<li>Pergunta se deseja descartá-las.</li>
+<li>O Profissional confirma a saída.</li>
+<li>O sistema descarta mudanças e retorna ao menu inicial.</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Fluxos de Exceção:</strong></p>
+</li>
+</ul>
+<p><strong>FE01 – Validação de Informações</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passos 7, FA01.3, FA02.3  </li>
+<li><strong>Condição:</strong> Dados inválidos ou ausentes.  </li>
+<li>
+<p><strong>Ação:</strong></p>
+<ul>
+<li>O sistema exibe mensagem com erro detalhado.</li>
+<li>Retorna ao passo em que o erro ocorreu.</li>
+<li>Permite correção e continuação do caso de uso.</li>
+</ul>
+</li>
+<li>
+<p><strong>Requisitos Especiais:</strong></p>
+<ul>
+<li>Nenhum requisito especial informado para esta funcionalidade.</li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>RN01:</strong> Nome completo é obrigatório.  </li>
+<li><strong>RN02:</strong> E-mail deve estar em formato válido.  </li>
+<li><strong>RN03:</strong> Telefones devem seguir padrão (XX) XXXXX-XXXX.  </li>
+<li><strong>RN04:</strong> Especialidades devem ser selecionadas de uma lista predefinida.  </li>
+<li><strong>RN05:</strong> Datas de disponibilidade devem ser futuras e com intervalo máximo de 1 ano.  </li>
+<li><strong>RN06:</strong> Horários de atendimento não podem se sobrepor e devem estar no horário comercial.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pré-condições:</strong></p>
+<ul>
+<li>O profissional deve estar autenticado.  </li>
+<li>As informações do perfil devem estar previamente cadastradas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pós-condições</strong></p>
+<ul>
+<li>Os dados do perfil foram atualizados com sucesso, ou uma tentativa inválida foi registrada.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ponto-de-extensao_3">Ponto de Extensão</h4>
+<ul>
+<li>Nenhum ponto de extensão aplicável.</li>
+</ul>
+<hr />
+<h3 id="receber-orientacoes-pos-consulta">Receber Orientações Pós-Consulta</h3>
+<h4 id="descricao-geral_4">Descrição Geral</h4>
+<ul>
+<li><strong>Nome do Caso de Uso:</strong> Receber Orientações Pós-Consulta  </li>
+<li><strong>Breve descrição:</strong> Após a realização de uma consulta médica, o paciente acessa a plataforma ConnectCare para visualizar as orientações fornecidas pelo profissional de saúde. Essas orientações incluem instruções sobre medicamentos, cuidados recomendados, necessidade de retorno e agendamento de exames.  </li>
+<li><strong>Atores:</strong> Paciente</li>
+</ul>
+<h4 id="fluxo-de-eventos_4">Fluxo de Eventos</h4>
+<ul>
+<li>
+<p><strong>Fluxo Principal:</strong></p>
+</li>
+<li>
+<p>O paciente acessa a plataforma ConnectCare com seu login.</p>
+</li>
+<li>O sistema valida as credenciais e exibe o painel do usuário.</li>
+<li>O paciente seleciona a opção "Consultas Anteriores".</li>
+<li>O sistema apresenta a lista de consultas realizadas.</li>
+<li>O paciente seleciona uma consulta para visualizar detalhes.</li>
+<li>O sistema exibe as orientações pós-consulta registradas pelo profissional de saúde.</li>
+<li>O paciente lê as orientações e, se aplicável, acessa links para agendamento de exames recomendados.</li>
+<li>
+<p>O sistema registra a visualização das orientações.</p>
+</li>
+<li>
+<p><strong>Fluxos Alternativos:</strong></p>
+</li>
+</ul>
+<p><strong>FA01 – Consulta Sem Orientações</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 6  </li>
+<li><strong>Condição:</strong> A consulta selecionada não possui orientações registradas  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe: “Nenhuma orientação disponível para esta consulta.”  </li>
+<li><strong>Retorna ao passo 4 do fluxo principal</strong></li>
+</ul>
+<p><strong>FA02 – Exame Já Agendado</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 7  </li>
+<li><strong>Condição:</strong> O exame recomendado já está agendado  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe: “Exame referente a esta consulta já foi agendado em [data/hora].”  </li>
+<li>
+<p><strong>Retorna ao passo 8 do fluxo principal</strong></p>
+</li>
+<li>
+<p><strong>Fluxos de Exceção:</strong></p>
+</li>
+</ul>
+<p><strong>FE01 – Falha de Autenticação</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 1  </li>
+<li><strong>Condição:</strong> Credenciais inválidas  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe: “Credenciais inválidas. Tente novamente.”  </li>
+<li>
+<p><strong>Retorna ao passo 1</strong></p>
+</li>
+<li>
+<p><strong>Requisitos Especiais:</strong></p>
+<ul>
+<li><strong>RE01:</strong> As orientações devem estar disponíveis mesmo com conexão limitada, utilizando cache local quando necessário.  </li>
+<li><strong>RE02:</strong> O sistema deve garantir a privacidade e integridade das informações médicas exibidas.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>RN01:</strong> As orientações pós-consulta devem estar vinculadas a uma consulta previamente registrada.  </li>
+<li><strong>RN02:</strong> Apenas o paciente autenticado pode acessar suas próprias orientações.  </li>
+<li><strong>RN03:</strong> A visualização das orientações deve ser registrada para fins de auditoria.  </li>
+<li><strong>RN04:</strong> O agendamento de exames deve ocorrer apenas se ainda não houver registro de agendamento prévio.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pré-condições:</strong></p>
+<ul>
+<li>O paciente deve estar logado na plataforma.  </li>
+<li>Deve existir uma consulta previamente registrada com orientações vinculadas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pós-condições</strong></p>
+<ul>
+<li>As orientações são exibidas para o paciente.  </li>
+<li>O paciente pode seguir um link para agendar exames solicitados.  </li>
+<li>A leitura das orientações pode ser registrada no sistema.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ponto-de-extensao_4">Ponto de Extensão</h4>
+<ul>
+<li><strong>Avaliar Atendimento:</strong></li>
+<li><strong>Local:</strong> Após o passo 8  </li>
+<li><strong>Descrição:</strong> O paciente pode avaliar a qualidade do atendimento e das orientações recebidas.</li>
+</ul>
+<hr />
+<h3 id="gerenciar-usuarios-e-parceiros">Gerenciar Usuários e Parceiros</h3>
+<h4 id="descricao-geral_5">Descrição Geral</h4>
+<ul>
+<li><strong>Nome do Caso de Uso:</strong> Gerenciar Usuários e Parceiros  </li>
+<li><strong>Breve descrição:</strong> Permite que o Administrador do Sistema gerencie os usuários da plataforma (pacientes, profissionais de saúde, agentes comunitários) e as organizações parceiras (ONGs, hospitais, instituições governamentais). As ações incluem adicionar, editar, remover e visualizar registros, garantindo controle, integridade e atualização contínua da base de dados.  </li>
+<li><strong>Atores:</strong> Administrador do Sistema</li>
+</ul>
+<h4 id="fluxo-de-eventos_5">Fluxo de Eventos</h4>
+<ul>
+<li>
+<p><strong>Fluxo Principal:</strong></p>
+</li>
+<li>
+<p>O Administrador do Sistema acessa a funcionalidade de gerenciamento.</p>
+</li>
+<li>O sistema exibe as opções:</li>
+<li>Gerenciar usuários</li>
+<li>Gerenciar parceiros</li>
+<li>Visualizar detalhes de usuário/parceiro</li>
+<li>Sair</li>
+<li>O Administrador seleciona "Gerenciar usuários".</li>
+<li>O sistema exibe a lista de usuários cadastrados.</li>
+<li>O Administrador seleciona um usuário existente ou opta por adicionar um novo.</li>
+<li>O sistema exibe o formulário com os dados atuais (edição) ou em branco (criação).</li>
+<li>O Administrador preenche/edita as informações e solicita gravação.</li>
+<li>O sistema valida os dados inseridos [FE01].</li>
+<li>O sistema atualiza ou cria o registro.</li>
+<li>O sistema exibe mensagem de sucesso.</li>
+<li>
+<p>O caso de uso é encerrado.</p>
+</li>
+<li>
+<p><strong>Fluxos Alternativos:</strong></p>
+</li>
+</ul>
+<p><strong>FA01 – Gerenciar Usuários</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li>O sistema exibe ações: adicionar, editar ou remover.  </li>
+<li>Se adicionar/editar:</li>
+<li>Exibe formulário.</li>
+<li>Após preenchimento, valida [FE01] e salva.</li>
+<li>Se remover:</li>
+<li>Solicita confirmação.</li>
+<li>Após confirmação, remove e exibe mensagem.</li>
+<li>Caso de uso é encerrado.</li>
+</ul>
+<p><strong>FA02 – Gerenciar Parceiros</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li>O sistema exibe ações para gerenciar parceiros:</li>
+<li>Adicionar, editar, remover.</li>
+<li>Funciona igual a FA01 com foco em organizações parceiras.</li>
+<li>Validações seguem [FE01].  </li>
+<li>Caso de uso é encerrado.</li>
+</ul>
+<p><strong>FA03 – Visualizar Detalhes de Usuário/Parceiro</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 2  </li>
+<li>O sistema exibe lista completa.  </li>
+<li>Administrador seleciona um item.  </li>
+<li>Sistema exibe informações em modo somente leitura.  </li>
+<li>Administrador retorna ao menu ou sai.  </li>
+<li>Caso de uso é encerrado.</li>
+</ul>
+<p><strong>FA04 – Sair Sem Salvar Alterações</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 6 ou qualquer ponto com formulário aberto  </li>
+<li>O sistema detecta alterações não salvas.  </li>
+<li>Solicita confirmação para descartá-las.  </li>
+<li>Administrador confirma.  </li>
+<li>Alterações são descartadas.  </li>
+<li>Retorna ao menu inicial.  </li>
+<li>
+<p>Caso de uso é encerrado.</p>
+</li>
+<li>
+<p><strong>Fluxos de Exceção:</strong></p>
+</li>
+</ul>
+<p><strong>FE01 – Validação de Informações</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passos 8 (fluxo principal), FA01.5 e FA02.5  </li>
+<li>O sistema identifica dados inválidos ou ausentes.  </li>
+<li>Exibe mensagem explicando o erro (ex: e-mail inválido).  </li>
+<li>Retorna ao formulário correspondente para correção.  </li>
+<li>
+<p>Caso de uso continua após ajuste.</p>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+</li>
+</ul>
+<p><strong>RN01 – Validação de Informações de Usuário/Parceiro</strong></p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Validação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nome Completo (Usuário)</td>
+<td>Texto obrigatório</td>
+</tr>
+<tr>
+<td>E-mail (Usuário/Parceiro)</td>
+<td>Formato válido, obrigatório, e único</td>
+</tr>
+<tr>
+<td>Telefone de Contato</td>
+<td>Formato (XX) XXXXX-XXXX, obrigatório</td>
+</tr>
+<tr>
+<td>Tipo de Usuário</td>
+<td>Seleção obrigatória (Paciente, Profissional, Agente)</td>
+</tr>
+<tr>
+<td>Nome da Organização</td>
+<td>Texto obrigatório, único</td>
+</tr>
+<tr>
+<td>Tipo de Parceria</td>
+<td>Seleção obrigatória (ONG, Hospital, Governo)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>Pré-condições:</strong></p>
+</li>
+<li>
+<p>O Administrador do Sistema deve estar autenticado na aplicação.</p>
+</li>
+<li>
+<p><strong>Pós-condições</strong></p>
+</li>
+<li>
+<p>As informações de usuários e/ou parceiros são atualizadas, criadas ou removidas com sucesso.  </p>
+</li>
+<li>
+<p>Mensagens de confirmação são exibidas ao final das ações.</p>
+</li>
+<li>
+<p><strong>Requisitos Especiais:</strong></p>
+</li>
+<li>
+<p>Nenhum requisito especial identificado.</p>
+</li>
+</ul>
+<h4 id="pontos-de-extensao">Pontos de Extensão</h4>
+<ul>
+<li>Não há pontos de extensão definidos para este caso de uso.</li>
+</ul>
+<hr />
+<h3 id="agendar-visita-domiciliar">Agendar Visita Domiciliar</h3>
+<h4 id="descricao-geral_6">Descrição Geral</h4>
+<ul>
+<li><strong>Nome do Caso de Uso:</strong> Agendar Visita Domiciliar  </li>
+<li><strong>Breve descrição:</strong> Permite que o Agente Comunitário de Saúde ou Profissional de Saúde agende uma visita domiciliar para um paciente registrado, especificando data, horário, local e objetivo da visita. A funcionalidade visa apoiar o acompanhamento de pacientes com dificuldade de locomoção.  </li>
+<li><strong>Atores:</strong> Agente Comunitário de Saúde, Profissional de Saúde</li>
+</ul>
+<h4 id="fluxo-de-eventos_6">Fluxo de Eventos</h4>
+<ul>
+<li>
+<p><strong>Fluxo Principal:</strong></p>
+</li>
+<li>
+<p>O ator acessa o sistema com seu login.</p>
+</li>
+<li>Navega até a funcionalidade “Agendar Visita Domiciliar”.</li>
+<li>Busca o paciente pelo nome, CPF ou número do cartão SUS.</li>
+<li>Seleciona o paciente desejado.</li>
+<li>Escolhe data e horário disponíveis na agenda.</li>
+<li>Registra o motivo da visita domiciliar.</li>
+<li>Confirma os dados e finaliza o agendamento.</li>
+<li>
+<p>O sistema envia uma notificação para o paciente (se aplicável) e registra a visita na agenda do profissional.</p>
+</li>
+<li>
+<p><strong>Fluxos Alternativos:</strong></p>
+</li>
+</ul>
+<p><strong>FA01 – Paciente não cadastrado</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 3  </li>
+<li><strong>Condição:</strong> O sistema não encontra o paciente  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe a mensagem: “Paciente não cadastrado”.</li>
+<li>O ator opta por abrir o módulo “Cadastrar Paciente”.</li>
+<li>Após o cadastro, o sistema retorna à tela de agendamento com o paciente já selecionado.</li>
+<li><strong>Retorna ao passo 4 do fluxo principal.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA02 – Horário não disponível</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 5  </li>
+<li><strong>Condição:</strong> O horário escolhido já foi reservado  </li>
+<li><strong>Ação:</strong><ul>
+<li>O sistema exibe: “Horário indisponível”.</li>
+<li>Sugere horários próximos disponíveis.</li>
+<li>O ator escolhe um novo horário ou reorganiza a agenda.</li>
+<li><strong>Retorna ao passo 5 do fluxo principal.</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FA03 – Remarcação de Visita</strong></p>
+<ul>
+<li><strong>Origem:</strong> Solicitação externa  </li>
+<li><strong>Condição:</strong> O paciente solicita alteração de data ou horário  </li>
+<li>
+<p><strong>Ação:</strong></p>
+<ul>
+<li>O ator acessa a lista de visitas agendadas.</li>
+<li>Seleciona a visita a ser remarcada.</li>
+<li>O sistema exibe o calendário com horários disponíveis.</li>
+<li>O ator seleciona nova data e horário.</li>
+<li>O sistema atualiza a agenda e notifica o paciente (se habilitado).</li>
+<li><strong>Encerramento do caso de uso.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Fluxos de Exceção:</strong></p>
+</li>
+</ul>
+<p><strong>FE01 – Falha na Conexão com o Servidor</strong></p>
+<ul>
+<li><strong>Origem:</strong> Durante qualquer passo do agendamento  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema exibe a mensagem: “Falha na conexão. Tente novamente.”</li>
+<li>Permite nova tentativa ou salva dados localmente para posterior sincronização.</li>
+<li><strong>Retorna ao passo anterior.</strong></li>
+</ul>
+<p><strong>FE02 – Conflito de Horários Detectado na Confirmação</strong></p>
+<ul>
+<li><strong>Origem:</strong> Passo 7  </li>
+<li><strong>Ação:</strong></li>
+<li>O sistema detecta que o horário foi reservado por outro profissional.</li>
+<li>Exibe a mensagem de conflito.</li>
+<li>Retorna à seleção de data e horário.</li>
+<li>O ator escolhe novo horário.</li>
+<li>
+<p><strong>Retorna ao passo 5 do fluxo principal.</strong></p>
+</li>
+<li>
+<p><strong>Requisitos Especiais:</strong></p>
+<ul>
+<li><strong>RE01:</strong> Busca de pacientes deve permitir filtro por bairro e microárea.  </li>
+<li><strong>RE02:</strong> Sincronização da agenda deve ocorrer em tempo real para evitar conflitos.  </li>
+<li><strong>RE03:</strong> O módulo de notificação deve seguir as normas de privacidade de dados.</li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>RN01:</strong> Apenas pacientes cadastrados podem receber visitas.  </li>
+<li><strong>RN02:</strong> A visita deve ser agendada com no mínimo 24h de antecedência.  </li>
+<li><strong>RN03:</strong> Cada profissional pode agendar no máximo 8 visitas por dia.  </li>
+<li><strong>RN04:</strong> Toda visita registrada deve constar no histórico do paciente.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Pré-condições:</strong></p>
+<ul>
+<li>O profissional deve estar autenticado no sistema.  </li>
+<li>O paciente deve estar cadastrado no sistema.  </li>
+<li>O sistema deve ter informações atualizadas sobre horários disponíveis.  </li>
+<li>O sistema deve estar conectado ao servidor de notificação (se aplicável).</li>
+</ul>
+</li>
+<li>
+<p><strong>Pós-condições</strong></p>
+<ul>
+<li>A visita está registrada no histórico do paciente.  </li>
+<li>A agenda do profissional foi atualizada.  </li>
+<li>O paciente recebeu uma notificação (se habilitado).</li>
+</ul>
+</li>
+</ul>
+<h4 id="pontos-de-extensao_1">Pontos de Extensão</h4>
+<pre><code>- Integração com módulo de indicadores para contabilização em relatórios mensais.  
+- Opção de anexar relatório da visita após a execução.
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

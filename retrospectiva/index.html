@@ -1,0 +1,1728 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../casos-de-uso/">
+      
+      
+        <link rel="next" href="../evidencias/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Retrospectiva - CanadaWay - Documentação do Projeto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#retrospectiva-do-projeto" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-header__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CanadaWay - Documentação do Projeto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Retrospectiva
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CanadaWay - Documentação do Projeto
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-nav__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CanadaWay - Documentação do Projeto
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CanadaWay - Documentação do Projeto
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../produto-visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proposta-solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solução Proposta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cronograma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cronograma e Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipe-comunicacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equipe e Comunicação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requisitos de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dor-dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backlog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estudo-de-caso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estudo de caso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USM-canada/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USM - User Story Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../casos-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Casos de Uso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Retrospectiva
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retrospectiva
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visão do Produto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposta-de-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposta de solução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eng-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eng. de Software
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eng. de Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versoes-do-prototipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versões do protótipo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registros-das-reunioes-por-ciclos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registros das reuniões por ciclos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototipo-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protótipo Final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eng-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eng. de Requisitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eng. de Requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atividades-implementadas-com-sucesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atividades implementadas com sucesso:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracao-com-o-rad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integração com o RAD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cronograma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cronograma
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-funcionais-e-nao-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos Funcionais e Não Funcionais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos Funcionais e Não Funcionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mudancas-dos-requisitos-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mudanças dos requisitos funcionais
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dor-e-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      DoR e DoD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DoR e DoD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pontos-nao-atendidos-da-dor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos não atendidos da DoR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pontos-nao-atendidos-da-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos não atendidos da DoD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uss-e-apk" class="md-nav__link">
+    <span class="md-ellipsis">
+      US's e APK
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-do-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      FeedBack do Cliente
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apk" class="md-nav__link">
+    <span class="md-ellipsis">
+      APK
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Evidências de Execução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    APK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracao-ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuração de Ambiente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../licoes-aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lições
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resolucao-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resolução de Issues
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visão do Produto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposta-de-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposta de solução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eng-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eng. de Software
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eng. de Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versoes-do-prototipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versões do protótipo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registros-das-reunioes-por-ciclos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registros das reuniões por ciclos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototipo-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protótipo Final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eng-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eng. de Requisitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eng. de Requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atividades-implementadas-com-sucesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atividades implementadas com sucesso:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracao-com-o-rad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integração com o RAD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cronograma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cronograma
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-funcionais-e-nao-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos Funcionais e Não Funcionais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos Funcionais e Não Funcionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mudancas-dos-requisitos-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mudanças dos requisitos funcionais
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dor-e-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      DoR e DoD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DoR e DoD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pontos-nao-atendidos-da-dor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos não atendidos da DoR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pontos-nao-atendidos-da-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pontos não atendidos da DoD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uss-e-apk" class="md-nav__link">
+    <span class="md-ellipsis">
+      US's e APK
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-do-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      FeedBack do Cliente
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apk" class="md-nav__link">
+    <span class="md-ellipsis">
+      APK
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="retrospectiva-do-projeto">Retrospectiva do projeto</h1>
+<h2 id="visao-do-produto">Visão do Produto</h2>
+<p>Durante toda a execução do projeto <em>CanadaWay</em>, a visão de produto permaneceu estável e alinhada com os objetivos iniciais. O problema identificado desde o início — a dificuldade enfrentada por potenciais intercambistas em encontrar informações confiáveis, simular custos e tomar decisões informadas — continuou sendo o foco principal do desenvolvimento.</p>
+<p>O propósito do CanadaWay sempre foi <strong>melhorar a experiência do usuário</strong> na jornada de planejamento e contratação de um intercâmbio. Isso se traduz em funcionalidades voltadas à autonomia do usuário, personalização da experiência, e suporte contínuo antes e durante o processo de mobilidade.</p>
+<p>Os objetivos estratégicos definidos inicialmente também permaneceram os mesmos:</p>
+<ul>
+<li><strong>Aumentar a captação de clientes</strong> por meio de uma plataforma interativa e acessível;</li>
+<li><strong>Reduzir a sobrecarga de atendimentos repetitivos</strong> com funcionalidades autoexplicativas e simuladores inteligentes;</li>
+<li><strong>Oferecer apoio prático e informativo</strong> aos intercambistas durante todo o processo.</li>
+</ul>
+<p>A consistência dessa visão permitiu que todas as decisões de projeto fossem direcionadas com clareza, garantindo foco, coesão e alinhamento com os usuários e stakeholders.</p>
+<hr />
+<h2 id="proposta-de-solucao">Proposta de solução</h2>
+<p>A proposta de solução inicial do projeto <em>CanadaWay</em> foi mantida em sua essência: desenvolver uma plataforma digital que auxilie potenciais intercambistas na tomada de decisão, com base em perfis personalizados, simulações de orçamento e acesso a informações relevantes.</p>
+<p>Contudo, ao longo do desenvolvimento, alguns ajustes foram realizados, com o objetivo de manter o foco na experiência do usuário e na viabilidade técnica da entrega:</p>
+<ul>
+<li>
+<p><strong>Remoção dos filtros avançados e do chatbot</strong>: essas funcionalidades estavam previstas inicialmente, mas foram retiradas com base em validação direta com o cliente. A análise identificou que os filtros tornariam a interface excessivamente complexa, e o chatbot exigiria um esforço técnico desproporcional ao valor entregue nesta fase do projeto. Ambas as decisões foram consensuais e registradas.</p>
+</li>
+<li>
+<p><strong>Adição do Prisma ORM</strong>: para a camada de persistência de dados, foi integrada a ferramenta PrismaORM, que otimizou o acesso ao banco de dados e melhorou a manutenção e escalabilidade da aplicação. Essa alteração técnica foi decidida em conjunto com a equipe de desenvolvimento, visando maior robustez no backend e agilidade nas iterações.</p>
+</li>
+</ul>
+<p>Essas mudanças foram implementadas sem comprometer os objetivos centrais do projeto, mas sim refinando a proposta de solução com base em validação contínua e foco na entrega de valor dentro dos recursos disponíveis.</p>
+<hr />
+<h2 id="eng-de-software">Eng. de Software</h2>
+<p>A abordagem escolhida por nós foi a Ágil, o ciclo de vida escolhido foi o Iterativo e Incremental e o processo foi o RAD isolado (Rapid Application Development). Abaixo segue como foi implementado o método de engenharia de software escolhido ao longo do projeto e o que não foi.</p>
+<h3 id="versoes-do-prototipo">Versões do protótipo</h3>
+<p><img alt="Versão do protótipo" src="../images/prototipov1F.png" />
+<img alt="Versão do protótipo" src="../images/prototipov2R.png" /></p>
+<p>O <strong>Histórico de versões do protótipo</strong> é uma forma de verificar que o ciclo de vida Iterativa e Incremental foi implementada.</p>
+<h3 id="registros-das-reunioes-por-ciclos">Registros das reuniões por ciclos</h3>
+<p><img alt="Drive das Atas" src="../images/drive-atas-internas.png" />
+<img alt="Ata" src="../images/ata1.png" />
+<img alt="Ata" src="../images/ata2.png" />
+<img alt="Ata" src="../images/ata2-1.png" />
+<img alt="Ata" src="../images/ata3.png" /></p>
+<p>Os <strong>Registros de reuniões e mensagens de organização dos ciclos</strong> é uma forma de verificar que a abordagem Ágil foi implementada.</p>
+<h3 id="prototipo-final">Protótipo Final</h3>
+<p><img alt="Protótipo Finalizado" src="../images/prototipo1.png" />
+<img alt="Protótipo Finalizado" src="../images/prototipo2.png" />
+<img alt="Feedback do Protótipo" src="../images/videodoproto.png" /></p>
+<p>O <strong>Protótipo final e sua validação com o stakeholder</strong> é uma forma de verificar que o processo RAD foi implementado.</p>
+<hr />
+<h2 id="eng-de-requisitos">Eng. de Requisitos</h2>
+<p>Durante a execução do projeto <em>CanadaWay</em>, a equipe aplicou de forma consistente todas as principais atividades e técnicas de Engenharia de Requisitos (ER), alinhadas à abordagem iterativa e incremental do processo RAD (Rapid Application Development). </p>
+<p>A ER foi conduzida como um processo contínuo e integrado entre as fases, permitindo revisões, validações e ajustes com base em feedbacks reais, o que foi essencial para garantir que as funcionalidades desenvolvidas estivessem alinhadas às necessidades dos usuários e do cliente.</p>
+<h3 id="atividades-implementadas-com-sucesso">Atividades implementadas com sucesso:</h3>
+<ul>
+<li><strong>Elicitação e Descoberta:</strong> Foram realizadas entrevistas, brainstormings e análises de concorrentes e documentos para levantar requisitos reais e relevantes. </li>
+</ul>
+<p><img alt="Entrevista" src="../images/entrevista.png" />
+<img alt="Documento de levantamento de requisitos" src="../images/reqv1.png" /></p>
+<ul>
+<li>
+<p><strong>Análise e Consenso:</strong> Os requisitos passaram por momentos de discussão e alinhamento, onde restrições, prioridades e possíveis ambiguidades foram tratadas de forma colaborativa.</p>
+</li>
+<li>
+<p><strong>Declaração e Representação:</strong> A documentação foi organizada por meio de histórias de usuário, critérios de aceitação e PBB, além da produção de protótipos funcionais que ajudaram a tangibilizar as funcionalidades.</p>
+</li>
+</ul>
+<p><img alt="US's" src="../images/us1.png" />
+<img alt="US's" src="../images/us2.png" />
+<img alt="US's" src="../images/us3.png" /></p>
+<ul>
+<li>
+<p><strong>Verificação e Validação:</strong> Os requisitos foram constantemente revisados e validados com o cliente por meio de testes de usabilidade, feedbacks diretos e sessões iterativas de avaliação dos protótipos.</p>
+</li>
+<li>
+<p><strong>Organização e Atualização:</strong> Utilizamos técnicas como a priorização MoSCoW, atualização contínua do backlog, rastreamento das user stories e planejamento incremental com base nas validações. Após a implantação, o feedback do usuário também foi considerado para pensar em evoluções futuras.</p>
+</li>
+</ul>
+<p><img alt="Priorização MoSCoW" src="../images/prioriz.png" /></p>
+<h3 id="integracao-com-o-rad">Integração com o RAD</h3>
+<p>Todo esse processo de Engenharia de Requisitos foi conduzido de forma integrada ao ciclo RAD, permitindo que os requisitos evoluíssem junto com os protótipos e validações. A equipe conseguiu responder às mudanças com agilidade, mantendo a visão do produto e garantindo que o escopo do MVP fosse cumprido com qualidade.</p>
+<hr />
+<h2 id="cronograma">Cronograma</h2>
+<p>Durante o desenvolvimento do projeto <em>CanadaWay</em>, o cronograma passou por alguns ajustes importantes que refletiram a realidade prática enfrentada pela equipe.</p>
+<p>Inicialmente, o planejamento seguia uma divisão por disciplinas (Requisitos, User Design, Construção e Implantação), com entregas semanais bem definidas e metas específicas por iteração. No entanto, ao longo do processo, alguns fatores impactaram diretamente a execução das atividades conforme planejado:</p>
+<ul>
+<li><strong>Demandas externas relacionadas às entregas das unidades da disciplina</strong> interferiram no ritmo de execução técnica, exigindo pausas ou redistribuições internas de tarefas.</li>
+<li><strong>Problemas com infraestrutura</strong> – como instabilidades nas máquinas utilizadas – comprometeram a produtividade de parte da equipe em momentos críticos.</li>
+<li><strong>Conflitos de agenda e indisponibilidade de alguns membros</strong> afetaram a fluidez de etapas que dependiam de colaboração coletiva, especialmente durante a prototipação e construção.</li>
+</ul>
+<p>Como resposta, a equipe realizou uma reorganização do cronograma a partir da fase de construção, concentrando esforços em etapas mais críticas e adaptando as sprints para refletirem melhor a disponibilidade e o contexto real do time.</p>
+<p>Mesmo com os ajustes, o projeto conseguiu manter a entrega dos principais requisitos funcionais previstos, reforçando a importância de flexibilidade e adaptação em processos iterativos, como os propostos pelo RAD.</p>
+<p><img alt="Cronograma Atualizado" src="../images/cronogramaatual.png" /></p>
+<p>Essas mudanças foram essenciais para garantir a conclusão do projeto com qualidade e dentro do prazo final estabelecido.</p>
+<hr />
+<h2 id="comunicacao">Comunicação</h2>
+<p>Ao longo do desenvolvimento do projeto <em>CanadaWay</em>, a comunicação da equipe se deu de forma majoritariamente assíncrona, adaptando-se à disponibilidade de cada integrante. Algumas ferramentas inicialmente planejadas não foram utilizadas conforme o esperado, enquanto outras se mostraram mais adequadas ao nosso fluxo real de trabalho.</p>
+<ul>
+<li>
+<p>Embora o Figma estivesse previsto como centralizador de decisões de design e prototipação, na prática sua utilização foi bem limitada a prototipação. Algumas partes das atividades passadas pelo professor foram conduzidas através do Miro, que se mostrou mais ágil para dinâmicas de ideação, mapeamento e alinhamento rápido.</p>
+</li>
+<li>
+<p>Para a validação dos critérios de aceitação, adotamos o GitHub Projects como ferramenta de gerenciamento. Apesar do uso não ter sido constante em todos os momentos, ele permitiu que a gente se organizasse para finalizar nossas entregas.</p>
+</li>
+<li>
+<p>Um ponto crítico foi a falta de regularidade nas reuniões de acompanhamento. Embora o cronograma previsse encontros semanais, nem sempre conseguimos manter essa cadência, principalmente por falta de tempo, conflitos de agenda e, em certos momentos, baixo engajamento da equipe. Isso impactou negativamente a fluidez da comunicação e o alinhamento em alguns ciclos.</p>
+</li>
+</ul>
+<p>Apesar dessas limitações, a equipe se esforçou para manter a troca de informações ativa por meio de canais alternativos, como mensagens diretas e compartilhamento de arquivos. Esse cenário evidencia a importância de definir canais claros, manter consistência nas reuniões e reforçar o compromisso coletivo, especialmente em projetos de curta duração com alto grau de colaboração.</p>
+<p>Como lição, reconhecemos a necessidade de melhorar a disciplina na comunicação e garantir espaços regulares para alinhamento, mesmo em semanas de maior sobrecarga.</p>
+<hr />
+<h2 id="requisitos-funcionais-e-nao-funcionais">Requisitos Funcionais e Não Funcionais</h2>
+<h3 id="mudancas-dos-requisitos-funcionais">Mudanças dos requisitos funcionais</h3>
+<p>A lista original de requisitos foi alterada a pedido do professor e com auxilio do mesmo. Abaixo temos a primeira versão dos requisitos.</p>
+<p><img alt="Versão 1 dos Requisitos Funcionais" src="../images/reqv1.png" />
+<img alt="Versão 1 dos Requisitos Funcionais" src="../images/reqv1-2.png" />
+<img alt="Versão 1 dos Requisitos Funcionais" src="../images/reqv1-3.png" />
+<img alt="Versão 1 dos Requisitos não Funcionais" src="reqnfunv1.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Tipo de Mudança</th>
+<th>Quantidade Aproximada</th>
+<th>Exemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mantidos (sem alterações)</td>
+<td>~22</td>
+<td>RF01–RF11, RF13–RF15, RF19–RF27</td>
+</tr>
+<tr>
+<td>Ajustados ou Refinados</td>
+<td>~6</td>
+<td>RF12 (chatbot → FAQ), RF16–RF18 reorganizados</td>
+</tr>
+<tr>
+<td>Adicionados</td>
+<td>~5</td>
+<td>RF30–RF32 (cadastros/exclusões extras)</td>
+</tr>
+<tr>
+<td>Removidos ou Fundidos</td>
+<td>~2</td>
+<td>RF12 (chatbot removido), RF18 (notícias)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Situação</th>
+<th>Mudanças Observadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RNF01</td>
+<td>Refinado</td>
+<td>Detalhado com critérios de usabilidade, largura de tela, navegadores e dispositivos</td>
+</tr>
+<tr>
+<td>RNF02</td>
+<td>Refinado</td>
+<td>Especificação de dados sensíveis e reforço da conformidade com LGPD</td>
+</tr>
+<tr>
+<td>RNF03</td>
+<td>Refinado</td>
+<td>Adição de exigência de desempenho mesmo em horários de pico</td>
+</tr>
+<tr>
+<td>RNF04</td>
+<td>Melhorado</td>
+<td>Capacidade de 500 usuários simultâneos e compatibilidade técnica ampliada</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Versão Final dos Requisitos Funcionais" src="../images/reqvf.png" />
+<img alt="Versão Final dos Requisitos Funcionais" src="../images/reqvf2.png" />
+<img alt="Versão Final dos Requisitos não Funcionais" src="../images/reqnfunvf.png" /></p>
+<hr />
+<h2 id="dor-e-dod">DoR e DoD</h2>
+<p>Durante o projeto <em>CanadaWay</em>, adotamos a Definition of Ready (DoR) e a Definition of Done (DoD) como instrumentos para garantir clareza, alinhamento e qualidade nas funcionalidades desenvolvidas. Apesar da intenção e da estrutura bem definida, nem todos os critérios previstos puderam ser plenamente aplicados na prática.</p>
+<h3 id="pontos-nao-atendidos-da-dor">Pontos não atendidos da DoR</h3>
+<p>Um dos principais critérios que não foi implementado de forma consistente foi:</p>
+<ul>
+<li><strong>[ ] As regras de negócio descritas em formato BDD (Given-When-Then):</strong><br />
+Embora previsto, o uso de cenários de comportamento no formato Behavior Driven Development (BDD) não foi aplicado na elaboração das User Stories. Faltou tempo e maturidade técnica da equipe para formalizar os comportamentos esperados com esse grau de detalhamento durante a criação das nossas US's. Não detalhamos e nem listamos as regras de negócio, elas foram apenas discutidas oralmente.</li>
+</ul>
+<h3 id="pontos-nao-atendidos-da-dod">Pontos não atendidos da DoD</h3>
+<p>Devido a atrasos no cronograma e a priorização de entregas funcionais mínimas, nem todos os critérios da DoD foram cumpridos, em especial:</p>
+<ul>
+<li>
+<p><strong>[ ] Realização de testes funcionais (manuais ou automatizados):</strong><br />
+Apesar da implementação de várias funcionalidades, a equipe <strong>não conseguiu aplicar testes adequados nas telas</strong>, seja por falta de tempo ou por limitações na estrutura técnica disponível. Isso resultou em validações mais superficiais, sem um processo de testes formalizado.</p>
+</li>
+<li>
+<p><strong>[ ] Revisão de código sistemática:</strong><br />
+A etapa de code review não foi realizada com frequência. Em muitos casos, os membros da equipe integraram suas funcionalidades diretamente, sem validação cruzada.</p>
+</li>
+</ul>
+<p>Como aprendizado, fica a importância de planejar melhor o tempo para testes e revisões, e de incorporar práticas como o BDD desde o início das sprints, garantindo uma entrega mais robusta e validada.</p>
+<hr />
+<h2 id="mvp">MVP</h2>
+<p>O escopo do MVP definido no início do projeto <em>CanadaWay</em> foi mantido ao longo de toda a execução. As funcionalidades essenciais previstas — como o cadastro de usuários, simulação de programas, quizzes e visualização de recomendações — foram priorizadas e entregues conforme planejado.</p>
+<p>No entanto, à medida que o desenvolvimento avançava, a equipe identificou a necessidade de incluir algumas telas complementares que, embora não fizessem parte do MVP original, foram implementadas para garantir maior linearidade, coerência na navegação e melhor experiência do usuário final.</p>
+<p>Essas adições não alteraram o escopo central do MVP, mas sim o refinaram no aspecto de usabilidade e fluxo, contribuindo para um produto mais consistente e próximo de um cenário real de uso.</p>
+<p>Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, que permite adaptações contínuas baseadas no uso prático e validação com o cliente.</p>
+<hr />
+<h2 id="uss-e-apk">US's e APK</h2>
+<ul>
+<li><strong>US01 - Como usuário da plataforma, quero fazer login com minhas credenciais para acessar meu ambiente personalizado</strong></li>
+</ul>
+<p><img alt="US01 tela 1" src="../images/US01tela1.png" />
+<img alt="US01 tela 2" src="../images/US01tela2.png" />
+<img alt="US01 tela 3" src="../images/US01tela3.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve validar se o e-mail inserido está em um formato válido (ex: usuario@dominio.com).</li>
+<li>[X] O sistema deve impedir o envio do formulário se algum dos campos estiver em branco.</li>
+<li>[X] O sistema deve autenticar o usuário corretamente quando e-mail e senha forem válidos.</li>
+<li>[X] O sistema deve redirecionar o usuário autenticado para seu ambiente personalizado.</li>
+<li>[X] O sistema deve exibir uma mensagem de erro clara caso o e-mail não esteja cadastrado ou a senha esteja incorreta (ex: "E-mail ou senha inválidos").</li>
+<li>[X] O sistema deve armazenar e comparar senhas de forma segura, utilizando hash.</li>
+<li>[X] O sistema deve manter a sessão do usuário ativa após o login, até que ele se deslogue ou a sessão expire.</li>
+<li>[X] O sistema deve garantir que apenas usuários autenticados possam acessar páginas protegidas da plataforma.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US02 - Como potencial intercambista, quero me registrar preenchendo meus dados básicos (nome, sobrenome, email, telefone com DDD, cidade, qual a unidade mais próxima do usuário, senha, confirmar senha) para criar uma conta na plataforma</strong></li>
+</ul>
+<p><img alt="US02 tela 1" src="../images/US02tela1.png" />
+<img alt="US02 tela 2" src="../images/US02tela2.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir um formulário de registro que deve conter os seguintes campos: nome, sobrenome, e-mail, telefone com DDD, cidade, unidade mais próxima (seleção a partir de uma lista), senha, confirmar senha, campo com checkbox de "Eu li e concordo em receber notificações e demais informativos da Canada Intercambio de acordo com as políticas de privacidade"</li>
+<li>[X] O sistema deve validar se o campo de e-mail está em um formato váldio (ex: nome@dominio.com)</li>
+<li>[X] O sistema deve exibir mensagem clara se e o o e-mail estiver em uso.</li>
+<li>[X] O sistema deve validar se o telefone tem apenas números, com DDD, e tem comprimento mínimo adequado (11 dígitos).</li>
+<li>[X] O sistema deve validar se a senha tem no mínimo 6 caracteres.</li>
+<li>[X] O sistema deve validar se o campo "Confirmar senha" é igual ao campo "Senha".</li>
+<li>[X] O sistema requerir, obrigatoriamente, que o usuário selecione uma unidade da lista de unidades cadastradas no sistema.</li>
+<li>[X] O sistema deve exibir mensagens de erro claras caso o usuário tente enviar o formulário com dados inválidos ou campos em branco.</li>
+<li>[X] Ao preencher corretamente o formulário, o usuário deve ser registrado com sucesso.</li>
+<li>[X] O usuário deve ser redirecionado para o quiz inicial.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US03 - Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas</strong></li>
+</ul>
+<p><img alt="US03 tela 1" src="../images/US03tela1.png" />
+<img alt="US03 tela 2" src="../images/US03tela2.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve permitir que o usuário acesse uma página ou seção de edição de perfil após o login.</li>
+<li>[X] O sistema deve exibir os dados atuais do usuário previamente preenchidos nos campos editáveis (nome, sobrenome, telefone, cidade e unidade mais próxima).</li>
+<li>[X] O sistema deve permitir que o usuário edite e salve alterações nos campos permitidos.</li>
+<li>[X] O sistema deve validar os campos editados (ex: formato de e-mail, telefone com DDD, campos obrigatórios).</li>
+<li>[X] O sistema deve persistir as alterações no banco de dados.</li>
+<li>[X]  O sistema deve manter a integridade da sessão após a edição do perfil.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US05 - Como potencial intercambista, quero responder um teste para identificar o perfil ideal de intercâmbio com base nas respostas</strong></li>
+</ul>
+<p><img alt="US05 tela 1" src="../images/US05tela1.png" />
+<img alt="US05 tela 2" src="../images/US05tela2.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir um teste com as seguintes 6 perguntas(
+    Qual a sua idade?,
+    O que você busca no intercâmbio?,
+    Qual o máximo de tempo que você tem disponível?,
+    Você prefere viajar sozinho ou acompanhado?,
+    Qual o seu nível de inglês?,
+    Qual a sua faixa de orçamento?)</li>
+<li>[X] O sistema deve apresentar alternativas pré-definidas para cada pergunta em botões.</li>
+<li>[X] O sistema só deve permitir a submissão das respostas se todas as perguntas estiverem respondidas</li>
+<li>[X] O sistema deve processar as respostas e sugerir um perfil de intercâmbio ideal com base nos padrões definidos pelos steakholder.</li>
+<li>[X] O sistema deve persistir as respostas no banco de dados associadas ao usuário.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US06 - Como potencial intercambista, quero navegar por programas</strong></li>
+</ul>
+<p><img alt="US06 tela 1" src="../images/US06tela1.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve listar os principais programas disponíveis.</li>
+<li>[X]  Cada card de programa deve conter(
+    Nome do programa (em destaque),
+    Descrição resumida,
+    Não deve mostrar o Preço (formato: R$ valor,00),
+    Duração (em meses),
+    País de destino,
+    Imagem ilustrativa do destino ou do programa)</li>
+<li>[X]  O sistema deve permitir clicar no nome ou no card do programa para abrir uma página com mais detalhes.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US07 - Como potencial intercambista, quero responder um quiz específico sobre os programas da Canada Intercambio para verificar o entendimento sobre as opções disponíveis</strong></li>
+</ul>
+<p><img alt="US07 tela 1" src="../images/US07tela1.png" />
+<img alt="US07 tela 2" src="../images/US07tela2.png" />
+<img alt="US07 tela 3" src="../images/US07tela3.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve disponibilizar um quiz com perguntas específicas sobre os programas oferecidos pela Canada Intercâmbio.</li>
+<li>[X] O sistema deve apresentar alternativas de resposta para cada pergunta em botões</li>
+<li>[X] O sistema só deve prosseguir para a próxima pergunta quando a atual estiver respondida</li>
+<li>[] O sistema deve processar e exibir o resultado do quiz ao final, indicando o desempenho do usuário.</li>
+<li>[] O sistema deve armazenar o resultado do quiz no perfil do usuário, se ele estiver autenticado.</li>
+<li>[X] O sistema deve permitir que o quiz seja refeito posteriormente.</li>
+<li>[] O sistema deve liberar o atendimento com a Canada Intercambio quando o resultado do quiz for maior ou igual a 60%</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US10 - Como potencial intercambista, quero visualizar sugestão de programa com base nas respostas dos quizzes e testes</strong></li>
+</ul>
+<p><img alt="US06 tela 1" src="../images/US06tela1.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir uma seção no topo da página chamada “Programas recomendados para você”.</li>
+<li>[] O sistema deve preencher essa seção com base nas respostas fornecidas nos testes e quizzes feitos pelo usuário.</li>
+<li>[X] Cada programa recomendado deve ser exibido em um card contendo(
+    Imagem ilustrativa do programa ou país,
+    Nome do programa (em destaque),
+    Descrição curta do programa,
+    Não deve exibir o valor Valor do programa,
+    País e duração (ex: “Canadá • 20 meses”))</li>
+<li>[X] O sistema deve permitir que o usuário clique no nome ou no card para acessar uma página com mais detalhes do programa.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US12 - Como potencial intercambista, quero visualizar respostas para dúvidas frequentes</strong></li>
+</ul>
+<p><img alt="US012 tela 1" src="images/US012tela1.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir uma lista de perguntas frequentes.</li>
+<li>[X] O sistema deve permitir que o usuário clique em uma pergunta para ver a resposta.</li>
+<li>[X] O sistema deve exibir as respostas com texto claro e objetivo.</li>
+<li>[X] O sistema deve permitir abrir e fechar perguntas.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US14 - Como potencial intercambista, quero visualizar informações detalhadas de cada programa (duração, país, valor, requisitos)</strong></li>
+</ul>
+<p><img alt="US014 tela 1" src="images/US014tela1.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir uma imagem ilustrativa no topo da página do programa.</li>
+<li>[] O sistema não deve exibir o valor total do programa</li>
+<li>[X] O sistema deve exibir a duração e o país do programa (ex: 20 meses • Canadá).</li>
+<li>[X] O sistema deve exibir uma descrição curta do programa.</li>
+<li>[X] O sistema deve exibir as seguintes informações gerais(
+    Foco,
+    Método,
+    Tipo,
+    Carga horária,
+    Nível de idioma exigido)</li>
+<li>[X] O sistema deve exibir os requisitos do programa (ex: graduação, fluência, etc.).</li>
+<li>[X] O sistema deve carregar os dados dinamicamente com base no programa selecionado.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US15 - Como potencial intercambista, quero solicitar contato com um especialista da Canada Intercambio</strong></li>
+</ul>
+<p><img alt="US15 tela 1" src="../images/US15tela1.png" />
+<img alt="US15 tela 2" src="../images/US15tela2.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir um botão ou link com o texto “Contate-nos”.</li>
+<li>[X] O link deve abrir uma conversa direta no WhatsApp com número da unidade mais perto dele.</li>
+<li>[X] O link deve incluir uma mensagem pré-definida (ex: "Olá, vim pelo app e gostaria de saber mais sobre os programas de intercâmbio.").</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US19 - Como empresa, quero criar conta preenchendo dados básicos (nome, sobrenome, email corporativo, senha, confirmar senha, número, função, filial)</strong></li>
+</ul>
+<p><img alt="US19 tela 1" src="../images/US19tela1.png" />
+<img alt="US19 tela 2" src="../images/US19tela2.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir um formulário de cadastro com os seguintes campos obrigatórios(
+    Nome,
+    Sobrenome,
+    E-mail corporativo,
+    Número de telefone,
+    Função na empresa,
+    Filial,
+    Senha,
+    Confirmar senha)</li>
+<li>[X] O sistema deve validar o formato do e-mail (ex: nome@empresa.com).</li>
+<li>[X] O sistema deve validar o telefone com DDD.</li>
+<li>[X] O sistema deve validar que os campos "senha" e "confirmar senha" são iguais.</li>
+<li>[X] O sistema deve exigir senha com no mínimo 6 caracteres.</li>
+<li>[X] O sistema deve exibir mensagem de erro clara caso algum campo esteja inválido.</li>
+<li>[X] O sistema deve impedir o cadastro com e-mail já existente.</li>
+<li>[X] O sistema deve salvar os dados corretamente no banco de dados.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US29 - Como empresa, quero atualizar informações de programas existentes</strong></li>
+</ul>
+<p><img alt="US29 tela 1" src="../images/US29tela1.png" />
+<img alt="US29 tela 2" src="../images/US29tela2.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve exibir um botão de edição na página de detalhes do programa apenas para admins do sistema</li>
+<li>[X] O sistema deve exibir o formulário de edição com os dados atuais do programa previamente preenchidos.</li>
+<li>[X] O sistema deve permitir alterar os seguintes campos(
+    Nome do programa,
+    Descrição,
+    País,
+    Duração,
+    Tipo, foco, método e carga horária,
+    Requisitos e nível de idioma)</li>
+<li>[X] O sistema deve validar os campos obrigatórios e impedir o envio com dados inválidos.</li>
+<li>[X] O sistema deve exibir mensagem de sucesso ao salvar as alterações (ex: “Programa atualizado com sucesso”).</li>
+<li>[X] O sistema deve exibir mensagem de erro clara em caso de falha.</li>
+<li>[X] O sistema deve salvar as alterações no banco de dados e atualizar as exibições públicas do programa.</li>
+</ul>
+<hr />
+<ul>
+<li><strong>US30 - Como empresa, quero cadastrar novos programas de intercâmbio</strong></li>
+</ul>
+<p><img alt="US30 tela 1" src="../images/US30tela1.png" />
+<img alt="US30 tela 2" src="../images/US30tela2.png" /></p>
+<p><em>Checklist – Critérios de Aceitação</em></p>
+<ul>
+<li>[X] O sistema deve permitir que usuários autenticados com perfil de empresa acessem a página de cadastro de programa.</li>
+<li>[X] O sistema deve exibir um formulário com os seguintes campos obrigatórios(
+    Nome do programa,
+    Descrição resumida,
+    País,
+    Duração (em meses),
+    Valor total (em R$),
+    Tipo de programa (ex: graduação, trabalho, voluntariado, etc.),
+    Carga horária (ex: integral, parcial),
+    Nível de idioma exigido,
+    Foco do programa,
+    Método (ex: aulas, pesquisa, prática),
+    Requisitos (ex: graduação completa, inglês fluente),
+    Imagem ilustrativa)</li>
+<li>[X] O sistema deve validar os campos obrigatórios antes de permitir o envio.</li>
+<li>[X] O sistema deve exibir mensagem de erro clara em caso de dados inválidos.</li>
+<li>[X] O sistema deve salvar os dados no banco de dados e disponibilizá-los para exibição pública.</li>
+</ul>
+<h2 id="feedback-do-cliente">FeedBack do Cliente</h2>
+<p>Abaixo está o vídeo de feedback do cliente para a última versão apresetnada por nós: </p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/xngPZAYG3u4" frameborder="0" allowfullscreen></iframe>
+
+<blockquote>
+<p>*Nota: Caso o vídeo não carregue, você pode assistir diretamente pelo <a href="https://www.youtube.com/watch?v=xngPZAYG3u4">YouTube</a>. </p>
+</blockquote>
+<hr />
+<h2 id="apk">APK</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

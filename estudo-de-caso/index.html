@@ -1,0 +1,3211 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../mvp/">
+      
+      
+        <link rel="next" href="../USM-canada/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Estudo de caso - CanadaWay - Documentação do Projeto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#casos-de-uso" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-header__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CanadaWay - Documentação do Projeto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Estudo de caso
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CanadaWay - Documentação do Projeto
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CanadaWay - Documentação do Projeto" class="md-nav__button md-logo" aria-label="CanadaWay - Documentação do Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CanadaWay - Documentação do Projeto
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CanadaWay - Documentação do Projeto
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../produto-visao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proposta-solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solução Proposta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engenharia-requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eng. de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cronograma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cronograma e Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipe-comunicacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equipe e Comunicação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requisitos de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dor-dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backlog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Estudo de caso
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estudo de caso
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estudo-de-caso-1-pbb-healthnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estudo de Caso 1: PBB - HealthNet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estudo de Caso 1: PBB - HealthNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-backlog-building-pbb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Backlog Building (PBB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bdd-healthnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      BDD - HealthNet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BDD - HealthNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-aceitacao-completos-para-pbis-do-healthnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critérios de Aceitação Completos para PBIs do HealthNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-maria-recepcionista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Maria – Recepcionista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-maria-recepcionista_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Maria – Recepcionista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-maria-recepcionista_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Maria – Recepcionista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-livia-farmaceutica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Lívia – Farmacêutica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-livia-farmaceutica_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Lívia – Farmacêutica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-rafael-coordenador-de-agendamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Rafael – Coordenador de Agendamento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-roberto-diretor-de-tecnologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Roberto – Diretor de Tecnologia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-roberto-diretor-de-tecnologia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Roberto – Diretor de Tecnologia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-roberto-diretor-de-tecnologia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Roberto – Diretor de Tecnologia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estudo-de-caso-2-usm-comuneventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estudo de Caso 2: USM - ComunEventos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estudo de Caso 2: USM - ComunEventos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-story-mapping-usm" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Story Mapping (USM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bdd-comuneventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      BDD - ComunEventos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BDD - ComunEventos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-aceitacao-completos-para-user-stories-do-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critérios de Aceitação Completos para User Stories do MVP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-clareza-sobre-tarefas-voluntario" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clareza sobre tarefas (Voluntário)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-busca-de-eventos-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Busca de eventos (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-divulgacao-em-redes-sociais-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Divulgação em redes sociais (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reserva-de-local-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Reserva de local (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-atribuicao-de-tarefas-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Atribuição de tarefas (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-gerenciamento-de-pagamentos-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Gerenciamento de pagamentos (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-reconhecimento-de-voluntarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Reconhecimento de voluntários
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-visualizacao-de-detalhes-do-evento-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Visualização de detalhes do evento (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-ingresso-digital-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Ingresso digital (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-criacao-de-pagina-do-evento-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Criação de página do evento (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-definicao-do-tipo-de-evento-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Definição do tipo de evento (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-pesquisas-de-feedback-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Pesquisas de feedback (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-selecao-de-datahora-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Seleção de data/hora (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-e-mails-de-marketing-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. E-mails de marketing (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-pagamento-seguro-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Pagamento seguro (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-instrucoes-para-o-evento-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Instruções para o evento (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-formulario-de-inscricao-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Formulário de inscrição (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-checklist-de-tarefas-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. Checklist de tarefas (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-atualizacoes-para-participantes-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. Atualizações para participantes (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-configuracao-de-inscricao-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. Configuração de inscrição (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-notificacoes-de-eventos-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      21. Notificações de eventos (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-informacoes-para-patrocinadores-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      22. Informações para patrocinadores (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-coordenacao-no-evento-voluntario" class="md-nav__link">
+    <span class="md-ellipsis">
+      23. Coordenação no evento (Voluntário)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-busca-por-patrocinios-patrocinador" class="md-nav__link">
+    <span class="md-ellipsis">
+      24. Busca por patrocínios (Patrocinador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-acompanhamento-de-status-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      25. Acompanhamento de status (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-visualizacao-de-patrocinios-patrocinador" class="md-nav__link">
+    <span class="md-ellipsis">
+      26. Visualização de patrocínios (Patrocinador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-confirmacao-de-inscricao-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      27. Confirmação de inscrição (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-definicao-de-agenda-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      28. Definição de agenda (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-comunicacao-com-fornecedores-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      29. Comunicação com fornecedores (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-navegacao-no-local-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      30. Navegação no local (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-orientacao-para-voluntarios-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      31. Orientação para voluntários (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-notificacoes-de-mudancas-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      32. Notificações de mudanças (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-comunicacao-com-organizadores-voluntario" class="md-nav__link">
+    <span class="md-ellipsis">
+      33. Comunicação com organizadores (Voluntário)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-criacao-de-cronograma-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      34. Criação de cronograma (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-analise-de-feedback-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      35. Análise de feedback (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USM-canada/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USM - User Story Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../casos-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Casos de Uso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retrospectiva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retrospectiva
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Evidências de Execução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    APK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracao-ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuração de Ambiente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../licoes-aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lições
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resolucao-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resolução de Issues
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estudo-de-caso-1-pbb-healthnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estudo de Caso 1: PBB - HealthNet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estudo de Caso 1: PBB - HealthNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-backlog-building-pbb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Backlog Building (PBB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bdd-healthnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      BDD - HealthNet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BDD - HealthNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-aceitacao-completos-para-pbis-do-healthnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critérios de Aceitação Completos para PBIs do HealthNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-maria-recepcionista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Maria – Recepcionista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-maria-recepcionista_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Maria – Recepcionista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-maria-recepcionista_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Maria – Recepcionista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-dr-joao-clinico-geral_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Dr. João – Clínico Geral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-livia-farmaceutica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Lívia – Farmacêutica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-livia-farmaceutica_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Lívia – Farmacêutica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-rafael-coordenador-de-agendamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Rafael – Coordenador de Agendamento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-clara-paciente_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Clara – Paciente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-roberto-diretor-de-tecnologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Roberto – Diretor de Tecnologia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-roberto-diretor-de-tecnologia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Roberto – Diretor de Tecnologia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona-roberto-diretor-de-tecnologia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persona: Roberto – Diretor de Tecnologia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estudo-de-caso-2-usm-comuneventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estudo de Caso 2: USM - ComunEventos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estudo de Caso 2: USM - ComunEventos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-story-mapping-usm" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Story Mapping (USM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bdd-comuneventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      BDD - ComunEventos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BDD - ComunEventos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-aceitacao-completos-para-user-stories-do-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critérios de Aceitação Completos para User Stories do MVP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-clareza-sobre-tarefas-voluntario" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clareza sobre tarefas (Voluntário)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-busca-de-eventos-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Busca de eventos (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-divulgacao-em-redes-sociais-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Divulgação em redes sociais (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reserva-de-local-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Reserva de local (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-atribuicao-de-tarefas-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Atribuição de tarefas (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-gerenciamento-de-pagamentos-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Gerenciamento de pagamentos (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-reconhecimento-de-voluntarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Reconhecimento de voluntários
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-visualizacao-de-detalhes-do-evento-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Visualização de detalhes do evento (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-ingresso-digital-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Ingresso digital (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-criacao-de-pagina-do-evento-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Criação de página do evento (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-definicao-do-tipo-de-evento-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Definição do tipo de evento (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-pesquisas-de-feedback-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Pesquisas de feedback (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-selecao-de-datahora-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Seleção de data/hora (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-e-mails-de-marketing-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. E-mails de marketing (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-pagamento-seguro-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Pagamento seguro (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-instrucoes-para-o-evento-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Instruções para o evento (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-formulario-de-inscricao-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Formulário de inscrição (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-checklist-de-tarefas-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. Checklist de tarefas (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-atualizacoes-para-participantes-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. Atualizações para participantes (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-configuracao-de-inscricao-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. Configuração de inscrição (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-notificacoes-de-eventos-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      21. Notificações de eventos (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-informacoes-para-patrocinadores-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      22. Informações para patrocinadores (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-coordenacao-no-evento-voluntario" class="md-nav__link">
+    <span class="md-ellipsis">
+      23. Coordenação no evento (Voluntário)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-busca-por-patrocinios-patrocinador" class="md-nav__link">
+    <span class="md-ellipsis">
+      24. Busca por patrocínios (Patrocinador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-acompanhamento-de-status-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      25. Acompanhamento de status (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-visualizacao-de-patrocinios-patrocinador" class="md-nav__link">
+    <span class="md-ellipsis">
+      26. Visualização de patrocínios (Patrocinador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-confirmacao-de-inscricao-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      27. Confirmação de inscrição (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-definicao-de-agenda-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      28. Definição de agenda (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-comunicacao-com-fornecedores-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      29. Comunicação com fornecedores (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-navegacao-no-local-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      30. Navegação no local (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-orientacao-para-voluntarios-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      31. Orientação para voluntários (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-notificacoes-de-mudancas-participante" class="md-nav__link">
+    <span class="md-ellipsis">
+      32. Notificações de mudanças (Participante)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-comunicacao-com-organizadores-voluntario" class="md-nav__link">
+    <span class="md-ellipsis">
+      33. Comunicação com organizadores (Voluntário)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-criacao-de-cronograma-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      34. Criação de cronograma (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-analise-de-feedback-organizador" class="md-nav__link">
+    <span class="md-ellipsis">
+      35. Análise de feedback (Organizador)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="casos-de-uso">Casos de Uso</h1>
+<h2 id="estudo-de-caso-1-pbb-healthnet">Estudo de Caso 1: PBB - HealthNet</h2>
+<h3 id="product-backlog-building-pbb">Product Backlog Building (PBB)</h3>
+<p>O Product Backlog Building (PBB) foi desenvolvido para o estudo de caso HealthNet, organizando as histórias de usuário de forma visual e estruturada:</p>
+<p><img alt="PBB Completo" src="../images/pbb.png" />
+<img alt="" src="../images/pbb1.png" /> 
+<img alt="" src="../images/pbb2.png" /> 
+<img alt="" src="../images/pbb3.png" /> 
+<img alt="" src="../images/pbb4.png" /> 
+<img alt="" src="../images/pbb5.png" /> 
+<img alt="" src="../images/pbb6.png" /> </p>
+<p><a href="https://www.figma.com/board/Sv2EcmVULHUxMhvc9XuMxF/Untitled?node-id=0-1&amp;t=PQwmdDAlY8JaTPvL-1">Acesse o PBB completo no Figma</a></p>
+<h3 id="bdd-healthnet">BDD - HealthNet</h3>
+<h4 id="criterios-de-aceitacao-completos-para-pbis-do-healthnet">Critérios de Aceitação Completos para PBIs do HealthNet</h4>
+<p>Este documento apresenta os critérios de aceitação completos para os Product Backlog Items (PBIs) do sistema HealthNet, seguindo o padrão BDD (Behavior-Driven Development).</p>
+<p><a href="https://docs.google.com/document/d/1fwSefeXna3qyijbS4PAOcKDzwHNc-hFtlOh8QT_2yBk/edit?tab=t.0">Acesse o documento completo do BDD no Google Docs</a></p>
+<hr />
+<h4 id="persona-maria-recepcionista">Persona: Maria – Recepcionista</h4>
+<p><strong>Feature:</strong> Cadastrar novos pacientes<br />
+<strong>PBI:</strong> Coletar informações pessoais e médicas, gerando um registro inicial, do paciente.
+<strong>US01 - Cadastrar paciente:</strong> </p>
+<blockquote>
+<p>Como recepcionista, Quero coletar e registrar informações pessoais e médicas de um novo paciente, Para que ele tenha um cadastro inicial completo no sistema.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema permite preencher os seguintes campos obrigatórios: nome completo, CPF, telefone de contato e dados clínicos (alergias, comorbidades, uso de medicamentos).
+- O botão “Salvar” só fica habilitado quando todos os campos obrigatórios estiverem preenchidos.
+- Após o cadastro ser salvo, o sistema exibe um número identificador único na tela de confirmação.</p>
+<p><strong>BDDs:</strong> </p>
+<pre><code class="language-gherkin">Dado que a recepcionista &quot;Maria Souza&quot; acessa o formulário de cadastro do paciente,
+Quando ela preenche os campos obrigatórios: nome (&quot;Lucas Pereira da Silva&quot;), contato (&quot;(61) 98123-4567&quot;), CPF (&quot;123.456.789-00&quot;) e dados clínicos (&quot;alérgico a penicilina&quot;),
+Então o sistema valida e aceita o cadastro, pois todos os campos obrigatórios foram preenchidos corretamente.
+
+Dado que o cadastro do paciente &quot;Lucas Pereira da Silva&quot; foi finalizado,
+Quando o sistema confirma o registro,
+Então ele gera o identificador único &quot;PAT202407140001&quot; e exibe uma mensagem de sucesso.
+</code></pre>
+<hr />
+<h4 id="persona-maria-recepcionista_1">Persona: Maria – Recepcionista</h4>
+<p><strong>Feature:</strong> Cadastrar novos pacientes<br />
+<strong>PBI:</strong> Confirmar e arquivar o cadastro, garantindo a disponibilidade imediata, dos dados do paciente.
+<strong>US02 - Confirmar e arquivar cadastro:</strong> </p>
+<blockquote>
+<p>Como recepcionista, Quero confirmar e salvar o cadastro do paciente após revisão, Para que os dados fiquem disponíveis imediatamente para consulta.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema salva o cadastro do paciente apenas após o preenchimento de todos os campos obrigatórios e confirmação pelo usuário.
+- Após o cadastro ser salvo, os dados do paciente ficam disponíveis para usuários com perfil de acesso autorizado (ex: médicos, farmacêuticos).
+- O sistema exibe uma mensagem de confirmação indicando que o cadastro foi salvo com sucesso.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que a recepcionista &quot;Maria Souza&quot; concluiu o preenchimento do cadastro do paciente &quot;Lucas Pereira da Silva&quot;,
+Quando ela clica no botão &quot;Confirmar cadastro&quot;,
+Então o sistema salva o cadastro e exibe a mensagem &quot;Cadastro realizado com sucesso&quot;.
+
+Dado que o cadastro de &quot;Lucas Pereira da Silva&quot; foi salvo com sucesso,
+Quando a médica &quot;Dra. Ana Beatriz Lima&quot; acessa o sistema com perfil autorizado,
+Então os dados do paciente ficam disponíveis para consulta.
+
+Dado que o cadastro foi confirmado,
+Quando o sistema armazena os dados,
+Então eles são registrados em uma base de dados segura com criptografia aplicada.
+</code></pre>
+<hr />
+<h4 id="persona-maria-recepcionista_2">Persona: Maria – Recepcionista</h4>
+<p><strong>Feature:</strong> Visualizar histórico de pacientes<br />
+<strong>PBI:</strong> Selecionar o paciente desejado, exibindo os dados clínicos e atendimentos anteriores, no histórico de todas as unidades
+<strong>US03 - Visualizar histórico de pacientes:</strong> </p>
+<blockquote>
+<p>Como recepcionista, Quero acessar o histórico clínico e de atendimentos de um paciente, Para acompanhar seus registros, mesmo que atendido em outras unidades.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema exibe os seguintes dados clínicos: alergias, comorbidades, e medicamentos em uso, além do histórico de atendimentos com data, unidade e profissional.
+- A funcionalidade de histórico só é acessível a usuários com permissão específica no perfil (ex: médicos e recepcionistas).
+- Se o paciente não tiver histórico registrado, o sistema exibe a mensagem: “Nenhum atendimento encontrado até o momento”.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que a recepcionista &quot;Maria Souza&quot; acessa o sistema com permissão adequada,
+Quando ela seleciona o paciente &quot;Joana Carla Andrade&quot; com atendimentos em três unidades diferentes,
+Então o sistema exibe os dados clínicos (diabetes tipo 2, uso de insulina) e as datas dos atendimentos: 01/05/2024, 18/06/2024 e 02/07/2024.
+
+Dado que o usuário &quot;Carlos Mendes&quot; tenta acessar o histórico do paciente sem permissão de acesso,
+Quando ele acessa a funcionalidade de histórico,
+Então o sistema exibe a mensagem &quot;Acesso não autorizado&quot;.
+
+Dado que a recepcionista acessa o histórico do paciente &quot;Pedro Augusto Lima&quot;,
+Quando nenhum atendimento está registrado no sistema,
+Então o sistema exibe a mensagem &quot;Nenhum atendimento encontrado até o momento&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-dr-joao-clinico-geral">Persona: Dr. João – Clínico Geral</h4>
+<p><strong>Feature:</strong> Acessar histórico médico<br />
+<strong>PBI:</strong> Entrar no sistema com perfil autorizado, liberando o acesso seguro, ao prontuário do paciente.
+<strong>US04 - Acessar prontuário com perfil autorizado:</strong> </p>
+<blockquote>
+<p>Como médico, Quero acessar o sistema com autenticação segura, Para poder visualizar o prontuário de meus pacientes.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- Somente usuários com perfil "médico" ou "enfermeiro" conseguem acessar o sistema com autenticação válida.
+- Após o login, o sistema libera acesso ao menu de prontuários médicos.
+- A cada acesso ao prontuário, o sistema registra o nome do usuário, data e hora da ação em um log de auditoria visível apenas à equipe administrativa.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que o médico &quot;Dr. João Almeida&quot; possui perfil autorizado,
+Quando ele acessa o sistema com login &quot;joao.almeida@clinicavida.com&quot; e senha válida,
+Então o sistema permite o login e exibe o painel de prontuários médicos.
+
+Dado que &quot;Dr. João Almeida&quot; acessa o prontuário da paciente &quot;Fernanda Lopes&quot;,
+Quando ele realiza a autenticação com sucesso,
+Então o acesso ao prontuário é liberado.
+
+Dado que o prontuário de &quot;Fernanda Lopes&quot; foi acessado por &quot;Dr. João Almeida&quot;,
+Quando a consulta ocorre às 09:42 do dia 10/07/2025,
+Então o sistema registra o acesso com usuário, data e hora no log de auditoria.
+</code></pre>
+<hr />
+<h4 id="persona-dr-joao-clinico-geral_1">Persona: Dr. João – Clínico Geral</h4>
+<p><strong>Feature:</strong> Acessar histórico médico<br />
+<strong>PBI:</strong> Abrir o prontuário clínico completo, visualizando dados de consultas, exames e tratamentos, do paciente.
+<strong>US05 - Visualizar histórico clínico completo:</strong> </p>
+<blockquote>
+<p>Como médico, Quero visualizar em um único painel os dados de consultas, exames e tratamentos do paciente, Para compreender sua evolução clínica.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema exibe, em um único painel, as seções de consultas, exames realizados e tratamentos prescritos, organizadas por data.
+- Cada item do histórico inclui data, tipo de atendimento, profissional responsável e observações clínicas.
+- Apenas usuários com perfil "médico" conseguem visualizar esse painel.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que o médico &quot;Dr. João Almeida&quot; está autenticado no sistema,
+Quando ele acessa o painel do paciente &quot;Pedro Henrique Costa&quot;,
+Então o sistema exibe:  
+- Consultas: 12/04/2024 (gripe), 20/06/2024 (hipertensão)  
+- Exames: Hemograma (15/04/2024), Eletrocardiograma (22/06/2024)  
+- Tratamentos: &quot;Losartana 50mg – 1x/dia por 30 dias&quot;
+
+Dado que o painel do paciente está aberto,
+Quando o médico navega entre as abas,
+Então os dados clínicos são apresentados de forma organizada por seção: consultas, exames e tratamentos.
+
+Dado que o usuário &quot;Enfermeira Camila&quot; tenta acessar o histórico,
+Quando seu perfil não possui autorização,
+Então o sistema bloqueia o acesso com a mensagem &quot;Acesso restrito&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-dr-joao-clinico-geral_2">Persona: Dr. João – Clínico Geral</h4>
+<p><strong>Feature:</strong> Acessar exames<br />
+<strong>PBI:</strong> Selecionar o paciente na lista de atendimentos, localizando os registros de exames realizados, no prontuário eletrônico.
+<strong>US06 - Visualizar exames do paciente:</strong> </p>
+<blockquote>
+<p>Como médico, Quero acessar os exames realizados do paciente a partir do prontuário eletrônico, Para acompanhar os resultados de forma organizada e filtrada.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O usuário pode pesquisar um paciente pelo nome ou CPF na lista de atendimentos.
+- Ao selecionar o paciente, o sistema exibe os exames realizados, listados por data e tipo (ex: hemograma, raio-x).
+- Somente os exames vinculados ao CPF do paciente selecionado são exibidos.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que o médico &quot;Dr. João Almeida&quot; acessa a lista de atendimentos,
+Quando ele pesquisa pelo CPF &quot;456.789.123-00&quot; e seleciona o paciente &quot;Cláudia Martins&quot;,
+Então o sistema abre o prontuário correspondente.
+
+Dado que a paciente &quot;Cláudia Martins&quot; possui exames registrados,
+Quando o médico visualiza a aba &quot;Exames&quot;,
+Então o sistema exibe:  
+- 10/03/2025 – Hemograma – Disponível  
+- 20/03/2025 – Raio-X de tórax – Disponível
+
+Dado que o prontuário exibido é de &quot;Cláudia Martins&quot;,
+Quando o médico acessa os exames,
+Então apenas os exames dela são listados, sem dados de outros pacientes.
+</code></pre>
+<hr />
+<h4 id="persona-dr-joao-clinico-geral_3">Persona: Dr. João – Clínico Geral</h4>
+<p><strong>Feature:</strong> Prescrever digitalmente<br />
+<strong>PBI:</strong> Assinar eletronicamente e enviar a receita, liberando o documento de forma segura, para o paciente ou farmácia.
+<strong>US07 - Prescrever digitalmente:</strong> </p>
+<blockquote>
+<p>Como médico, Quero preencher e assinar digitalmente uma prescrição, Para que o paciente ou a farmácia tenha acesso a um documento válido e seguro.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O médico pode preencher a prescrição digital com os seguintes campos obrigatórios: nome do paciente, medicamento, posologia, dosagem, duração e observações.
+- A prescrição só pode ser emitida após a geração de assinatura digital válida.
+- O sistema bloqueia a emissão se algum campo obrigatório estiver em branco, exibindo uma mensagem de erro clara ao usuário.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que o médico &quot;Dr. João Almeida&quot; está logado no sistema,
+Quando ele preenche a prescrição para o paciente &quot;Luciana Gomes&quot; com:  
+- Medicamento: Amoxicilina  
+- Dosagem: 500mg  
+- Posologia: 1 comprimido de 8 em 8 horas  
+- Duração: 7 dias  
+Então o sistema aceita a prescrição.
+
+Dado que a prescrição foi gerada,
+Quando o médico clica em &quot;Assinar digitalmente&quot;,
+Então a prescrição é finalizada com assinatura eletrônica válida, conforme regulamentações da Anvisa e CFM.
+
+Dado que o médico tenta salvar uma prescrição sem preencher o campo &quot;Posologia&quot;,
+Quando ele clica em &quot;Salvar&quot;,
+Então o sistema exibe o erro: &quot;Campo obrigatório: Posologia&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-livia-farmaceutica">Persona: Lívia – Farmacêutica</h4>
+<p><strong>Feature:</strong> Acessar prescrições<br />
+<strong>PBI:</strong> Abrir e verificar os detalhes da prescrição, garantindo a dispensação correta, dos medicamentos.
+<strong>US08 - Acessar prescrições digitais:</strong> </p>
+<blockquote>
+<p>Como farmacêutica, Quero acessar e verificar prescrições digitais, Para garantir a dispensação correta dos medicamentos.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- A farmacêutica autenticada consegue buscar uma prescrição por CPF do paciente ou código da receita.
+- O sistema exibe todos os dados da prescrição: medicamento, dosagem, posologia, data de emissão e validade.
+- O sistema bloqueia a dispensação se a receita estiver vencida ou com campos obrigatórios ausentes.
+- Após a dispensação, é possível registrar no sistema se foi feita de forma total ou parcial, com data, hora e nome da farmacêutica.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que a farmacêutica &quot;Lívia Duarte&quot; está logada no sistema,
+Quando ela busca pela receita com o código &quot;RX-2025-00123&quot;,
+Então o sistema exibe os dados:  
+- Paciente: João Felipe da Rocha  
+- Medicamento: Losartana 50mg  
+- Posologia: 1x/dia  
+- Data de emissão: 12/07/2025  
+- Validade: 19/07/2025
+
+Dado que a receita está vencida (validade 10/07/2025 e hoje é 14/07/2025),
+Quando Lívia tenta dispensar o medicamento,
+Então o sistema bloqueia a operação com a mensagem &quot;Prescrição vencida&quot;.
+
+Dado que a prescrição está válida,
+Quando Lívia registra a dispensação total às 10:15 do dia 14/07/2025,
+Então o sistema salva o log com: responsável (&quot;Lívia Duarte&quot;), data e hora.
+</code></pre>
+<hr />
+<h4 id="persona-livia-farmaceutica_1">Persona: Lívia – Farmacêutica</h4>
+<p><strong>Feature:</strong> Liberar medicamentos<br />
+<strong>PBI:</strong> Conferir informações básicas do paciente e da prescrição física, assegurando a compatibilidade do pedido, com o tratamento.
+<strong>US09 - Liberar medicamentos com prescrição física:</strong> </p>
+<blockquote>
+<p>Como farmacêutica, Quero conferir a prescrição física com os dados do paciente, Para liberar o medicamento com segurança.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- A farmacêutica autenticada pode consultar os dados básicos do paciente: nome, CPF, histórico clínico resumido.
+- A farmacêutica pode comparar manualmente os dados da receita física com os do prontuário.
+- A liberação do medicamento só ocorre se houver correspondência entre a prescrição apresentada e o tratamento registrado no prontuário.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que a farmacêutica &quot;Lívia Duarte&quot; acessa o prontuário da paciente &quot;Camila Nunes&quot;,
+Quando ela confere os dados do tratamento registrado: &quot;Paracetamol 750mg – 1 comprimido a cada 6h por 5 dias&quot;,
+E compara com a prescrição física apresentada,
+Então o sistema confirma a compatibilidade.
+
+Dado que há divergência entre a prescrição física (Ibuprofeno) e o prontuário (Paracetamol),
+Quando Lívia tenta registrar a dispensação,
+Então o sistema exibe um alerta: &quot;Incompatibilidade entre prescrição apresentada e tratamento registrado&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-rafael-coordenador-de-agendamento">Persona: Rafael – Coordenador de Agendamento</h4>
+<p><strong>Feature:</strong> Confirma consultas próximas com pacientes<br />
+<strong>PBI:</strong> Programar o sistema para enviar lembretes automáticos, disparando notificações por SMS, e-mail ou WhatsApp, aos pacientes com consultas agendadas.
+<strong>US10 - Enviar lembretes de consulta:</strong> </p>
+<blockquote>
+<p>Como coordenador de agendamento, Quero programar o envio automático de lembretes, Para garantir que os pacientes sejam notificados sobre suas consultas.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema identifica automaticamente todas as consultas agendadas com pelo menos 24 horas de antecedência.
+- O sistema envia apenas um lembrete por canal (SMS, e-mail ou WhatsApp), com base na preferência cadastrada pelo paciente.
+- A mensagem enviada contém: nome do paciente, data, hora, nome do profissional e local da consulta.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que o sistema contém uma consulta agendada para o paciente &quot;Carlos Mendes&quot; no dia 15/07/2025 às 14h00,
+Quando for 14/07/2025 às 14h00 (24 horas antes),
+Então o sistema identifica essa consulta para envio de lembrete.
+
+Dado que o paciente &quot;Carlos Mendes&quot; tem preferência por WhatsApp,
+Quando o sistema envia o lembrete,
+Então ele recebe a mensagem:  
+&quot;Olá Carlos, sua consulta está agendada para 15/07 às 14h00 com Dr. Guilherme. Local: Clínica Sul.&quot;
+
+Dado que o paciente possui múltiplos canais cadastrados,
+Quando o lembrete é enviado,
+Então o sistema envia **apenas um** lembrete por canal e por consulta.
+</code></pre>
+<hr />
+<h4 id="persona-clara-paciente">Persona: Clara – Paciente</h4>
+<p><strong>Feature:</strong> Fazer agendamentos<br />
+<strong>PBI:</strong> Selecionar data, horário e profissional desejado, criando um agendamento no sistema, da consulta.
+<strong>US11 - Fazer agendamento de consulta:</strong> </p>
+<blockquote>
+<p>Como paciente, Quero selecionar data, horário e profissional, Para realizar meu agendamento com facilidade.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O paciente logado consegue visualizar os horários disponíveis por profissional e unidade.
+- Ao selecionar data, horário e profissional, o sistema confirma o agendamento com uma mensagem de sucesso.
+- Horários já preenchidos são automaticamente desabilitados para seleção.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que a paciente &quot;Clara Vasconcelos&quot; está logada no sistema,
+Quando ela acessa o menu &quot;Agendamentos&quot; e seleciona o profissional &quot;Dra. Patrícia Lima&quot; da unidade &quot;Clínica Norte&quot;,
+Então o sistema exibe os horários disponíveis para os próximos 7 dias.
+
+Dado que Clara seleciona a data 17/07/2025 e horário 10h30,
+Quando ela clica em &quot;Confirmar agendamento&quot;,
+Então o sistema registra o agendamento com sucesso e exibe a mensagem &quot;Consulta marcada para 17/07/2025 às 10h30 com Dra. Patrícia Lima&quot;.
+
+Dado que o horário das 10h30 já foi preenchido por outro paciente,
+Quando Clara tenta selecioná-lo,
+Então o sistema exibe o aviso &quot;Horário indisponível&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-clara-paciente_1">Persona: Clara – Paciente</h4>
+<p><strong>Feature:</strong> Solicitar histórico médico<br />
+<strong>PBI:</strong> Preencher o formulário ou selecionar a opção de solicitação, gerando um pedido formal, do prontuário.
+<strong>US12 - Solicitar histórico médico:</strong> </p>
+<blockquote>
+<p>Como paciente, Quero preencher uma solicitação de prontuário, Para ter acesso ao meu histórico médico.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O paciente ou responsável logado consegue acessar a opção “Solicitar Histórico” no menu do sistema.
+- O formulário contém campos obrigatórios: nome do solicitante, motivo da solicitação e tipo de histórico desejado.
+- Após o envio, o sistema gera um número de protocolo e exibe uma mensagem de confirmação com data da solicitação.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que a paciente &quot;Clara Vasconcelos&quot; está logada no sistema,
+Quando ela acessa a opção &quot;Solicitar histórico médico&quot; e preenche:  
+- Motivo: &quot;Para consulta com especialista particular&quot;  
+- Tipo: &quot;Histórico clínico completo&quot;,
+Então o sistema exibe a tela de confirmação da solicitação.
+
+Dado que Clara confirma a solicitação,
+Quando ela clica em &quot;Enviar&quot;,
+Então o sistema gera o número de protocolo &quot;HIST-2025-0045&quot; e exibe a mensagem &quot;Sua solicitação foi registrada com sucesso&quot;.
+
+Dado que a solicitação &quot;HIST-2025-0045&quot; foi registrada,
+Quando Clara acessa a aba &quot;Minhas solicitações&quot;,
+Então ela vê o status atual como &quot;Em análise&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-clara-paciente_2">Persona: Clara – Paciente</h4>
+<p><strong>Feature:</strong> Ver resultados de exames<br />
+<strong>PBI:</strong> Acessar o portal ou aplicativo com login autorizado, liberando o acesso ao prontuário eletrônico, do paciente.
+<strong>US13 - Ver resultados de exames (autenticado):</strong> </p>
+<blockquote>
+<p>Como paciente, Quero acessar meu prontuário com login autorizado, Para consultar meus resultados de exames.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O paciente consegue acessar o sistema com login e senha cadastrados ou autenticação via token.
+- Após login bem-sucedido, o sistema libera a aba “Exames” no menu principal.
+- Todas as informações exibidas seguem os padrões da LGPD, com bloqueio a qualquer tentativa de acesso não autorizado.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que a paciente &quot;Clara Vasconcelos&quot; possui login &quot;clara.vasconcelos@email.com&quot; e senha cadastrada,
+Quando ela acessa o portal e insere suas credenciais corretamente,
+Então o sistema autentica o acesso e redireciona para a tela inicial.
+
+Dado que Clara foi autenticada com sucesso,
+Quando ela clica na aba &quot;Prontuário&quot;,
+Então o sistema exibe a lista de exames disponíveis com segurança e conforme as regras da LGPD.
+</code></pre>
+<hr />
+<h4 id="persona-clara-paciente_3">Persona: Clara – Paciente</h4>
+<p><strong>Feature:</strong> Ver resultados de exames<br />
+<strong>PBI:</strong> Selecionar a aba de exames e escolher o exame desejado, exibindo o laudo digital, do exame realizado.
+<strong>US14 - Visualizar laudos digitais:</strong> </p>
+<blockquote>
+<p>Como paciente, Quero acessar a aba de exames e visualizar laudos digitais, Para acompanhar meus resultados de forma clara.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema exibe uma lista de exames com os seguintes dados: tipo de exame, status (liberado/pendente), e data de realização.
+- Ao clicar em um exame liberado, o sistema abre o laudo em formato PDF ou visualização embutida.
+- Exames não liberados ainda pelo laboratório não podem ser acessados.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que Clara acessa a aba &quot;Exames&quot; autenticada no sistema,
+Quando ela visualiza a lista de exames realizados,
+Então o sistema exibe:  
+- Hemograma completo – 10/07/2025 – Status: Disponível  
+- Raio-X – 05/07/2025 – Status: Aguardando liberação
+
+Dado que Clara clica sobre &quot;Hemograma completo&quot;,
+Quando o laudo está disponível,
+Então o sistema abre o documento em visualização embutida (PDF).
+
+Dado que Clara tenta acessar o exame &quot;Raio-X&quot;,
+Quando o status está como &quot;Aguardando liberação&quot;,
+Então o sistema exibe a mensagem &quot;Este exame ainda não foi liberado pelo laboratório&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-clara-paciente_4">Persona: Clara – Paciente</h4>
+<p><strong>Feature:</strong> Ver resultados de exames<br />
+<strong>PBI:</strong> Visualizar ou baixar o documento disponível, permitindo a leitura e o armazenamento, dos resultados de exames.
+<strong>US15 - Baixar resultados de exames:</strong> </p>
+<blockquote>
+<p>Como paciente, Quero visualizar e baixar meus exames, Para poder armazenar ou apresentar quando necessário.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O paciente pode visualizar os exames diretamente na plataforma, em tela responsiva.
+- Um botão “Baixar PDF” está disponível abaixo do exame, permitindo o download local.
+- O PDF é gerado com layout organizado e campos legíveis, incluindo assinatura digital e cabeçalho do sistema.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que Clara está visualizando o exame &quot;Hemograma completo&quot; do dia 10/07/2025,
+Quando ela clica em &quot;Baixar PDF&quot;,
+Então o sistema inicia o download do arquivo &quot;laudo-hemograma-2025-07-10.pdf&quot;.
+
+Dado que o documento foi baixado,
+Quando Clara abre o arquivo,
+Então ele exibe os dados com formatação legível: cabeçalho com logo da clínica, nome do paciente, data, resultado e assinatura digital do responsável técnico.
+</code></pre>
+<hr />
+<h4 id="persona-clara-paciente_5">Persona: Clara – Paciente</h4>
+<p><strong>Feature:</strong> Solicitar histórico médico<br />
+<strong>PBI:</strong> Enviar a solicitação para análise e liberação, iniciando o processo de disponibilização, dos dados médicos.
+<strong>US16 - Enviar solicitação de histórico:</strong> </p>
+<blockquote>
+<p>Como paciente, Quero enviar um pedido de liberação do histórico médico, Para que os dados sejam processados e disponibilizados com segurança.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- Após login, o paciente ou responsável pode acessar a aba “Solicitar Histórico” e clicar em “Enviar Solicitação”.
+- A solicitação é registrada no sistema com número de protocolo visível ao solicitante.
+- O sistema exibe uma notificação confirmando que os dados foram recebidos e serão processados com segurança.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que Clara está logada no sistema com CPF &quot;321.654.987-01&quot;,
+Quando ela acessa o menu &quot;Histórico médico&quot; e clica em &quot;Nova solicitação&quot;,
+Então o sistema apresenta o formulário para preenchimento.
+
+Dado que Clara preenche os campos:  
+- Finalidade: &quot;Apresentar em consulta externa&quot;  
+- Tipo: &quot;Resumo clínico com exames&quot;,
+Quando ela clica em &quot;Enviar solicitação&quot;,
+Então o sistema gera o protocolo &quot;REQ-HIST-2025-0078&quot; e exibe a confirmação.
+
+Dado que o protocolo foi gerado,
+Quando o sistema registra a solicitação,
+Então ele armazena os dados com criptografia e exibe &quot;Solicitação enviada com sucesso&quot;.
+</code></pre>
+<hr />
+<h4 id="persona-roberto-diretor-de-tecnologia">Persona: Roberto – Diretor de Tecnologia</h4>
+<p><strong>Feature:</strong> Gerenciar a infraestrutura de tecnologia<br />
+<strong>PBI:</strong> Monitorar servidores, redes e sistemas continuamente, assegurando o funcionamento estável e seguro, da infraestrutura tecnológica.
+<strong>US17 - Monitorar infraestrutura:</strong> </p>
+<blockquote>
+<p>Como diretor de tecnologia, Quero monitorar servidores e sistemas em tempo real, Para garantir o funcionamento seguro e estável da infraestrutura.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema realiza monitoramento contínuo dos seguintes recursos: CPU, memória, largura de banda da rede e disponibilidade de serviços.
+- Os dados de monitoramento são atualizados em tempo real e exibidos em um painel com gráficos e indicadores de status.
+- O sistema envia alertas automáticos para o e-mail institucional da equipe de TI em caso de falhas críticas ou indisponibilidade de serviços.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que o sistema está operando com monitoramento ativo,
+Quando o uso de CPU no servidor principal ultrapassa 90% às 10h15,
+Então o sistema registra esse pico e envia um alerta para o e-mail &quot;infra@clinicavida.com&quot;.
+
+Dado que o sistema identifica uma falha no serviço de banco de dados às 11h02,
+Quando a falha é detectada,
+Então o status da aplicação muda para &quot;Instável&quot; e o painel exibe um alerta em vermelho.
+
+Dado que a equipe de TI acessa o painel de monitoramento,
+Quando abrem a aba &quot;Desempenho de Rede&quot;,
+Então os gráficos mostram latência média, upload, download e pacotes perdidos dos últimos 30 minutos.
+</code></pre>
+<hr />
+<h4 id="persona-roberto-diretor-de-tecnologia_1">Persona: Roberto – Diretor de Tecnologia</h4>
+<p><strong>Feature:</strong> Gerenciar a infraestrutura de tecnologia<br />
+<strong>PBI:</strong> Implementar as soluções validadas, aumentando a velocidade e estabilidade, da plataforma tecnológica.
+<strong>US18 - Executar atualizações planejadas:</strong> </p>
+<blockquote>
+<p>Como diretor de tecnologia, Quero realizar manutenções e atualizações sem afetar os usuários, Para manter a plataforma eficiente e confiável.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema segue um cronograma de manutenção técnica com data, hora e escopo definidos e visíveis à equipe de tecnologia.
+- Durante a manutenção, os serviços impactados exibem uma mensagem de indisponibilidade temporária aos usuários finais (caso aplicável).
+- Após a atualização, o sistema retorna ao funcionamento normal e as alterações implementadas são listadas em um log técnico.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que há uma atualização agendada para 16/07/2025 às 03h00,
+Quando o relógio atinge esse horário,
+Então o sistema executa o script de atualização sem impactar os serviços ativos.
+
+Dado que a atualização foi concluída,
+Quando o sistema retorna ao funcionamento normal,
+Então o log &quot;update-20250716.log&quot; é salvo no painel técnico com detalhes da operação.
+
+Dado que um usuário tenta acessar o sistema durante a manutenção,
+Quando a aplicação está em modo &quot;manutenção&quot;,
+Então é exibida a mensagem: &quot;Estamos realizando melhorias. Volte em breve.&quot;
+</code></pre>
+<hr />
+<h4 id="persona-roberto-diretor-de-tecnologia_2">Persona: Roberto – Diretor de Tecnologia</h4>
+<p><strong>Feature:</strong> Buscar soluções para a eficiência do sistema<br />
+<strong>PBI:</strong> Analisar métricas de desempenho e identificar gargalos, detectando pontos críticos de lentidão ou falha, no sistema.
+<strong>US19 - Identificar gargalos de sistema:</strong> </p>
+<blockquote>
+<p>Como diretor de tecnologia, Quero analisar métricas e identificar gargalos, Para otimizar o desempenho e resolver falhas rapidamente.</p>
+</blockquote>
+<p><strong>Critérios de aceitação:</strong>
+- O sistema coleta automaticamente métricas de desempenho como tempo médio de resposta, uso de CPU, memória e número de erros por segundo.
+- Ao detectar métricas acima de um limite configurado (ex: tempo de resposta superior a 5 segundos), o sistema destaca o componente afetado em um painel visual.
+- O sistema permite exportar relatórios com os gargalos identificados, incluindo o componente afetado, o horário da ocorrência e a métrica envolvida.</p>
+<p><strong>BDDs:</strong></p>
+<pre><code class="language-gherkin">Dado que o tempo médio de resposta ultrapassa 5 segundos entre 09h00 e 09h10,
+Quando o sistema coleta essas métricas,
+Então ele registra um gargalo no módulo &quot;Prontuário Eletrônico&quot; com código GARG2025-0032.
+
+Dado que o sistema detectou gargalos,
+Quando Roberto acessa a aba &quot;Relatórios de Desempenho&quot;,
+Então ele vê um gráfico com:  
+- Nome do módulo afetado  
+- Tempo médio de resposta  
+- Horário da ocorrência  
+- Taxa de erro
+
+Dado que o relatório é gerado,
+Quando Roberto clica em &quot;Exportar&quot;,
+Então o arquivo &quot;desempenho-14-07-2025.pdf&quot; é baixado com os dados da análise.
+</code></pre>
+<h2 id="estudo-de-caso-2-usm-comuneventos">Estudo de Caso 2: USM - ComunEventos</h2>
+<h3 id="user-story-mapping-usm">User Story Mapping (USM)</h3>
+<p>Este USM foi desenvolvido durante a atividade de estudo de caso do sistema ComunEventos:</p>
+<p><img alt="USM Completo" src="../images/usm.png" />
+<img alt="Quadro de Complexidade" src="../images/usm1.png" />
+<img alt="Quadro de Complexidade" src="../images/usm2.png" />
+<img alt="" src="../images/usm4.png" />
+<img alt="" src="../images/usm5.png" /> 
+<img alt="" src="../images/usm6.png" />
+<img alt="" src="../images/usm7.png" />
+<img alt="" src="../images/usm8.png" /> </p>
+<p><img alt="Sobre o projeto" src="../images/usm9.png" /></p>
+<p><a href="https://miro.com/app/board/uXjVInoXe-k=/">Acesse o USM do Estudo de Caso completo no Miro</a></p>
+<h3 id="bdd-comuneventos">BDD - ComunEventos</h3>
+<h4 id="criterios-de-aceitacao-completos-para-user-stories-do-mvp">Critérios de Aceitação Completos para User Stories do MVP</h4>
+<p>Este documento apresenta os critérios de aceitação completos para as 35 User Stories colocadas no MVP do sistema ComunEventos, seguindo o padrão BDD (Behavior-Driven Development).</p>
+<p><a href="https://docs.google.com/document/d/1pbP3jJbLqM3W5ogY0hJ9ZvA8cGE3Kahbp5ONC6vERX0/edit?tab=t.0">Acesse o documento completo no Google Docs</a></p>
+<hr />
+<h4 id="1-clareza-sobre-tarefas-voluntario">1. Clareza sobre tarefas (Voluntário)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O voluntário consegue visualizar todas as tarefas atribuídas a ele
+2) Cada tarefa exibe descrição completa e passo a passo de execução
+3) O sistema mostra o status atual de cada tarefa (pendente/em andamento/concluído)
+4) O voluntário consegue solicitar esclarecimentos quando informações estiverem incompletas</p>
+<p><strong>Funcionalidade:</strong> Clareza sobre tarefas e responsabilidades
+Como Voluntário, Quero receber clareza sobre as tarefas e responsabilidades que devo desempenhar, Para saber como ajudar efetivamente</p>
+<p><strong>Cenário:</strong> Visualizar minhas tarefas atribuídas</p>
+<pre><code class="language-gherkin">Dado que estou logado como voluntário
+Quando acesso a seção &quot;Minhas Tarefas&quot;
+Então devo ver uma lista com:
+- Descrição clara de cada tarefa
+- Prazo para conclusão
+- Responsável designado
+- Status atual
+</code></pre>
+<hr />
+<h4 id="2-busca-de-eventos-participante">2. Busca de eventos (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema filtra eventos por categoria selecionada
+2) A busca por data retorna apenas eventos no período especificado
+3) A busca por localização mostra eventos num raio de distância configurável
+4) Os resultados exibem informações essenciais para decisão (data, local, preço)</p>
+<p><strong>Funcionalidade:</strong> Busca de eventos por categoria, data ou localização
+Como Participante do Evento, Quero procurar eventos por categoria, data ou localização, Para encontrar opções do meu interesse</p>
+<p><strong>Cenário:</strong> Buscar eventos por categoria</p>
+<pre><code class="language-gherkin">Dado que estou na página de busca de eventos
+Quando seleciono a categoria &quot;Música&quot;
+Então o sistema deve exibir apenas eventos relacionados à categoria &quot;Música&quot;
+E cada resultado deve mostrar:
+- Nome do evento
+- Data e horário
+- Localização
+- Breve descrição
+</code></pre>
+<hr />
+<h4 id="3-divulgacao-em-redes-sociais-organizador">3. Divulgação em redes sociais (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema permite compartilhamento em pelo menos 3 redes sociais diferentes
+2) Cada publicação inclui automaticamente imagem, descrição e link do evento
+3) O organizador pode personalizar a mensagem para cada rede social
+4) O sistema gera relatório de visualizações/cliques por plataforma</p>
+<p><strong>Funcionalidade:</strong> Divulgação do evento em redes sociais
+Como Organizador do Evento, Quero divulgar o evento nas redes sociais, Para alcançar um público amplo</p>
+<p><strong>Cenário:</strong> Compartilhar evento automaticamente no Facebook</p>
+<pre><code class="language-gherkin">Dado que estou na página de gerenciamento do evento
+Quando seleciono a opção &quot;Compartilhar no Facebook&quot;
+E preencho uma mensagem personalizada
+Então o sistema deve publicar o evento em minha página do Facebook
+E incluir:
+- Imagem do evento
+- Data e local
+- Link para inscrição
+</code></pre>
+<hr />
+<h4 id="4-reserva-de-local-organizador">4. Reserva de local (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema mostra apenas locais disponíveis para a data selecionada
+2) Cada local exibe capacidade, infraestrutura e valor do aluguel
+3) O organizador consegue reservar diretamente pelo sistema
+4) O sistema envia confirmação por e-mail com termos de locação</p>
+<p><strong>Funcionalidade:</strong> Escolha e reserva do local do evento
+Como Organizador do Evento, Quero escolher e reservar o local do evento, Para garantir um espaço adequado e disponível</p>
+<p><strong>Cenário:</strong> Buscar locais disponíveis por data</p>
+<pre><code class="language-gherkin">Dado que estou planejando um evento
+Quando informo a data &quot;15/11/2025&quot;
+E o número estimado de participantes &quot;200 pessoas&quot;
+Então o sistema deve mostrar uma lista de locais disponíveis
+Com as seguintes informações para cada um:
+- Nome e endereço
+- Capacidade máxima
+- Valor do aluguel
+- Estrutura oferecida
+</code></pre>
+<hr />
+<h4 id="5-atribuicao-de-tarefas-organizador">5. Atribuição de tarefas (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O organizador pode atribuir tarefas para equipe, fornecedores e voluntários
+2) Cada tarefa aceita prazos, prioridades e descrições detalhadas
+3) Os responsáveis recebem notificação imediata da atribuição
+4) O sistema impede atribuição conflitante de mesma tarefa para múltiplas pessoas</p>
+<p><strong>Funcionalidade:</strong> Atribuição de tarefas para equipe e colaboradores
+Como Organizador do Evento, Quero atribuir tarefas para minha equipe, fornecedores e voluntários, Para garantir a execução adequada de todas as atividades</p>
+<p><strong>Cenário:</strong> Atribuir tarefa para membro da equipe</p>
+<pre><code class="language-gherkin">Dado que estou na área de gestão de tarefas do evento
+Quando seleciono &quot;Nova Tarefa&quot;
+E preencho:
+- Título: &quot;Montagem do palco&quot;
+- Responsável: &quot;Equipe de Logística&quot;
+- Prazo: &quot;20/11/2025 às 14:00&quot;
+- Descrição detalhada
+Então o sistema deve:
+- Registrar a tarefa
+- Notificar o responsável por e-mail
+- Atualizar o quadro de tarefas
+</code></pre>
+<hr />
+<p><strong>Observação:</strong> Este documento contém as 35 User Stories completas com critérios de aceitação e cenários BDD detalhados. As User Stories 6-35 incluem funcionalidades como: Gerenciamento de pagamentos, Reconhecimento de voluntários, Visualização de detalhes do evento, Ingresso digital, Criação de página do evento, Definição do tipo de evento, Pesquisas de feedback, Seleção de data/hora, E-mails de marketing, Pagamento seguro, Instruções para o evento, Formulário de inscrição, Checklist de tarefas, Atualizações para participantes, Configuração de inscrição, Notificações de eventos, Informações para patrocinadores, Coordenação no evento, Busca por patrocínios, Acompanhamento de status, Visualização de patrocínios, Confirmação de inscrição, Definição de agenda, Comunicação com fornecedores, Navegação no local, Orientação para voluntários, Notificações de mudanças, Comunicação com organizadores, Criação de cronograma e Análise de feedback.</p>
+<p>Para visualizar todas as User Stories com seus critérios de aceitação e cenários BDD completos, acesse o documento no Google Docs através do link fornecido acima.</p>
+<hr />
+<h4 id="6-gerenciamento-de-pagamentos-organizador">6. Gerenciamento de pagamentos (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema aceita pelo menos 3 métodos de pagamento diferentes
+2) Transações são processadas com segurança (certificado SSL)
+3) O organizador pode definir diferentes categorias de ingressos
+4) O sistema gera comprovante automático para cada pagamento</p>
+<p><strong>Funcionalidade:</strong> Gerenciamento de opções de pagamento
+Como Organizador do Evento, Quero definir e gerenciar as opções de pagamento, Para coletar as taxas de inscrição de forma eficiente</p>
+<p><strong>Cenário:</strong> Configurar métodos de pagamento disponíveis</p>
+<pre><code class="language-gherkin">Dado que estou na área de configurações financeiras do evento
+Quando acesso &quot;Opções de Pagamento&quot;
+Então posso selecionar e configurar:
+- Cartões de crédito (Visa, Mastercard, etc.)
+- Pix
+- Boleto bancário
+- Pagamento presencial
+E definir:
+- Prazos para cada método
+- Possibilidade de parcelamento
+- Taxas adicionais (se aplicável)
+</code></pre>
+<hr />
+<h4 id="7-reconhecimento-de-voluntarios">7. Reconhecimento de voluntários</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema emite certificado digital após conclusão do evento
+2) O certificado inclui horas trabalhadas e atividades realizadas
+3) Voluntários aparecem na página de agradecimentos do evento
+4) O sistema permite compartilhamento em redes profissionais</p>
+<p><strong>Funcionalidade:</strong> Reconhecimento do tempo e esforço dos voluntários
+Como Voluntário, Quero ter meu trabalho reconhecido pelos organizadores e comunidade, Para sentir que minha contribuição foi valorizada</p>
+<p><strong>Cenário:</strong> Receber certificado de participação</p>
+<pre><code class="language-gherkin">Dado que participei como voluntário no evento
+Quando o evento é concluído
+Então o sistema deve:
+- Gerar automaticamente um certificado digital
+- Incluir meu nome e horas voluntariadas
+- Listar as atividades realizadas
+- Permitir download em PDF compartilhável
+</code></pre>
+<hr />
+<h4 id="8-visualizacao-de-detalhes-do-evento-participante">8. Visualização de detalhes do evento (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) A página exibe descrição completa, agenda e localização com mapa
+2) Informações do organizador são verificadas e confiáveis
+3) O participante consegue visualizar fotos/vídeos de edições anteriores
+4) A página possui seção clara de dúvidas frequentes</p>
+<p><strong>Funcionalidade:</strong> Visualização completa de detalhes do evento
+Como Participante do Evento, Quero visualizar detalhes completos de um evento, Para decidir se desejo participar</p>
+<p><strong>Cenário:</strong> Acessar página completa do evento</p>
+<pre><code class="language-gherkin">Dado que encontrei um evento de meu interesse
+Quando acesso sua página dedicada
+Então devo visualizar:
+- Descrição completa e objetivos
+- Agenda detalhada com horários
+- Localização com mapa
+- Informações do organizador
+- Fotos/vídeos de edições anteriores
+</code></pre>
+<hr />
+<h4 id="9-ingresso-digital-participante">9. Ingresso digital (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O ingresso contém QR code válido para entrada
+2) O participante consegue acessar pelo celular sem necessidade de impressão
+3) O comprovante exibe dados essenciais (nome, evento, data, local)
+4) O sistema permite reenvio do ingresso por e-mail quando solicitado</p>
+<p><strong>Funcionalidade:</strong> Ingresso digital do participante
+Como Participante do Evento, Quero acessar meu ingresso digital, Para facilitar a entrada no evento</p>
+<p><strong>Cenário:</strong> Visualizar comprovante de inscrição</p>
+<pre><code class="language-gherkin">Dado que me inscrevi em um evento
+Quando acesso minha área do participante
+Então posso:
+- Visualizar ingresso com QR code
+- Baixar em formato PDF
+- Adicionar à carteira digital (Google/Apple Wallet)
+- Reenviar para meu e-mail
+</code></pre>
+<hr />
+<h4 id="10-criacao-de-pagina-do-evento-organizador">10. Criação de página do evento (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O editor permite formatação rica (texto, imagens, vídeos)
+2) O sistema valida campos obrigatórios antes da publicação
+3) A URL gerada é amigável e compartilhável
+4) O organizador pode fazer edições após publicação</p>
+<p><strong>Funcionalidade:</strong> Publicação da página do evento
+Como Organizador do Evento, Quero criar e publicar uma página completa, Para divulgar todas as informações</p>
+<p><strong>Cenário:</strong> Publicar página com sucesso</p>
+<pre><code class="language-gherkin">Dado que completei todas as seções obrigatórias
+Quando clico em &quot;Publicar Evento&quot;
+Então o sistema deve:
+- Validar informações completas
+- Gerar URL amigável
+- Disponibilizar página publicamente
+- Permitir edições posteriores
+</code></pre>
+<hr />
+<h4 id="11-definicao-do-tipo-de-evento-organizador">11. Definição do tipo de evento (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema oferece pelo menos 5 categorias principais de eventos
+2) A seleção altera configurações padrão apropriadas ao tipo
+3) O tipo aparece claramente na página pública do evento
+4) O organizador pode criar subtipos personalizados quando necessário</p>
+<p><strong>Funcionalidade:</strong> Classificação do tipo de evento
+Como Organizador do Evento, Quero definir o tipo de evento, Para classificar sua natureza</p>
+<p><strong>Cenário:</strong> Selecionar categoria principal</p>
+<pre><code class="language-gherkin">Dado que estou criando um novo evento
+Quando seleciono o tipo de evento
+Então posso escolher entre opções como:
+- Feira local
+- Workshop educacional
+- Evento beneficente
+- Conferência profissional
+E o sistema deve sugerir configurações padrão conforme o tipo
+</code></pre>
+<hr />
+<h4 id="12-pesquisas-de-feedback-organizador">12. Pesquisas de feedback (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema envia pesquisa automaticamente após o evento
+2) As perguntas podem ser personalizadas pelo organizador
+3) Os resultados são compilados em relatórios analíticos
+4) O sistema destaca comentários relevantes automaticamente</p>
+<p><strong>Funcionalidade:</strong> Coleta de feedback pós-evento
+Como Organizador do Evento, Quero criar e distribuir pesquisas, Para coletar opiniões dos participantes</p>
+<p><strong>Cenário:</strong> Enviar pesquisa automatizada</p>
+<pre><code class="language-gherkin">Dado que o evento foi concluído
+Quando ativo a pesquisa de satisfação
+Então o sistema deve:
+- Enviar e-mail automático aos participantes
+- Coletar respostas de forma anônima
+- Gerar relatório consolidado
+- Alertar sobre comentários importantes
+</code></pre>
+<hr />
+<h4 id="13-selecao-de-datahora-organizador">13. Seleção de data/hora (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O calendário evita marcação em feriados nacionais
+2) O sistema alerta sobre conflitos de horário
+3) Mudanças na programação disparam notificações
+4) O organizador pode definir múltiplos dias para eventos prolongados</p>
+<p><strong>Funcionalidade:</strong> Configuração de data do evento
+Como Organizador do Evento, Quero selecionar data e hora, Para que participantes possam planejar</p>
+<p><strong>Cenário:</strong> Definir período principal</p>
+<pre><code class="language-gherkin">Dado que estou configurando o evento
+Quando insiro:
+- Data de início: 15/11/2025
+- Hora: 14:00
+- Duração: 3 horas
+Então o sistema deve:
+- Verificar conflitos com feriados
+- Sugerir horários alternativos se necessário
+- Atualizar automaticamente todas as comunicações
+</code></pre>
+<hr />
+<h4 id="14-e-mails-de-marketing-organizador">14. E-mails de marketing (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema permite segmentação da lista de contatos
+2) Os e-mails são responsivos (mobile-friendly)
+3) O organizador visualiza taxa de abertura/clique
+4) O sistema impede envios em massa não autorizados</p>
+<p><strong>Funcionalidade:</strong> Campanhas de e-mail marketing
+Como Organizador do Evento, Quero enviar e-mails direcionados, Para divulgar meu evento</p>
+<p><strong>Cenário:</strong> Enviar convite personalizado</p>
+<pre><code class="language-gherkin">Dado que importei minha lista de contatos
+Quando crio uma campanha de divulgação
+Então posso:
+- Segmentar por interesses
+- Personalizar mensagens
+- Agendar envios
+- Acompanhar taxas de abertura
+</code></pre>
+<hr />
+<h4 id="15-pagamento-seguro-participante">15. Pagamento seguro (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Dados financeiros são criptografados
+2) O sistema valida informações antes do processamento
+3) Transações recusadas explicam o motivo
+4) O participante recebe comprovante imediato</p>
+<p><strong>Funcionalidade:</strong> Processamento de pagamentos
+Como Participante do Evento, Quero pagar meu ingresso com segurança, Para garantir minha participação</p>
+<p><strong>Cenário:</strong> Finalizar compra com cartão</p>
+<pre><code class="language-gherkin">Dado que selecionei um evento pago
+Quando preencho os dados do cartão
+Então o sistema deve:
+- Validar informações em tempo real
+- Processar pagamento criptografado
+- Enviar comprovante imediato
+- Oferecer garantia contra fraudes
+</code></pre>
+<hr />
+<h4 id="16-instrucoes-para-o-evento-participante">16. Instruções para o evento (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) As informações chegam pelo menos 24h antes
+2) O material inclui mapa, programação e contatos importantes
+3) O participante pode acessar offline quando necessário
+4) Há versão resumida para consulta rápida no local</p>
+<p><strong>Funcionalidade:</strong> Guia do participante
+Como Participante do Evento, Quero receber instruções claras, Para me preparar adequadamente</p>
+<p><strong>Cenário:</strong> Acessar informações do dia</p>
+<pre><code class="language-gherkin">Dado que minha inscrição foi confirmada
+Quando faltam 3 dias para o evento
+Então recebo e-mail com:
+- Programação detalhada
+- Mapa de acesso
+- Regras de conduta
+- Contatos de emergência
+</code></pre>
+<hr />
+<h4 id="17-formulario-de-inscricao-participante">17. Formulário de inscrição (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O formulário é completável em menos de 2 minutos
+2) Campos obrigatórios são claramente marcados
+3) O sistema sugere autocompletar quando possível
+4) Dados são salvos automaticamente durante o preenchimento</p>
+<p><strong>Funcionalidade:</strong> Inscrição rápida em eventos
+Como Participante do Evento, Quero preencher formulários simples, Para me registrar rapidamente</p>
+<p><strong>Cenário:</strong> Completar inscrição em 2 minutos</p>
+<pre><code class="language-gherkin">Dado que encontrei um evento interessante
+Quando acesso o formulário de inscrição
+Então posso:
+- Preencher campos essenciais apenas
+- Usar autopreenchimento
+- Salvar dados para próximos eventos
+- Receber confirmação imediata
+</code></pre>
+<hr />
+<h4 id="18-checklist-de-tarefas-organizador">18. Checklist de tarefas (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema permite criação de tarefas recorrentes
+2) Cada item aceita anexos e observações
+3) O progresso geral é exibido graficamente
+4) Lembretes automáticos são enviados conforme configuração</p>
+<p><strong>Funcionalidade:</strong> Gerenciamento de checklist
+Como Organizador do Evento, Quero criar e acompanhar um checklist, Para garantir nada seja esquecido</p>
+<p><strong>Cenário:</strong> Adicionar nova tarefa ao checklist</p>
+<pre><code class="language-gherkin">Dado que estou planejando o evento
+Quando adiciono uma tarefa:
+- Título: &quot;Contratar buffet&quot;
+- Responsável: &quot;Maria&quot;
+- Prazo: &quot;10/11/2025&quot;
+Então o sistema deve:
+- Incluir no checklist geral
+- Notificar o responsável
+- Atualizar status como &quot;Pendente&quot;
+</code></pre>
+<hr />
+<h4 id="19-atualizacoes-para-participantes-organizador">19. Atualizações para participantes (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Mensagens chegam por e-mail e notificação no app
+2) O organizador sabe quantos receberam a comunicação
+3) Participantes podem optar por não receber determinados tipos
+4) Urgências são destacadas adequadamente</p>
+<p><strong>Funcionalidade:</strong> Comunicação com participantes
+Como Organizador do Evento, Quero enviar atualizações e lembretes, Para manter todos informados</p>
+<p><strong>Cenário:</strong> Enviar lembrete pré-evento</p>
+<pre><code class="language-gherkin">Dado que o evento ocorrerá em 3 dias
+Quando seleciono &quot;Enviar lembrete&quot;
+E escrevo a mensagem
+Então o sistema deve:
+- Enviar para todos inscritos
+- Incluir informações essenciais
+- Permitir personalização
+- Gerar relatório de entregas
+</code></pre>
+<hr />
+<h4 id="20-configuracao-de-inscricao-organizador">20. Configuração de inscrição (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O organizador define campos obrigatórios e opcionais
+2) O sistema valida formatos de e-mail/telefone
+3) Dados podem ser exportados para planilha
+4) Há pré-visualização do formulário antes da publicação</p>
+<p><strong>Funcionalidade:</strong> Personalização de formulário
+Como Organizador do Evento, Quero configurar o formulário, Para facilitar o registro</p>
+<p><strong>Cenário:</strong> Criar formulário personalizado</p>
+<pre><code class="language-gherkin">Dado que estou na seção de inscrições
+Quando adiciono campos:
+- Campos obrigatórios: Nome, Email
+- Campos opcionais: Empresa, Cargo
+- Perguntas específicas do evento
+Então o sistema deve:
+- Salvar o template
+- Mostrar pré-visualização
+- Permitir testes antes da publicação
+</code></pre>
+<hr />
+<h4 id="21-notificacoes-de-eventos-participante">21. Notificações de eventos (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) As recomendações são baseadas em histórico de interesses
+2) O usuário controla frequência e tipos de notificações
+3) Cada alerta contém informações essenciais para decisão
+4) Há opção para desativar recomendações específicas</p>
+<p><strong>Funcionalidade:</strong> Notificações personalizadas
+Como Participante do Evento, Quero receber recomendações, Para não perder oportunidades</p>
+<p><strong>Cenário:</strong> Receber sugestões relevantes</p>
+<pre><code class="language-gherkin">Dado que participei de eventos anteriores
+Quando há novos eventos similares
+Então o sistema deve:
+- Enviar notificação personalizada
+- Basear em meus interesses
+- Permitir configuração de frequência
+- Oferecer link direto para inscrição
+</code></pre>
+<hr />
+<h4 id="22-informacoes-para-patrocinadores-organizador">22. Informações para patrocinadores (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Relatórios incluem métricas de público atualizadas
+2) O sistema gera comprovantes de visibilidade (prints, menções)
+3) Patrocinadores podem acessar portal com dados exclusivos
+4) Alertas automáticos são enviados quando metas são atingidas</p>
+<p><strong>Funcionalidade:</strong> Relacionamento com patrocinadores
+Como Organizador do Evento, Quero manter patrocinadores informados, Para honrar acordos estabelecidos</p>
+<p><strong>Cenário:</strong> Enviar relatório de alcance</p>
+<pre><code class="language-gherkin">Dado que o evento está em andamento
+Quando preparo atualização para patrocinadores
+Então o sistema deve:
+- Gerar métricas de público
+- Incluir fotos/menções
+- Permitir envio segmentado
+- Oferecer template profissional
+</code></pre>
+<hr />
+<h4 id="23-coordenacao-no-evento-voluntario">23. Coordenação no evento (Voluntário)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O voluntário acessa sua lista de tarefas específicas
+2) Há mapa com postos e estações de trabalho
+3) Contatos de emergência são facilmente acessíveis
+4) O sistema registra check-in/check-out no local</p>
+<p><strong>Funcionalidade:</strong> Atuação no dia do evento
+Como Voluntário, Quero ajudar na execução, Para garantir bom funcionamento</p>
+<p><strong>Cenário:</strong> Receber atribuições claras</p>
+<pre><code class="language-gherkin">Dado que sou voluntário credenciado
+Quando acesso minha área no dia
+Então devo ver:
+- Minhas tarefas específicas
+- Horários de atuação
+- Ponto de encontro
+- Contato do supervisor
+</code></pre>
+<hr />
+<h4 id="24-busca-por-patrocinios-patrocinador">24. Busca por patrocínios (Patrocinador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Filtros por público-alvo retornam resultados precisos
+2) Cada evento mostra dados demográficos verificados
+3) O sistema calcula ROI estimado para diferentes níveis
+4) Há canal direto com organizadores para negociação</p>
+<p><strong>Funcionalidade:</strong> Busca de eventos para patrocínio
+Como Patrocinador, Quero encontrar eventos relevantes, Para maximizar meu investimento</p>
+<p><strong>Cenário:</strong> Filtrar eventos por público-alvo</p>
+<pre><code class="language-gherkin">Dado que estou buscando oportunidades
+Quando aplico filtros:
+- Público: &quot;Profissionais de TI&quot;
+- Região: &quot;Sudeste&quot;
+- Tamanho: &quot;500+ participantes&quot;
+Então o sistema deve mostrar:
+- Eventos compatíveis
+- Dados demográficos
+- Opções de patrocínio
+- ROI estimado
+</code></pre>
+<hr />
+<h4 id="25-acompanhamento-de-status-organizador">25. Acompanhamento de status (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O painel mostra porcentagem de conclusão geral
+2) Cada tarefa exibe histórico de alterações
+3) Alertas são disparados para atrasos
+4) O sistema permite reatribuição rápida quando necessário</p>
+<p><strong>Funcionalidade:</strong> Monitoramento de progresso
+Como Organizador do Evento, Quero acompanhar status de tarefas, Para gerenciar melhor o evento</p>
+<p><strong>Cenário:</strong> Atualizar status de tarefa</p>
+<pre><code class="language-gherkin">Dado que uma tarefa está em andamento
+Quando mudo seu status para &quot;Concluído&quot;
+Então o sistema deve:
+- Atualizar em tempo real
+- Notificar interessados
+- Registrar data/hora
+- Atualizar métricas de progresso
+</code></pre>
+<hr />
+<h4 id="26-visualizacao-de-patrocinios-patrocinador">26. Visualização de patrocínios (Patrocinador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Oportunidades são classificadas por relevância
+2) Dados de público incluem faixa etária, gênero e interesses
+3) Benefícios são detalhados por nível de investimento
+4) Há exemplos de branding em edições anteriores</p>
+<p><strong>Funcionalidade:</strong> Análise de patrocínios
+Como Patrocinador, Quero avaliar oportunidades, Para tomar decisões estratégicas</p>
+<p><strong>Cenário:</strong> Visualizar dados de público</p>
+<pre><code class="language-gherkin">Dado que encontrei um evento interessante
+Quando acesso os detalhes de patrocínio
+Então devo ver:
+- Perfil demográfico
+- Alcance estimado
+- Mídias incluídas
+- Investimento necessário
+</code></pre>
+<hr />
+<h4 id="27-confirmacao-de-inscricao-participante">27. Confirmação de inscrição (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O e-mail chega em até 2 minutos após conclusão
+2) O comprovante é gerado em formato PDF anexado
+3) Há link para adicionar ao calendário pessoal
+4) Instruções para cancelamento são claramente exibidas</p>
+<p><strong>Funcionalidade:</strong> Confirmação imediata
+Como Participante do Evento, Quero receber confirmação, Para ter certeza do meu registro</p>
+<p><strong>Cenário:</strong> Confirmação automática</p>
+<pre><code class="language-gherkin">Dado que completei minha inscrição
+Quando finalizo o processo
+Então o sistema deve:
+- Enviar e-mail imediato
+- Gerar comprovante digital
+- Incluir resumo das informações
+- Oferecer adicionar ao calendário
+</code></pre>
+<hr />
+<h4 id="28-definicao-de-agenda-organizador">28. Definição de agenda (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema alerta sobre sobreposições de horário
+2) Permite arrastar e soltar para reorganização
+3) Gera versões pública e interna automaticamente
+4) Calcula recursos necessários por período</p>
+<p><strong>Funcionalidade:</strong> Criação de programação
+Como Organizador do Evento, Quero definir a agenda detalhada, Para organizar as atividades</p>
+<p><strong>Cenário:</strong> Criar cronograma de palestras</p>
+<pre><code class="language-gherkin">Dado que estou na seção de programação
+Quando adiciono uma atividade:
+- Título: &quot;Palestra Inovação&quot;
+- Horário: &quot;10:00-11:30&quot;
+- Palestrante: &quot;Dra. Silva&quot;
+- Local: &quot;Auditório Principal&quot;
+Então o sistema deve:
+- Mostrar visualização temporal
+- Alertar sobre conflitos
+- Gerar versão para impressão
+</code></pre>
+<hr />
+<h4 id="29-comunicacao-com-fornecedores-organizador">29. Comunicação com fornecedores (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O sistema registra confirmação de recebimento
+2) Prazos são destacados automaticamente
+3) Permite anexar contratos e especificações técnicas
+4) Mantém histórico completo de conversas</p>
+<p><strong>Funcionalidade:</strong> Alinhamento com fornecedores
+Como Organizador do Evento, Quero comunicar detalhes operacionais, Para garantir cumprimento de prazos</p>
+<p><strong>Cenário:</strong> Enviar briefing para fornecedor</p>
+<pre><code class="language-gherkin">Dado que tenho contratado um serviço
+Quando acesso o módulo de fornecedores
+Então posso:
+- Enviar especificações técnicas
+- Anexar contratos
+- Definir checkpoints
+- Registrar entregas
+</code></pre>
+<hr />
+<h4 id="30-navegacao-no-local-participante">30. Navegação no local (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) O mapa funciona offline após primeiro acesso
+2) Mostra localização em tempo real no venue
+3) Inclui rotas acessíveis para cadeirantes
+4) Permite busca por atividade ou serviço (banheiro, foodtruck)</p>
+<p><strong>Funcionalidade:</strong> Orientação espacial
+Como Participante do Evento, Quero navegar facilmente, Para encontrar atividades</p>
+<p><strong>Cenário:</strong> Usar mapa interativo</p>
+<pre><code class="language-gherkin">Dado que estou no local do evento
+Quando acesso o mapa digital
+Então posso:
+- Ver minha localização atual
+- Buscar por atividades
+- Ver rotas entre espaços
+- Salvar locais favoritos
+</code></pre>
+<hr />
+<h4 id="31-orientacao-para-voluntarios-organizador">31. Orientação para voluntários (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Materiais estão disponíveis em formato mobile
+2) Inclui FAQ dinâmico atualizável
+3) Voluntários confirmam entendimento digitalmente
+4) Há canal dedicado para dúvidas operacionais</p>
+<p><strong>Funcionalidade:</strong> Direcionamento de voluntários
+Como Organizador do Evento, Quero enviar orientações, Para manter todos alinhados</p>
+<p><strong>Cenário:</strong> Enviar guia completo</p>
+<pre><code class="language-gherkin">Dado que faltam 2 dias para o evento
+Quando preparo o material para voluntários
+Então o sistema deve permitir:
+- Envio em massa
+- Confirmação de recebimento
+- Anexar documentos importantes
+- Incluir FAQ atualizado
+</code></pre>
+<hr />
+<h4 id="32-notificacoes-de-mudancas-participante">32. Notificações de mudanças (Participante)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Alertas chegam por múltiplos canais simultaneamente
+2) Mudanças são destacadas em vermelho/negrito
+3) Oferece opções alternativas quando aplicável
+4) O participante pode confirmar recebimento</p>
+<p><strong>Funcionalidade:</strong> Alertas de alterações
+Como Participante do Evento, Quero ser informado sobre mudanças, Para me adaptar a tempo</p>
+<p><strong>Cenário:</strong> Receber aviso de mudança</p>
+<pre><code class="language-gherkin">Dado que estou inscrito no evento
+Quando há alteração na programação
+Então devo receber:
+- Notificação imediata
+- Detalhes da mudança
+- Impacto na minha agenda
+- Opções alternativas
+</code></pre>
+<hr />
+<h4 id="33-comunicacao-com-organizadores-voluntario">33. Comunicação com organizadores (Voluntário)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Mensagens têm tempo máximo de resposta de 2 horas
+2) Permite anexar fotos e documentos
+3) Organiza conversas por evento/tarefa
+4) Diferencia comunicações urgentes de rotina</p>
+<p><strong>Funcionalidade:</strong> Canal de comunicação
+Como Voluntário, Quero me comunicar eficazmente, Para esclarecer dúvidas</p>
+<p><strong>Cenário:</strong> Enviar mensagem rápida</p>
+<pre><code class="language-gherkin">Dado que tenho uma dúvida
+Quando acesso o chat do evento
+Então posso:
+- Enviar mensagem direta
+- Anexar fotos se necessário
+- Receber resposta em até 2h
+- Ver histórico de conversas
+</code></pre>
+<hr />
+<h4 id="34-criacao-de-cronograma-organizador">34. Criação de cronograma (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Blocos de tempo são customizáveis
+2) Alertas sobre horários não preenchidos
+3) Calcula recursos necessários por período
+4) Permite versões alternativas para contingência</p>
+<p><strong>Funcionalidade:</strong> Planejamento temporal
+Como Organizador do Evento, Quero criar um cronograma, Para organizar todas as atividades</p>
+<p><strong>Cenário:</strong> Definir horários precisos</p>
+<pre><code class="language-gherkin">Dado que estou na etapa de programação
+Quando aloco atividades:
+- &quot;Credenciamento&quot; 08:00-09:00
+- &quot;Cerimônia Abertura&quot; 09:00-09:30
+- &quot;Coffee Break&quot; 10:45-11:15
+Então o sistema deve:
+- Mostrar linha do tempo visual
+- Alertar sobre sobreposições
+- Calcular tempo total
+</code></pre>
+<hr />
+<h4 id="35-analise-de-feedback-organizador">35. Análise de feedback (Organizador)</h4>
+<p><strong>Critérios de Aceitação:</strong>
+1) Relatórios são gerados automaticamente
+2) Identifica tendências em comentários livres
+3) Permite filtros por tipo de participante
+4) Sugere ações de melhoria baseadas em dados</p>
+<p><strong>Funcionalidade:</strong> Processamento de avaliações
+Como Organizador do Evento, Quero analisar feedback, Para melhorar futuros eventos</p>
+<p><strong>Cenário:</strong> Gerar relatório consolidado</p>
+<pre><code class="language-gherkin">Dado que recebi avaliações
+Quando acesso a análise de feedback
+Então o sistema deve mostrar:
+- Nota média geral
+- Gráficos por categoria
+- Comentários relevantes
+- Sugestões de melhoria
+</code></pre>
+<p><a href="https://docs.google.com/document/d/1pbP3jJbLqM3W5ogY0hJ9ZvA8cGE3Kahbp5ONC6vERX0/edit?tab=t.0">Acesse o documento completo no Google Docs</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
