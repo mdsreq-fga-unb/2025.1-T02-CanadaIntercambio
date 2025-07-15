@@ -1,13 +1,13 @@
 // Configurações da API
 export const API_CONFIG = {
-  BASE_URL: 'http://localhost:3000/api',
+  BASE_URL: 'https://canada-intercambio-backend.onrender.com/api',
   ENDPOINTS: {
     LOGIN: '/auth/login',
     REGISTER: '/auth/register',
     LOGOUT: '/auth/logout',
     ME: '/auth/me',
   },
-  TIMEOUT: 10000, // 10 segundos
+  TIMEOUT: 15000, // 15 segundos para produção
 };
 
 // Chaves para AsyncStorage

@@ -8,6 +8,9 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import { AuthProvider } from '../contexts/AuthContext';
 import { NavigationProvider } from '../contexts/NavigationContext';
 
+// Importar configuração de produção para remover debug tools
+import '../src/config/production';
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({

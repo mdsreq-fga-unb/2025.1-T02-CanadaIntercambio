@@ -8,6 +8,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "build:web": "NODE_ENV=production expo export --platform web --output-dir dist --clear",
+    "build:web:prod": "NODE_ENV=production EXPO_NO_DOTENV=1 expo export --platform web --output-dir dist --clear",
+    "build:android": "eas build --platform android --profile preview",
+    "build:android-prod": "eas build --platform android --profile production",
     "lint": "expo lint"
   },
   "dependencies": {
