@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: canada-intercambio-backend
+    env: node
+    region: ohio
+    plan: free
+    buildCommand: "cd backend && npm install && npm run build && npx prisma generate"
+    startCommand: "cd backend && npm start"
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://canada:3MqtxP1OTv7m5vlTz40fjM7VZG3f5My0@dpg-d1qom0euk2gs73enijj0-a.ohio-postgres.render.com:5432/canada_intercambio_db
+      - key: JWT_SECRET
+        value: canada_intercambio_super_secret_key_2025
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /health
+    domains:
+      - canada-intercambio-api.onrender.com

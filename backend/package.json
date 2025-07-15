@@ -5,9 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "ts-node index.ts",
+    "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only index.ts",
     "db:migrate": "npx prisma migrate dev",
+    "db:migrate:deploy": "npx prisma migrate deploy",
     "db:generate": "npx prisma generate",
     "db:push": "npx prisma db push",
     "db:seed": "ts-node prisma/seed.ts"
