@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
@@ -9,6 +9,8 @@ import { profileService } from "../../services/profileService";
 import { unitService } from "../../services/unitService";
 import { TextInputMask } from "react-native-masked-text";
 import { useEditProfileForm } from "../../hooks/useEditProfileForm";
+import { MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 export default function EditarPerfilScreen() {
   const { user, loading: authLoading } = useAuth();
@@ -118,6 +120,14 @@ export default function EditarPerfilScreen() {
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
       >
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => router.push("/perfil_principal")}
+        >
+          <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
+          <Text style={styles.backButtonText}>Voltar</Text>
+        </TouchableOpacity>
+
         <Text style={styles.title}>Atualize suas informações:</Text>
 
         <View style={styles.inputContainer}>
@@ -221,6 +231,17 @@ const styles = StyleSheet.create({
   logo: { width: 250, height: 60, marginTop: 10 },
   footer: { height: 40, backgroundColor: "#cb2328", marginTop: "auto" },
   content: { alignItems: "center", padding: 20, flexGrow: 1 },
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  backButtonText: {
+    color: "#cb2328",
+    fontSize: 16,
+    marginLeft: 8,
+    fontWeight: "600",
+  },
   title: {
     fontSize: 22,
     fontWeight: "bold",
@@ -240,12 +261,20 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   pickerContainer: {
+    width: "100%",
+  },
+  picker: {width: "100%",
+    maxWidth: "100%",
     backgroundColor: "#f8f9fa",
+    color: "#888888",
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#dee2e6",
+    borderColor: "#ddd",
+    paddingHorizontal: 14,
+    justifyContent: "center",
+    marginBottom: 15,
+    height: 48,
   },
-  picker: { height: 48, width: "100%", color: "#333" },
   errorText: { color: "red", fontSize: 12, marginTop: 4 },
   button: { width: "100%", maxWidth: 350, marginTop: 20 },
 });
