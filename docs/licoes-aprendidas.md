@@ -29,3 +29,7 @@ Tivemos dificuldades em aplicar o USM e escrever os cenários BDD de forma preci
 ---
 
 ## Unidade 4
+
+Durante o desenvolvimento do diagrama e das especificações de casos de uso, percebemos a importância dessas ferramentas para dar clareza, organização e alinhamento entre os membros da equipe e os stakeholders. As principais dificuldades encontradas pela equipe foram seguir corretamente os padrões exigidos de escrita e estrutura, além de definir regras de negócio coerentes e completas para cada funcionalidade.
+
+Ao longo das revisões e feedbacks, compreendemos que pensar nos detalhes de cada fluxo, prever alternativas e exceções, e descrever os comportamentos esperados do sistema contribui diretamente para a qualidade final do produto. A especificação bem feita evita ambiguidade e retrabalho durante o desenvolvimento. Assim, reconhecemos que dominar esse conteúdo é essencial para uma boa modelagem e planejamento de software.

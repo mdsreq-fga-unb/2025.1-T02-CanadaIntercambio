@@ -267,7 +267,7 @@
 
 ### Como resolvemos:
 
-![Solução Implementada](images/Resolucao16.png)
+![Solução Implementada](images/Resolucao17.png)
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/17)
@@ -280,7 +280,7 @@
 
 ### Como resolvemos:
 
-![Solução Implementada](images/Resolucao16.png)
+![Solução Implementada](images/Resolucao18.png)
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/18)
@@ -293,7 +293,7 @@
 
 ### Como resolvemos:
 
-![Solução Implementada](images/Resolucao16.png)
+![Solução Implementada](images/Resolucao19.png)
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/19)
@@ -306,7 +306,7 @@
 
 ### Como resolvemos:
 
-![Solução Implementada](images/Resolucao16.png)
+![Solução Implementada](images/Resolucao20.png)
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/20)
@@ -317,7 +317,7 @@
 
 ### Como resolvemos:
 
-![Solução Implementada](images/Resolucao16.png)
+![Solução Implementada](images/Resolucao21-1.png)
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/21)
@@ -328,7 +328,7 @@
 
 ### Como resolvemos:
 
-![Solução Implementada](images/Resolucao16.png)
+![Solução Implementada](images/Resolucao22.png)
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/22)

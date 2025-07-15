@@ -593,3 +593,108 @@ O caso de uso escolhido pela nossa equipe foi o ConnectCare. Seguem o documento 
 
 ---
 
+### Agendar Visita Domiciliar
+
+#### Descrição Geral
+
+- **Nome do Caso de Uso:** Agendar Visita Domiciliar  
+- **Breve descrição:** Permite que o Agente Comunitário de Saúde ou Profissional de Saúde agende uma visita domiciliar para um paciente registrado, especificando data, horário, local e objetivo da visita. A funcionalidade visa apoiar o acompanhamento de pacientes com dificuldade de locomoção.  
+- **Atores:** Agente Comunitário de Saúde, Profissional de Saúde
+
+#### Fluxo de Eventos
+
+- **Fluxo Principal:**
+
+1. O ator acessa o sistema com seu login.
+2. Navega até a funcionalidade “Agendar Visita Domiciliar”.
+3. Busca o paciente pelo nome, CPF ou número do cartão SUS.
+4. Seleciona o paciente desejado.
+5. Escolhe data e horário disponíveis na agenda.
+6. Registra o motivo da visita domiciliar.
+7. Confirma os dados e finaliza o agendamento.
+8. O sistema envia uma notificação para o paciente (se aplicável) e registra a visita na agenda do profissional.
+
+- **Fluxos Alternativos:**
+
+**FA01 – Paciente não cadastrado**
+
+- **Origem:** Passo 3  
+- **Condição:** O sistema não encontra o paciente  
+- **Ação:**
+    - O sistema exibe a mensagem: “Paciente não cadastrado”.
+    - O ator opta por abrir o módulo “Cadastrar Paciente”.
+    - Após o cadastro, o sistema retorna à tela de agendamento com o paciente já selecionado.
+    - **Retorna ao passo 4 do fluxo principal.**
+
+**FA02 – Horário não disponível**
+
+- **Origem:** Passo 5  
+- **Condição:** O horário escolhido já foi reservado  
+- **Ação:**
+    - O sistema exibe: “Horário indisponível”.
+    - Sugere horários próximos disponíveis.
+    - O ator escolhe um novo horário ou reorganiza a agenda.
+    - **Retorna ao passo 5 do fluxo principal.**
+
+**FA03 – Remarcação de Visita**
+
+- **Origem:** Solicitação externa  
+- **Condição:** O paciente solicita alteração de data ou horário  
+- **Ação:**
+    - O ator acessa a lista de visitas agendadas.
+    - Seleciona a visita a ser remarcada.
+    - O sistema exibe o calendário com horários disponíveis.
+    - O ator seleciona nova data e horário.
+    - O sistema atualiza a agenda e notifica o paciente (se habilitado).
+    - **Encerramento do caso de uso.**
+
+- **Fluxos de Exceção:**
+
+**FE01 – Falha na Conexão com o Servidor**
+
+- **Origem:** Durante qualquer passo do agendamento  
+- **Ação:**
+   - O sistema exibe a mensagem: “Falha na conexão. Tente novamente.”
+   - Permite nova tentativa ou salva dados localmente para posterior sincronização.
+   - **Retorna ao passo anterior.**
+
+**FE02 – Conflito de Horários Detectado na Confirmação**
+
+- **Origem:** Passo 7  
+- **Ação:**
+   - O sistema detecta que o horário foi reservado por outro profissional.
+   - Exibe a mensagem de conflito.
+   - Retorna à seleção de data e horário.
+   - O ator escolhe novo horário.
+   - **Retorna ao passo 5 do fluxo principal.**
+
+- **Requisitos Especiais:**
+
+    - **RE01:** Busca de pacientes deve permitir filtro por bairro e microárea.  
+    - **RE02:** Sincronização da agenda deve ocorrer em tempo real para evitar conflitos.  
+    - **RE03:** O módulo de notificação deve seguir as normas de privacidade de dados.
+
+- **Regras de Negócio:**
+
+    - **RN01:** Apenas pacientes cadastrados podem receber visitas.  
+    - **RN02:** A visita deve ser agendada com no mínimo 24h de antecedência.  
+    - **RN03:** Cada profissional pode agendar no máximo 8 visitas por dia.  
+    - **RN04:** Toda visita registrada deve constar no histórico do paciente.  
+
+- **Pré-condições:**
+
+    - O profissional deve estar autenticado no sistema.  
+    - O paciente deve estar cadastrado no sistema.  
+    - O sistema deve ter informações atualizadas sobre horários disponíveis.  
+    - O sistema deve estar conectado ao servidor de notificação (se aplicável).
+
+- **Pós-condições**
+
+    - A visita está registrada no histórico do paciente.  
+    - A agenda do profissional foi atualizada.  
+    - O paciente recebeu uma notificação (se habilitado).
+
+#### Pontos de Extensão
+
+    - Integração com módulo de indicadores para contabilização em relatórios mensais.  
+    - Opção de anexar relatório da visita após a execução.

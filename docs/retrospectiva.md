@@ -22,7 +22,7 @@ A proposta de solução inicial do projeto *CanadaWay* foi mantida em sua essên
 
 Contudo, ao longo do desenvolvimento, alguns ajustes foram realizados, com o objetivo de manter o foco na experiência do usuário e na viabilidade técnica da entrega:
 
-- **Remoção dos filtros avançados e do chatbot**: essas funcionalidades estavam previstas inicialmente, mas foram retiradas com base em *validação direta com o cliente*. A análise identificou que os filtros tornariam a interface excessivamente complexa, e o chatbot exigiria um esforço técnico desproporcional ao valor entregue nesta fase do projeto. Ambas as decisões foram consensuais e registradas.
+- **Remoção dos filtros avançados e do chatbot**: essas funcionalidades estavam previstas inicialmente, mas foram retiradas com base em validação direta com o cliente. A análise identificou que os filtros tornariam a interface excessivamente complexa, e o chatbot exigiria um esforço técnico desproporcional ao valor entregue nesta fase do projeto. Ambas as decisões foram consensuais e registradas.
   
 - **Adição do Prisma ORM**: para a camada de persistência de dados, foi integrada a ferramenta PrismaORM, que otimizou o acesso ao banco de dados e melhorou a manutenção e escalabilidade da aplicação. Essa alteração técnica foi decidida em conjunto com a equipe de desenvolvimento, visando maior robustez no backend e agilidade nas iterações.
 
@@ -108,7 +108,7 @@ Como resposta, a equipe realizou uma reorganização do cronograma a partir da f
 
 Mesmo com os ajustes, o projeto conseguiu manter a entrega dos principais requisitos funcionais previstos, reforçando a importância de flexibilidade e adaptação em processos iterativos, como os propostos pelo RAD.
 
-![Cronograma Atualizado](cronogramaatual.png)
+![Cronograma Atualizado](images/cronogramaatual.png)
 
 Essas mudanças foram essenciais para garantir a conclusão do projeto com qualidade e dentro do prazo final estabelecido.
 
@@ -170,7 +170,7 @@ Durante o projeto *CanadaWay*, adotamos a Definition of Ready (DoR) e a Definiti
 
 ### Pontos não atendidos da DoR
 
-Um dos principais critérios que **não foi implementado** de forma consistente foi:
+Um dos principais critérios que não foi implementado de forma consistente foi:
 
 - **[ ] As regras de negócio descritas em formato BDD (Given-When-Then):**  
 Embora previsto, o uso de cenários de comportamento no formato Behavior Driven Development (BDD) não foi aplicado na elaboração das User Stories. Faltou tempo e maturidade técnica da equipe para formalizar os comportamentos esperados com esse grau de detalhamento durante a criação das nossas US's. Não detalhamos e nem listamos as regras de negócio, elas foram apenas discutidas oralmente.
@@ -220,6 +220,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve manter a sessão do usuário ativa após o login, até que ele se deslogue ou a sessão expire.
 - [X] O sistema deve garantir que apenas usuários autenticados possam acessar páginas protegidas da plataforma.
 
+---
+
 - **US02 - Como potencial intercambista, quero me registrar preenchendo meus dados básicos (nome, sobrenome, email, telefone com DDD, cidade, qual a unidade mais próxima do usuário, senha, confirmar senha) para criar uma conta na plataforma**
 
 ![US02 tela 1](images/US02tela1.png)
@@ -238,6 +240,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] Ao preencher corretamente o formulário, o usuário deve ser registrado com sucesso.
 - [X] O usuário deve ser redirecionado para o quiz inicial.
 
+---
+
 - **US03 - Como usuário, quero editar meu perfil na plataforma para manter minhas informações atualizadas**
 
 ![US03 tela 1](images/US03tela1.png)
@@ -251,6 +255,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve validar os campos editados (ex: formato de e-mail, telefone com DDD, campos obrigatórios).
 - [X] O sistema deve persistir as alterações no banco de dados.
 - [X]  O sistema deve manter a integridade da sessão após a edição do perfil.
+
+---
 
 - **US05 - Como potencial intercambista, quero responder um teste para identificar o perfil ideal de intercâmbio com base nas respostas**
 
@@ -271,6 +277,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve processar as respostas e sugerir um perfil de intercâmbio ideal com base nos padrões definidos pelos steakholder.
 - [X] O sistema deve persistir as respostas no banco de dados associadas ao usuário.
 
+---
+
 - **US06 - Como potencial intercambista, quero navegar por programas**
 
 ![US06 tela 1](images/US06tela1.png)
@@ -286,6 +294,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
     País de destino,
     Imagem ilustrativa do destino ou do programa)
 - [X]  O sistema deve permitir clicar no nome ou no card do programa para abrir uma página com mais detalhes.
+
+---
 
 - **US07 - Como potencial intercambista, quero responder um quiz específico sobre os programas da Canada Intercambio para verificar o entendimento sobre as opções disponíveis**
 
@@ -303,6 +313,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve permitir que o quiz seja refeito posteriormente.
 - [] O sistema deve liberar o atendimento com a Canada Intercambio quando o resultado do quiz for maior ou igual a 60%
 
+---
+
 - **US10 - Como potencial intercambista, quero visualizar sugestão de programa com base nas respostas dos quizzes e testes**
 
 ![US06 tela 1](images/US06tela1.png)
@@ -319,16 +331,20 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
     País e duração (ex: “Canadá • 20 meses”))
 - [X] O sistema deve permitir que o usuário clique no nome ou no card para acessar uma página com mais detalhes do programa.
 
+---
+
 - **US12 - Como potencial intercambista, quero visualizar respostas para dúvidas frequentes**
 
 ![US012 tela 1](images/US012tela1.png)
 
 *Checklist – Critérios de Aceitação*
 
-- [] O sistema deve exibir uma lista de perguntas frequentes.
-- [] O sistema deve permitir que o usuário clique em uma pergunta para ver a resposta.
-- [] O sistema deve exibir as respostas com texto claro e objetivo.
+- [X] O sistema deve exibir uma lista de perguntas frequentes.
+- [X] O sistema deve permitir que o usuário clique em uma pergunta para ver a resposta.
+- [X] O sistema deve exibir as respostas com texto claro e objetivo.
 - [X] O sistema deve permitir abrir e fechar perguntas.
+
+---
 
 - **US14 - Como potencial intercambista, quero visualizar informações detalhadas de cada programa (duração, país, valor, requisitos)**
 
@@ -349,6 +365,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve exibir os requisitos do programa (ex: graduação, fluência, etc.).
 - [X] O sistema deve carregar os dados dinamicamente com base no programa selecionado.
 
+---
+
 - **US15 - Como potencial intercambista, quero solicitar contato com um especialista da Canada Intercambio**
 
 ![US15 tela 1](images/US15tela1.png)
@@ -359,6 +377,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve exibir um botão ou link com o texto “Contate-nos”.
 - [X] O link deve abrir uma conversa direta no WhatsApp com número da unidade mais perto dele.
 - [X] O link deve incluir uma mensagem pré-definida (ex: "Olá, vim pelo app e gostaria de saber mais sobre os programas de intercâmbio.").
+
+---
 
 - **US19 - Como empresa, quero criar conta preenchendo dados básicos (nome, sobrenome, email corporativo, senha, confirmar senha, número, função, filial)**
 
@@ -384,6 +404,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve impedir o cadastro com e-mail já existente.
 - [X] O sistema deve salvar os dados corretamente no banco de dados.
 
+---
+
 - **US29 - Como empresa, quero atualizar informações de programas existentes**
 
 ![US29 tela 1](images/US29tela1.png)
@@ -404,6 +426,8 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve exibir mensagem de sucesso ao salvar as alterações (ex: “Programa atualizado com sucesso”).
 - [X] O sistema deve exibir mensagem de erro clara em caso de falha.
 - [X] O sistema deve salvar as alterações no banco de dados e atualizar as exibições públicas do programa.
+
+---
 
 - **US30 - Como empresa, quero cadastrar novos programas de intercâmbio**
 
@@ -439,3 +463,5 @@ Abaixo está o vídeo de feedback do cliente para a última versão apresetnada 
 > *Nota: Caso o vídeo não carregue, você pode assistir diretamente pelo [YouTube](https://www.youtube.com/watch?v=xngPZAYG3u4). 
 
 ---
+
+## APK

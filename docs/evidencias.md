@@ -157,6 +157,15 @@
 
 #### Funcionalidades implementadas
 
+**Login**
+
+![US01 tela 1](images/US01tela1.png)
+![US01 tela 2](images/US01tela2.png)
+
+**Navegação pelos programas**
+
+![US06 tela 1](images/US06tela1.png)
+
 ## Histórico de Alterações
 
 | Data | Versão | Autor | Descrição das Alterações |
