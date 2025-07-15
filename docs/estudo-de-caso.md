@@ -7,10 +7,12 @@
 O Product Backlog Building (PBB) foi desenvolvido para o estudo de caso HealthNet, organizando as histórias de usuário de forma visual e estruturada:
 
 ![PBB Completo](images/pbb.png)
-
-| PBB | PBB | PBB | PBB | PBB | PBB |
-|-----|-----|-----|-----|-----|-----|
-| ![](pbb1.png) | ![](pbb2.png) | ![](pbb3.png) | ![](pbb4.png) | ![](pbb5.png) | ![](pbb6.png) |
+![](images/pbb1.png) 
+![](images/pbb2.png) 
+![](images/pbb3.png) 
+![](images/pbb4.png) 
+![](images/pbb5.png) 
+![](images/pbb6.png) 
 
 [Acesse o PBB completo no Figma](https://www.figma.com/board/Sv2EcmVULHUxMhvc9XuMxF/Untitled?node-id=0-1&t=PQwmdDAlY8JaTPvL-1)
 
@@ -594,12 +596,11 @@ Este USM foi desenvolvido durante a atividade de estudo de caso do sistema Comun
 ![USM Completo](images/usm.png)
 ![Quadro de Complexidade](images/usm1.png)
 ![Quadro de Complexidade](images/usm2.png)
-
-| USM | USM |
-|-----|-----|
-| ![](usm4.png) | ![](usm7.png) | 
-| ![](usm5.png) | ![](usm8.png) | 
-| ![](usm6.png) | - |
+![](images/usm4.png)
+![](images/usm5.png) 
+![](images/usm6.png)
+![](images/usm7.png)
+![](images/usm8.png) 
 
 ![Sobre o projeto](images/usm9.png)
 

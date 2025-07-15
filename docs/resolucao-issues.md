@@ -263,11 +263,72 @@
 
 ### Issue17:
 
-![Solicitação do Professor](images/IS16.png)
+![Solicitação do Professor](images/IS17.png)
 
 ### Como resolvemos:
 
 ![Solução Implementada](images/Resolucao16.png)
 
 ### Issue relacionada:
-[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/16)
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/17)
+
+---
+
+### Issue18:
+
+![Solicitação do Professor](images/IS18.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao16.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/18)
+
+---
+
+### Issue19:
+
+![Solicitação do Professor](images/IS19.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao16.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/19)
+
+---
+
+### Issue20:
+
+![Solicitação do Professor](images/IS20.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao16.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/20)
+
+### Issue21:
+
+![Solicitação do Professor](images/IS21.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao16.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/21)
+
+### Issue22:
+
+![Solicitação do Professor](images/IS22.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao16.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/22)

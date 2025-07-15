@@ -400,3 +400,196 @@ O caso de uso escolhido pela nossa equipe foi o ConnectCare. Seguem o documento 
 - Nenhum ponto de extensão aplicável.
 
 ---
+
+### Receber Orientações Pós-Consulta
+
+#### Descrição Geral
+
+- **Nome do Caso de Uso:** Receber Orientações Pós-Consulta  
+- **Breve descrição:** Após a realização de uma consulta médica, o paciente acessa a plataforma ConnectCare para visualizar as orientações fornecidas pelo profissional de saúde. Essas orientações incluem instruções sobre medicamentos, cuidados recomendados, necessidade de retorno e agendamento de exames.  
+- **Atores:** Paciente
+
+#### Fluxo de Eventos
+
+- **Fluxo Principal:**
+
+1. O paciente acessa a plataforma ConnectCare com seu login.
+2. O sistema valida as credenciais e exibe o painel do usuário.
+3. O paciente seleciona a opção "Consultas Anteriores".
+4. O sistema apresenta a lista de consultas realizadas.
+5. O paciente seleciona uma consulta para visualizar detalhes.
+6. O sistema exibe as orientações pós-consulta registradas pelo profissional de saúde.
+7. O paciente lê as orientações e, se aplicável, acessa links para agendamento de exames recomendados.
+8. O sistema registra a visualização das orientações.
+
+- **Fluxos Alternativos:**
+
+**FA01 – Consulta Sem Orientações**
+
+- **Origem:** Passo 6  
+- **Condição:** A consulta selecionada não possui orientações registradas  
+- **Ação:**
+  - O sistema exibe: “Nenhuma orientação disponível para esta consulta.”  
+  - **Retorna ao passo 4 do fluxo principal**
+
+**FA02 – Exame Já Agendado**
+
+- **Origem:** Passo 7  
+- **Condição:** O exame recomendado já está agendado  
+- **Ação:**
+  - O sistema exibe: “Exame referente a esta consulta já foi agendado em [data/hora].”  
+  - **Retorna ao passo 8 do fluxo principal**
+
+- **Fluxos de Exceção:**
+
+**FE01 – Falha de Autenticação**
+
+- **Origem:** Passo 1  
+- **Condição:** Credenciais inválidas  
+- **Ação:**
+  - O sistema exibe: “Credenciais inválidas. Tente novamente.”  
+  - **Retorna ao passo 1**
+
+- **Requisitos Especiais:**
+
+    - **RE01:** As orientações devem estar disponíveis mesmo com conexão limitada, utilizando cache local quando necessário.  
+    - **RE02:** O sistema deve garantir a privacidade e integridade das informações médicas exibidas.  
+
+- **Regras de Negócio:**
+
+    - **RN01:** As orientações pós-consulta devem estar vinculadas a uma consulta previamente registrada.  
+    - **RN02:** Apenas o paciente autenticado pode acessar suas próprias orientações.  
+    - **RN03:** A visualização das orientações deve ser registrada para fins de auditoria.  
+    - **RN04:** O agendamento de exames deve ocorrer apenas se ainda não houver registro de agendamento prévio.
+
+- **Pré-condições:**
+
+    - O paciente deve estar logado na plataforma.  
+    - Deve existir uma consulta previamente registrada com orientações vinculadas.
+
+- **Pós-condições**
+
+    - As orientações são exibidas para o paciente.  
+    - O paciente pode seguir um link para agendar exames solicitados.  
+    - A leitura das orientações pode ser registrada no sistema.
+
+#### Ponto de Extensão
+
+- **Avaliar Atendimento:**
+  - **Local:** Após o passo 8  
+  - **Descrição:** O paciente pode avaliar a qualidade do atendimento e das orientações recebidas.
+
+---
+
+### Gerenciar Usuários e Parceiros
+
+#### Descrição Geral
+
+- **Nome do Caso de Uso:** Gerenciar Usuários e Parceiros  
+- **Breve descrição:** Permite que o Administrador do Sistema gerencie os usuários da plataforma (pacientes, profissionais de saúde, agentes comunitários) e as organizações parceiras (ONGs, hospitais, instituições governamentais). As ações incluem adicionar, editar, remover e visualizar registros, garantindo controle, integridade e atualização contínua da base de dados.  
+- **Atores:** Administrador do Sistema
+
+#### Fluxo de Eventos
+
+- **Fluxo Principal:**
+
+1. O Administrador do Sistema acessa a funcionalidade de gerenciamento.
+2. O sistema exibe as opções:
+   - Gerenciar usuários
+   - Gerenciar parceiros
+   - Visualizar detalhes de usuário/parceiro
+   - Sair
+3. O Administrador seleciona "Gerenciar usuários".
+4. O sistema exibe a lista de usuários cadastrados.
+5. O Administrador seleciona um usuário existente ou opta por adicionar um novo.
+6. O sistema exibe o formulário com os dados atuais (edição) ou em branco (criação).
+7. O Administrador preenche/edita as informações e solicita gravação.
+8. O sistema valida os dados inseridos [FE01].
+9. O sistema atualiza ou cria o registro.
+10. O sistema exibe mensagem de sucesso.
+11. O caso de uso é encerrado.
+
+- **Fluxos Alternativos:**
+
+**FA01 – Gerenciar Usuários**
+
+- **Origem:** Passo 2  
+- O sistema exibe ações: adicionar, editar ou remover.  
+- Se adicionar/editar:
+  - Exibe formulário.
+  - Após preenchimento, valida [FE01] e salva.
+- Se remover:
+  - Solicita confirmação.
+  - Após confirmação, remove e exibe mensagem.
+- Caso de uso é encerrado.
+
+**FA02 – Gerenciar Parceiros**
+
+- **Origem:** Passo 2  
+- O sistema exibe ações para gerenciar parceiros:
+  - Adicionar, editar, remover.
+- Funciona igual a FA01 com foco em organizações parceiras.
+- Validações seguem [FE01].  
+- Caso de uso é encerrado.
+
+**FA03 – Visualizar Detalhes de Usuário/Parceiro**
+
+- **Origem:** Passo 2  
+- O sistema exibe lista completa.  
+- Administrador seleciona um item.  
+- Sistema exibe informações em modo somente leitura.  
+- Administrador retorna ao menu ou sai.  
+- Caso de uso é encerrado.
+
+**FA04 – Sair Sem Salvar Alterações**
+
+- **Origem:** Passo 6 ou qualquer ponto com formulário aberto  
+- O sistema detecta alterações não salvas.  
+- Solicita confirmação para descartá-las.  
+- Administrador confirma.  
+- Alterações são descartadas.  
+- Retorna ao menu inicial.  
+- Caso de uso é encerrado.
+
+- **Fluxos de Exceção:**
+
+**FE01 – Validação de Informações**
+
+- **Origem:** Passos 8 (fluxo principal), FA01.5 e FA02.5  
+- O sistema identifica dados inválidos ou ausentes.  
+- Exibe mensagem explicando o erro (ex: e-mail inválido).  
+- Retorna ao formulário correspondente para correção.  
+- Caso de uso continua após ajuste.
+
+- **Regras de Negócio:**
+
+**RN01 – Validação de Informações de Usuário/Parceiro**
+
+| Campo                       | Validação                                                |
+|----------------------------|-----------------------------------------------------------|
+| Nome Completo (Usuário)    | Texto obrigatório                                         |
+| E-mail (Usuário/Parceiro)  | Formato válido, obrigatório, e único                      |
+| Telefone de Contato        | Formato (XX) XXXXX-XXXX, obrigatório                     |
+| Tipo de Usuário            | Seleção obrigatória (Paciente, Profissional, Agente)     |
+| Nome da Organização        | Texto obrigatório, único                                 |
+| Tipo de Parceria           | Seleção obrigatória (ONG, Hospital, Governo)             |
+
+- **Pré-condições:**
+
+- O Administrador do Sistema deve estar autenticado na aplicação.
+
+- **Pós-condições**
+
+- As informações de usuários e/ou parceiros são atualizadas, criadas ou removidas com sucesso.  
+- Mensagens de confirmação são exibidas ao final das ações.
+
+- **Requisitos Especiais:**
+
+- Nenhum requisito especial identificado.
+
+#### Pontos de Extensão
+
+- Não há pontos de extensão definidos para este caso de uso.
+
+---
+

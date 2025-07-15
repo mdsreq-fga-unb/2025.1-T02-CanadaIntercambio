@@ -430,3 +430,12 @@ Essa decisão foi tomada de forma consciente e alinhada com a proposta do RAD, q
 - [X] O sistema deve exibir mensagem de erro clara em caso de dados inválidos.
 - [X] O sistema deve salvar os dados no banco de dados e disponibilizá-los para exibição pública.
 
+## FeedBack do Cliente
+
+Abaixo está o vídeo de feedback do cliente para a última versão apresetnada por nós: 
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/xngPZAYG3u4" frameborder="0" allowfullscreen></iframe>
+
+> *Nota: Caso o vídeo não carregue, você pode assistir diretamente pelo [YouTube](https://www.youtube.com/watch?v=xngPZAYG3u4). 
+
+---
