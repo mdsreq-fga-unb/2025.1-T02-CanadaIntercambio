@@ -28,11 +28,6 @@ export default function QuizInicial() {
       <View style={styles.header} />
 
       <View style={styles.content}>
-        <TouchableOpacity style={styles.backButton} onPress={handleVoltar}>
-          <MaterialCommunityIcons name="arrow-left" size={24} color="#cb2328" />
-          <Text style={styles.backButtonText}>Voltar</Text>
-        </TouchableOpacity>
-
         <Text style={styles.welcome}>Quiz de Perfil</Text>
 
         <Image source={loginLogo} style={styles.logo} resizeMode="contain" />
@@ -77,18 +72,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     paddingHorizontal: 20,
     paddingTop: 20,
-  },
-  backButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "flex-start",
-    marginBottom: 20,
-  },
-  backButtonText: {
-    color: "#cb2328",
-    fontSize: 16,
-    marginLeft: 8,
-    fontWeight: "600",
   },
   welcome: {
     fontSize: 24,

@@ -356,7 +356,7 @@ const QuizScreen: React.FC = () => {
         <View style={styles.content}>
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={() => router.push("/onboard")}
           >
             <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
             <Text style={styles.backButtonText}>Voltar</Text>
@@ -385,14 +385,7 @@ const QuizScreen: React.FC = () => {
         style={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.headerSection}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => router.back()}
-          >
-            <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
-            <Text style={styles.backButtonText}>Voltar</Text>
-          </TouchableOpacity>
+        <View style={styles.headerSection}>          
           <Text style={styles.title}>Quiz</Text>
         </View>
 
