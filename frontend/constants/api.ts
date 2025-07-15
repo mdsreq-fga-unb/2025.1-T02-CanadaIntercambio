@@ -1,6 +1,6 @@
 // Configurações da API
 export const API_CONFIG = {
-  BASE_URL: 'https://canada-intercambio-backend.onrender.com/api',
+  BASE_URL: 'https://canada-intercambio-backend.onrender.com/',
   ENDPOINTS: {
     LOGIN: '/auth/login',
     REGISTER: '/auth/register',
