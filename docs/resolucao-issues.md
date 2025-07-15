@@ -256,3 +256,18 @@
 
 ### Issue relacionada:
 [Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/16)
+
+---
+
+## Entrega 3
+
+### Issue17:
+
+![Solicitação do Professor](images/IS16.png)
+
+### Como resolvemos:
+
+![Solução Implementada](images/Resolucao16.png)
+
+### Issue relacionada:
+[Link para a issue no GitHub](https://github.com/mdsreq-fga-unb/2025.1-T02-CanadaIntercambio/issues/16)

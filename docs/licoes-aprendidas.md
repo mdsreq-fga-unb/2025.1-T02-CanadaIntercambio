@@ -25,3 +25,7 @@ As principais dificuldades da equipe foram aplicar os processos da Engenharia de
 Nesta unidade, aprendemos a estruturar melhor nosso backlog com o uso de técnicas como Product Backlog Building (PBB), User Story Mapping (USM) e Behavior Driven Development (BDD). Esses métodos ajudaram a organizar as funcionalidades com foco nos objetivos do projeto, facilitando a definição do MVP e a escrita de critérios de aceitação claros.
 
 Tivemos dificuldades em aplicar o USM e escrever os cenários BDD de forma precisa. Superamos isso com discussões em grupo, revisão contínua das histórias e aplicação prática dos conceitos. Com isso, conseguimos montar um backlog mais claro, estratégico e alinhado à entrega de valor.
+
+---
+
+## Unidade 4

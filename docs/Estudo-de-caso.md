@@ -6,7 +6,11 @@
 
 O Product Backlog Building (PBB) foi desenvolvido para o estudo de caso HealthNet, organizando as histórias de usuário de forma visual e estruturada:
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/board/Sv2EcmVULHUxMhvc9XuMxF/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+![PBB Completo](images/pbb.png)
+
+| PBB | PBB | PBB | PBB | PBB | PBB |
+|-----|-----|-----|-----|-----|-----|
+| ![](pbb1.png) | ![](pbb2.png) | ![](pbb3.png) | ![](pbb4.png) | ![](pbb5.png) | ![](pbb6.png) |
 
 [Acesse o PBB completo no Figma](https://www.figma.com/board/Sv2EcmVULHUxMhvc9XuMxF/Untitled?node-id=0-1&t=PQwmdDAlY8JaTPvL-1)
 
@@ -23,22 +27,25 @@ Este documento apresenta os critérios de aceitação completos para os Product 
 #### Persona: Maria – Recepcionista
 **Feature:** Cadastrar novos pacientes  
 **PBI:** Coletar informações pessoais e médicas, gerando um registro inicial, do paciente.
+**US01 - Cadastrar paciente:** 
+
+> Como recepcionista, Quero coletar e registrar informações pessoais e médicas de um novo paciente, Para que ele tenha um cadastro inicial completo no sistema.
 
 **Critérios de aceitação:**
-- O sistema permite preencher todos os dados obrigatórios do paciente (nome, contato, CPF, dados clínicos).
-- O cadastro só é salvo se todas as informações essenciais forem preenchidas corretamente.
-- Um identificador único é gerado automaticamente para o paciente após o registro.
+- O sistema permite preencher os seguintes campos obrigatórios: nome completo, CPF, telefone de contato e dados clínicos (alergias, comorbidades, uso de medicamentos).
+- O botão “Salvar” só fica habilitado quando todos os campos obrigatórios estiverem preenchidos.
+- Após o cadastro ser salvo, o sistema exibe um número identificador único na tela de confirmação.
 
 **BDDs:** 
 
 ```gherkin
-Dado que o usuário acessa o formulário de cadastro do paciente,
-Quando ele preenche os campos obrigatórios como nome, contato, CPF e dados clínicos,
-Então o sistema valida e aceita o cadastro apenas se todos os campos obrigatórios forem preenchidos corretamente.
+Dado que a recepcionista "Maria Souza" acessa o formulário de cadastro do paciente,
+Quando ela preenche os campos obrigatórios: nome ("Lucas Pereira da Silva"), contato ("(61) 98123-4567"), CPF ("123.456.789-00") e dados clínicos ("alérgico a penicilina"),
+Então o sistema valida e aceita o cadastro, pois todos os campos obrigatórios foram preenchidos corretamente.
 
-Dado que o usuário concluiu o cadastro do paciente,
-Quando o sistema processa o registro,
-Então um identificador único é gerado automaticamente para o paciente.
+Dado que o cadastro do paciente "Lucas Pereira da Silva" foi finalizado,
+Quando o sistema confirma o registro,
+Então ele gera o identificador único "PAT202407140001" e exibe uma mensagem de sucesso.
 ```
 
 ---
@@ -46,25 +53,28 @@ Então um identificador único é gerado automaticamente para o paciente.
 #### Persona: Maria – Recepcionista
 **Feature:** Cadastrar novos pacientes  
 **PBI:** Confirmar e arquivar o cadastro, garantindo a disponibilidade imediata, dos dados do paciente.
+**US02 - Confirmar e arquivar cadastro:** 
+
+> Como recepcionista, Quero confirmar e salvar o cadastro do paciente após revisão, Para que os dados fiquem disponíveis imediatamente para consulta.
 
 **Critérios de aceitação:**
-- O sistema salva o cadastro após confirmação do preenchimento completo.
-- Os dados ficam imediatamente disponíveis para consulta por usuários autorizados.
-- O cadastro é armazenado de forma segura no banco de dados do sistema.
+- O sistema salva o cadastro do paciente apenas após o preenchimento de todos os campos obrigatórios e confirmação pelo usuário.
+- Após o cadastro ser salvo, os dados do paciente ficam disponíveis para usuários com perfil de acesso autorizado (ex: médicos, farmacêuticos).
+- O sistema exibe uma mensagem de confirmação indicando que o cadastro foi salvo com sucesso.
 
 **BDDs:**
 ```gherkin
-Dado que o usuário confirma que o cadastro do paciente está completo,
-Quando ele submete o formulário,
-Então o sistema salva o cadastro.
+Dado que a recepcionista "Maria Souza" concluiu o preenchimento do cadastro do paciente "Lucas Pereira da Silva",
+Quando ela clica no botão "Confirmar cadastro",
+Então o sistema salva o cadastro e exibe a mensagem "Cadastro realizado com sucesso".
 
-Dado que o cadastro do paciente foi salvo com sucesso,
-Quando usuários autorizados acessam o sistema,
-Então os dados do paciente ficam imediatamente disponíveis para consulta.
+Dado que o cadastro de "Lucas Pereira da Silva" foi salvo com sucesso,
+Quando a médica "Dra. Ana Beatriz Lima" acessa o sistema com perfil autorizado,
+Então os dados do paciente ficam disponíveis para consulta.
 
-Dado que o cadastro do paciente foi submetido,
+Dado que o cadastro foi confirmado,
 Quando o sistema armazena os dados,
-Então o cadastro é guardado de forma segura no banco de dados do sistema.
+Então eles são registrados em uma base de dados segura com criptografia aplicada.
 ```
 
 ---
@@ -72,25 +82,28 @@ Então o cadastro é guardado de forma segura no banco de dados do sistema.
 #### Persona: Maria – Recepcionista
 **Feature:** Visualizar histórico de pacientes  
 **PBI:** Selecionar o paciente desejado, exibindo os dados clínicos e atendimentos anteriores, no histórico de todas as unidades
+**US03 - Visualizar histórico de pacientes:** 
+
+> Como recepcionista, Quero acessar o histórico clínico e de atendimentos de um paciente, Para acompanhar seus registros, mesmo que atendido em outras unidades.
 
 **Critérios de aceitação:**
-- O sistema exibe corretamente os dados clínicos e as datas de atendimento, independentemente da unidade onde ocorreram.
-- O usuário não consegue visualizar o histórico de pacientes se não tiver permissão adequada de acesso.
-- Caso não haja atendimentos registrados, o sistema informa que não há histórico disponível.
+- O sistema exibe os seguintes dados clínicos: alergias, comorbidades, e medicamentos em uso, além do histórico de atendimentos com data, unidade e profissional.
+- A funcionalidade de histórico só é acessível a usuários com permissão específica no perfil (ex: médicos e recepcionistas).
+- Se o paciente não tiver histórico registrado, o sistema exibe a mensagem: “Nenhum atendimento encontrado até o momento”.
 
 **BDDs:**
 ```gherkin
-Dado que o paciente possui dados clínicos e atendimentos registrados em várias unidades,
-Quando o usuário autorizado acessa o histórico do paciente,
-Então o sistema exibe corretamente os dados clínicos e as datas de atendimento, independentemente da unidade onde ocorreram.
+Dado que a recepcionista "Maria Souza" acessa o sistema com permissão adequada,
+Quando ela seleciona o paciente "Joana Carla Andrade" com atendimentos em três unidades diferentes,
+Então o sistema exibe os dados clínicos (diabetes tipo 2, uso de insulina) e as datas dos atendimentos: 01/05/2024, 18/06/2024 e 02/07/2024.
 
-Dado que um usuário tenta acessar o histórico de pacientes,
-Quando ele não possui permissão adequada de acesso,
-Então o sistema impede a visualização do histórico.
+Dado que o usuário "Carlos Mendes" tenta acessar o histórico do paciente sem permissão de acesso,
+Quando ele acessa a funcionalidade de histórico,
+Então o sistema exibe a mensagem "Acesso não autorizado".
 
-Dado que o paciente não possui atendimentos registrados,
-Quando o usuário autorizado acessa o histórico,
-Então o sistema informa que não há histórico disponível.
+Dado que a recepcionista acessa o histórico do paciente "Pedro Augusto Lima",
+Quando nenhum atendimento está registrado no sistema,
+Então o sistema exibe a mensagem "Nenhum atendimento encontrado até o momento".
 ```
 
 ---
@@ -98,25 +111,28 @@ Então o sistema informa que não há histórico disponível.
 #### Persona: Dr. João – Clínico Geral
 **Feature:** Acessar histórico médico  
 **PBI:** Entrar no sistema com perfil autorizado, liberando o acesso seguro, ao prontuário do paciente.
+**US04 - Acessar prontuário com perfil autorizado:** 
+
+> Como médico, Quero acessar o sistema com autenticação segura, Para poder visualizar o prontuário de meus pacientes.
 
 **Critérios de aceitação:**
-- Apenas usuários com perfil autorizado conseguem fazer login no sistema.
-- O acesso ao prontuário é liberado somente após autenticação válida.
-- O sistema registra quem acessou o prontuário, com data e hora.
+- Somente usuários com perfil "médico" ou "enfermeiro" conseguem acessar o sistema com autenticação válida.
+- Após o login, o sistema libera acesso ao menu de prontuários médicos.
+- A cada acesso ao prontuário, o sistema registra o nome do usuário, data e hora da ação em um log de auditoria visível apenas à equipe administrativa.
 
 **BDDs:**
 ```gherkin
-Dado que um usuário tenta acessar o sistema,
-Quando ele possui perfil autorizado,
-Então ele consegue fazer login no sistema.
+Dado que o médico "Dr. João Almeida" possui perfil autorizado,
+Quando ele acessa o sistema com login "joao.almeida@clinicavida.com" e senha válida,
+Então o sistema permite o login e exibe o painel de prontuários médicos.
 
-Dado que um usuário está tentando acessar o prontuário,
-Quando ele realiza uma autenticação válida,
+Dado que "Dr. João Almeida" acessa o prontuário da paciente "Fernanda Lopes",
+Quando ele realiza a autenticação com sucesso,
 Então o acesso ao prontuário é liberado.
 
-Dado que um usuário acessa o prontuário do paciente,
-Quando o acesso ocorre,
-Então o sistema registra o usuário, a data e a hora do acesso.
+Dado que o prontuário de "Fernanda Lopes" foi acessado por "Dr. João Almeida",
+Quando a consulta ocorre às 09:42 do dia 10/07/2025,
+Então o sistema registra o acesso com usuário, data e hora no log de auditoria.
 ```
 
 ---
@@ -124,25 +140,31 @@ Então o sistema registra o usuário, a data e a hora do acesso.
 #### Persona: Dr. João – Clínico Geral
 **Feature:** Acessar histórico médico  
 **PBI:** Abrir o prontuário clínico completo, visualizando dados de consultas, exames e tratamentos, do paciente.
+**US05 - Visualizar histórico clínico completo:** 
+
+> Como médico, Quero visualizar em um único painel os dados de consultas, exames e tratamentos do paciente, Para compreender sua evolução clínica.
 
 **Critérios de aceitação:**
-- O sistema exibe todos os dados clínicos do paciente em um único painel.
-- É possível visualizar o histórico de consultas, exames e tratamentos de forma organizada.
-- Apenas usuários autorizados conseguem acessar essas informações.
+- O sistema exibe, em um único painel, as seções de consultas, exames realizados e tratamentos prescritos, organizadas por data.
+- Cada item do histórico inclui data, tipo de atendimento, profissional responsável e observações clínicas.
+- Apenas usuários com perfil "médico" conseguem visualizar esse painel.
 
 **BDDs:**
 ```gherkin
-Dado que um usuário autorizado acessa o sistema,
-Quando ele visualiza o painel do paciente,
-Então o sistema exibe todos os dados clínicos do paciente em um único painel.
+Dado que o médico "Dr. João Almeida" está autenticado no sistema,
+Quando ele acessa o painel do paciente "Pedro Henrique Costa",
+Então o sistema exibe:  
+- Consultas: 12/04/2024 (gripe), 20/06/2024 (hipertensão)  
+- Exames: Hemograma (15/04/2024), Eletrocardiograma (22/06/2024)  
+- Tratamentos: "Losartana 50mg – 1x/dia por 30 dias"
 
 Dado que o painel do paciente está aberto,
-Quando o usuário visualiza o histórico,
-Então é possível ver consultas, exames e tratamentos de forma organizada.
+Quando o médico navega entre as abas,
+Então os dados clínicos são apresentados de forma organizada por seção: consultas, exames e tratamentos.
 
-Dado que um usuário tenta acessar informações clínicas do paciente,
-Quando ele não possui autorização,
-Então o sistema bloqueia o acesso a essas informações.
+Dado que o usuário "Enfermeira Camila" tenta acessar o histórico,
+Quando seu perfil não possui autorização,
+Então o sistema bloqueia o acesso com a mensagem "Acesso restrito".
 ```
 
 ---
@@ -150,25 +172,30 @@ Então o sistema bloqueia o acesso a essas informações.
 #### Persona: Dr. João – Clínico Geral
 **Feature:** Acessar exames  
 **PBI:** Selecionar o paciente na lista de atendimentos, localizando os registros de exames realizados, no prontuário eletrônico.
+**US06 - Visualizar exames do paciente:** 
+
+> Como médico, Quero acessar os exames realizados do paciente a partir do prontuário eletrônico, Para acompanhar os resultados de forma organizada e filtrada.
 
 **Critérios de aceitação:**
-- O usuário consegue buscar e selecionar o paciente na lista de atendimentos.
-- Os exames realizados aparecem organizados por data no prontuário eletrônico.
-- Apenas exames vinculados ao paciente selecionado são exibidos.
+- O usuário pode pesquisar um paciente pelo nome ou CPF na lista de atendimentos.
+- Ao selecionar o paciente, o sistema exibe os exames realizados, listados por data e tipo (ex: hemograma, raio-x).
+- Somente os exames vinculados ao CPF do paciente selecionado são exibidos.
 
 **BDDs:**
 ```gherkin
-Dado que o usuário está na lista de atendimentos,
-Quando ele busca e seleciona um paciente,
-Então o sistema permite que o usuário selecione o paciente desejado.
+Dado que o médico "Dr. João Almeida" acessa a lista de atendimentos,
+Quando ele pesquisa pelo CPF "456.789.123-00" e seleciona o paciente "Cláudia Martins",
+Então o sistema abre o prontuário correspondente.
 
-Dado que o paciente possui exames registrados,
-Quando o usuário visualiza o prontuário eletrônico,
-Então os exames realizados aparecem organizados por data.
+Dado que a paciente "Cláudia Martins" possui exames registrados,
+Quando o médico visualiza a aba "Exames",
+Então o sistema exibe:  
+- 10/03/2025 – Hemograma – Disponível  
+- 20/03/2025 – Raio-X de tórax – Disponível
 
-Dado que o usuário está visualizando o prontuário de um paciente específico,
-Quando ele acessa os exames,
-Então apenas os exames vinculados ao paciente selecionado são exibidos.
+Dado que o prontuário exibido é de "Cláudia Martins",
+Quando o médico acessa os exames,
+Então apenas os exames dela são listados, sem dados de outros pacientes.
 ```
 
 ---
@@ -176,25 +203,32 @@ Então apenas os exames vinculados ao paciente selecionado são exibidos.
 #### Persona: Dr. João – Clínico Geral
 **Feature:** Prescrever digitalmente  
 **PBI:** Assinar eletronicamente e enviar a receita, liberando o documento de forma segura, para o paciente ou farmácia.
+**US07 - Prescrever digitalmente:** 
+
+> Como médico, Quero preencher e assinar digitalmente uma prescrição, Para que o paciente ou a farmácia tenha acesso a um documento válido e seguro.
 
 **Critérios de aceitação:**
-- O médico autenticado consegue preencher a prescrição digital com dados do paciente, medicamentos, posologia e duração do tratamento.
-- A prescrição gerada inclui assinatura eletrônica válida e informações obrigatórias conforme as regulamentações da Anvisa e CFM.
-- O sistema não permite salvar ou emitir prescrições incompletas ou sem os campos obrigatórios preenchidos.
+- O médico pode preencher a prescrição digital com os seguintes campos obrigatórios: nome do paciente, medicamento, posologia, dosagem, duração e observações.
+- A prescrição só pode ser emitida após a geração de assinatura digital válida.
+- O sistema bloqueia a emissão se algum campo obrigatório estiver em branco, exibindo uma mensagem de erro clara ao usuário.
 
 **BDDs:**
 ```gherkin
-Dado que o médico está autenticado no sistema,
-Quando ele preenche a prescrição digital com dados do paciente, medicamentos, posologia e duração do tratamento,
-Então o sistema aceita o preenchimento da prescrição.
+Dado que o médico "Dr. João Almeida" está logado no sistema,
+Quando ele preenche a prescrição para o paciente "Luciana Gomes" com:  
+- Medicamento: Amoxicilina  
+- Dosagem: 500mg  
+- Posologia: 1 comprimido de 8 em 8 horas  
+- Duração: 7 dias  
+Então o sistema aceita a prescrição.
 
-Dado que a prescrição digital foi preenchida,
-Quando ela é gerada pelo sistema,
-Então a prescrição inclui assinatura eletrônica válida e informações obrigatórias conforme as regulamentações da Anvisa e CFM.
+Dado que a prescrição foi gerada,
+Quando o médico clica em "Assinar digitalmente",
+Então a prescrição é finalizada com assinatura eletrônica válida, conforme regulamentações da Anvisa e CFM.
 
-Dado que o médico tenta salvar ou emitir uma prescrição,
-Quando algum campo obrigatório está incompleto ou ausente,
-Então o sistema não permite salvar ou emitir a prescrição.
+Dado que o médico tenta salvar uma prescrição sem preencher o campo "Posologia",
+Quando ele clica em "Salvar",
+Então o sistema exibe o erro: "Campo obrigatório: Posologia".
 ```
 
 ---
@@ -202,31 +236,34 @@ Então o sistema não permite salvar ou emitir a prescrição.
 #### Persona: Lívia – Farmacêutica
 **Feature:** Acessar prescrições  
 **PBI:** Abrir e verificar os detalhes da prescrição, garantindo a dispensação correta, dos medicamentos.
+**US08 - Acessar prescrições digitais:** 
+
+> Como farmacêutica, Quero acessar e verificar prescrições digitais, Para garantir a dispensação correta dos medicamentos.
 
 **Critérios de aceitação:**
-- A farmacêutica autenticada consegue acessar a prescrição digital vinculada ao paciente ou ao código da receita.
-- O sistema exibe todas as informações da prescrição: nome do medicamento, dosagem, posologia, data de emissão e validade.
-- O sistema impede a dispensação se a receita estiver vencida, inválida ou com dados incompletos.
-- Após a verificação, a farmacêutica pode registrar a dispensação parcial ou total no sistema.
-- Cada dispensação fica registrada com data, hora e responsável, garantindo rastreabilidade.
+- A farmacêutica autenticada consegue buscar uma prescrição por CPF do paciente ou código da receita.
+- O sistema exibe todos os dados da prescrição: medicamento, dosagem, posologia, data de emissão e validade.
+- O sistema bloqueia a dispensação se a receita estiver vencida ou com campos obrigatórios ausentes.
+- Após a dispensação, é possível registrar no sistema se foi feita de forma total ou parcial, com data, hora e nome da farmacêutica.
 
 **BDDs:**
 ```gherkin
-Dado que a farmacêutica está autenticada no sistema,
-Quando ela acessa a prescrição digital vinculada ao paciente ou ao código da receita,
-Então o sistema exibe todas as informações da prescrição: nome do medicamento, dosagem, posologia, data de emissão e validade.
+Dado que a farmacêutica "Lívia Duarte" está logada no sistema,
+Quando ela busca pela receita com o código "RX-2025-00123",
+Então o sistema exibe os dados:  
+- Paciente: João Felipe da Rocha  
+- Medicamento: Losartana 50mg  
+- Posologia: 1x/dia  
+- Data de emissão: 12/07/2025  
+- Validade: 19/07/2025
 
-Dado que a farmacêutica está visualizando uma prescrição,
-Quando a receita está vencida, inválida ou com dados incompletos,
-Então o sistema impede a dispensação do medicamento.
+Dado que a receita está vencida (validade 10/07/2025 e hoje é 14/07/2025),
+Quando Lívia tenta dispensar o medicamento,
+Então o sistema bloqueia a operação com a mensagem "Prescrição vencida".
 
 Dado que a prescrição está válida,
-Quando a farmacêutica realiza a verificação,
-Então ela pode registrar a dispensação parcial ou total no sistema.
-
-Dado que a dispensação foi registrada,
-Quando a operação é concluída,
-Então o sistema registra a data, hora e responsável pela dispensação, garantindo rastreabilidade.
+Quando Lívia registra a dispensação total às 10:15 do dia 14/07/2025,
+Então o sistema salva o log com: responsável ("Lívia Duarte"), data e hora.
 ```
 
 ---
@@ -234,25 +271,25 @@ Então o sistema registra a data, hora e responsável pela dispensação, garant
 #### Persona: Lívia – Farmacêutica
 **Feature:** Liberar medicamentos  
 **PBI:** Conferir informações básicas do paciente e da prescrição física, assegurando a compatibilidade do pedido, com o tratamento.
+**US09 - Liberar medicamentos com prescrição física:** 
+
+> Como farmacêutica, Quero conferir a prescrição física com os dados do paciente, Para liberar o medicamento com segurança.
 
 **Critérios de aceitação:**
-- O sistema permite consultar os dados básicos do paciente de forma clara.
-- A farmacêutica pode comparar a prescrição física com as informações do prontuário.
-- O medicamento só é liberado se houver compatibilidade entre prescrição e tratamento registrado.
+- A farmacêutica autenticada pode consultar os dados básicos do paciente: nome, CPF, histórico clínico resumido.
+- A farmacêutica pode comparar manualmente os dados da receita física com os do prontuário.
+- A liberação do medicamento só ocorre se houver correspondência entre a prescrição apresentada e o tratamento registrado no prontuário.
 
 **BDDs:**
 ```gherkin
-Dado que a farmacêutica deseja consultar os dados do paciente,
-Quando ela acessa o sistema,
-Então o sistema permite consultar os dados básicos do paciente de forma clara.
+Dado que a farmacêutica "Lívia Duarte" acessa o prontuário da paciente "Camila Nunes",
+Quando ela confere os dados do tratamento registrado: "Paracetamol 750mg – 1 comprimido a cada 6h por 5 dias",
+E compara com a prescrição física apresentada,
+Então o sistema confirma a compatibilidade.
 
-Dado que a farmacêutica possui a prescrição física em mãos,
-Quando ela compara a prescrição com as informações do prontuário eletrônico,
-Então o sistema permite essa comparação.
-
-Dado que a farmacêutica está dispensando o medicamento,
-Quando verifica a compatibilidade entre a prescrição e o tratamento registrado,
-Então o medicamento só é liberado se houver compatibilidade.
+Dado que há divergência entre a prescrição física (Ibuprofeno) e o prontuário (Paracetamol),
+Quando Lívia tenta registrar a dispensação,
+Então o sistema exibe um alerta: "Incompatibilidade entre prescrição apresentada e tratamento registrado".
 ```
 
 ---
@@ -260,30 +297,29 @@ Então o medicamento só é liberado se houver compatibilidade.
 #### Persona: Rafael – Coordenador de Agendamento
 **Feature:** Confirma consultas próximas com pacientes  
 **PBI:** Programar o sistema para enviar lembretes automáticos, disparando notificações por SMS, e-mail ou WhatsApp, aos pacientes com consultas agendadas.
+**US10 - Enviar lembretes de consulta:** 
+
+> Como coordenador de agendamento, Quero programar o envio automático de lembretes, Para garantir que os pacientes sejam notificados sobre suas consultas.
 
 **Critérios de aceitação:**
-- O sistema identifica automaticamente as consultas agendadas com pelo menos 24 horas de antecedência.
-- O sistema envia lembretes por SMS, e-mail ou WhatsApp conforme o canal preferido informado pelo paciente.
-- Os lembretes contêm informações claras sobre data, hora, profissional e local da consulta.
-- O paciente recebe apenas um lembrete por canal para cada consulta agendada.
+- O sistema identifica automaticamente todas as consultas agendadas com pelo menos 24 horas de antecedência.
+- O sistema envia apenas um lembrete por canal (SMS, e-mail ou WhatsApp), com base na preferência cadastrada pelo paciente.
+- A mensagem enviada contém: nome do paciente, data, hora, nome do profissional e local da consulta.
 
 **BDDs:**
 ```gherkin
-Dado que há consultas agendadas com pelo menos 24 horas de antecedência,
-Quando o sistema processa os agendamentos,
-Então ele identifica automaticamente essas consultas.
+Dado que o sistema contém uma consulta agendada para o paciente "Carlos Mendes" no dia 15/07/2025 às 14h00,
+Quando for 14/07/2025 às 14h00 (24 horas antes),
+Então o sistema identifica essa consulta para envio de lembrete.
 
-Dado que o sistema identificou uma consulta agendada,
-Quando envia o lembrete,
-Então o envio ocorre pelo canal preferido informado pelo paciente, seja SMS, e-mail ou WhatsApp.
+Dado que o paciente "Carlos Mendes" tem preferência por WhatsApp,
+Quando o sistema envia o lembrete,
+Então ele recebe a mensagem:  
+"Olá Carlos, sua consulta está agendada para 15/07 às 14h00 com Dr. Guilherme. Local: Clínica Sul."
 
-Dado que o paciente recebe um lembrete,
-Quando o sistema envia a mensagem,
-Então o lembrete contém informações claras sobre data, hora, profissional e local da consulta.
-
-Dado que o paciente possui uma consulta agendada,
-Quando o sistema envia lembretes,
-Então o paciente recebe apenas um lembrete por canal para cada consulta.
+Dado que o paciente possui múltiplos canais cadastrados,
+Quando o lembrete é enviado,
+Então o sistema envia **apenas um** lembrete por canal e por consulta.
 ```
 
 ---
@@ -291,25 +327,28 @@ Então o paciente recebe apenas um lembrete por canal para cada consulta.
 #### Persona: Clara – Paciente
 **Feature:** Fazer agendamentos  
 **PBI:** Selecionar data, horário e profissional desejado, criando um agendamento no sistema, da consulta.
+**US11 - Fazer agendamento de consulta:** 
+
+> Como paciente, Quero selecionar data, horário e profissional, Para realizar meu agendamento com facilidade.
 
 **Critérios de aceitação:**
 - O paciente logado consegue visualizar os horários disponíveis por profissional e unidade.
-- O paciente consegue selecionar uma data, um horário e um profissional específicos para realizar o agendamento.
-- O sistema bloqueia automaticamente os horários já preenchidos ou conflitantes com outros agendamentos.
+- Ao selecionar data, horário e profissional, o sistema confirma o agendamento com uma mensagem de sucesso.
+- Horários já preenchidos são automaticamente desabilitados para seleção.
 
 **BDDs:**
 ```gherkin
-Dado que o paciente está logado no sistema,
-Quando ele visualiza os horários disponíveis por profissional e unidade,
-Então ele consegue ver as opções disponíveis para agendamento.
+Dado que a paciente "Clara Vasconcelos" está logada no sistema,
+Quando ela acessa o menu "Agendamentos" e seleciona o profissional "Dra. Patrícia Lima" da unidade "Clínica Norte",
+Então o sistema exibe os horários disponíveis para os próximos 7 dias.
 
-Dado que o paciente visualiza os horários disponíveis,
-Quando ele seleciona uma data, um horário e um profissional específicos,
-Então o sistema permite a seleção para realizar o agendamento.
+Dado que Clara seleciona a data 17/07/2025 e horário 10h30,
+Quando ela clica em "Confirmar agendamento",
+Então o sistema registra o agendamento com sucesso e exibe a mensagem "Consulta marcada para 17/07/2025 às 10h30 com Dra. Patrícia Lima".
 
-Dado que existem horários já preenchidos ou conflitantes,
-Quando o paciente tenta agendar um horário,
-Então o sistema bloqueia automaticamente esses horários para evitar conflitos.
+Dado que o horário das 10h30 já foi preenchido por outro paciente,
+Quando Clara tenta selecioná-lo,
+Então o sistema exibe o aviso "Horário indisponível".
 ```
 
 ---
@@ -317,25 +356,30 @@ Então o sistema bloqueia automaticamente esses horários para evitar conflitos.
 #### Persona: Clara – Paciente
 **Feature:** Solicitar histórico médico  
 **PBI:** Preencher o formulário ou selecionar a opção de solicitação, gerando um pedido formal, do prontuário.
+**US12 - Solicitar histórico médico:** 
+
+> Como paciente, Quero preencher uma solicitação de prontuário, Para ter acesso ao meu histórico médico.
 
 **Critérios de aceitação:**
-- O paciente ou responsável consegue preencher um formulário digital ou selecionar uma opção específica para solicitar o prontuário.
-- Ao finalizar o preenchimento, o sistema gera automaticamente um pedido formal contendo os dados do solicitante, data e objetivo da solicitação.
-- O pedido é registrado no sistema e pode ser acompanhado pelo solicitante, garantindo rastreabilidade e transparência no processo.
+- O paciente ou responsável logado consegue acessar a opção “Solicitar Histórico” no menu do sistema.
+- O formulário contém campos obrigatórios: nome do solicitante, motivo da solicitação e tipo de histórico desejado.
+- Após o envio, o sistema gera um número de protocolo e exibe uma mensagem de confirmação com data da solicitação.
 
 **BDDs:**
 ```gherkin
-Dado que o paciente ou responsável acessa o sistema,
-Quando ele preenche um formulário digital ou seleciona uma opção para solicitar o prontuário,
-Então o sistema permite a solicitação do prontuário.
+Dado que a paciente "Clara Vasconcelos" está logada no sistema,
+Quando ela acessa a opção "Solicitar histórico médico" e preenche:  
+- Motivo: "Para consulta com especialista particular"  
+- Tipo: "Histórico clínico completo",
+Então o sistema exibe a tela de confirmação da solicitação.
 
-Dado que o formulário foi preenchido,
-Quando o solicitante finaliza o pedido,
-Então o sistema gera automaticamente um pedido formal contendo os dados do solicitante, data e objetivo da solicitação.
+Dado que Clara confirma a solicitação,
+Quando ela clica em "Enviar",
+Então o sistema gera o número de protocolo "HIST-2025-0045" e exibe a mensagem "Sua solicitação foi registrada com sucesso".
 
-Dado que o pedido formal foi gerado,
-Quando ele é registrado no sistema,
-Então o solicitante pode acompanhar o pedido, garantindo rastreabilidade e transparência no processo.
+Dado que a solicitação "HIST-2025-0045" foi registrada,
+Quando Clara acessa a aba "Minhas solicitações",
+Então ela vê o status atual como "Em análise".
 ```
 
 ---
@@ -343,25 +387,24 @@ Então o solicitante pode acompanhar o pedido, garantindo rastreabilidade e tran
 #### Persona: Clara – Paciente
 **Feature:** Ver resultados de exames  
 **PBI:** Acessar o portal ou aplicativo com login autorizado, liberando o acesso ao prontuário eletrônico, do paciente.
+**US13 - Ver resultados de exames (autenticado):** 
+
+> Como paciente, Quero acessar meu prontuário com login autorizado, Para consultar meus resultados de exames.
 
 **Critérios de aceitação:**
-- O paciente consegue acessar o portal ou aplicativo utilizando login e senha previamente cadastrados ou autenticação segura.
-- Após a autenticação bem-sucedida, o sistema libera o acesso ao prontuário eletrônico correspondente ao paciente logado.
-- O prontuário é exibido de forma segura e organizada, respeitando as normas de proteção de dados e garantindo a confidencialidade das informações.
+- O paciente consegue acessar o sistema com login e senha cadastrados ou autenticação via token.
+- Após login bem-sucedido, o sistema libera a aba “Exames” no menu principal.
+- Todas as informações exibidas seguem os padrões da LGPD, com bloqueio a qualquer tentativa de acesso não autorizado.
 
 **BDDs:**
 ```gherkin
-Dado que o paciente possui login e senha cadastrados ou métodos de autenticação segura,
-Quando ele acessa o portal ou aplicativo e realiza a autenticação,
-Então o sistema libera o acesso ao prontuário eletrônico correspondente ao paciente logado.
+Dado que a paciente "Clara Vasconcelos" possui login "clara.vasconcelos@email.com" e senha cadastrada,
+Quando ela acessa o portal e insere suas credenciais corretamente,
+Então o sistema autentica o acesso e redireciona para a tela inicial.
 
-Dado que o paciente está autenticado no sistema,
-Quando ele acessa o prontuário eletrônico,
-Então o prontuário é exibido de forma segura e organizada.
-
-Dado que o prontuário eletrônico está sendo exibido,
-Quando o sistema apresenta as informações,
-Então ele respeita as normas de proteção de dados e garante a confidencialidade das informações.
+Dado que Clara foi autenticada com sucesso,
+Quando ela clica na aba "Prontuário",
+Então o sistema exibe a lista de exames disponíveis com segurança e conforme as regras da LGPD.
 ```
 
 ---
@@ -369,26 +412,30 @@ Então ele respeita as normas de proteção de dados e garante a confidencialida
 #### Persona: Clara – Paciente
 **Feature:** Ver resultados de exames  
 **PBI:** Selecionar a aba de exames e escolher o exame desejado, exibindo o laudo digital, do exame realizado.
+**US14 - Visualizar laudos digitais:** 
+
+> Como paciente, Quero acessar a aba de exames e visualizar laudos digitais, Para acompanhar meus resultados de forma clara.
 
 **Critérios de aceitação:**
-- O paciente ou profissional de saúde autenticado consegue acessar a aba de exames no sistema.
-- O sistema exibe uma lista organizada dos exames realizados, com data, tipo e status (disponível, pendente etc.).
-- Ao selecionar um exame, o laudo digital correspondente é exibido em formato legível (PDF ou visualização embutida).
-- Apenas exames já liberados pelo laboratório ficam disponíveis para visualização.
+- O sistema exibe uma lista de exames com os seguintes dados: tipo de exame, status (liberado/pendente), e data de realização.
+- Ao clicar em um exame liberado, o sistema abre o laudo em formato PDF ou visualização embutida.
+- Exames não liberados ainda pelo laboratório não podem ser acessados.
 
 **BDDs:**
 ```gherkin
-Dado que o paciente ou profissional de saúde está autenticado no sistema,
-Quando ele acessa a aba de exames,
-Então o sistema exibe uma lista organizada dos exames realizados, com data, tipo e status.
+Dado que Clara acessa a aba "Exames" autenticada no sistema,
+Quando ela visualiza a lista de exames realizados,
+Então o sistema exibe:  
+- Hemograma completo – 10/07/2025 – Status: Disponível  
+- Raio-X – 05/07/2025 – Status: Aguardando liberação
 
-Dado que a lista de exames está exibida,
-Quando o usuário seleciona um exame,
-Então o laudo digital correspondente é exibido em formato legível (PDF ou visualização embutida).
+Dado que Clara clica sobre "Hemograma completo",
+Quando o laudo está disponível,
+Então o sistema abre o documento em visualização embutida (PDF).
 
-Dado que um exame foi realizado,
-Quando o exame foi liberado pelo laboratório,
-Então apenas esses exames ficam disponíveis para visualização.
+Dado que Clara tenta acessar o exame "Raio-X",
+Quando o status está como "Aguardando liberação",
+Então o sistema exibe a mensagem "Este exame ainda não foi liberado pelo laboratório".
 ```
 
 ---
@@ -396,25 +443,24 @@ Então apenas esses exames ficam disponíveis para visualização.
 #### Persona: Clara – Paciente
 **Feature:** Ver resultados de exames  
 **PBI:** Visualizar ou baixar o documento disponível, permitindo a leitura e o armazenamento, dos resultados de exames.
+**US15 - Baixar resultados de exames:** 
+
+> Como paciente, Quero visualizar e baixar meus exames, Para poder armazenar ou apresentar quando necessário.
 
 **Critérios de aceitação:**
-- O paciente logado consegue visualizar o documento de resultados de exames diretamente na plataforma, sem necessidade de download imediato.
-- O paciente tem a opção de baixar o documento em formato PDF para armazenamento local.
-- O documento é exibido de forma legível e organizada, garantindo a leitura clara dos resultados apresentados.
+- O paciente pode visualizar os exames diretamente na plataforma, em tela responsiva.
+- Um botão “Baixar PDF” está disponível abaixo do exame, permitindo o download local.
+- O PDF é gerado com layout organizado e campos legíveis, incluindo assinatura digital e cabeçalho do sistema.
 
 **BDDs:**
 ```gherkin
-Dado que o paciente está logado na plataforma,
-Quando ele visualiza o documento de resultados de exames,
-Então ele consegue visualizar o documento diretamente, sem necessidade de download imediato.
+Dado que Clara está visualizando o exame "Hemograma completo" do dia 10/07/2025,
+Quando ela clica em "Baixar PDF",
+Então o sistema inicia o download do arquivo "laudo-hemograma-2025-07-10.pdf".
 
-Dado que o paciente está visualizando o documento,
-Quando desejar,
-Então ele tem a opção de baixar o documento em formato PDF para armazenamento local.
-
-Dado que o documento de resultados está sendo exibido,
-Quando o sistema apresenta as informações,
-Então o documento é exibido de forma legível e organizada, garantindo a leitura clara dos resultados.
+Dado que o documento foi baixado,
+Quando Clara abre o arquivo,
+Então ele exibe os dados com formatação legível: cabeçalho com logo da clínica, nome do paciente, data, resultado e assinatura digital do responsável técnico.
 ```
 
 ---
@@ -422,25 +468,30 @@ Então o documento é exibido de forma legível e organizada, garantindo a leitu
 #### Persona: Clara – Paciente
 **Feature:** Solicitar histórico médico  
 **PBI:** Enviar a solicitação para análise e liberação, iniciando o processo de disponibilização, dos dados médicos.
+**US16 - Enviar solicitação de histórico:** 
+
+> Como paciente, Quero enviar um pedido de liberação do histórico médico, Para que os dados sejam processados e disponibilizados com segurança.
 
 **Critérios de aceitação:**
-- O paciente ou responsável legal consegue acessar o sistema utilizando credenciais válidas e seguras.
-- Após o login autorizado, o sistema disponibiliza uma opção clara para solicitação do histórico médico do paciente.
-- A solicitação é registrada e transmitida de forma segura, garantindo a integridade e a confidencialidade das informações médicas.
+- Após login, o paciente ou responsável pode acessar a aba “Solicitar Histórico” e clicar em “Enviar Solicitação”.
+- A solicitação é registrada no sistema com número de protocolo visível ao solicitante.
+- O sistema exibe uma notificação confirmando que os dados foram recebidos e serão processados com segurança.
 
 **BDDs:**
 ```gherkin
-Dado que o paciente ou responsável legal possui credenciais válidas e seguras,
-Quando ele acessa o sistema e realiza o login autorizado,
-Então o sistema disponibiliza uma opção clara para solicitação do histórico médico do paciente.
+Dado que Clara está logada no sistema com CPF "321.654.987-01",
+Quando ela acessa o menu "Histórico médico" e clica em "Nova solicitação",
+Então o sistema apresenta o formulário para preenchimento.
 
-Dado que a opção para solicitação do histórico médico está disponível,
-Quando o paciente ou responsável legal realiza a solicitação,
-Então o sistema registra a solicitação.
+Dado que Clara preenche os campos:  
+- Finalidade: "Apresentar em consulta externa"  
+- Tipo: "Resumo clínico com exames",
+Quando ela clica em "Enviar solicitação",
+Então o sistema gera o protocolo "REQ-HIST-2025-0078" e exibe a confirmação.
 
-Dado que a solicitação do histórico médico foi registrada,
-Quando o sistema transmite as informações,
-Então a transmissão ocorre de forma segura, garantindo a integridade e confidencialidade dos dados.
+Dado que o protocolo foi gerado,
+Quando o sistema registra a solicitação,
+Então ele armazena os dados com criptografia e exibe "Solicitação enviada com sucesso".
 ```
 
 ---
@@ -448,25 +499,28 @@ Então a transmissão ocorre de forma segura, garantindo a integridade e confide
 #### Persona: Roberto – Diretor de Tecnologia
 **Feature:** Gerenciar a infraestrutura de tecnologia  
 **PBI:** Monitorar servidores, redes e sistemas continuamente, assegurando o funcionamento estável e seguro, da infraestrutura tecnológica.
+**US17 - Monitorar infraestrutura:** 
+
+> Como diretor de tecnologia, Quero monitorar servidores e sistemas em tempo real, Para garantir o funcionamento seguro e estável da infraestrutura.
 
 **Critérios de aceitação:**
-- O sistema realiza monitoramento contínuo dos recursos de TI, coletando métricas em tempo real.
-- Alertas automáticos são gerados em caso de falhas, indisponibilidade ou uso anormal de recursos.
-- A equipe de TI consegue acessar um painel com indicadores atualizados do status da infraestrutura.
+- O sistema realiza monitoramento contínuo dos seguintes recursos: CPU, memória, largura de banda da rede e disponibilidade de serviços.
+- Os dados de monitoramento são atualizados em tempo real e exibidos em um painel com gráficos e indicadores de status.
+- O sistema envia alertas automáticos para o e-mail institucional da equipe de TI em caso de falhas críticas ou indisponibilidade de serviços.
 
 **BDDs:**
 ```gherkin
-Dado que o sistema está em operação,
-Quando ele realiza monitoramento contínuo dos recursos de TI,
-Então ele coleta métricas em tempo real.
+Dado que o sistema está operando com monitoramento ativo,
+Quando o uso de CPU no servidor principal ultrapassa 90% às 10h15,
+Então o sistema registra esse pico e envia um alerta para o e-mail "infra@clinicavida.com".
 
-Dado que o sistema está monitorando a infraestrutura,
-Quando ocorrem falhas, indisponibilidade ou uso anormal de recursos,
-Então alertas automáticos são gerados.
+Dado que o sistema identifica uma falha no serviço de banco de dados às 11h02,
+Quando a falha é detectada,
+Então o status da aplicação muda para "Instável" e o painel exibe um alerta em vermelho.
 
-Dado que a equipe de TI precisa verificar o status da infraestrutura,
-Quando eles acessam o sistema,
-Então conseguem acessar um painel com indicadores atualizados do status da infraestrutura.
+Dado que a equipe de TI acessa o painel de monitoramento,
+Quando abrem a aba "Desempenho de Rede",
+Então os gráficos mostram latência média, upload, download e pacotes perdidos dos últimos 30 minutos.
 ```
 
 ---
@@ -474,25 +528,28 @@ Então conseguem acessar um painel com indicadores atualizados do status da infr
 #### Persona: Roberto – Diretor de Tecnologia
 **Feature:** Gerenciar a infraestrutura de tecnologia  
 **PBI:** Implementar as soluções validadas, aumentando a velocidade e estabilidade, da plataforma tecnológica.
+**US18 - Executar atualizações planejadas:** 
+
+> Como diretor de tecnologia, Quero realizar manutenções e atualizações sem afetar os usuários, Para manter a plataforma eficiente e confiável.
 
 **Critérios de aceitação:**
-- O sistema segue um cronograma de manutenções e atualizações periódicas previamente definido e documentado.
-- As manutenções são executadas com sucesso sem impactar a disponibilidade dos serviços para os usuários finais.
-- As atualizações resultam em melhorias perceptíveis de desempenho, segurança ou estabilidade dos recursos de TI.
+- O sistema segue um cronograma de manutenção técnica com data, hora e escopo definidos e visíveis à equipe de tecnologia.
+- Durante a manutenção, os serviços impactados exibem uma mensagem de indisponibilidade temporária aos usuários finais (caso aplicável).
+- Após a atualização, o sistema retorna ao funcionamento normal e as alterações implementadas são listadas em um log técnico.
 
 **BDDs:**
 ```gherkin
-Dado que existe um cronograma de manutenções e atualizações previamente definido e documentado,
-Quando o sistema segue esse cronograma,
-Então as manutenções e atualizações são executadas conforme planejado.
+Dado que há uma atualização agendada para 16/07/2025 às 03h00,
+Quando o relógio atinge esse horário,
+Então o sistema executa o script de atualização sem impactar os serviços ativos.
 
-Dado que as manutenções estão sendo executadas,
-Quando elas são realizadas,
-Então são executadas com sucesso sem impactar a disponibilidade dos serviços para os usuários finais.
+Dado que a atualização foi concluída,
+Quando o sistema retorna ao funcionamento normal,
+Então o log "update-20250716.log" é salvo no painel técnico com detalhes da operação.
 
-Dado que as atualizações foram implementadas,
-Quando são executadas,
-Então resultam em melhorias perceptíveis de desempenho, segurança ou estabilidade dos recursos de TI.
+Dado que um usuário tenta acessar o sistema durante a manutenção,
+Quando a aplicação está em modo "manutenção",
+Então é exibida a mensagem: "Estamos realizando melhorias. Volte em breve."
 ```
 
 ---
@@ -500,25 +557,32 @@ Então resultam em melhorias perceptíveis de desempenho, segurança ou estabili
 #### Persona: Roberto – Diretor de Tecnologia
 **Feature:** Buscar soluções para a eficiência do sistema  
 **PBI:** Analisar métricas de desempenho e identificar gargalos, detectando pontos críticos de lentidão ou falha, no sistema.
+**US19 - Identificar gargalos de sistema:** 
+
+> Como diretor de tecnologia, Quero analisar métricas e identificar gargalos, Para otimizar o desempenho e resolver falhas rapidamente.
 
 **Critérios de aceitação:**
-- O sistema coleta automaticamente métricas de desempenho em tempo real, como tempo de resposta, uso de CPU, memória e taxa de erros.
-- O sistema identifica e sinaliza pontos críticos de lentidão ou falha com base nas métricas coletadas, permitindo a rápida detecção de gargalos.
-- O usuário consegue visualizar essas informações de forma clara, com gráficos ou relatórios que destacam os problemas identificados.
+- O sistema coleta automaticamente métricas de desempenho como tempo médio de resposta, uso de CPU, memória e número de erros por segundo.
+- Ao detectar métricas acima de um limite configurado (ex: tempo de resposta superior a 5 segundos), o sistema destaca o componente afetado em um painel visual.
+- O sistema permite exportar relatórios com os gargalos identificados, incluindo o componente afetado, o horário da ocorrência e a métrica envolvida.
 
 **BDDs:**
 ```gherkin
-Dado que o sistema está em operação,
-Quando ele coleta métricas de desempenho em tempo real,
-Então ele registra dados como tempo de resposta, uso de CPU, memória e taxa de erros.
+Dado que o tempo médio de resposta ultrapassa 5 segundos entre 09h00 e 09h10,
+Quando o sistema coleta essas métricas,
+Então ele registra um gargalo no módulo "Prontuário Eletrônico" com código GARG2025-0032.
 
-Dado que as métricas de desempenho foram coletadas,
-Quando o sistema identifica pontos críticos de lentidão ou falha,
-Então ele sinaliza esses gargalos para rápida detecção.
+Dado que o sistema detectou gargalos,
+Quando Roberto acessa a aba "Relatórios de Desempenho",
+Então ele vê um gráfico com:  
+- Nome do módulo afetado  
+- Tempo médio de resposta  
+- Horário da ocorrência  
+- Taxa de erro
 
-Dado que os pontos críticos foram identificados,
-Quando o usuário acessa as informações,
-Então o sistema exibe gráficos ou relatórios claros que destacam os problemas.
+Dado que o relatório é gerado,
+Quando Roberto clica em "Exportar",
+Então o arquivo "desempenho-14-07-2025.pdf" é baixado com os dados da análise.
 ```
 
 ## Estudo de Caso 2: USM - ComunEventos
@@ -527,7 +591,17 @@ Então o sistema exibe gráficos ou relatórios claros que destacam os problemas
 
 Este USM foi desenvolvido durante a atividade de estudo de caso do sistema ComunEventos:
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVInoXe-k=/?embedMode=view_only_without_ui&moveToViewport=-10039,-2606,11852,7466&embedId=463774134693" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+![USM Completo](images/usm.png)
+![Quadro de Complexidade](images/usm1.png)
+![Quadro de Complexidade](images/usm2.png)
+
+| USM | USM |
+|-----|-----|
+| ![](usm4.png) | ![](usm7.png) | 
+| ![](usm5.png) | ![](usm8.png) | 
+| ![](usm6.png) | - |
+
+![Sobre o projeto](images/usm9.png)
 
 [Acesse o USM do Estudo de Caso completo no Miro](https://miro.com/app/board/uXjVInoXe-k=/)
 
