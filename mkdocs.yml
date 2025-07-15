@@ -13,11 +13,12 @@ nav:
   - DoR e DoD: dor-dod.md 
   - Backlog: backlog.md
   - MVP : mvp.md
-  - Estudo de caso : Estudo-de-caso.md
+  - Estudo de caso : estudo-de-caso.md
   - USM - User Story Mapping: USM-canada.md
   - Casos de Uso : casos-de-uso.md
   - Retrospectiva : retrospectiva.md
   - Evidências de Execução : evidencias.md
+  - APK : APK.md
   - Configuração de Ambiente: configuracao-ambiente.md
   - Lições: licoes-aprendidas.md
   - Resolução de Issues: resolucao-issues.md
