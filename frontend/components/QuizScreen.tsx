@@ -69,7 +69,7 @@ const QuizScreen: React.FC = () => {
     if (quiz) {
       try {
         await quizService.saveProgress(
-          quiz.id,
+          quiz?.id,
           currentStep,
           answers,
           resolvedQuizType

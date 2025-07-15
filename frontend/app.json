@@ -1,57 +1,27 @@
 {
   "expo": {
-    "name": "Canada Intercâmbio",
+    "name": "Canada Intercambio",
     "slug": "canada-intercambio",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "canadaintercambio",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.canadaintercambio.app"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#cb2328"
-      },
-      "edgeToEdgeEnabled": true,
-      "package": "com.canadaintercambio.app",
-      "permissions": [
-        "INTERNET",
-        "ACCESS_NETWORK_STATE"
-      ]
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png",
-      "name": "Canada Intercâmbio",
-      "shortName": "Canada Intercâmbio",
-      "description": "Aplicativo oficial da Canada Intercâmbio",
-      "themeColor": "#cb2328",
+    "platforms": ["android", "ios"],
+    "sdkVersion": "50.0.0",
+    "icon": "./assets/images/app_icon.png",
+    "splash": {
+      "image": "./assets/images/app_icon.png",
+      "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#cb2328"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.app.canadaintercambio"
     },
     "extra": {
       "eas": {
-        "projectId": "91116cbe-8195-4617-9395-ac42c250e59d"
+        "projectId": "0e2b75df-ad07-42a7-83e1-9328aa082521"
       }
     }
   }
