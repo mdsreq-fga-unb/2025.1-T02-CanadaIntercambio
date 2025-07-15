@@ -179,10 +179,22 @@ const QuizScreen: React.FC = () => {
       setSubmitting(true);
       const result = await quizService.submitQuiz(quiz.id, userId, answers);
       await quizService.clearProgress(resolvedQuizType);
-      router.push({
-        pathname: "/resultado-quiz",
-        params: { resultId: result.id },
-      });
+      if (resolvedQuizType === "SIMULACAO") {
+        router.push({
+          pathname: "/resultado-quiz-simulacao",
+          params: {
+            score: result.score?.toString() ?? "0",
+          },
+        });
+      } else {
+        router.push({
+          pathname: "/resultado-quiz",
+          params: {
+            resultId: result.id,
+            quizType: resolvedQuizType,
+          },
+        });
+      }
     } catch (err: any) {
       console.error("Erro ao submeter quiz:", err);
       Alert.alert("Erro", "Erro ao salvar respostas. Tente novamente.");
@@ -385,7 +397,7 @@ const QuizScreen: React.FC = () => {
         style={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.headerSection}>          
+        <View style={styles.headerSection}>
           <Text style={styles.title}>Quiz</Text>
         </View>
 

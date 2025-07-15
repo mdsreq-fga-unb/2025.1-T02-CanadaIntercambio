@@ -33,6 +33,7 @@ export interface QuizResult {
   resultData: any;
   recommendedProgram?: any;
   completedAt: string;
+  score: number;
 }
 
 export interface QuizResponse {
