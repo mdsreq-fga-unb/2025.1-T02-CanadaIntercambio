@@ -3,4 +3,6 @@ import { JwtPayload } from './auth';
 
 export interface AuthenticatedRequest extends Request {
   user?: JwtPayload;
+  body: any;
+  headers: any;
 }
