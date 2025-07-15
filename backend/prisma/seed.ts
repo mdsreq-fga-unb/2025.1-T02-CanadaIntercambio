@@ -725,10 +725,11 @@ async function main() {
             questionType: "SINGLE_CHOICE",
             options: [
               "Ter cidadania canadense",
-              "Possuir proficiência no idioma exigido",
+              "Possuir proficiência no idioma exigido", // <- correta
               "Já ter feito outro intercâmbio anteriormente",
               "Ter mais de 30 anos obrigatoriamente",
             ],
+            correctOption: "Possuir proficiência no idioma exigido", // 👈 aqui
             isRequired: true,
             order: 1,
           },
@@ -737,10 +738,11 @@ async function main() {
             questionType: "SINGLE_CHOICE",
             options: [
               "De 1 a 2 semanas",
-              "De 1 a 3 meses",
+              "De 1 a 3 meses", // <- correta
               "De 3 a 6 meses",
               "1 ano ou mais",
             ],
+            correctOption: "De 1 a 3 meses",
             isRequired: true,
             order: 2,
           },
@@ -750,10 +752,12 @@ async function main() {
             questionType: "SINGLE_CHOICE",
             options: [
               "Obter visto de trabalho para imigrar",
-              "Alcançar um objetivo específico como aprender, estudar, trabalhar ou vivenciar uma nova cultura",
+              "Alcançar um objetivo específico como aprender, estudar, trabalhar ou vivenciar uma nova cultura", // <- correta
               "Realizar estágio obrigatório em empresas locais",
               "Preparar-se para concursos públicos no Brasil",
             ],
+            correctOption:
+              "Alcançar um objetivo específico como aprender, estudar, trabalhar ou vivenciar uma nova cultura",
             isRequired: true,
             order: 3,
           },
@@ -763,10 +767,11 @@ async function main() {
             questionType: "SINGLE_CHOICE",
             options: [
               "14 anos ou mais",
-              "17 anos ou mais",
+              "17 anos ou mais", // <- correta
               "18 anos ou mais",
               "Qualquer idade",
             ],
+            correctOption: "17 anos ou mais",
             isRequired: true,
             order: 4,
           },
@@ -777,9 +782,10 @@ async function main() {
             options: [
               "O número de seguidores do participante nas redes sociais",
               "A estação do ano em que o aluno pretende viajar",
-              "O tempo de duração e o tipo de programa escolhido",
+              "O tempo de duração e o tipo de programa escolhido", // <- correta
               "O país de origem do participante",
             ],
+            correctOption: "O tempo de duração e o tipo de programa escolhido",
             isRequired: true,
             order: 5,
           },
