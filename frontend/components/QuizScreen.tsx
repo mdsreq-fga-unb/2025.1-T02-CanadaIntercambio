@@ -179,10 +179,22 @@ const QuizScreen: React.FC = () => {
       setSubmitting(true);
       const result = await quizService.submitQuiz(quiz.id, userId, answers);
       await quizService.clearProgress(resolvedQuizType);
-      router.push({
-        pathname: "/resultado-quiz",
-        params: { resultId: result.id },
-      });
+      if (resolvedQuizType === "SIMULACAO") {
+        router.push({
+          pathname: "/resultado-quiz-simulacao",
+          params: {
+            score: result.score?.toString() ?? "0",
+          },
+        });
+      } else {
+        router.push({
+          pathname: "/resultado-quiz",
+          params: {
+            resultId: result.id,
+            quizType: resolvedQuizType,
+          },
+        });
+      }
     } catch (err: any) {
       console.error("Erro ao submeter quiz:", err);
       Alert.alert("Erro", "Erro ao salvar respostas. Tente novamente.");
@@ -356,7 +368,7 @@ const QuizScreen: React.FC = () => {
         <View style={styles.content}>
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={() => router.push("/onboard")}
           >
             <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
             <Text style={styles.backButtonText}>Voltar</Text>
@@ -386,13 +398,6 @@ const QuizScreen: React.FC = () => {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.headerSection}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => router.back()}
-          >
-            <MaterialIcons name="arrow-back" size={24} color="#cb2328" />
-            <Text style={styles.backButtonText}>Voltar</Text>
-          </TouchableOpacity>
           <Text style={styles.title}>Quiz</Text>
         </View>
 

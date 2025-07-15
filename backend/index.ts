@@ -1,31 +1,25 @@
-import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-import { PrismaClient } from '@prisma/client';
-import { AppRoutes } from './src/routes/index';
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import { PrismaClient } from "@prisma/client";
+import { AppRoutes } from "./src/routes/index";
 
 const app = express();
 const port = process.env.PORT || 3000;
 const prisma = new PrismaClient();
 
-// Configuração do CORS para produção
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? [
-        'https://canada-intercambio.onrender.com',
-        'https://your-frontend-domain.com' // Substitua pela URL do seu frontend
-      ]
-    : '*',
-  credentials: true,
-  optionsSuccessStatus: 200
-};
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 
-app.use(cors(corsOptions));
 app.use(express.json());
 
 // Usar rotas modularizadas
 const appRoutes = new AppRoutes(prisma);
-app.use('/api', appRoutes.getRouter());
+app.use("/api", appRoutes.getRouter());
 
 // Rota básica de teste
 app.get('/ping', (req, res) => {
@@ -54,13 +48,13 @@ app.get('/health', async (req, res) => {
 });
 
 // Rota de status do sistema
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     // Testar conexão com o banco
     await prisma.$queryRaw`SELECT 1`;
-    res.json({ 
-      status: 'ok', 
-      database: 'connected',
+    res.json({
+      status: "ok",
+      database: "connected",
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
       message: 'Canada Intercâmbio API is running!'

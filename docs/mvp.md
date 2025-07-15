@@ -23,3 +23,4 @@ O escopo do MVP inclui:
 | US30 | Como empresa, quero cadastrar novos programas de intercâmbio. |
 
 Esse conjunto básico de funcionalidades forma a base para testar a plataforma com usuários reais e a Canada Intercambio, coletar dados relevantes e validar as hipóteses do projeto. O MVP prioriza a experiência do usuário na descoberta e decisão, focando em oferecer uma jornada informativa e personalizada desde o primeiro contato. Ao mesmo tempo, garante à Canada Intercambio a capacidade de manter o conteúdo da plataforma atualizado, otimizando assim a comunicação e o suporte aos futuros intercambistas.
+

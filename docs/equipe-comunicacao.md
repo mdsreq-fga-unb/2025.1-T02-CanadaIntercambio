@@ -2,7 +2,7 @@
 
 ## Composição da Equipe
 
-| **Papel**                 | **Descrição**                                                                                      | **Responsável**       | **Participantes**     |
+| **Papel**             | **Descrição**                                                                                 | **Responsável**    | **Participantes** |
 |-----------------------|-----------------------------------------------------------------------------------------------|--------------------|-------------------|
 | Gerente de Projeto    | Coordena o projeto, garante a comunicação entre cliente e equipe, controla prazos e entregas. | Marina Galdi       | Ana Elisa         |
 | Desenvolvedor Frontend| Responsável pela interface do usuário, design e implementação das funcionalidades no cliente. | Felipe Veríssimo   | Marina Galdi      |
@@ -32,6 +32,8 @@
 - **Revisão da Sprint**: Cliente acompanha o progresso via Miro, revisa tarefas e ajusta prioridades.
 - **Acesso ao Figma**: Participa das reuniões de revisão e valida funcionalidades diretamente na ferramenta, contribuindo com novas demandas.
 
+> **Errata:** O Figma acabaou sendo uma plataforma pouco utilizada por nós. Preferímos nos organizar através da plataforma Miro.
+
 ---
 
 ## Processo de Validação
@@ -41,3 +43,5 @@ O processo de validação será estruturado em três etapas principais:
 - **Definition of Ready (DoR)**: Um item só entra em desenvolvimento se tiver requisitos bem definidos e critérios de aceitação claros.
 - **Definition of Done (DoD)**: Entrega só é concluída se passar por testes, revisão de código (se necessário) e validação visual e funcional.
 - **Validação com o Cliente**: Após a validação interna, o cliente testa a funcionalidade e aprova com base em suas expectativas.
+
+> **Errata:** Na prática essa definição não foi aplicada de forma consistente ao longo do projeto.

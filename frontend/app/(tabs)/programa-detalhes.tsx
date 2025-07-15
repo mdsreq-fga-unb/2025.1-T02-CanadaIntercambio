@@ -220,10 +220,16 @@ export default function ProgramaDetalhesScreen() {
 
           <TouchableOpacity
             style={styles.interesseButton}
-            onPress={handleInteresse}
+            onPress={() => router.push("/quiz?quizType=SIMULACAO")}
           >
-            <Text style={styles.interesseButtonText}>Tenho Interesse</Text>
-            <MaterialCommunityIcons name="heart" size={20} color="white" />
+            <Text style={styles.interesseButtonText}>
+              Verificar Entendimento
+            </Text>
+            <MaterialCommunityIcons
+              name="clipboard-text"
+              size={20}
+              color="white"
+            />
           </TouchableOpacity>
         </View>
       </ScrollView>
