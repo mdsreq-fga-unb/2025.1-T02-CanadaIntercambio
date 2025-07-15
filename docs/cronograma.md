@@ -17,6 +17,8 @@ A partir da estratégia de desenvolvimento de software estabelecida, tem-se a se
 | Construção       | 5            | 02/07 – 08/07/2025       | Painel administrativo básico: Atualizar programas (US29) + cadastrar novo programa (US30) |
 | Implantação      | 1            | 09/07 – 15/07/2025       | Entrega final e testes                                                         |
 
+> **Errata:** Cronograma foi alterado por imprevistos que aconteceram durante o projeto. A versão real/final está na aba "Retrospectiva".
+
 ---
 
 ## Considerações Importantes

@@ -70,7 +70,7 @@
 
 ## ER
 
-#### 🗂️ Evidência 1
+#### Evidência 1
 
 **Documento:** Ata de Reunião – 02/05/2025
 
@@ -103,7 +103,7 @@
 
 ---
 
-#### 🗂️ Evidência 2
+#### Evidência 2
 
 **Documento:** Ata de Reunião – 19/05/2025
 
@@ -127,7 +127,7 @@
 
 ---
 
-#### 🗂️ Evidência 3
+#### Evidência 3
 
 **Documento:** Ata de Reunião – 06/06/2025
 
@@ -155,6 +155,8 @@
 
 ---
 
+#### Funcionalidades implementadas
+
 ## Histórico de Alterações
 
 | Data | Versão | Autor | Descrição das Alterações |
@@ -164,3 +166,5 @@
 | 24/06/2025 | 1.2 | Equipe de Desenvolvimento | Inclusão da evidência de setup de ambiente de desenvolvimento |
 | 24/06/2025 | 1.3 | Equipe de Desenvolvimento | Adição da estrutura do banco de dados via Prisma ORM |
 | 24/06/2025 | 1.4 | Equipe de Desenvolvimento | Inclusão das três evidências documentais de ER das reuniões |
+| 14/07/2025 | 1.5 | Equipe de Desenvolvimento | Inclusão de algumas funcionalidades implementadas |
+
